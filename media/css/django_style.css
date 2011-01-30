@@ -1,0 +1,53 @@
+/* Django style CSS */
+
+html * { padding:0; margin:0; }
+/* body * { padding:10px 20px; } */
+/* body * * { padding:0; } */
+body { font:small sans-serif; }
+
+h1, h2, h3, h4 {
+	font-family: "Trebuchet MS",Verdana,sans-serif;
+}
+h1 { font-size: 24px; }
+h2 { margin-bottom:.8em; }
+h2 span { font-size:80%; color:#666; font-weight:normal; }
+h3 { margin:1em 0 .5em 0; }
+h4 { margin:0 0 .5em 0; font-weight: normal; }
+
+input, textarea {
+    background-color: #FFFFCC;
+    border: 1px solid black;
+    color: black;
+}
+label { margin-right: 5px; }
+
+#top-menu {
+	background: none repeat scroll 0 0 #2C4056;
+	color: #FFFFFF;
+	font-size: 0.8em;
+	height: 1.8em;
+	padding: 2px 2px 0 6px;
+}
+
+#top-menu ul {
+    margin: 0;
+    padding: 0;
+}
+#top-menu li {
+    float: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+#account {
+    float: right;
+}
+
+#title { padding:10px 20px; border-bottom:1px solid #ddd; background-color: #507AAA; color: #F8F8F8; }
+#title h2 { font-weight: normal; color: #666; }
+#explanation { background:#eee; }
+#instructions { background:#f6f6f6; }
+#summary table { border:none; background:transparent; }
