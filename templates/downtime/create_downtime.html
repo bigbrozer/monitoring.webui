@@ -5,7 +5,7 @@
 <title>OpTools - Schedule a downtime</title>
 <meta name="generator" content="Bluefish 2.0.1" />
 <meta name="author" content="Vincent BESANCON" />
-<meta name="date" content="2011-01-30T23:48:08+0100" />
+<meta name="date" content="2011-02-03T00:28:17+0100" />
 <meta name="copyright" content="(c) 2011 Vincent BESANCON"/>
 <meta name="keywords" content="nagios,downtime,livestatus"/>
 <meta name="description" content="Schedule a downtime in Nagios"/>
@@ -32,16 +32,13 @@
 	<h1>Schedule a downtime</h1>
 </div>
 
-<form method="post">
-	<fieldset>
-		<legend>Downtime name</legend>
-		<input type="text" name="downtime_name" value="Enter here the downtime name, ex: PDM Backup" size="50" />
-	</fieldset>
-	<fieldset>
-		<legend>Hosts list</legend>
-		<label>Search:</label><input type="text" name="search" size="25" />
-		<textarea name="hosts_list" rows="5" cols="25"></textarea>
-	</fieldset>
+<form method="post"
+	<label>Downtime Name:</label>
+	<input type="text" name="downtime_name" />
+	
+	<label>Search host:</label>
+	<input type="text" name="search" />
+	<textarea name="hosts_list"></textarea>
 </form>
 
 </body>

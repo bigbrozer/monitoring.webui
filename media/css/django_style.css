@@ -3,7 +3,10 @@
 html * { padding:0; margin:0; }
 /* body * { padding:10px 20px; } */
 /* body * * { padding:0; } */
-body { font:small sans-serif; }
+body {
+	font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
 
 h1, h2, h3, h4 {
 	font-family: "Trebuchet MS",Verdana,sans-serif;
@@ -14,12 +17,17 @@ h2 span { font-size:80%; color:#666; font-weight:normal; }
 h3 { margin:1em 0 .5em 0; }
 h4 { margin:0 0 .5em 0; font-weight: normal; }
 
+label { margin-right: 5px; font-weight: bold; }
 input, textarea {
-    background-color: #FFFFCC;
-    border: 1px solid black;
-    color: black;
+	background-color: #EBF8FF;
+	border:solid 1px #92B2C4;
+	color: black;
 }
-label { margin-right: 5px; }
+input {
+	width: 200px;
+	height: 24px;
+	font-size: 14px;
+}
 
 #top-menu {
 	background: none repeat scroll 0 0 #2C4056;
@@ -39,7 +47,6 @@ label { margin-right: 5px; }
     margin: 0;
     padding: 0;
     white-space: nowrap;
-    font-weight: bold;
 }
 
 #account {
