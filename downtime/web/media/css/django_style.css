@@ -17,17 +17,82 @@ h2 span { font-size:80%; color:#666; font-weight:normal; }
 h3 { margin:1em 0 .5em 0; }
 h4 { margin:0 0 .5em 0; font-weight: normal; }
 
-label { margin-right: 5px; font-weight: bold; }
-input, textarea {
-	background-color: #EBF8FF;
-	border:solid 1px #92B2C4;
-	color: black;
+.spacer{clear:both; height:1px;}
+
+/* ----------- Form styles ----------- */
+.form_box {
+	margin: 5px auto 0 5px;
+	width:600px;
+	padding:14px;
 }
-input {
-	width: 200px;
-	height: 24px;
-	font-size: 14px;
-}
+
+	/* ----------- stylized ----------- */
+	#stylized_form {
+		border:solid 2px #b7ddf2;
+		background:#ebf4fb;
+	}
+	#stylized_form h1 {
+		font-size:14px;
+		font-weight:bold;
+		margin-bottom:8px;
+	}
+	#stylized_form p{
+		font-size:11px;
+		color:#666666;
+		margin-bottom:20px;
+		border-bottom:solid 1px #b7ddf2;
+		padding-bottom:10px;
+	}
+	#stylized_form label{
+		display:block;
+		font-weight:bold;
+		text-align:right;
+		width:240px;
+		float:left;
+	}
+	#stylized_form .small{
+		color:#666666;
+		display:block;
+		font-size:11px;
+		font-weight:normal;
+		text-align:right;
+		width:240px;
+	}
+	#stylized_form input{
+		float:left;
+		font-size:12px;
+		padding:4px 2px;
+		border:solid 1px #aacfe4;
+		width:300px;
+		margin:2px 0 20px 10px;
+	}
+	#stylized_form #search{
+		margin:2px 0 5px 10px;
+	}
+	#stylized_form #checkbox{
+		width: auto;
+	}
+	#stylized_form #host_list{
+		float:left;
+		font-size:12px;
+		padding:4px 2px;
+		border:solid 1px #aacfe4;
+		width:300px;
+		height: 100px;
+		margin:2px 0 20px 250px;
+	}
+	#stylized_form button{
+		clear:both;
+		margin-left:150px;
+		width:125px;
+		height:31px;
+		background:#666666 url(img/button.png) no-repeat;
+		text-align:center;
+		line-height:31px;
+		color:#FFFFFF;
+		font-size:11px;
+		font-weight:bold;
+	}
 
 #top-menu {
 	background: none repeat scroll 0 0 #2C4056;
