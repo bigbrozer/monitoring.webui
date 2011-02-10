@@ -4,8 +4,8 @@
 <head>
 <title>ITOP Tools - Schedule a downtime in Nagios</title>
 <meta name="generator" content="Bluefish 2.0.1" />
-<meta name="author" content="Vincent BESANCON" />
-<meta name="date" content="2011-02-04T00:32:04+0100" />
+<meta name="author" content="Vincent Besançon" />
+<meta name="date" content="2011-02-10T10:51:44+0100" />
 <meta name="copyright" content="(c) 2011 Vincent BESANCON"/>
 <meta name="keywords" content="nagios,downtime,livestatus"/>
 <meta name="description" content="Schedule a downtime in Nagios"/>
@@ -62,6 +62,26 @@
 		<span class="small">Is it a recurrent downtime ?</span>
 		</label>
 		<input id="checkbox" type="checkbox" name="recurrent" />
+		
+		<div id="recurrent_options">
+			<h3>Recurrency options</h3>
+			<input id="checkbox" type="checkbox" name="monday" /><label class="day_label">Monday</label>
+			<input id="checkbox" type="checkbox" name="tuesday" /><label class="day_label">Tuesday</label>
+			<input id="checkbox" type="checkbox" name="wednesday" /><label class="day_label">Wednesday</label>
+			<input id="checkbox" type="checkbox" name="thursday" /><label class="day_label">Thursday</label>
+			<input id="checkbox" type="checkbox" name="friday" /><label class="day_label">Friday</label>
+			<input id="checkbox" type="checkbox" name="saturday" /><label class="day_label">Saturday</label>
+			<input id="checkbox" type="checkbox" name="sunday" /><label class="day_label">Sunday</label>
+			
+			<label>Start hour
+			<span class="small">Start hour for the recurrent downtime</span>
+			</label>
+			<input id="start_hour" class="hour_input" type="text" name="start_hour" />
+			<label>End hour
+			<span class="small">End hour for the recurrent downtime</span>
+			</label>
+			<input id="end_hour" class="hour_input" type="text" name="end_hour" />
+		</div>
 	</form>
 	<div class="spacer"></div>
 </div>
