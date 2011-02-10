@@ -5,7 +5,7 @@
 <title>ITOP Tools - Schedule a downtime in Nagios</title>
 <meta name="generator" content="Bluefish 2.0.1" />
 <meta name="author" content="Vincent Besançon" />
-<meta name="date" content="2011-02-10T11:25:48+0100" />
+<meta name="date" content="2011-02-10T13:58:28+0100" />
 <meta name="copyright" content="(c) 2011 Vincent BESANCON"/>
 <meta name="keywords" content="nagios,downtime,livestatus"/>
 <meta name="description" content="Schedule a downtime in Nagios"/>
@@ -48,17 +48,19 @@
 		</label>
 		<input id="search" type="text" name="search" />
 		
-		<textarea id="host_list" name="host_list"></textarea>
+		<textarea id="host_list" name="host_list" readonly></textarea>
 		
-		<label>Start period
-		<span class="small">Start date for the downtime</span>
-		</label>
-		<input id="start_period" type="text" name="start_period" />
-		
-		<label>End period
-		<span class="small">End date for the downtime</span>
-		</label>
-		<input id="end_period" type="text" name="end_period" />
+		<div id="period_box">
+			<label>Start period
+			<span class="small">Start date for the downtime</span>
+			</label>
+			<input id="start_period" type="text" name="start_period" />
+			
+			<label>End period
+			<span class="small">End date for the downtime</span>
+			</label>
+			<input id="end_period" type="text" name="end_period" />
+		</div>		
 		
 		<label>Recurrent
 		<span class="small">Is it a recurrent downtime ?</span>
