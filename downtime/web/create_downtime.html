@@ -5,7 +5,7 @@
 <title>ITOP Tools - Schedule a downtime in Nagios</title>
 <meta name="generator" content="Bluefish 2.0.1" />
 <meta name="author" content="Vincent Besançon" />
-<meta name="date" content="2011-02-10T10:51:44+0100" />
+<meta name="date" content="2011-02-10T11:25:48+0100" />
 <meta name="copyright" content="(c) 2011 Vincent BESANCON"/>
 <meta name="keywords" content="nagios,downtime,livestatus"/>
 <meta name="description" content="Schedule a downtime in Nagios"/>
@@ -16,6 +16,8 @@
 <meta http-equiv="expires" content="0"/>
 
 <link href="media/css/django_style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+<script type="text/javascript" src="js/downtime.js"></script>
 
 </head>
 <body>
@@ -61,17 +63,17 @@
 		<label>Recurrent
 		<span class="small">Is it a recurrent downtime ?</span>
 		</label>
-		<input id="checkbox" type="checkbox" name="recurrent" />
+		<input class="checkbox" id="recurrent_checkbox" type="checkbox" name="recurrent" />
 		
 		<div id="recurrent_options">
 			<h3>Recurrency options</h3>
-			<input id="checkbox" type="checkbox" name="monday" /><label class="day_label">Monday</label>
-			<input id="checkbox" type="checkbox" name="tuesday" /><label class="day_label">Tuesday</label>
-			<input id="checkbox" type="checkbox" name="wednesday" /><label class="day_label">Wednesday</label>
-			<input id="checkbox" type="checkbox" name="thursday" /><label class="day_label">Thursday</label>
-			<input id="checkbox" type="checkbox" name="friday" /><label class="day_label">Friday</label>
-			<input id="checkbox" type="checkbox" name="saturday" /><label class="day_label">Saturday</label>
-			<input id="checkbox" type="checkbox" name="sunday" /><label class="day_label">Sunday</label>
+			<input class="checkbox" type="checkbox" name="monday" /><label class="day_label">Monday</label>
+			<input class="checkbox" type="checkbox" name="tuesday" /><label class="day_label">Tuesday</label>
+			<input class="checkbox" type="checkbox" name="wednesday" /><label class="day_label">Wednesday</label>
+			<input class="checkbox" type="checkbox" name="thursday" /><label class="day_label">Thursday</label>
+			<input class="checkbox" type="checkbox" name="friday" /><label class="day_label">Friday</label>
+			<input class="checkbox" type="checkbox" name="saturday" /><label class="day_label">Saturday</label>
+			<input class="checkbox" type="checkbox" name="sunday" /><label class="day_label">Sunday</label>
 			
 			<label>Start hour
 			<span class="small">Start hour for the recurrent downtime</span>

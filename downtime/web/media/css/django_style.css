@@ -72,7 +72,7 @@ h4 { margin:0 0 .5em 0; font-weight: normal; }
 	#stylized_form #search{
 		margin:2px 0 5px 10px;
 	}
-	#stylized_form #checkbox{
+	#stylized_form .checkbox{
 		width: auto;
 	}
 	#stylized_form #host_list{
@@ -96,7 +96,8 @@ h4 { margin:0 0 .5em 0; font-weight: normal; }
 		font-size:11px;
 		font-weight:bold;
 	}
-	#stylized_form #recurrent_options {
+	#stylized_form #recurrent_options {	
+		display: none;
 		padding: 5px;
 		border:solid 1px #aacfe4;
 		float: left;
