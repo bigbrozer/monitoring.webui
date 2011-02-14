@@ -4,6 +4,15 @@
 */
 
 $(document).ready(function() {
+    /* --- Init --- */
+    // Init date and time pickers
+    $('#start_period').datetimepicker();
+    $('#end_period').datetimepicker();
+    $('#start_hour').timepicker({});
+    $('#end_hour').timepicker({});
+    
+    /* --- Handle events --- */
+    // Recurrent check box
 	$("#recurrent_checkbox").click(function() {
 		$("#recurrent_options").toggle();
 		$('#recurrent_options input[type=checkbox]').attr('checked', false);
