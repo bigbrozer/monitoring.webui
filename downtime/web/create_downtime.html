@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <title>ITOP Tools - Schedule a downtime in Nagios</title>
+
 <meta name="generator" content="Bluefish 2.0.1" />
-<meta name="author" content="Vincent BESANCON" />
-<meta name="date" content="2011-02-12T16:46:33+0100" />
+<meta name="author" content="Vincent Besançon" />
+<meta name="date" content="2011-02-20T15:51:21+0100" />
 <meta name="copyright" content="(c) 2011 Vincent BESANCON"/>
 <meta name="keywords" content="nagios,downtime,livestatus"/>
 <meta name="description" content="Schedule a downtime in Nagios"/>
@@ -27,6 +28,7 @@
 </head>
 <body>
 
+<!-- Top menu -->
 <div id="top-menu">
 	<div id="account">
 		<ul>
@@ -35,10 +37,12 @@
 	</div>
 </div>
 
+<!-- Title -->
 <div id="title">
 	<h1>Schedule a downtime in Nagios</h1>
 </div>
 
+<!-- Form -->
 <div id="stylized_form" class="form_box">
 	<h1>Usage</h1>
 	<p>Give a downtime name, add hosts, set period and submit that to Nagios !</p>
@@ -91,6 +95,10 @@
 			</label>
 			<input id="end_hour" class="hour_input" type="text" name="end_hour" />
 		</div>
+		
+		<!-- Submit button -->
+		<div class="spacer"></div>
+		<button type="submit">Schedule</button>
 	</form>
 	<div class="spacer"></div>
 </div>

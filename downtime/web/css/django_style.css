@@ -86,10 +86,11 @@ h4 { margin:0 0 .5em 0; font-weight: normal; }
 	}
 	#stylized_form button{
 		clear:both;
-		margin-left:150px;
+		margin-left: 250px;
+		margin-top: 10px;
 		width:125px;
 		height:31px;
-		background:#666666 url(img/button.png) no-repeat;
+		background:#666666;
 		text-align:center;
 		line-height:31px;
 		color:#FFFFFF;
