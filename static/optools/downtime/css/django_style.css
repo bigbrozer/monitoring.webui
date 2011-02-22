@@ -143,12 +143,28 @@ h4 { margin:0 0 .5em 0; font-weight: normal; }
     padding: 0;
     white-space: nowrap;
 }
+#top-menu a {
+	color: white;
+	font-weight: bold;
+	margin-right:  8px;
+}
+#top-menu a:hover {
+	color: #858585;
+}
 
 #account {
     float: right;
 }
 
-#title { padding:10px 20px; border-bottom:1px solid #ddd; background-color: #507AAA; color: #F8F8F8; }
+a, a:link, a:visited {
+    color: #116699;
+    text-decoration: none;
+}
+a:hover {
+	color: #154C6D;
+}
+
+#title { margin-bottom: 20px; padding:10px 20px; border-bottom:1px solid #ddd; background-color: #507AAA; color: #F8F8F8; }
 #title h2 { font-weight: normal; color: #666; }
 #explanation { background:#eee; }
 #instructions { background:#f6f6f6; }
