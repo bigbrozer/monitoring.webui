@@ -16,9 +16,12 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
     # Applications
-    (r'^downtime/schedule/$', 'downtime.views.schedule'),
+    (r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
+    (r'^downtime/schedule/$', 'app_downtime.views.schedule'),
 )
 
+# Server static content locally (DEBUG mode only)
 if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^static/django/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/besancon/GIT/optools/static'}),
