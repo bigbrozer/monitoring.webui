@@ -31,9 +31,19 @@
 <div id="top-menu">
 	<div id="account">
 		<ul>
-			<li>Logged in as: </li>
+			{% if user.is_authenticated %}
+				<li>Logged in as: <strong><a href="/accounts/profile">{{ user.first_name }} {{ user.last_name }}</a></strong></li>
+				<li><strong><a href="/accounts/logout">Logout</a></strong></li>
+			{% else %}
+				<li>Please login.</li>
+			{% endif %}
 		</ul>
 	</div>
+	<ul>
+		{% if user.is_authenticated and user.is_superuser %}
+			<li><a href="/admin">Administration</a></li>
+		{% endif %}
+	</ul>
 </div>
 
 {% block section %}{% endblock %}
