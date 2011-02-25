@@ -1,0 +1,4 @@
+- Faire un Makefile
+	- make install: dbfolder syncdb
+		- dbfolder: create "db" folder if it does not exist.
+		- syncdb: do a ./manage.py syncdb
