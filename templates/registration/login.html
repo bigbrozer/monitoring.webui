@@ -1,37 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-<title>ITOP Tools - Login</title>
+{% extends "common/base.html" %}
 
-<meta name="generator" content="Bluefish 2.0.1" />
-<meta name="author" content="Vincent Besançon" />
-<meta name="copyright" content="(c) 2011 Vincent BESANCON"/>
-<meta name="keywords" content="nagios,downtime,livestatus"/>
-<meta name="description" content="Login form"/>
-<meta name="ROBOTS" content="NOINDEX, NOFOLLOW"/>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"/>
-<meta http-equiv="content-style-type" content="text/css"/>
-<meta http-equiv="expires" content="0"/>
+{% block title %}Please login...{% endblock %}
 
-<link type="text/css" href="/static/django/optools/downtime/css/django_style.css" rel="stylesheet" />
-
-</head>
-<body>
-
-<!-- Top menu -->
-<div id="top-menu">
-	<div id="account">
-		<ul>
-		</ul>
-	</div>
-</div>
-
-<!-- Title -->
-<div id="title">
-	<h1>Please login...</h1>
-</div>
+{% block content %}
 
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
@@ -53,6 +24,4 @@
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
-
-</body>
-</html>
+{% endblock %}
