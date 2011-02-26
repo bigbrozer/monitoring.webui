@@ -2,3 +2,4 @@
 	- make install: dbfolder syncdb
 		- dbfolder: create "db" folder if it does not exist.
 		- syncdb: do a ./manage.py syncdb
+- Possibilité de recevoir un mail lorqu'un utilisateur crée une période de maintenance.
