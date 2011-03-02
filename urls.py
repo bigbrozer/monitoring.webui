@@ -16,9 +16,15 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
     # Applications
+    # ============
+    #
+    # Registration
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
+    
+    # Downtime
     (r'^downtime/schedule/$', 'app_downtime.views.schedule'),
+    (r'^reporting/status/$', 'app_reporting.views.status'),
 )
 
 # Server static content locally (DEBUG mode only)
