@@ -1,5 +1,16 @@
 {% extends "common/base.html" %}
 
+{% block extra_scripts %}
+<script type="text/javascript" src="/static/django/optools/reporting/swfobject.js"></script>
+<script type="text/javascript">
+	swfobject.embedSWF(
+		"/static/django/optools/reporting/ofc.swf", "chart_open_ack",
+		"820", "400", "9.0.0", "/static/django/optools/reporting/expressInstall.swf",
+		{"data-file":"/reporting/status/data/"}
+	);
+</script>
+{% endblock %}
+
 {% block content %}
-<i>Coming soon...</i>
+<div class="chart" id="chart_open_ack"></div>
 {% endblock %}
