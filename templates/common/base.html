@@ -9,7 +9,7 @@
 			<li>Logged in as: <strong><a href="javascript:void(0);">{{ user.first_name }} {{ user.last_name }}</a></strong></li>
 			<li><strong><a href="/accounts/logout">Logout</a></strong></li>
 			{% else %}
-			<li><strong><a href="/accounts/login/?next=/downtime/schedule/">Login</a></strong></li>
+			<li><strong><a href="/accounts/login/?next={{ path }}">Login</a></strong></li>
 			{% endif %}
 		</ul>
 	</div>

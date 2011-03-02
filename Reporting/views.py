@@ -3,6 +3,7 @@
 # Django imports
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
+from django.template import RequestContext
 
 # Models
 from optools.Reporting.models import AckStat
@@ -17,7 +18,7 @@ import math
 # The view that show graph about status
 def status(request):
 	title = 'Status overview for active alerts'
-	return render_to_response('reporting/status.html', {'title': title})
+	return render_to_response('reporting/status.html', {'title': title, 'path': request.path}, context_instance=RequestContext(request))
 
 # Create graph data for status, return json data
 def status_data(request):

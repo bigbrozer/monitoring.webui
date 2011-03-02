@@ -7,4 +7,4 @@ from django.template import RequestContext
 @login_required
 def schedule(request):
 	title = 'Schedule a downtime in Nagios'
-	return render_to_response('downtime/schedule_downtime.html', {'title': title}, context_instance=RequestContext(request))
+	return render_to_response('downtime/schedule_downtime.html', {'title': title, 'path': request.path}, context_instance=RequestContext(request))
