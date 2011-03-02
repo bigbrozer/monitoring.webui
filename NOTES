@@ -1,2 +1,2 @@
-- Installation de PyOFC2 et anyjson (dépendance):
-	easy_install PyOFC2
+- Installation du module Python fournit avec Open Flash Chart (python-ofc2)
+	- Dépendance: paquet 'python-cjson'
