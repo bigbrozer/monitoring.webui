@@ -1,0 +1,2 @@
+- Installation de PyOFC2 et anyjson (dépendance):
+	easy_install PyOFC2
