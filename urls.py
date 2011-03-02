@@ -24,5 +24,5 @@ urlpatterns = patterns('',
 # Server static content locally (DEBUG mode only)
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^static/django/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
+        (r'^static/django/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )
