@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
     
     # Downtime
-    (r'^downtime/schedule/$', 'app_downtime.views.schedule'),
+    (r'^downtime/schedule/$', 'Downtime.views.schedule'),
     
     # Reporting
     (r'^reporting/status/$', 'Reporting.views.status'),
