@@ -26,8 +26,8 @@ urlpatterns = patterns('',
     (r'^downtime/schedule/$', 'app_downtime.views.schedule'),
     
     # Reporting
-    (r'^reporting/status/$', 'app_reporting.views.status'),
-    (r'^reporting/status/data/$', 'app_reporting.views.status_data'),
+    (r'^reporting/status/$', 'Reporting.views.status'),
+    (r'^reporting/status/data/$', 'Reporting.views.status_data'),
 )
 
 # Server static content locally (DEBUG mode only)
