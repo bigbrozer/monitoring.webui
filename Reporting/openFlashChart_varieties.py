@@ -94,6 +94,9 @@ class varieties(dict):
 		
 	def set_on_click(self, javascript_call):
 		self['on-click'] = javascript_call
+	
+	def set_on_show(self, anim_type, cascade, delay):
+		self['on-show'] = bar_on_show(anim_type, cascade, delay)
 
 
 
@@ -154,6 +157,21 @@ class bar_value(value):
 	def set_bottom_value(self, bottom):
 		self['bottom'] = bottom
 		
+class bar_on_show(dict):
+	def __init__(self, anim_type, cascade, delay):
+		self.set_delay(delay)
+		self.set_cascade(cascade)
+		self.set_anim_type(anim_type)
+		
+	def set_anim_type(self, anim_type):
+		self['type'] = anim_type
+	
+	def set_cascade(self, cascade):
+		self['cascade'] = cascade
+	
+	def set_delay(self, delay):
+		self['delay'] = delay
+
 class bar_3d_value(bar_value):
 	def __init__(self, top, colour = None, tooltip = None):
 		value.__init__(self, colour = colour, tooltip = tooltip)
@@ -202,8 +220,6 @@ class pie_value(value):
 			self['label-colour'] = colour
 		if fontsize:
 			self['font-size'] = fontsize
-			
-
 			
 class scatter_value(value):
 	def __init__(self, (x, y), colour = None, tooltip = None):
