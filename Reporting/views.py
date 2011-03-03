@@ -15,13 +15,13 @@ from openFlashChart_varieties import (Bar, x_axis_labels)
 # Utility
 import math
 
-# The view that show graph about status
-def status(request):
+# The view that show graph about stats
+def stats(request):
 	title = 'Status overview for active alerts'
 	return render_to_response('reporting/status.html', {'title': title, 'path': request.path}, context_instance=RequestContext(request))
 
 # Create graph data for status, return json data
-def status_data(request):
+def ack_stat_data(request):
 	# Some var used in this view
 	weeks = []
 	warning_bar_values = []
