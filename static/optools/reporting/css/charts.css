@@ -1,10 +1,14 @@
 /* Charts Stylesheet */
 
+div.chart_table {
+	width: 1000px;
+	padding: 5px;
+}
+
 .chart {
 	float: left;
 	border: solid 2px #A9A9A9;
-	margin: 0 25px 25px 25px;
-	padding: 5px;
+	margin: 5px;
 }
 .piechart {
 	width: 300px;
@@ -13,4 +17,11 @@
 .barchart {
 	width: 600px;
 	height: 300px;
+}
+
+span.notes {
+	float: right;
+	margin-right: 5px;
+	font-size: 7pt;
+	color: grey;
 }
