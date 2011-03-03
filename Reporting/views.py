@@ -47,9 +47,12 @@ def ack_stat_data(request):
 	warning = Bar(text = 'Warning', values = warning_bar_values)
 	warning.set_colour('#DDDD00')
 	warning.set_tooltip(r'Warning<br>Value:#val#')
+	warning.set_on_show(anim_type = 'pop', cascade = 1, delay = 0.5)
+	
 	critical = Bar(text = 'Critical', values = critical_bar_values)
 	critical.set_colour('#FF0000')
 	critical.set_tooltip(r'Critical<br>Value:#val#')
+	critical.set_on_show(anim_type = 'fade-in', cascade = 1, delay = 0.3)
 
 	chart = openFlashChart.template('Acknowledged Alerts')
 	chart.add_element(warning)
@@ -64,8 +67,8 @@ def ack_stat_data(request):
 def procedure_stat_data(request):
 	# Some var used in this view
 	proc_stats = (
-		pie_value(ProcedureStat.objects.order_by('-date')[0].num_with_procedure, label = ('With', None, None)),
-		pie_value(ProcedureStat.objects.order_by('-date')[0].num_no_procedure, label = ('Without', None, None)),
+		pie_value(ProcedureStat.objects.order_by('-date')[0].num_with_procedure, label = ('With', None, None), colour = '#00EE00'),
+		pie_value(ProcedureStat.objects.order_by('-date')[0].num_no_procedure, label = ('Without', None, None), colour = '#FF0000'),
 	)
 	
 	# Graphs creation	
