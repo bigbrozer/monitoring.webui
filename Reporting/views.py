@@ -6,21 +6,21 @@ from django.http import HttpResponse
 from django.template import RequestContext
 
 # Models
-from optools.Reporting.models import AckStat
+from optools.Reporting.models import AckStat, ProcedureStat
 
 # Open Flash Chart imports
 import openFlashChart
-from openFlashChart_varieties import (Bar, x_axis_labels)
+from openFlashChart_varieties import (Bar, Pie, pie_value, x_axis_labels)
 
 # Utility
 import math
 
 # The view that show graph about stats
 def stats(request):
-	title = 'Status overview for active alerts'
+	title = 'Statistical overview for Nagios'
 	return render_to_response('reporting/status.html', {'title': title, 'path': request.path}, context_instance=RequestContext(request))
 
-# Create graph data for status, return json data
+# Create graph data for ack alerts, return json data
 def ack_stat_data(request):
 	# Some var used in this view
 	weeks = []
@@ -59,3 +59,21 @@ def ack_stat_data(request):
 	chart.set_bg_colour('#FFFFFF')
 
 	return HttpResponse(chart.encode())
+
+# Create graph data for procedure stats, return json data
+def procedure_stat_data(request):
+	# Some var used in this view
+	proc_stats = (
+		pie_value(ProcedureStat.objects.order_by('-date')[0].num_with_procedure, label = ('With', None, None)),
+		pie_value(ProcedureStat.objects.order_by('-date')[0].num_no_procedure, label = ('Without', None, None)),
+	)
+	
+	# Graphs creation	
+	procedure = Pie(values = proc_stats)
+
+	chart = openFlashChart.template('Procedures statistics')
+	chart.add_element(procedure)
+	chart.set_bg_colour('#FFFFFF')
+
+	return HttpResponse(chart.encode())
+
