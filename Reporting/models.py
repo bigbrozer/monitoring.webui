@@ -10,3 +10,13 @@ class AckStat(models.Model):
 	
 	def __unicode__(self):
 		return u'Stat for date {0}'.format(self.date)
+
+# Model representing stats about number of procedures
+class ProcedureStat(models.Model):
+	date = models.DateField()
+	num_no_procedure = models.PositiveIntegerField()
+	num_with_procedure = models.PositiveIntegerField()
+	
+	def __unicode__(self):
+		return u'{0} services without and {1} with procedure for date {2}'.format(self.num_no_procedure, self.num_with_procedure, self.date)
+
