@@ -18,7 +18,7 @@ import math
 # The view that show graph about stats
 def stats(request):
 	title = 'Statistical overview for Nagios'
-	return render_to_response('reporting/status.html', {'title': title, 'path': request.path}, context_instance=RequestContext(request))
+	return render_to_response('reporting/status.html', {'title': title}, context_instance=RequestContext(request))
 
 # Create graph data for ack alerts, return json data
 def ack_stat_data(request):
