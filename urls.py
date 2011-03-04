@@ -29,6 +29,10 @@ urlpatterns = patterns('',
     (r'^reporting/stats/$', 'Reporting.views.stats'),
     (r'^reporting/stats/data/ack$', 'Reporting.views.ack_stat_data'),
     (r'^reporting/stats/data/procedure$', 'Reporting.views.procedure_stat_data'),
+    
+    # Nagios
+    (r'^nagios/satellites/export/$', 'Nagios.views.get_satellite_list'),
+    (r'^nagios/satellites/export/(?P<format>\w+)$', 'Nagios.views.get_satellite_list'),
 )
 
 # Server static content locally (DEBUG mode only)
