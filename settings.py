@@ -111,4 +111,7 @@ INSTALLED_APPS = (
     
     # Reporting
 	'optools.Reporting',
+	
+	# Nagios
+	'optools.Nagios',
 )
