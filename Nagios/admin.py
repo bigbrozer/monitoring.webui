@@ -13,6 +13,7 @@ class SatelliteAdmin(admin.ModelAdmin):
 			'fields': ('ip_address', 'alias', 'fqdn')
 		}),
 		('Livestatus settings', {
+			'classes': ('collapse',),
 			'fields': ('live_port', 'nagios_url')
 		}),
 	)
