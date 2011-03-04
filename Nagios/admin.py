@@ -4,7 +4,7 @@ from django.contrib import admin
 from optools.Nagios.models import Satellite
 
 class SatelliteAdmin(admin.ModelAdmin):
-	list_display = ('name', 'alias', 'fqdn', 'live_port')
+	list_display = ('name', 'alias', 'fqdn', 'live_port', 'nagios_url')
 	fieldsets = (
 		(None, {
 			'fields': ('name',)
@@ -13,7 +13,7 @@ class SatelliteAdmin(admin.ModelAdmin):
 			'fields': ('ip_address', 'alias', 'fqdn')
 		}),
 		('Livestatus settings', {
-			'fields': ('live_port',)
+			'fields': ('live_port', 'nagios_url')
 		}),
 	)
 

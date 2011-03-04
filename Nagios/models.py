@@ -24,6 +24,22 @@ class Satellite(models.Model):
 		verbose_name='Livestatus port',
 		help_text='Port must be between 1024 - 65536'
 	)
+	nagios_url = models.CharField(
+		max_length=10,
+		default='/nagios',
+		verbose_name='Base URL',
+		help_text='Use at your own risk ! Let it be default if you don\'t know what you are doing'
+	)
 	
 	def __unicode__(self):
 		return u'{0} ({1})'.format(self.name, self.alias)
+	
+	def as_live_dict(self, timeout=5):
+		'''Return a dict as expected for livestatus.MultiSiteConnection method.'''
+		return {self.name: {
+			'alias': self.alias,
+			'socket': 'tcp:{0}:{1}'.format(self.alias, self.live_port),
+			'nagios_url': self.nagios_url,
+			'timeout': timeout,
+		}}
+
