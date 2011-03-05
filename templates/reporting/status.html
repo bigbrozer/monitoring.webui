@@ -28,8 +28,16 @@
 {% endblock %}
 
 {% block content %}
-<h2>Statistical data about procedures and active acknowledged alerts in Nagios</h2>
+<h2>Top 5 - Oldest acknowledged alerts</h2>
+<div>
+{% if top_ack_alerts_error %}
+	<span class="error">{{ top_ack_alerts_error }}</span>
+{% else %}
+	{{ top_ack_alerts }}
+{% endif %}
+</div>
 
+<h2>Statistical data about procedures and active acknowledged alerts in Nagios</h2>
 <div class="chart_table">
 	<div id="chart_procedure"></div>
 	<div id="chart_open_ack"></div>
