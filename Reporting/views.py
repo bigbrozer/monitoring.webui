@@ -12,16 +12,33 @@ from optools.Reporting.models import AckStat, ProcedureStat
 import openFlashChart
 from openFlashChart_varieties import (Bar, Pie, pie_value, x_axis_labels)
 
+# Reports imports
+from optools.Reporting.reports.top import get_top_ack_alerts
+
 # Utility
 import math
 
 # The view that show graph about stats
 def stats(request):
-	title = 'Statistical overview for Nagios'
-	return render_to_response('reporting/status.html', {'title': title}, context_instance=RequestContext(request))
+	template_context = {
+		'title': 'Statistical overview for Nagios',
+	}
+	
+	try:
+		top_ack_alerts = get_top_ack_alerts()
+		template_context['top_ack_alerts'] = top_ack_alerts
+	except Exception as e:
+		top_ack_alerts_error = str(e)
+		template_context['top_ack_alerts_error'] = top_ack_alerts_error
+	
+	return render_to_response('reporting/status.html', template_context, context_instance=RequestContext(request))
 
 # Create graph data for ack alerts, return json data
 def ack_stat_data(request):
+	# Tests if we have value in DB
+	if not ProcedureStat.objects.all():
+		return HttpResponse('There is no data in database.')
+	
 	# Some var used in this view
 	weeks = []
 	warning_bar_values = []
@@ -65,6 +82,10 @@ def ack_stat_data(request):
 
 # Create graph data for procedure stats, return json data
 def procedure_stat_data(request):
+	# Tests if we have value in DB
+	if not ProcedureStat.objects.all():
+		return HttpResponse('There is no data in database.')
+	
 	# Some var used in this view
 	proc_stats = (
 		pie_value(ProcedureStat.objects.order_by('-date')[0].num_with_procedure, label = ('With', None, None), colour = '#00EE00'),
