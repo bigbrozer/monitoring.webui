@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.core import serializers
 
 # Models imports
-from optools.Nagios.models import Satellite
+from optools.apps.nagios.models import Satellite
 
 # View definitions
 # ================

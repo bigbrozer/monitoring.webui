@@ -110,8 +110,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     
     # Reporting
-	'optools.Reporting',
+	'optools.apps.reporting',
 	
 	# Nagios
-	'optools.Nagios',
+	'optools.apps.nagios',
 )

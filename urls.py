@@ -23,16 +23,16 @@ urlpatterns = patterns('',
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
     
     # Downtime
-    (r'^downtime/schedule/$', 'Downtime.views.schedule'),
+    (r'^downtime/schedule/$', 'optools.apps.downtime.views.schedule'),
     
     # Reporting
-    (r'^reporting/stats/$', 'Reporting.views.stats'),
-    (r'^reporting/stats/data/ack$', 'Reporting.views.ack_stat_data'),
-    (r'^reporting/stats/data/procedure$', 'Reporting.views.procedure_stat_data'),
+    (r'^reporting/stats/$', 'optools.apps.reporting.views.stats'),
+    (r'^reporting/stats/data/ack$', 'optools.apps.reporting.views.ack_stat_data'),
+    (r'^reporting/stats/data/procedure$', 'optools.apps.reporting.views.procedure_stat_data'),
     
     # Nagios
-    (r'^nagios/satellites/export/$', 'Nagios.views.get_satellite_list'),
-    (r'^nagios/satellites/export/(?P<format>\w+)$', 'Nagios.views.get_satellite_list'),
+    (r'^nagios/satellites/export/$', 'optools.apps.nagios.views.get_satellite_list'),
+    (r'^nagios/satellites/export/(?P<format>\w+)$', 'optools.apps.nagios.views.get_satellite_list'),
 )
 
 # Server static content locally (DEBUG mode only)

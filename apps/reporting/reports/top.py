@@ -24,7 +24,7 @@ from datetime import datetime
 from operator import attrgetter
 
 # Importing models
-from optools.Nagios.models import Satellite
+from optools.apps.nagios.models import Satellite
 import optools.backends.livestatus as live
 
 # Class that define an alert result

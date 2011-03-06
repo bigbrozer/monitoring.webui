@@ -30,7 +30,7 @@ sys.path.append(optools_dir)
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 # Importing models
-from Nagios.models import Satellite
+from apps.nagios.models import Satellite
 import backends.livestatus as live
 
 # Class that define an alert result

@@ -6,14 +6,14 @@ from django.http import HttpResponse
 from django.template import RequestContext
 
 # Models
-from optools.Reporting.models import AckStat, ProcedureStat
+from optools.apps.reporting.models import AckStat, ProcedureStat
 
 # Open Flash Chart imports
 import openFlashChart
 from openFlashChart_varieties import (Bar, Pie, pie_value, x_axis_labels)
 
 # Reports imports
-from optools.Reporting.reports.top import get_top_ack_alerts
+from optools.apps.reporting.reports.top import get_top_ack_alerts
 
 # Utility
 import math
