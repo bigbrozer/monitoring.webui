@@ -11,7 +11,7 @@
 	swfobject.embedSWF(
 		"/static/django/optools/reporting/ofc.swf", "chart_procedure",
 		"300", "300", "9.0.0", "/static/django/optools/reporting/expressInstall.swf",
-		{"data-file":"./data/procedure"},
+		{"data-file":"{% url optools.apps.reporting.views.procedure_stat_data %}"},
 		null,
 		{"styleclass":"chart piechart"}
 	);
@@ -20,7 +20,7 @@
 	swfobject.embedSWF(
 		"/static/django/optools/reporting/ofc.swf", "chart_open_ack",
 		"600", "300", "9.0.0", "/static/django/optools/reporting/expressInstall.swf",
-		{"data-file":"./data/ack", "styleclass":"chart barchart"},
+		{"data-file":"{% url optools.apps.reporting.views.ack_stat_data %}"},
 		null,
 		{"styleclass":"chart barchart"}
 	);
