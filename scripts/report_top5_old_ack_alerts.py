@@ -24,14 +24,13 @@ from datetime import datetime
 from operator import attrgetter
 
 # Adding optools project to sys.path
-pwd = os.path.abspath(os.path.dirname(__file__))
-optools_dir = os.path.split(pwd)[0]
+optools_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(optools_dir)
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
 
 # Importing models
-from apps.nagios.models import Satellite
-import backends.livestatus as live
+from optools.apps.nagios.models import Satellite
+import optools.backends.livestatus as live
 
 # Class that define an alert result
 class Alert(object):
