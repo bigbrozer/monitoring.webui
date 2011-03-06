@@ -114,4 +114,7 @@ INSTALLED_APPS = (
 	
 	# Nagios
 	'optools.apps.nagios',
+	
+	# Highlights
+	'optools.apps.highlights',
 )
