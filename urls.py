@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     # Applications
     # ============
     #
-    # Registration
+    # Login / Logout
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
     
