@@ -2,9 +2,12 @@
 
 from django.db import models
 
+# Utility
+from datetime import date
+
 # Model representing stats about number of active ack alerts per weeks
 class AckStat(models.Model):
-	date = models.DateField()
+	date = models.DateField(default=date.today())
 	active_ack_warn = models.PositiveIntegerField('Ack Warning alerts')
 	active_ack_crit = models.PositiveIntegerField('Ack Critical alerts')
 	
