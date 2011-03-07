@@ -1,6 +1,9 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 
+# Utility
+import socket
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -35,8 +38,8 @@ urlpatterns = patterns('',
     (r'^nagios/satellites/export/(?P<format>\w+)$', 'optools.apps.nagios.views.get_satellite_list'),
 )
 
-# Server static content locally (DEBUG mode only)
-if settings.DEBUG:
+# Server static content locally (from dev alptop only ;-))
+if "protoss" in socket.gethostname():
     urlpatterns += patterns('',
         (r'^static/django/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )
