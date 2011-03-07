@@ -22,8 +22,8 @@ urlpatterns = patterns('',
     # ============
     #
     # Login / Logout
-    (r'^accounts/login/$', 'django.contrib.auth.views.login'),
-    (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
+    (r'^optools/login/$', 'django.contrib.auth.views.login'),
+    (r'^optools/logout/$', 'django.contrib.auth.views.logout'),
     
     # Downtime
     (r'^downtime/schedule/$', 'optools.apps.downtime.views.schedule'),
