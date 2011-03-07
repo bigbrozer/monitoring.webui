@@ -20,8 +20,6 @@
 #===============================================================================
 
 import os, sys
-from datetime import datetime
-from operator import attrgetter
 
 # Adding optools project to sys.path
 optools_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
