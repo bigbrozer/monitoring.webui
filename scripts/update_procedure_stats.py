@@ -60,7 +60,7 @@ if satellites.dead_sites():
 
 # Query satellites
 results = satellites.query("""GET services\n\
-Columns: host_name description notes_url_expanded contacts\nLimit: 2\n""")
+Columns: host_name description notes_url_expanded contacts\n""")
 
 # Init file to export results as CSV
 output_csv = open(os.path.join(csv_export_dir, "services_without_procedure_in_nagios.csv"), "w")
@@ -73,7 +73,7 @@ num_with_proc = 0
 num_without_proc = 0
 for service_object in results:
 	host, service, kb_url, contacts = service_object
-	print "Checking procedure: {0}/{1}.".format(progress, total_services)
+	#print "Checking procedure: {0}/{1}.".format(progress, total_services)
 	procedure = get_raw_procedure(kb_url)
 	if '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0' in procedure:
 		num_without_proc += 1
