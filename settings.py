@@ -74,7 +74,7 @@ ADMIN_MEDIA_PREFIX = '/static/django/optools/admin/'
 # Default authentication URL
 LOGIN_URL = '/optools/login/'
 LOGOUT_URL = '/optools/logout/'
-LOGIN_REDIRECT_URL = '/optools/profile'
+LOGIN_REDIRECT_URL = '/optools/profile/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '5w=ojm+vgosx4au22-=+zbfa@e((67*%m#%mv!tumnawm98+s6'
