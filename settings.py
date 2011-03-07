@@ -21,7 +21,7 @@ DATABASES = {
         'NAME': 'optools',							# Or path to database file if using sqlite3.
         'USER': 'optools',                      				# Not used with sqlite3.
         'PASSWORD': '62SBU3pNJnVVBA5D',                  				# Not used with sqlite3.
-        'HOST': 'monitoring-dc.app.corp',                      				# Set to empty string for localhost. Not used with sqlite3.
+        'HOST': 'localhost',                      				# Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      				# Set to empty string for default. Not used with sqlite3.
     },
     'test': {
