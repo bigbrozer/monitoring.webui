@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 #===============================================================================
 # Filename      : top.py
@@ -50,8 +49,8 @@ def get_top_ack_alerts(number=5):
 
 	# Query all ack alerts
 	results = satellites.query("""GET services\n\
-	Columns: host_name description state last_state_change\n\
-	Filter: acknowledged = 1\n""")
+Columns: host_name description state last_state_change\n\
+Filter: acknowledged = 1\n""")
 
 	alert_objects = []
 	for result in results:
