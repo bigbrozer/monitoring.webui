@@ -1,4 +1,4 @@
 - Installation du module Python fournit avec Open Flash Chart (python-ofc2) (customisé pour l'occasion)
 	- Dépendance: paquet 'python-cjson'
 	- Dépendance: paquet 'python-mysqldb'
-	- Dépendance: paquet 'python-django-auth-ldap'
+	- Dépendance: paquet 'python-pisa'
