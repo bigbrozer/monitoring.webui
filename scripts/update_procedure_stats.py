@@ -32,9 +32,9 @@ from optools.apps.nagios.models import Satellite
 from optools.apps.reporting.models import ProcedureStat
 import optools.backends.livestatus as live
 
+
 del os.environ['http_proxy']
 del os.environ['https_proxy']
-del os.environ['all_proxy']
 del os.environ['ftp_proxy']
 
 #csv_export_dir = '/tmp/django/public_html/reports'
