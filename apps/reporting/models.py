@@ -16,7 +16,7 @@ class AckStat(models.Model):
 
 # Model representing stats about number of procedures
 class ProcedureStat(models.Model):
-	date = models.DateField()
+	date = models.DateField(default=date.today())
 	num_no_procedure = models.PositiveIntegerField()
 	num_with_procedure = models.PositiveIntegerField()
 	
