@@ -36,7 +36,7 @@ def stats(request):
 # Create graph data for ack alerts, return json data
 def ack_stat_data(request):
 	# Tests if we have value in DB
-	if not ProcedureStat.objects.all():
+	if not AckStat.objects.all():
 		return HttpResponse('There is no data in database.')
 	
 	# Some var used in this view
