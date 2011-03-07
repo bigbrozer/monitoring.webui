@@ -1,5 +1,17 @@
 {% extends "common/base.html" %}
 
+{% block extra_css %}
+<link type="text/css" href="/static/django/optools/common/css/ui-lightness/jquery-ui-1.8.9.custom.css" rel="stylesheet" />
+<link type="text/css" href="/static/django/optools/common/css/timepicker.css" rel="stylesheet" />
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript" src="/static/django/optools/common/js/jquery-1.5.min.js"></script>
+<script type="text/javascript" src="/static/django/optools/common/js/jquery-ui-1.8.9.custom.min.js"></script>
+<script type="text/javascript" src="/static/django/optools/common/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="/static/django/optools/downtime/js/downtime.js"></script>
+{% endblock %}
+
 {% block content %}
 <!-- Form -->
 <div id="stylized_form" class="form_box">
