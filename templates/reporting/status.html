@@ -33,7 +33,14 @@
 {% if top_ack_alerts_error %}
 	<span class="error">{{ top_ack_alerts_error }}</span>
 {% else %}
-	{{ top_ack_alerts }}
+<table class="top_ack_alerts">
+	<th>Date</th>
+	<th>Hostname</th>
+	<th>Service</th>
+	{% for ack_alert in top_ack_alerts %}
+		<tr class="state{{ ack_alert.state }}"><td class="date">{{ ack_alert.date }}</td><td class="host"><a href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?host={{ ack_alert.host }}">{{ ack_alert.host }}</a></td><td class="service"><a href="http://monitoring-dc.app.corp/thruk/cgi-bin/extinfo.cgi?type=2&host={{ ack_alert.host }}&service={{ ack_alert.service }}">{{ ack_alert.service }}</a></td></tr>
+	{% endfor %}
+</table>
 {% endif %}
 </div>
 
