@@ -32,10 +32,12 @@ from optools.apps.nagios.models import Satellite
 from optools.apps.reporting.models import ProcedureStat
 import optools.backends.livestatus as live
 
-
-del os.environ['http_proxy']
-del os.environ['https_proxy']
-del os.environ['ftp_proxy']
+# Delete OS environment variables related to proxy settings if they exists
+for proxyvar in ('http_proxy', 'https_proxy', 'ftp_proxy'):
+	try:
+		del os.environ[proxyvar]
+	except KeyError:
+		pass
 
 #csv_export_dir = '/tmp/django/public_html/reports'
 csv_export_dir = '/home/django/public_html/reports'
