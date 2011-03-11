@@ -209,9 +209,11 @@ class bar_stack_value(value):
 			self['val'] = val
 		
 class pie_value(value):
-	def __init__(self, val, label = None, colour = None, tooltip = None):
+	def __init__(self, val, label = None, colour = None, tooltip = None, on_click = None):
 		value.__init__(self, val, colour, tooltip)
 		self.set_label(label)
+		if on_click:
+			self.set_on_click(on_click)
 		
 	def set_label(self, (label, colour, fontsize)):
 		if label:
@@ -220,6 +222,9 @@ class pie_value(value):
 			self['label-colour'] = colour
 		if fontsize:
 			self['font-size'] = fontsize
+	
+	def set_on_click(self, javascript_call):
+		self['on-click'] = javascript_call
 			
 class scatter_value(value):
 	def __init__(self, (x, y), colour = None, tooltip = None):
