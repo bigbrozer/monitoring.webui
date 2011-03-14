@@ -76,11 +76,12 @@ h4 { margin:0 0 .5em 0; font-weight: normal; }
 	#stylized_form #search{
 		margin:2px 0 5px 10px;
 	}
-	#stylized_form .checkbox{
+	#stylized_form input[type="checkbox"] {
 		width: auto;
 	}
 	#stylized_form #host_list{
 		float:left;
+		background-color: white;
 		font-size:12px;
 		padding:4px 2px;
 		border:solid 1px #aacfe4;

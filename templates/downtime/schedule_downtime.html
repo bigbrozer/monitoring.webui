@@ -17,54 +17,51 @@
 <div id="stylized_form" class="form_box">
 	<h1>Usage</h1>
 	<p>Give a downtime name, add hosts, set period and submit that to Nagios !</p>
-	<form method="post">
-		<label>Downtime Name
-		<span class="small">Name of downtime, ex: PDM Backup</span>
+	<form action="/downtime/schedule/" method="post">
+		{% csrf_token %}
+		<label>{{ base_form.downtime_name.label }}
+		<span class="small">{{ base_form.downtime_name.help_text }}</span>
 		</label>
-		<input type="text" name="downtime_name" />
+		{{ base_form.downtime_name }}
 		
-		<label>Search host
-		<span class="small">Type host name to add</span>		
+		<label>{{ base_form.search_host.label }}
+		<span class="small">{{ base_form.search_host.help_text }}</span>		
 		</label>
-		<input id="search" type="text" name="search" />
+		{{ base_form.search_host }}
 		
-		<textarea id="host_list" name="host_list" readonly></textarea>
+		<div id="host_list"></div>
 		
 		<div id="period_box">
-			<label>Start period
-			<span class="small">Start date for the downtime</span>
+			<label>{{ base_form.start_period.label }}
+			<span class="small">{{ base_form.start_period.help_text }}</span>
 			</label>
-			<input id="start_period" type="text" name="start_period" />
+			{{ base_form.start_period }}
 			
-			<label>End period
-			<span class="small">End date for the downtime</span>
+			<label>{{ base_form.end_period.label }}
+			<span class="small">{{ base_form.end_period.help_text }}</span>
 			</label>
-			<input id="end_period" type="text" name="end_period" />
+			{{ base_form.end_period }}
 		</div>		
 		
 		<label>Recurrent
 		<span class="small">Is it a recurrent downtime ?</span>
 		</label>
-		<input class="checkbox" id="recurrent_checkbox" type="checkbox" name="recurrent" />
+		<input id="recurrent_checkbox" type="checkbox" name="recurrent" />
 		
 		<div id="recurrent_options">
 			<h3>Recurrency options</h3>
-			<input class="checkbox" type="checkbox" name="monday" /><label class="day_label">Monday</label>
-			<input class="checkbox" type="checkbox" name="tuesday" /><label class="day_label">Tuesday</label>
-			<input class="checkbox" type="checkbox" name="wednesday" /><label class="day_label">Wednesday</label>
-			<input class="checkbox" type="checkbox" name="thursday" /><label class="day_label">Thursday</label>
-			<input class="checkbox" type="checkbox" name="friday" /><label class="day_label">Friday</label>
-			<input class="checkbox" type="checkbox" name="saturday" /><label class="day_label">Saturday</label>
-			<input class="checkbox" type="checkbox" name="sunday" /><label class="day_label">Sunday</label>
+			{% for day in days_form %}
+				{{ day }}<label class="day_label">{{ day.label }}</label>
+			{% endfor %}
 			
-			<label>Start hour
-			<span class="small">Start hour for the recurrent downtime</span>
+			<label>{{ base_form.start_time.label }}
+			<span class="small">{{ base_form.start_time.help_text }}</span>
 			</label>
-			<input id="start_hour" class="hour_input" type="text" name="start_hour" />
-			<label>End hour
-			<span class="small">End hour for the recurrent downtime</span>
+			{{ base_form.start_time }}
+			<label>{{ base_form.end_time.label }}
+			<span class="small">{{ base_form.end_time.help_text }}</span>
 			</label>
-			<input id="end_hour" class="hour_input" type="text" name="end_hour" />
+			{{ base_form.end_time }}
 		</div>
 		
 		<!-- Submit button -->
