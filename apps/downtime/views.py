@@ -10,15 +10,15 @@ from django import forms
 # Schedule a downtime form
 class ScheduleDowntimeForm(forms.Form):
 	downtime_name = forms.CharField(label='Downtime name', help_text='Name of downtime, ex: PDM Backup', max_length=100)
-	search_host = forms.CharField(label='Enter host name', help_text='Type host name to schedule')
+	search_host = forms.CharField(label='Search host', help_text='Search host to schedule', required=False)
+	host_list = forms.CharField(label='Host name list', help_text='Enter host names separated by comma', widget=forms.Textarea)
 	start_period = forms.DateTimeField(label='Start period', help_text='Start date for the downtime')
 	end_period = forms.DateTimeField(label='End period', help_text='End date for the downtime')
 	is_recurrent = forms.BooleanField()
+	
+	# Recurrency options form
 	start_time = forms.TimeField(label='Start time', help_text='Start hour for the recurrent downtime')
 	end_time = forms.TimeField(label='End time', help_text='End hour for the recurrent downtime')
-	
-# Recurrency options form
-class DaysForm(forms.Form):
 	is_monday = forms.BooleanField(label='Monday')
 	is_tuesday = forms.BooleanField(label='Tuesday')
 	is_wednesday = forms.BooleanField(label='Wednesday')
@@ -31,14 +31,16 @@ class DaysForm(forms.Form):
 @login_required
 def schedule(request):
 	title = 'Schedule a downtime in Nagios'
-	base_form = ScheduleDowntimeForm()
-	days_form = DaysForm()
+	if request.POST:
+		form = ScheduleDowntimeForm(request.POST)
+	else:
+		form = ScheduleDowntimeForm()
+	
 	return render_to_response(
 			'downtime/schedule_downtime.html',
 			{
 				'title': title,
-				'base_form': base_form,
-				'days_form': days_form,
+				'form': form,
 			},
 			context_instance=RequestContext(request)
 		)

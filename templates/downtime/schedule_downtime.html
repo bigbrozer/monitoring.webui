@@ -14,55 +14,64 @@
 
 {% block content %}
 <!-- Form -->
-<div id="stylized_form" class="form_box">
+<div id="downtime_form" class="form_box">
 	<h1>Usage</h1>
-	<p>Give a downtime name, add hosts, set period and submit that to Nagios !</p>
+	<h3 id="desc_form">Give a downtime name, add hosts, set period and submit that to Nagios !</h3>
 	<form action="/downtime/schedule/" method="post">
 		{% csrf_token %}
-		<label>{{ base_form.downtime_name.label }}
-		<span class="small">{{ base_form.downtime_name.help_text }}</span>
-		</label>
-		{{ base_form.downtime_name }}
-		
-		<label>{{ base_form.search_host.label }}
-		<span class="small">{{ base_form.search_host.help_text }}</span>		
-		</label>
-		{{ base_form.search_host }}
-		
-		<div id="host_list"></div>
-		
-		<div id="period_box">
-			<label>{{ base_form.start_period.label }}
-			<span class="small">{{ base_form.start_period.help_text }}</span>
-			</label>
-			{{ base_form.start_period }}
-			
-			<label>{{ base_form.end_period.label }}
-			<span class="small">{{ base_form.end_period.help_text }}</span>
-			</label>
-			{{ base_form.end_period }}
-		</div>		
-		
-		<label>Recurrent
-		<span class="small">Is it a recurrent downtime ?</span>
-		</label>
-		<input id="recurrent_checkbox" type="checkbox" name="recurrent" />
-		
-		<div id="recurrent_options">
-			<h3>Recurrency options</h3>
-			{% for day in days_form %}
-				{{ day }}<label class="day_label">{{ day.label }}</label>
-			{% endfor %}
-			
-			<label>{{ base_form.start_time.label }}
-			<span class="small">{{ base_form.start_time.help_text }}</span>
-			</label>
-			{{ base_form.start_time }}
-			<label>{{ base_form.end_time.label }}
-			<span class="small">{{ base_form.end_time.help_text }}</span>
-			</label>
-			{{ base_form.end_time }}
+		<div class="form_error{% if form.non_field_errors %} errors{% endif %}">
+			{{ form.non_field_errors }}
+			<div class="spacer"></div>
 		</div>
+		
+		<div class="fieldWrapper{% if form.downtime_name.errors %} errors{% endif %}">
+			<label>{{ form.downtime_name.label }}<span class="small">{{ form.downtime_name.help_text }}</span></label>
+			{{ form.downtime_name }}
+			{{ form.downtime_name.errors }}
+			<div class="spacer"></div>
+		</div>
+		
+		<fieldset>
+			<legend>Schedule following hosts</legend>
+			<label>{{ form.search_host.label }}<span class="small">{{ form.search_host.help_text }}</span></label>{{ form.search_host }}
+			
+			<div class="fieldWrapper{% if form.host_list.errors %} errors{% endif %}">
+				<label>{{ form.host_list.label }}<span class="small">{{ form.host_list.help_text }}</span></label>{{ form.host_list }}
+				{{ form.host_list.errors }}
+				<div class="spacer"></div>
+			</div>
+		</fieldset>
+		
+		<fieldset id="period_box">
+			<legend>Period range</legend>
+			<div class="fieldWrapper{% if form.start_period.errors %} errors{% endif %}">
+				<label>{{ form.start_period.label }}<span class="small">{{ form.start_period.help_text }}</span>	</label>{{ form.start_period }}
+				{{ form.start_period.errors }}
+				<div class="spacer"></div>
+			</div>
+			
+			<div class="fieldWrapper{% if form.end_period.errors %} errors{% endif %}">
+				<label>{{ form.end_period.label }}<span class="small">{{ form.end_period.help_text }}</span>	</label>{{ form.end_period }}
+				{{ form.end_period.errors }}
+				<div class="spacer"></div>
+			</div>
+		</fieldset>
+		
+		<label>Recurrent<span class="small">Is it a recurrent downtime ?</span></label><input id="recurrent_checkbox" type="checkbox" name="recurrent" />
+		
+		<fieldset id="recurrent_options">
+			<legend>Recurrency options</legend>
+			<label class="day_label">{{ form.is_monday }} {{ form.is_monday.label }}</label>
+			<label class="day_label">{{ form.is_tuesday }} {{ form.is_tuesday.label }}</label>
+			<label class="day_label">{{ form.is_wednesday }} {{ form.is_wednesday.label }}</label>
+			<label class="day_label">{{ form.is_thursday }} {{ form.is_thursday.label }}</label>
+			<label class="day_label">{{ form.is_friday }} {{ form.is_friday.label }}</label>
+			<label class="day_label">{{ form.is_saturday }} {{ form.is_saturday.label }}</label>
+			<label class="day_label">{{ form.is_sunday }} {{ form.is_sunday.label }}</label>
+			
+			<label>{{ form.start_time.label }}<span class="small">{{ form.start_time.help_text }}</span></label>{{ form.start_time }}
+			<label>{{ form.end_time.label }}<span class="small">{{ form.end_time.help_text }}</span></label>{{ form.end_time }}
+		</fieldset>
 		
 		<!-- Submit button -->
 		<div class="spacer"></div>
