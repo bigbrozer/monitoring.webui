@@ -7,7 +7,7 @@ from datetime import date
 
 # Model representing stats about number of active ack alerts per weeks
 class AckStat(models.Model):
-	date = models.DateField(default=date.today())
+	date = models.DateField(auto_now_add=True)
 	active_ack_warn = models.PositiveIntegerField('Ack Warning alerts')
 	active_ack_crit = models.PositiveIntegerField('Ack Critical alerts')
 	
@@ -16,7 +16,7 @@ class AckStat(models.Model):
 
 # Model representing stats about number of procedures
 class ProcedureStat(models.Model):
-	date = models.DateField(default=date.today())
+	date = models.DateField(auto_now_add=True, auto_now=True)
 	num_no_procedure = models.PositiveIntegerField()
 	num_with_procedure = models.PositiveIntegerField()
 	
