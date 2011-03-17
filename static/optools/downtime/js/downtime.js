@@ -3,6 +3,18 @@
 ** Author: Vincent BESANCON <besancon.vincent@gmail.com>
 */
 
+function toggleRecurrent() {
+	$("#recurrent_options").toggle();
+	$('#recurrent_options input[type=checkbox]').attr('checked', false);
+	$('#recurrent_options #id_start_time').attr('value', "");
+	$('#recurrent_options #id_end_time').attr('value', "");
+	
+	// Disable Start and End period input if recurrent
+	$("#period_box").toggle();
+	$('#id_start_period').attr('value', "");
+	$('#id_end_period').attr('value', "");
+}
+
 $(document).ready(function() {
     /* --- Init --- */
     // Init date and time pickers
@@ -11,17 +23,13 @@ $(document).ready(function() {
     $('#id_start_time').timepicker({});
     $('#id_end_time').timepicker({});
     
+    // State of recurrent options
+    if ( $("#id_is_recurrent").attr('checked') ) {
+    	$("#recurrent_options").toggle();
+    	$("#period_box").toggle();    	
+    }
+    
     /* --- Handle events --- */
     // Recurrent check box
-	$("#recurrent_checkbox").click(function() {
-		$("#recurrent_options").toggle();
-		$('#recurrent_options input[type=checkbox]').attr('checked', false);
-		$('#recurrent_options #id_start_time').attr('value', "");
-		$('#recurrent_options #id_end_time').attr('value', "");
-		
-		// Disable Start and End period input if recurrent
-		$("#period_box").toggle();
-		$('#id_start_period').attr('value', "");
-		$('#id_end_period').attr('value', "");
-	});
+	$("#id_is_recurrent").click(toggleRecurrent);
 });
