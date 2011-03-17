@@ -122,7 +122,7 @@ h4 { margin:0 0 .5em 0; font-weight: normal; }
 #downtime_form button:hover{
 	background:#2B2626;
 }
-#downtime_form #recurrent_options {	
+#downtime_form #recurrent_options {
 	display: none;
 }
 #downtime_form #recurrent_options label.day_label{
@@ -150,6 +150,18 @@ h4 { margin:0 0 .5em 0; font-weight: normal; }
 	display: block;
 	float: left;
 	margin-left: 260px;
+}
+#downtime_form div.form_errors {
+	padding: 10px;
+	background-color: #FFBCBC;
+	border: solid 1px yellow;
+	margin-bottom: 10px;
+	clear: both;
+}
+#downtime_form .form_errors ul.errorlist {
+	display: block;
+	float: left;
+	margin-left: 25px;
 }
 /* =============== END DOWNTIME FORM STYLE =============== */
 
