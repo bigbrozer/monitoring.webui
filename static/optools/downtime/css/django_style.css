@@ -143,7 +143,7 @@ h4 { margin:0 0 .5em 0; font-weight: normal; }
 #downtime_form div.errors {
 	padding: 10px;
 	background-color: #FFBCBC;
-	border: solid 1px yellow;
+	border: solid 1px #A90000;
 	clear: both;
 }
 #downtime_form .errors ul.errorlist {
@@ -154,7 +154,7 @@ h4 { margin:0 0 .5em 0; font-weight: normal; }
 #downtime_form div.form_errors {
 	padding: 10px;
 	background-color: #FFBCBC;
-	border: solid 1px yellow;
+	border: solid 1px #A90000;
 	margin-bottom: 10px;
 	clear: both;
 }
