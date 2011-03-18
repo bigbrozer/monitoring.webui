@@ -26,7 +26,7 @@ DATABASES = {
     },
     'test': {
         'ENGINE': 'django.db.backends.sqlite3', 		# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(PROJECT_PATH, 'db/master.db'),							# Or path to database file if using sqlite3.
+        'NAME': os.path.join(PROJECT_PATH, 'testing.db'),							# Or path to database file if using sqlite3.
         'USER': '',                      				# Not used with sqlite3.
         'PASSWORD': '',                  				# Not used with sqlite3.
         'HOST': '',                      				# Set to empty string for localhost. Not used with sqlite3.
@@ -101,7 +101,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.RemoteUserBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 ROOT_URLCONF = 'optools.urls'
