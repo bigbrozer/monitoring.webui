@@ -32,4 +32,18 @@ $(document).ready(function() {
     /* --- Handle events --- */
     // Recurrent check box
 	$("#id_is_recurrent").click(toggleRecurrent);
+	
+	// Autocomplete host name
+	$(function() {
+		var availableHosts = [
+			"WWFCSUNIA007",
+			"DEDE1APP0005",
+			"FRFR1PXY0000",
+			"JIT_Beaulieu",
+			"HACMP_EAS_SAP_PRINT"
+		];
+		$( "#id_search_host" ).autocomplete({
+			source: availableHosts
+		});
+	});
 });
