@@ -40,7 +40,7 @@ urlpatterns = patterns('',
 )
 
 # Server static content locally (from dev alptop only ;-))
-if "protoss" in socket.gethostname():
+if "protoss" or "sovereign" in socket.gethostname():
     urlpatterns += patterns('',
         (r'^static/django/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )
