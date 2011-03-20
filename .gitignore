@@ -1,4 +1,4 @@
 *.pyc
 *~
-db/
 testing.db
+settings_local.py

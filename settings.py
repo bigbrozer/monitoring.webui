@@ -15,23 +15,16 @@ MANAGERS = (
 	('Mohamed CHERROUD', 'mohamed.cherroud-ext@faurecia.com'),
 )
 
+# Default database connection if not provided by local settings
 DATABASES = {
 	'default': {
-        'ENGINE': 'django.db.backends.mysql', 		# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'optools',							# Or path to database file if using sqlite3.
-        'USER': 'optools',                      				# Not used with sqlite3.
-        'PASSWORD': '62SBU3pNJnVVBA5D',                  				# Not used with sqlite3.
-        'HOST': 'wwgrpmon0001.ww.corp',                      				# Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '3306',                      				# Set to empty string for default. Not used with sqlite3.
-    },
-    'test': {
-        'ENGINE': 'django.db.backends.sqlite3', 		# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(PROJECT_PATH, 'testing.db'),							# Or path to database file if using sqlite3.
-        'USER': '',                      				# Not used with sqlite3.
-        'PASSWORD': '',                  				# Not used with sqlite3.
-        'HOST': '',                      				# Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      				# Set to empty string for default. Not used with sqlite3.
-    }
+	    'ENGINE': 'django.db.backends.sqlite3', 					# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+	    'NAME': 'testing.db',										# Or path to database file if using sqlite3.
+	    'USER': '',                      							# Not used with sqlite3.
+	    'PASSWORD': '',                  							# Not used with sqlite3.
+	    'HOST': '',                      							# Set to empty string for localhost. Not used with sqlite3.
+	    'PORT': '',                      							# Set to empty string for default. Not used with sqlite3.
+	},
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -139,3 +132,10 @@ INSTALLED_APPS = (
 	# Highlights
 	'optools.apps.highlights',
 )
+
+# Local settings (used for overriding values defined in this module, not part of git repo)
+try:
+	from settings_local import *
+except ImportError:
+	pass
+
