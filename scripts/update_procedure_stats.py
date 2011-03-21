@@ -32,23 +32,25 @@ from optools.apps.nagios.models import Satellite
 from optools.apps.reporting.models import ProcedureStat
 import optools.backends.livestatus as live
 
-# Delete OS environment variables related to proxy settings if they exists
-for proxyvar in ('http_proxy', 'https_proxy', 'ftp_proxy'):
-	try:
-		del os.environ[proxyvar]
-	except KeyError:
-		pass
-
-#csv_export_dir = '/tmp/django/public_html/reports'
-csv_export_dir = '/home/django/public_html/reports'
+#csv_export_dir = '/tmp/django/public_html/reports'								# TESTING
+csv_export_dir = '/home/django/public_html/reports'								# PRODUCTION
 if not os.path.isdir(csv_export_dir):
 	os.makedirs(csv_export_dir)
 
 def get_raw_procedure(url):
+	# Create an OpenerDirector with support for Basic HTTP Authentication...
+	passwd_manager = urllib2.HTTPPasswordMgrWithDefaultRealm()
+	passwd_manager.add_password(None, 'monitoring-dc.app.corp', '9NagiosDC', 'NglP(23M,n')
+	auth_handler = urllib2.HTTPBasicAuthHandler(passwd_manager)
+	proxy_handler = urllib2.ProxyHandler({})									# Disable automatic proxy detection
+	opener = urllib2.build_opener(auth_handler, proxy_handler)
+	# ...and install it globally so it can be used with urlopen.
+	urllib2.install_opener(opener)
+	
 	try:
-		procedure = urllib2.urlopen(url + "?do=export_raw", None, 10)
+		procedure = urllib2.urlopen(url + '?do=export_raw')
 	except urllib2.HTTPError as e:
-		raise Exception("Error: URL: {0}\nMessage: {1}".format(url, e))
+		raise SystemExit("Error: URL: {0}\nMessage: {1}".format(url, e))
 	return procedure.read()
 
 # Connection settings to access satellites using livestatus
@@ -58,7 +60,7 @@ for sat in Satellite.objects.all():
 
 satellites = live.MultiSiteConnection(satellite_connect_settings)
 if satellites.dead_sites():
-	raise Exception('Unable to get data from Nagios satellites !')
+	raise SystemExit('Unable to get data from Nagios satellites !')
 
 # Query satellites
 results = satellites.query("""GET services\n\
@@ -75,7 +77,7 @@ num_with_proc = 0
 num_without_proc = 0
 for service_object in results:
 	host, service, kb_url, contacts = service_object
-	#print "Checking procedure: {0}/{1}.".format(progress, total_services)
+	print "Checking procedure: {0}/{1}.".format(progress, total_services)		# DEBUG
 	procedure = get_raw_procedure(kb_url)
 	if '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0' in procedure:
 		num_without_proc += 1
