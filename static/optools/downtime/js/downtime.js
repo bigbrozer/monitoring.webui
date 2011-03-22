@@ -3,6 +3,16 @@
 ** Author: Vincent BESANCON <besancon.vincent@gmail.com>
 */
 
+/*
+================================================================================
+ _____                 _   _                 
+|  ___|   _ _ __   ___| |_(_) ___  _ __  ___ 
+| |_ | | | | '_ \ / __| __| |/ _ \| '_ \/ __|
+|  _|| |_| | | | | (__| |_| | (_) | | | \__ \
+|_|   \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
+
+================================================================================
+*/
 function toggleRecurrent() {
 	$("#recurrent_options").toggle();
 	$('#recurrent_options input[type=checkbox]').attr('checked', false);
@@ -15,22 +25,32 @@ function toggleRecurrent() {
 	$('#id_end_period').attr('value', "");
 }
 
+/*
+================================================================================
+ __  __       _       
+|  \/  | __ _(_)_ __  
+| |\/| |/ _` | | '_ \ 
+| |  | | (_| | | | | |
+|_|  |_|\__,_|_|_| |_|
+
+================================================================================
+*/
 $(document).ready(function() {
-    /* --- Init --- */
-    // Init date and time pickers
-    $('#id_start_period').datetimepicker();
-    $('#id_end_period').datetimepicker();
-    $('#id_start_time').timepicker({});
-    $('#id_end_time').timepicker({});
-    
-    // State of recurrent options
-    if ( $("#id_is_recurrent").attr('checked') ) {
-    	$("#recurrent_options").toggle();
-    	$("#period_box").toggle();    	
-    }
-    
-    /* --- Handle events --- */
-    // Recurrent check box
+	/* --- Init --- */
+	// Init date and time pickers
+	$('#id_start_period').datetimepicker();
+	$('#id_end_period').datetimepicker();
+	$('#id_start_time').timepicker({});
+	$('#id_end_time').timepicker({});
+	
+	// State of recurrent options
+	if ( $("#id_is_recurrent").attr('checked') ) {
+		$("#recurrent_options").toggle();
+		$("#period_box").toggle();    	
+	}
+	
+	/* --- Handle events --- */
+	// Recurrent check box
 	$("#id_is_recurrent").click(toggleRecurrent);
 	
 	// Autocomplete host name
@@ -42,8 +62,44 @@ $(document).ready(function() {
 			"JIT_Beaulieu",
 			"HACMP_EAS_SAP_PRINT"
 		];
-		$( "#id_search_host" ).autocomplete({
-			source: availableHosts
-		});
+		function split( val ) {
+			return val.split( /,\s*/ );
+		}
+		function extractLast( term ) {
+			return split( term ).pop();
+		}
+
+		$( "#id_host_list" )
+			// don't navigate away from the field on tab when selecting an item
+			.bind( "keydown", function( event ) {
+				if ( event.keyCode === $.ui.keyCode.TAB &&
+						$( this ).data( "autocomplete" ).menu.active ) {
+					event.preventDefault();
+				}
+			})
+			.autocomplete({
+				minLength: 0,
+				source: function( request, response ) {
+					// delegate back to autocomplete, but extract the last term
+					response( $.ui.autocomplete.filter(
+						availableHosts, extractLast( request.term ) ) );
+				},
+				focus: function() {
+					// prevent value inserted on focus
+					return false;
+				},
+				select: function( event, ui ) {
+					var terms = split( this.value );
+					// remove the current input
+					terms.pop();
+					// add the selected item
+					terms.push( ui.item.value );
+					// add placeholder to get the comma-and-space at the end
+					//terms.push( "" );
+					//this.value = terms.join( ", " );
+					this.value = terms;
+					return false;
+				}
+			});
 	});
 });
