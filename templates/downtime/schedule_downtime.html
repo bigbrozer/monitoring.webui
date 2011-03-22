@@ -16,7 +16,7 @@
 <!-- Form -->
 <div id="downtime_form" class="form_box">
 	<h1>Usage</h1>
-	<h3 id="desc_form">Give a downtime name, add hosts, set period and submit that to Nagios !</h3>
+	<h3 id="desc_form">Give a downtime name, add hosts, set period and submit that to Nagios.</h3>
 	<form action="/downtime/schedule/" method="post">
 		{% csrf_token %}
 		<div class="none{% if form.non_field_errors %} form_errors{% endif %}">
@@ -33,7 +33,6 @@
 
 		<fieldset>
 			<legend>Schedule following hosts</legend>
-			<label>{{ form.search_host.label }}<span class="small">{{ form.search_host.help_text }}</span></label>{{ form.search_host }}
 
 			<div class="fieldWrapper{% if form.host_list.errors %} errors{% endif %}">
 				<label>{{ form.host_list.label }}<span class="small">{{ form.host_list.help_text }}</span></label>{{ form.host_list }}

@@ -8,7 +8,6 @@ from datetime import datetime
 # Schedule a downtime form
 class ScheduleDowntimeForm(forms.Form):
 	downtime_name = forms.CharField(label='Downtime name', help_text='Name of downtime, ex: PDM Backup', max_length=100)
-	search_host = forms.CharField(label='Search host', help_text='Search host to schedule', required=False)
 	host_list = forms.CharField(label='Host name list', help_text='Enter host names separated by comma', widget=forms.Textarea)
 	start_period = forms.DateTimeField(label='Start period', help_text='Start date for the downtime',
 		required=False, initial=datetime.strftime(datetime.now(), '%m/%d/%Y %H:%M'))
@@ -61,11 +60,11 @@ class ScheduleDowntimeForm(forms.Form):
 				del cleaned_data['end_period']
 			
 			# Check that end period is ALWAYS highter than start period
-			if start_period > end_period:
+			if start_period and end_period and start_period > end_period:
 				raise forms.ValidationError('Start period should be defined before end period.')
 			
 			# Check that end period is not defined in the past
-			if end_period <= datetime.now():
+			if end_period and end_period <= datetime.now():
 				raise forms.ValidationError('End period should be defined in the future.')
 		
 		# Recurrent downtime
