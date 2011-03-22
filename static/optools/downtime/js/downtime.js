@@ -16,8 +16,9 @@
 function toggleRecurrent() {
 	$("#recurrent_options").toggle();
 	$('#recurrent_options input[type=checkbox]').attr('checked', false);
-	$('#recurrent_options #id_start_time').attr('value', "");
-	$('#recurrent_options #id_end_time').attr('value', "");
+	$("#id_downtime_name").attr('value', "");
+	$('#id_start_time').attr('value', "");
+	$('#id_end_time').attr('value', "");
 	
 	// Disable Start and End period input if recurrent
 	$("#period_box").toggle();
@@ -46,7 +47,8 @@ $(document).ready(function() {
 	// State of recurrent options
 	if ( $("#id_is_recurrent").attr('checked') ) {
 		$("#recurrent_options").toggle();
-		$("#period_box").toggle();    	
+		$("#downtime_name_box").toggle();
+		$("#period_box").toggle();
 	}
 	
 	/* --- Handle events --- */

@@ -24,13 +24,6 @@
 			<div class="spacer"></div>
 		</div>
 
-		<div class="fieldWrapper{% if form.downtime_name.errors %} errors{% endif %}">
-			<label>{{ form.downtime_name.label }}<span class="small">{{ form.downtime_name.help_text }}</span></label>
-			{{ form.downtime_name }}
-			{{ form.downtime_name.errors }}
-			<div class="spacer"></div>
-		</div>
-
 		<fieldset>
 			<legend>Schedule following hosts</legend>
 
@@ -67,6 +60,13 @@
 			<label class="day_label">{{ form.is_friday }} {{ form.is_friday.label }}</label>
 			<label class="day_label">{{ form.is_saturday }} {{ form.is_saturday.label }}</label>
 			<label class="day_label">{{ form.is_sunday }} {{ form.is_sunday.label }}</label>
+
+			<div class="fieldWrapper{% if form.downtime_name.errors %} errors{% endif %}">
+				<label>{{ form.downtime_name.label }}<span class="small">{{ form.downtime_name.help_text }}</span></label>
+				{{ form.downtime_name }}
+				{{ form.downtime_name.errors }}
+				<div class="spacer"></div>
+			</div>
 
 			<div class="fieldWrapper{% if form.start_time.errors %} errors{% endif %}">
 				<label>{{ form.start_time.label }}<span class="small">{{ form.start_time.help_text }}</span></label>{{ form.start_time }}

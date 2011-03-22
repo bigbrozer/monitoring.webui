@@ -7,7 +7,8 @@ from datetime import datetime
 
 # Schedule a downtime form
 class ScheduleDowntimeForm(forms.Form):
-	downtime_name = forms.CharField(label='Downtime name', help_text='Name of downtime, ex: PDM Backup', max_length=100)
+	downtime_name = forms.CharField(label='Downtime name', help_text='Name of downtime, ex: PDM Backup',
+		max_length=100, required=False)
 	host_list = forms.CharField(label='Host name list', help_text='Enter host names separated by comma', widget=forms.Textarea)
 	start_period = forms.DateTimeField(label='Start period', help_text='Start date for the downtime',
 		required=False, initial=datetime.strftime(datetime.now(), '%m/%d/%Y %H:%M'))
@@ -28,6 +29,7 @@ class ScheduleDowntimeForm(forms.Form):
 	# Form Validation
 	def clean(self):
 		cleaned_data = self.cleaned_data
+		downtime_name = cleaned_data.get('downtime_name')
 		is_recurrent = cleaned_data.get('is_recurrent')
 		start_period = cleaned_data.get('start_period')
 		end_period = cleaned_data.get('end_period')
@@ -69,6 +71,13 @@ class ScheduleDowntimeForm(forms.Form):
 		
 		# Recurrent downtime
 		else:
+			# Check that user provided a downtime name
+			if not downtime_name:
+				self._errors['downtime_name'] = self.error_class(
+					['Please specify a name for this downtime.']
+				)
+				del cleaned_data['downtime_name']
+			
 			# Check that user provided at least one day when to schedule downtime
 			if not any(days.values()):
 				raise forms.ValidationError('Please select at least a day for recurrent downtime.')
