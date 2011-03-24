@@ -86,10 +86,28 @@ def procedure_stat_data(request):
 	if not ProcedureStat.objects.all():
 		return HttpResponse('There is no data in database.')
 	
-	# Some var used in this view
+	# Service stats
+	svc_with_procedure = ProcedureStat.objects.order_by('-date')[0].num_with_procedure
+	svc_without_procedure = ProcedureStat.objects.order_by('-date')[0].num_no_procedure
+	
+	# Compare with previous week
+	try:
+		svc_with_procedure_week_before = ProcedureStat.objects.order_by('-date')[1].num_with_procedure
+		svc_without_procedure_week_before = ProcedureStat.objects.order_by('-date')[1].num_no_procedure
+		svc_with_trends = svc_with_procedure - svc_with_procedure_week_before
+		svc_without_trends = svc_without_procedure - svc_without_procedure_week_before
+		
+		label_with = 'With\n({0:+d})'.format(svc_with_trends)
+		label_without = 'Without\n({0:+d})'.format(svc_without_trends)
+	except IndexError:
+		# No previous week in DB to calculate trends
+		label_with = 'With'
+		label_without = 'Without'
+	
+	# Pie chart values
 	proc_stats = (
-		pie_value(ProcedureStat.objects.order_by('-date')[0].num_with_procedure, label = ('With', None, None), colour = '#00EE00'),
-		pie_value(ProcedureStat.objects.order_by('-date')[0].num_no_procedure, label = ('Without', None, None), colour = '#FF0000'),
+		pie_value(svc_with_procedure, label = (label_with, None, None), colour = '#00EE00'),
+		pie_value(svc_without_procedure, label = (label_without, None, None), colour = '#FF0000'),
 	)
 	
 	# Graphs creation	
