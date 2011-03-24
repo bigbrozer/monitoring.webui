@@ -68,7 +68,7 @@ Columns: host_name description notes_url_expanded contacts\n""")
 
 # Init file to export results as CSV
 output_csv = open(os.path.join(csv_export_dir, "services_without_procedure_in_nagios.csv"), "w")
-output_csv.write('host_name;service;url\n')
+output_csv.write('host_name;service;url;contacts\n')
 
 # Check procedures
 total_services = len(results)
