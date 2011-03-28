@@ -6,7 +6,7 @@
 	<div id="account">
 		<ul>
 			{% if user.is_authenticated %}
-			<li>Logged in as: <strong><a href="javascript:void(0);">{{ user.first_name }} {{ user.last_name }}</a></strong></li>
+			<li>Logged in as: <strong><a href="javascript:void(0);">{{ user.username }}</a></strong></li>
 			<li><strong><a href="{% url django.contrib.auth.views.logout %}">Logout</a></strong></li>
 			{% else %}
 			<li><strong><a href="{% url django.contrib.auth.views.login %}?next={{ request.path }}">Login</a></strong></li>

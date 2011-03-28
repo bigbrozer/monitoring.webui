@@ -16,7 +16,6 @@
 function toggleRecurrent() {
 	$("#recurrent_options").toggle();
 	$('#recurrent_options input[type=checkbox]').attr('checked', false);
-	$("#id_downtime_name").attr('value', "");
 	$('#id_start_time').attr('value', "");
 	$('#id_end_time').attr('value', "");
 	
@@ -47,7 +46,6 @@ $(document).ready(function() {
 	// State of recurrent options
 	if ( $("#id_is_recurrent").attr('checked') ) {
 		$("#recurrent_options").toggle();
-		$("#downtime_name_box").toggle();
 		$("#period_box").toggle();
 	}
 	
