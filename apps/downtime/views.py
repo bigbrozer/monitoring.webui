@@ -9,6 +9,9 @@ from django.core.urlresolvers import reverse
 # Forms imports
 from optools.apps.downtime.forms import ScheduleDowntimeForm
 
+# Nagios handlers
+from optools.apps.downtime.commands import ScheduleFullDowntime
+
 # View that render the form to schedule a downtime
 @login_required
 def schedule(request):
@@ -16,7 +19,14 @@ def schedule(request):
 	if request.POST:
 		form = ScheduleDowntimeForm(request.POST)
 		if form.is_valid():
-			return HttpResponseRedirect(reverse('optools.apps.downtime.views.show', args=(1,)))
+			downtime_descr = form.cleaned_data['downtime_descr']
+			hosts = form.cleaned_data['host_list'].split(',')
+			start_period = form.cleaned_data['start_period']
+			end_period = form.cleaned_data['end_period']
+			
+			for host in hosts:
+				#command = ScheduleFullDowntime(host, start_period, end_period, request.user.username, downtime_descr)
+				return HttpResponse('Successfully created downtime with id \'%s\'.' % downtime_descr)
 	else:
 		form = ScheduleDowntimeForm()
 	
@@ -29,6 +39,3 @@ def schedule(request):
 			context_instance=RequestContext(request)
 		)
 
-# Show downtime detail view
-def show(request, downtime_id):
-	return HttpResponse('Successfully created downtime with id %s.' % downtime_id)
