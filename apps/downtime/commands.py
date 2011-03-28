@@ -39,8 +39,7 @@ class BaseCommand(object):
 			self.satellites.command(full_cmd_string, sitename=site)
 	
 	# Private methods
-	def _datestr_to_timestamp(self, date_str):
-		date = datetime.strptime(date_str, '%m/%d/%Y %H:%M')
+	def _datestr_to_timestamp(self, date):
 		timestamp = mktime(date.timetuple())
 		return '{0:.0f}'.format(timestamp)
 	
@@ -64,8 +63,13 @@ class BaseCommand(object):
 Columns: alias\n\
 Filter: name = {0}\n\
 Limit: 1\n""".format(login))
+		
+		# If user is not found in Nagios, use login instead of full name for downtime author
+		if len(results):
+			return results[0][0]
+		else:
+			return login
 
-		return results[0][0]
 
 #  ____                      _   _                
 # |  _ \  _____      ___ __ | |_(_)_ __ ___   ___ 
