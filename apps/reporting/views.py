@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 
 # Models
-from optools.apps.reporting.models import AckStat, ProcedureStat
+from optools.apps.reporting.models import NagiosKPI
 
 # Open Flash Chart imports
 import openFlashChart
@@ -36,7 +36,7 @@ def stats(request):
 # Create graph data for ack alerts, return json data
 def ack_stat_data(request):
 	# Tests if we have value in DB
-	if not AckStat.objects.all():
+	if not NagiosKPI.objects.all():
 		return HttpResponse('There is no data in database.')
 	
 	# Some var used in this view
@@ -45,14 +45,14 @@ def ack_stat_data(request):
 	critical_bar_values = []
 	y_max_limit = 10
 	
-	# Query DB to get values of last 5 entries
-	for stat in AckStat.objects.order_by('-date')[0:5]:
+	# Query DB to get values of last 5 kpis
+	for stat in NagiosKPI.objects.order_by('-date')[0:5]:
 		week = stat.date.isocalendar()[1]
 		year = stat.date.isocalendar()[0]
 		
 		weeks.insert(0, 'Week {0!s} - {1!s}'.format(week, year))
-		warning_bar_values.insert(0, stat.active_ack_warn)
-		critical_bar_values.insert(0, stat.active_ack_crit)
+		warning_bar_values.insert(0, stat.alert_ack_warn_total)
+		critical_bar_values.insert(0, stat.alert_ack_crit_total)
 	
 	# Compute MAX value that could be in graph for Y axis limit
 	if max(warning_bar_values) > max(critical_bar_values):
@@ -83,17 +83,17 @@ def ack_stat_data(request):
 # Create graph data for procedure stats, return json data
 def procedure_stat_data(request):
 	# Tests if we have value in DB
-	if not ProcedureStat.objects.all():
+	if not NagiosKPI.objects.all():
 		return HttpResponse('There is no data in database.')
 	
 	# Service stats
-	svc_with_procedure = ProcedureStat.objects.order_by('-date')[0].num_with_procedure
-	svc_without_procedure = ProcedureStat.objects.order_by('-date')[0].num_no_procedure
+	svc_with_procedure = NagiosKPI.objects.order_by('-date')[0].service_with_kb
+	svc_without_procedure = NagiosKPI.objects.order_by('-date')[0].service_without_kb
 	
 	# Compare with previous week
 	try:
-		svc_with_procedure_week_before = ProcedureStat.objects.order_by('-date')[1].num_with_procedure
-		svc_without_procedure_week_before = ProcedureStat.objects.order_by('-date')[1].num_no_procedure
+		svc_with_procedure_week_before = NagiosKPI.objects.order_by('-date')[1].service_with_kb
+		svc_without_procedure_week_before = NagiosKPI.objects.order_by('-date')[1].service_without_kb
 		svc_with_trends = svc_with_procedure - svc_with_procedure_week_before
 		svc_without_trends = svc_without_procedure - svc_without_procedure_week_before
 		
