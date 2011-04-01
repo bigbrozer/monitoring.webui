@@ -29,7 +29,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
 
 # Importing models
 from optools.apps.nagios.models import Satellite
-from optools.apps.reporting.models import ProcedureStat
+from optools.apps.reporting.models import NagiosKPI
 import optools.backends.livestatus as live
 
 #csv_export_dir = '/tmp/django/public_html/reports'								# TESTING
@@ -64,7 +64,7 @@ if satellites.dead_sites():
 
 # Query satellites
 results = satellites.query("""GET services\n\
-Columns: host_name description notes_url_expanded contacts\n""")
+Columns: host_name description notes_url_expanded contacts\nLimit: 1\n""")
 
 # Init file to export results as CSV
 output_csv = open(os.path.join(csv_export_dir, "services_without_procedure_in_nagios.csv"), "w")
@@ -77,7 +77,7 @@ num_with_proc = 0
 num_without_proc = 0
 for service_object in results:
 	host, service, kb_url, contacts = service_object
-	print "Checking procedure: {0}/{1}.".format(progress, total_services)		# DEBUG
+	#print "Checking procedure: {0}/{1}.".format(progress, total_services)		# DEBUG
 	procedure = get_raw_procedure(kb_url)
 	if '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0' in procedure:
 		num_without_proc += 1
@@ -90,6 +90,8 @@ for service_object in results:
 output_csv.close()
 
 # Send results to database
-stat = ProcedureStat(num_no_procedure = num_without_proc, num_with_procedure = num_with_proc)
-stat.save()
+last_kpi = NagiosKPI.objects.order_by('-date')[0]
+last_kpi.service_without_kb = num_without_proc
+last_kpi.service_with_kb = num_with_proc
+last_kpi.save()
 
