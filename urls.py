@@ -32,6 +32,7 @@ urlpatterns = patterns('',
     (r'^reporting/stats/$', 'optools.apps.reporting.views.stats'),
     (r'^reporting/stats/data/alerts$', 'optools.apps.reporting.views.alerts_stat_data'),
     (r'^reporting/stats/data/procedure$', 'optools.apps.reporting.views.procedure_stat_data'),
+    (r'^reporting/stats/data/total$', 'optools.apps.reporting.views.total_stat_data'),
     
     # Nagios
     (r'^nagios/satellites/export/$', 'optools.apps.nagios.views.get_satellite_list'),

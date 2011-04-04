@@ -24,6 +24,15 @@
 		null,
 		{"styleclass":"chart barchart"}
 	);
+	
+	// Total chart
+	swfobject.embedSWF(
+		"/static/django/optools/reporting/ofc.swf", "chart_total",
+		"900", "300", "9.0.0", "/static/django/optools/reporting/expressInstall.swf",
+		{"data-file":"{% url optools.apps.reporting.views.total_stat_data %}"},
+		null,
+		{"styleclass":"chart barchart"}
+	);
 </script>
 {% endblock %}
 
@@ -48,6 +57,12 @@
 <div class="chart_table">
 	<div id="chart_procedure"></div>
 	<div id="chart_open_ack"></div>
+	<div class="spacer"></div>
+</div>
+
+<h2>KPI about total monitored hosts and services</h2>
+<div class="chart_table">
+	<div id="chart_total"></div>
 	<div class="spacer"></div>
 </div>
 <span class="notes"><strong>Notes:</strong> data for procedures and ack alerts are updated each weeks.</span>

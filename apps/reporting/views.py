@@ -10,7 +10,7 @@ from optools.apps.reporting.models import NagiosKPI
 
 # Open Flash Chart imports
 import openFlashChart
-from openFlashChart_varieties import (Bar_Stack, bar_stack_value, Pie, pie_value, x_axis_labels)
+from openFlashChart_varieties import (Line, Bar_Stack, bar_stack_value, Pie, pie_value, x_axis_labels)
 from openFlashChart_elements import (tooltip)
 
 # Reports imports
@@ -148,5 +148,54 @@ def procedure_stat_data(request):
 	chart.add_element(procedure)
 	chart.set_bg_colour('#FFFFFF')
 
+	return HttpResponse(chart.encode())
+
+def total_stat_data(request):
+	# Tests if we have value in DB
+	if not NagiosKPI.objects.all():
+		return HttpResponse('There is no data in database.')
+	
+	# Some var used in this view
+	weeks = []
+	y_max_limit = 10
+	total_hosts = []
+	total_services = []
+	
+	# Line chart
+	line_hosts = Line()
+	line_services = Line()
+	
+	# Global chart
+	chart = openFlashChart.template('Total monitored KPI')
+	chart.set_bg_colour('#ffffff')
+	chart.set_tooltip(behaviour = 'hover')
+	
+	# Query DB to get values of last 5 kpis
+	for stat in NagiosKPI.objects.order_by('-date')[0:5]:		
+		week = stat.date.isocalendar()[1]
+		year = stat.date.isocalendar()[0]
+		
+		# Values
+		total_hosts.append(stat.total_hosts)
+		total_services.append(stat.total_services)
+		
+		# X Axis labels
+		weeks.insert(0, 'Week {0!s} - {1!s}'.format(week, year))
+		
+		# Compute MAX value that could be in graph for Y axis limit
+		if stat.total_hosts > y_max_limit:
+			y_max_limit = math.ceil(stat.total_hosts / 10.) * 10
+		elif stat.total_services > y_max_limit:
+			y_max_limit = math.ceil(stat.total_services / 10.) * 10
+		
+	# Add values to line graph
+	line_hosts.set_values(total_hosts)
+	line_services.set_values(total_services)
+	
+	chart.add_element(line_hosts)
+	chart.add_element(line_services)
+	chart.set_x_axis(labels = x_axis_labels(labels = weeks))
+	chart.set_y_axis(max = y_max_limit, steps = 1000)
+	
 	return HttpResponse(chart.encode())
 
