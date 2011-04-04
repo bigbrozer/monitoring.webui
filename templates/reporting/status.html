@@ -16,11 +16,11 @@
 		{"styleclass":"chart piechart"}
 	);
 	
-	// Ack chart
+	// Alerts chart
 	swfobject.embedSWF(
 		"/static/django/optools/reporting/ofc.swf", "chart_open_ack",
 		"600", "300", "9.0.0", "/static/django/optools/reporting/expressInstall.swf",
-		{"data-file":"{% url optools.apps.reporting.views.ack_stat_data %}"},
+		{"data-file":"{% url optools.apps.reporting.views.alerts_stat_data %}"},
 		null,
 		{"styleclass":"chart barchart"}
 	);
@@ -44,7 +44,7 @@
 {% endif %}
 </div>
 
-<h2>Statistical data about procedures and active acknowledged alerts in Nagios</h2>
+<h2>KPI about procedures and alerts</h2>
 <div class="chart_table">
 	<div id="chart_procedure"></div>
 	<div id="chart_open_ack"></div>

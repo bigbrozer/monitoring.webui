@@ -30,7 +30,7 @@ urlpatterns = patterns('',
     
     # Reporting
     (r'^reporting/stats/$', 'optools.apps.reporting.views.stats'),
-    (r'^reporting/stats/data/ack$', 'optools.apps.reporting.views.ack_stat_data'),
+    (r'^reporting/stats/data/alerts$', 'optools.apps.reporting.views.alerts_stat_data'),
     (r'^reporting/stats/data/procedure$', 'optools.apps.reporting.views.procedure_stat_data'),
     
     # Nagios

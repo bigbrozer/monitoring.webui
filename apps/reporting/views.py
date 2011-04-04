@@ -10,7 +10,8 @@ from optools.apps.reporting.models import NagiosKPI
 
 # Open Flash Chart imports
 import openFlashChart
-from openFlashChart_varieties import (Bar, Pie, pie_value, x_axis_labels)
+from openFlashChart_varieties import (Bar_Stack, bar_stack_value, Pie, pie_value, x_axis_labels)
+from openFlashChart_elements import (tooltip)
 
 # Reports imports
 from optools.apps.reporting.reports.top import get_top_ack_alerts
@@ -21,7 +22,7 @@ import math
 # The view that show graph about stats
 def stats(request):
 	template_context = {
-		'title': 'Statistical overview for Nagios',
+		'title': 'Nagios KPI',
 	}
 	
 	try:
@@ -33,50 +34,79 @@ def stats(request):
 	
 	return render_to_response('reporting/status.html', template_context, context_instance=RequestContext(request))
 
-# Create graph data for ack alerts, return json data
-def ack_stat_data(request):
+# Create graph data for alerts stats, return json data
+def alerts_stat_data(request):
 	# Tests if we have value in DB
 	if not NagiosKPI.objects.all():
 		return HttpResponse('There is no data in database.')
 	
 	# Some var used in this view
 	weeks = []
-	warning_bar_values = []
-	critical_bar_values = []
 	y_max_limit = 10
+	
+	# Bar stack graphs options
+	stack_warn = Bar_Stack()
+	stack_warn.append_keys(colour = '#9e9e00', text = 'Current Warning alerts', fontsize = 12)
+	stack_warn.append_keys(colour = '#ffbf00', text = 'Detected Warning alerts', fontsize = 12)
+	stack_warn.append_keys(colour = '#ffff00', text = 'Missed Warning alerts', fontsize = 12)
+	stack_warn.set_tooltip( 'Warning: #val#<br>Total #total#' );
+	
+	stack_crit = Bar_Stack()
+	stack_crit.append_keys(colour = '#ff3f00', text = 'Current Critical alerts', fontsize = 12)
+	stack_crit.append_keys(colour = '#760000', text = 'Detected Critical alerts', fontsize = 12)
+	stack_crit.append_keys(colour = '#ff0000', text = 'Missed Critical alerts', fontsize = 12)
+	stack_crit.set_tooltip( 'Critical: #val#<br>Total #total#' );
+	
+	# Global chart
+	chart = openFlashChart.template('Alerts KPI')
+	chart.set_bg_colour('#c7c7c7')
+	chart.set_tooltip(behaviour = 'hover')
 	
 	# Query DB to get values of last 5 kpis
 	for stat in NagiosKPI.objects.order_by('-date')[0:5]:
+		alert_warn_values = []
+		alert_crit_values = []
+		
 		week = stat.date.isocalendar()[1]
 		year = stat.date.isocalendar()[0]
 		
+		# Warning alerts
+		warn_total = stat.alert_warn_total
+		ack_warn_current = stat.alert_ack_warn_current
+		ack_warn_total = stat.alert_ack_warn_total - ack_warn_current
+		total_warn_missed = warn_total - ack_warn_total - ack_warn_current
+		
+		alert_warn_values.append(bar_stack_value(ack_warn_current, colour='#9e9e00', tooltip='#val# Current<br>Total #total#'))
+		alert_warn_values.append(bar_stack_value(ack_warn_total, colour='#ffbf00', tooltip='#val# Detected<br>Total #total#'))
+		alert_warn_values.append(bar_stack_value(total_warn_missed, colour='#ffff00', tooltip='#val# Missed<br>Total #total#'))
+		
+		# Critical alerts
+		crit_total = stat.alert_crit_total
+		ack_crit_current = stat.alert_ack_crit_current
+		ack_crit_total = stat.alert_ack_crit_total - ack_crit_current
+		total_crit_missed = crit_total - ack_crit_total - ack_crit_current
+		
+		alert_crit_values.append(bar_stack_value(ack_crit_current, colour='#ff3f00', tooltip='#val# Current<br>Total #total#'))
+		alert_crit_values.append(bar_stack_value(ack_crit_total, colour='#760000', tooltip='#val# Detected<br>Total #total#'))
+		alert_crit_values.append(bar_stack_value(total_crit_missed, colour='#ff0000', tooltip='#val# Missed<br>Total #total#'))
+		
+		# X Axis labels
 		weeks.insert(0, 'Week {0!s} - {1!s}'.format(week, year))
-		warning_bar_values.insert(0, stat.alert_ack_warn_total)
-		critical_bar_values.insert(0, stat.alert_ack_crit_total)
+		
+		# Compute MAX value that could be in graph for Y axis limit
+		if stat.alert_warn_total > y_max_limit:
+			y_max_limit = math.ceil(stat.alert_warn_total / 10.) * 10
+		elif stat.alert_crit_total > y_max_limit:
+			y_max_limit = math.ceil(stat.alert_crit_total / 10.) * 10
+		
+		# Stack values
+		stack_warn.append_stack(alert_warn_values)
+		stack_crit.append_stack(alert_crit_values)
 	
-	# Compute MAX value that could be in graph for Y axis limit
-	if max(warning_bar_values) > max(critical_bar_values):
-		y_max_limit = math.ceil(max(warning_bar_values) / 10.) * 10
-	else:
-		y_max_limit = math.ceil(max(critical_bar_values) / 10.) * 10
-	
-	# Graphs creation
-	warning = Bar(text = 'Warning', values = warning_bar_values)
-	warning.set_colour('#DDDD00')
-	warning.set_tooltip(r'Warning<br>Value:#val#')
-	warning.set_on_show(anim_type = 'pop', cascade = 1, delay = 0.5)
-	
-	critical = Bar(text = 'Critical', values = critical_bar_values)
-	critical.set_colour('#FF0000')
-	critical.set_tooltip(r'Critical<br>Value:#val#')
-	critical.set_on_show(anim_type = 'fade-in', cascade = 1, delay = 0.3)
-
-	chart = openFlashChart.template('Acknowledged Alerts')
-	chart.add_element(warning)
-	chart.add_element(critical)
+	chart.add_element(stack_warn)
+	chart.add_element(stack_crit)
 	chart.set_x_axis(labels = x_axis_labels(labels = weeks))
-	chart.set_y_axis(max = y_max_limit, steps = 5)
-	chart.set_bg_colour('#FFFFFF')
+	chart.set_y_axis(max = y_max_limit, steps = 100)
 
 	return HttpResponse(chart.encode())
 
