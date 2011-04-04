@@ -64,7 +64,7 @@ if satellites.dead_sites():
 
 # Query satellites
 results = satellites.query("""GET services\n\
-Columns: host_name description notes_url_expanded contacts\nLimit: 1\n""")
+Columns: host_name description notes_url_expanded contacts\n""")
 
 # Init file to export results as CSV
 output_csv = open(os.path.join(csv_export_dir, "services_without_procedure_in_nagios.csv"), "w")
