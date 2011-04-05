@@ -25,7 +25,8 @@ def schedule(request):
 			end_period = form.cleaned_data['end_period']
 			
 			for host in hosts:
-				#command = ScheduleFullDowntime(host, start_period, end_period, request.user.username, downtime_descr)
+				command = ScheduleFullDowntime(host, start_period, end_period, request.user.username, downtime_descr)
+				command.send()
 				return HttpResponse('Successfully created downtime with id \'%s\'.' % downtime_descr)
 	else:
 		form = ScheduleDowntimeForm()
