@@ -4,6 +4,7 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
+from django.db.models import Avg
 
 # Models
 from optools.apps.reporting.models import NagiosKPI
@@ -157,10 +158,10 @@ def total_stat_data(request):
 		return HttpResponse('There is no data in database.')
 	
 	# Some var used in this view
-	weeks = []
 	y_max_limit = 10
-	total_hosts = []
-	total_services = []
+	hosts = []
+	services = []
+	months = range (1, 13)
 	
 	# Line chart
 	line_hosts = Line(colour='#007900', text='Hosts')
@@ -173,31 +174,36 @@ def total_stat_data(request):
 	chart.set_bg_colour('#ffffff')
 	chart.set_tooltip(behaviour = 'hover')
 	
-	# Query DB to get values of last 5 kpis
-	for stat in NagiosKPI.objects.order_by('-date')[0:5]:		
-		week = stat.date.isocalendar()[1]
-		year = stat.date.isocalendar()[0]
+	# Query DB to get values of current year
+	for month in months:
+		# Aggregate values per months
+		hosts_in_month = NagiosKPI.objects.filter(date__month=month).aggregate(Avg('total_hosts'))['total_hosts__avg']
+		services_in_month = NagiosKPI.objects.filter(date__month=month).aggregate(Avg('total_services'))['total_services__avg']
 		
-		# Values
-		total_hosts.append(stat.total_hosts)
-		total_services.append(stat.total_services)
+		try:
+			hosts_in_month = int(math.ceil(hosts_in_month))
+			services_in_month = int(math.ceil(services_in_month))
+		except TypeError:
+			hosts_in_month = 0
+			services_in_month = 0
 		
-		# X Axis labels
-		weeks.insert(0, 'Week {0!s} - {1!s}'.format(week, year))
+		# Add Values (aggregated)
+		hosts.append(hosts_in_month)
+		services.append(services_in_month)
 		
 		# Compute MAX value that could be in graph for Y axis limit
-		if stat.total_hosts > y_max_limit:
-			y_max_limit = stat.total_hosts + 500
-		elif stat.total_services > y_max_limit:
-			y_max_limit = stat.total_services + 500
+		if hosts_in_month > y_max_limit:
+			y_max_limit = hosts_in_month + 500
+		if services_in_month > y_max_limit:
+			y_max_limit = services_in_month + 500
 		
 	# Add values to line graph
-	line_hosts.set_values(total_hosts)
-	line_services.set_values(total_services)
+	line_hosts.set_values(hosts)
+	line_services.set_values(services)
 	
 	chart.add_element(line_hosts)
 	chart.add_element(line_services)
-	chart.set_x_axis(labels = x_axis_labels(labels = weeks))
+	chart.set_x_axis(labels = x_axis_labels(labels = [ str(m) for m in months ]))
 	chart.set_y_axis(max = y_max_limit, steps = 1000)
 	
 	return HttpResponse(chart.encode())
