@@ -183,19 +183,19 @@ def total_stat_data(request):
 		try:
 			hosts_in_month = int(math.ceil(hosts_in_month))
 			services_in_month = int(math.ceil(services_in_month))
+			
+			# Compute MAX value that could be in graph for Y axis limit
+			if hosts_in_month > y_max_limit:
+				y_max_limit = hosts_in_month + 500
+			if services_in_month > y_max_limit:
+				y_max_limit = services_in_month + 500
 		except TypeError:
-			hosts_in_month = 0
-			services_in_month = 0
+			hosts_in_month = None
+			services_in_month = None
 		
 		# Add Values (aggregated)
 		hosts.append(hosts_in_month)
 		services.append(services_in_month)
-		
-		# Compute MAX value that could be in graph for Y axis limit
-		if hosts_in_month > y_max_limit:
-			y_max_limit = hosts_in_month + 500
-		if services_in_month > y_max_limit:
-			y_max_limit = services_in_month + 500
 		
 	# Add values to line graph
 	line_hosts.set_values(hosts)
