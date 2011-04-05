@@ -19,6 +19,7 @@ from optools.apps.reporting.reports.top import get_top_ack_alerts
 
 # Utility
 import math
+from datetime import date
 
 # The view that show graph about stats
 def stats(request):
@@ -170,7 +171,7 @@ def total_stat_data(request):
 	line_services.set_width(4)
 	
 	# Global chart
-	chart = openFlashChart.template('Total monitored KPI')
+	chart = openFlashChart.template('Total monitored hosts and services for year {0}'.format(date.today().year))
 	chart.set_bg_colour('#ffffff')
 	chart.set_tooltip(behaviour = 'hover')
 	
