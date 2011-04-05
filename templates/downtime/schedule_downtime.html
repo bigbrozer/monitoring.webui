@@ -17,7 +17,7 @@
 <div id="downtime_form" class="form_box">
 	<h1>Usage</h1>
 	<h3 id="desc_form">Give a downtime name, add hosts, set period and submit that to Nagios.</h3>
-	<form action="/downtime/schedule/" method="post">
+	<form action="{% url optools.apps.downtime.views.schedule %}" method="post">
 		{% csrf_token %}
 		<div class="none{% if form.non_field_errors %} form_errors{% endif %}">
 			{{ form.non_field_errors }}
