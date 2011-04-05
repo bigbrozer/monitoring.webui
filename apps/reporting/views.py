@@ -150,6 +150,7 @@ def procedure_stat_data(request):
 
 	return HttpResponse(chart.encode())
 
+# Create graph data for total monitored hosts and services stats, return json data
 def total_stat_data(request):
 	# Tests if we have value in DB
 	if not NagiosKPI.objects.all():
@@ -162,8 +163,10 @@ def total_stat_data(request):
 	total_services = []
 	
 	# Line chart
-	line_hosts = Line()
-	line_services = Line()
+	line_hosts = Line(colour='#007900', text='Hosts')
+	line_hosts.set_width(4)
+	line_services = Line(colour='#0000ff', text='Services')
+	line_services.set_width(4)
 	
 	# Global chart
 	chart = openFlashChart.template('Total monitored KPI')
@@ -184,9 +187,9 @@ def total_stat_data(request):
 		
 		# Compute MAX value that could be in graph for Y axis limit
 		if stat.total_hosts > y_max_limit:
-			y_max_limit = math.ceil(stat.total_hosts / 10.) * 10
+			y_max_limit = stat.total_hosts + 500
 		elif stat.total_services > y_max_limit:
-			y_max_limit = math.ceil(stat.total_services / 10.) * 10
+			y_max_limit = stat.total_services + 500
 		
 	# Add values to line graph
 	line_hosts.set_values(total_hosts)
