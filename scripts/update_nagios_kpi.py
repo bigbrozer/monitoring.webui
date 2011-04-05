@@ -26,7 +26,7 @@
 
 import os, sys
 import time
-from datetime import date
+from datetime import date, datetime
 
 # Adding optools project to sys.path
 optools_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -142,6 +142,7 @@ total_monitored_services = combine_stats_result(satellites.query(query_total_mon
 
 # Save KPI in database
 kpi = NagiosKPI()
+kpi.date = datetime.fromtimestamp(today_timestamp)
 kpi.alert_crit_total = stats_alerts[0]
 kpi.alert_warn_total = stats_alerts[1]
 kpi.alert_ack_crit_total = stats_alerts[2]

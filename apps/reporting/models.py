@@ -7,7 +7,7 @@ from datetime import datetime
 
 # Nagios KPI model
 class NagiosKPI (models.Model):
-	date = models.DateTimeField(auto_now_add=True)
+	date = models.DateTimeField(auto_now_add=False)
 	service_with_kb = models.PositiveIntegerField(default=0)
 	service_without_kb = models.PositiveIntegerField(default=0)
 	alert_warn_total = models.PositiveIntegerField(default=0)
