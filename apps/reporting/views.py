@@ -97,7 +97,7 @@ def alerts_stat_data(request):
 		# Compute MAX value that could be in graph for Y axis limit
 		if stat.alert_warn_total > y_max_limit:
 			y_max_limit = math.ceil(stat.alert_warn_total / 10.) * 10
-		elif stat.alert_crit_total > y_max_limit:
+		if stat.alert_crit_total > y_max_limit:
 			y_max_limit = math.ceil(stat.alert_crit_total / 10.) * 10
 		
 		# Stack values
