@@ -38,7 +38,7 @@ class Satellite(models.Model):
 		'''Return a dict as expected for livestatus.MultiSiteConnection method.'''
 		return {self.name: {
 			'alias': self.alias,
-			'socket': 'tcp:{0}:{1}'.format(self.alias, self.live_port),
+			'socket': 'tcp:{0}:{1}'.format(self.ip_address, self.live_port),
 			'nagios_url': self.nagios_url,
 			'timeout': timeout,
 		}}
