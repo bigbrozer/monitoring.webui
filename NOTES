@@ -1,4 +1,5 @@
 - Installation du module Python fournit avec Open Flash Chart (python-ofc2) (customisé pour l'occasion)
 	- Dépendance: paquet 'python-cjson'
 	- Dépendance: paquet 'python-mysqldb'
-	- Dépendance: paquet 'python-pisa'
+
+- Voir utilisation du paquet 'python-pisa' pour générer les exports en PDF ?
