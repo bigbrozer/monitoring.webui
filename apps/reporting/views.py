@@ -65,7 +65,7 @@ def alerts_stat_data(request):
 	chart.set_tooltip(behaviour = 'hover')
 	
 	# Query DB to get values of last 5 kpis
-	for stat in NagiosKPI.objects.order_by('-date')[0:5]:
+	for stat in reversed(NagiosKPI.objects.order_by('-date')[0:5]):
 		alert_warn_values = []
 		alert_crit_values = []
 		
@@ -93,7 +93,7 @@ def alerts_stat_data(request):
 		alert_crit_values.append(bar_stack_value(total_crit_missed, colour='#ff0000', tooltip='#val# Missed<br>Total #total#'))
 		
 		# X Axis labels
-		weeks.insert(0, 'Week {0!s} - {1!s}'.format(week, year))
+		weeks.append('Week {0!s} - {1!s}'.format(week, year))
 		
 		# Compute MAX value that could be in graph for Y axis limit
 		if stat.alert_warn_total > y_max_limit:
