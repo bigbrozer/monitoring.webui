@@ -1,0 +1,30 @@
+/* Reporting Stylesheet */
+
+/* Sections title */
+h2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-bottom: solid 1px #a1ff87;
+}
+
+/* Tables */
+table {
+	border-width:1px; 
+	border-style:solid; 
+	border-color: #A9A9A9;
+	border-collapse:collapse;
+	margin-bottom: 15px;
+	margin-left: 5px;
+}
+td {
+	border-width:1px;
+	border-style:solid;
+	border-color: #A9A9A9;
+}
+th {
+	border-width:1px;
+	border-style:solid;
+	border-color: #A9A9A9;
+	background-color: #707677;
+	color: white;
+}
