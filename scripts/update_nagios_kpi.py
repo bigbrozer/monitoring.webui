@@ -26,7 +26,7 @@
 
 import os, sys
 import time
-from datetime import date, datetime
+from datetime import datetime
 
 # Adding optools project to sys.path
 optools_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -63,7 +63,6 @@ if satellites.dead_sites():
 	raise NoSatellites()
 
 satellites = live.MultiSiteConnection(satellite_connect_settings)
-#satellites.set_prepend_site(True)
 
 # Today timestamp
 today_timestamp = time.time()
@@ -79,7 +78,7 @@ except IndexError:
 
 # Query for all critical & warning alerts (including host alerts as critical)
 # Results: [Crit, Warn, AckedCrit, AckedWarn]
-query_stats_alerts = """GET log\n\
+query_warn_and_crit_alerts = """GET log\n\
 Columns: type state\n\
 Filter: time >= {0:.0f}\n\
 Filter: class = 3\n\
@@ -99,7 +98,7 @@ Stats: options ~ ACKNOWLEDGEMENT\n\
 Stats: state = 1\n\
 StatsAnd: 2\n""".format(log_startfrom)
 
-stats_alerts = combine_stats_result(satellites.query(query_stats_alerts))
+warn_and_crit_alerts = combine_stats_result(satellites.query(query_warn_and_crit_alerts))
 
 # Query for current acknowledged alerts
 # Results: [AckCrit, AckWarn]
@@ -143,10 +142,10 @@ total_monitored_services = combine_stats_result(satellites.query(query_total_mon
 # Save KPI in database
 kpi = NagiosKPI()
 kpi.date = datetime.fromtimestamp(today_timestamp)
-kpi.alert_crit_total = stats_alerts[0]
-kpi.alert_warn_total = stats_alerts[1]
-kpi.alert_ack_crit_total = stats_alerts[2]
-kpi.alert_ack_warn_total = stats_alerts[3]
+kpi.alert_crit_total = warn_and_crit_alerts[0]
+kpi.alert_warn_total = warn_and_crit_alerts[1]
+kpi.alert_ack_crit_total = warn_and_crit_alerts[2]
+kpi.alert_ack_warn_total = warn_and_crit_alerts[3]
 kpi.alert_ack_crit_current = current_acknowledged[0]
 kpi.alert_ack_warn_current = current_acknowledged[1]
 kpi.total_hosts = total_monitored_hosts[0]
