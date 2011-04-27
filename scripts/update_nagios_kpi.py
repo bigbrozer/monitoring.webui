@@ -79,7 +79,6 @@ except IndexError:
 # Query for all critical & warning alerts (including host alerts as critical)
 # Results: [Crit, Warn, AckedCrit, AckedWarn]
 query_warn_and_crit_alerts = """GET log\n\
-Columns: type state\n\
 Filter: time >= {0:.0f}\n\
 Filter: class = 3\n\
 Filter: state = 1\n\
@@ -103,7 +102,6 @@ warn_and_crit_alerts = combine_stats_result(satellites.query(query_warn_and_crit
 # Query for current acknowledged alerts
 # Results: [AckCrit, AckWarn]
 query_current_svc_acknowledged = """GET services\n\
-Columns: description state acknowledged\n\
 Filter: acknowledged = 1\n\
 Filter: state = 2\n\
 Filter: state = 1\n\
@@ -113,7 +111,6 @@ Stats: state = 1\n"""
 
 # Results: [AckHosts]
 query_current_host_acknowledged = """GET hosts\n\
-Columns: name state acknowledged\n\
 Filter: acknowledged = 1\n\
 Stats: state = 1\n\
 Stats: state = 2\n\
@@ -126,7 +123,6 @@ current_acknowledged[0] += current_host_acknowledged.pop()		# Host alerts are co
 # Query for total number of monitored hosts
 # Results: [TotalHosts]
 query_total_monitored_hosts = """GET hosts\n\
-Columns: name\n\
 Stats: name !~ \" \"\n"""
 
 total_monitored_hosts = combine_stats_result(satellites.query(query_total_monitored_hosts))
@@ -134,7 +130,6 @@ total_monitored_hosts = combine_stats_result(satellites.query(query_total_monito
 # Query for total number of monitored services
 # Results: [TotalServices]
 query_total_monitored_services = """GET services\n\
-Columns: description\n\
 Stats: description !~ \" \"\n"""
 
 total_monitored_services = combine_stats_result(satellites.query(query_total_monitored_services))
