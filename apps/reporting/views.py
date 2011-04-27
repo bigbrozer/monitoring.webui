@@ -12,7 +12,6 @@ from optools.apps.reporting.models import NagiosKPI
 # Open Flash Chart imports
 import openFlashChart
 from openFlashChart_varieties import (Line, Bar_Stack, bar_stack_value, Pie, pie_value, x_axis_labels)
-from openFlashChart_elements import (tooltip)
 
 # Reports imports
 from optools.apps.reporting.reports.top import get_top_ack_alerts
@@ -51,13 +50,13 @@ def alerts_stat_data(request):
 	stack_warn.append_keys(colour = '#9e9e00', text = 'Current Warning alerts', fontsize = 12)
 	stack_warn.append_keys(colour = '#ffbf00', text = 'Detected Warning alerts', fontsize = 12)
 	stack_warn.append_keys(colour = '#ffff00', text = 'Missed Warning alerts', fontsize = 12)
-	stack_warn.set_tooltip( 'Warning: #val#<br>Total #total#' );
+	stack_warn.set_tooltip('Warning: #val#<br>Total #total#')
 	
 	stack_crit = Bar_Stack()
 	stack_crit.append_keys(colour = '#ff3f00', text = 'Current Critical alerts', fontsize = 12)
 	stack_crit.append_keys(colour = '#760000', text = 'Detected Critical alerts', fontsize = 12)
 	stack_crit.append_keys(colour = '#ff0000', text = 'Missed Critical alerts', fontsize = 12)
-	stack_crit.set_tooltip( 'Critical: #val#<br>Total #total#' );
+	stack_crit.set_tooltip('Critical: #val#<br>Total #total#')
 	
 	# Global chart
 	chart = openFlashChart.template('Alerts KPI')
@@ -173,7 +172,6 @@ def total_stat_data(request):
 	# Global chart
 	chart = openFlashChart.template('Total monitored hosts and services for year {0}'.format(date.today().year))
 	chart.set_bg_colour('#ffffff')
-	chart.set_tooltip(behaviour = 'hover')
 	
 	# Query DB to get values of current year
 	for month in months:
