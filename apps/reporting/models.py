@@ -2,9 +2,6 @@
 
 from django.db import models
 
-# Utility
-from datetime import datetime
-
 # Nagios KPI model
 class NagiosKPI (models.Model):
 	date = models.DateTimeField(auto_now_add=False)
@@ -18,6 +15,7 @@ class NagiosKPI (models.Model):
 	alert_ack_crit_current = models.PositiveIntegerField(default=0)
 	total_hosts = models.PositiveIntegerField(default=0)
 	total_services = models.PositiveIntegerField(default=0)
-	
+	comment = models.CharField(max_length=128, help_text='Enter a comment that explain values.')
+
 	def __unicode__(self):
 		return u'Nagios KPI ({0})'.format(self.date.strftime('%d-%m-%Y %H:%M:%S'))
