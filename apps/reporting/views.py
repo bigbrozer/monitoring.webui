@@ -11,7 +11,7 @@ from optools.apps.reporting.models import NagiosKPI
 
 # Open Flash Chart imports
 import openFlashChart
-from openFlashChart_varieties import (Line, Bar_Stack, bar_stack_value, Pie, pie_value, x_axis_labels)
+from openFlashChart_varieties import (Line, dot_value, Bar_Stack, bar_stack_value, Pie, pie_value, x_axis_labels)
 
 # Reports imports
 from optools.apps.reporting.reports.top import get_top_ack_alerts
@@ -67,19 +67,24 @@ def alerts_stat_data(request):
 	for stat in reversed(NagiosKPI.objects.order_by('-date')[0:5]):
 		alert_warn_values = []
 		alert_crit_values = []
-		
+		remark = ''
+
 		week = stat.date.isocalendar()[1]
 		year = stat.date.isocalendar()[0]
-		
+
+		# Are there comments ?
+		if stat.comment:
+			remark = '<br><br>Remarks: {}<br>'.format(stat.comment)
+
 		# Warning alerts
 		warn_total = stat.alert_warn_total
 		ack_warn_current = stat.alert_ack_warn_current
 		ack_warn_total = stat.alert_ack_warn_total - ack_warn_current
 		total_warn_missed = warn_total - ack_warn_total - ack_warn_current
-		
-		alert_warn_values.append(bar_stack_value(ack_warn_current, colour='#9e9e00', tooltip='#val# Current<br>Total #total#'))
-		alert_warn_values.append(bar_stack_value(ack_warn_total, colour='#ffbf00', tooltip='#val# Detected<br>Total #total#'))
-		alert_warn_values.append(bar_stack_value(total_warn_missed, colour='#ffff00', tooltip='#val# Missed<br>Total #total#'))
+
+		alert_warn_values.append(bar_stack_value(ack_warn_current, colour='#9e9e00', tooltip='#val# Current<br>Total #total#{}'.format(remark)))
+		alert_warn_values.append(bar_stack_value(ack_warn_total, colour='#ffbf00', tooltip='#val# Detected<br>Total #total#{}'.format(remark)))
+		alert_warn_values.append(bar_stack_value(total_warn_missed, colour='#ffff00', tooltip='#val# Missed<br>Total #total#{}'.format(remark)))
 		
 		# Critical alerts
 		crit_total = stat.alert_crit_total
@@ -87,9 +92,9 @@ def alerts_stat_data(request):
 		ack_crit_total = stat.alert_ack_crit_total - ack_crit_current
 		total_crit_missed = crit_total - ack_crit_total - ack_crit_current
 		
-		alert_crit_values.append(bar_stack_value(ack_crit_current, colour='#ff3f00', tooltip='#val# Current<br>Total #total#'))
-		alert_crit_values.append(bar_stack_value(ack_crit_total, colour='#760000', tooltip='#val# Detected<br>Total #total#'))
-		alert_crit_values.append(bar_stack_value(total_crit_missed, colour='#ff0000', tooltip='#val# Missed<br>Total #total#'))
+		alert_crit_values.append(bar_stack_value(ack_crit_current, colour='#ff3f00', tooltip='#val# Current<br>Total #total#{}'.format(remark)))
+		alert_crit_values.append(bar_stack_value(ack_crit_total, colour='#760000', tooltip='#val# Detected<br>Total #total#{}'.format(remark)))
+		alert_crit_values.append(bar_stack_value(total_crit_missed, colour='#ff0000', tooltip='#val# Missed<br>Total #total#{}'.format(remark)))
 		
 		# X Axis labels
 		weeks.append('Week {0!s} - {1!s}'.format(week, year))
@@ -178,6 +183,7 @@ def total_stat_data(request):
 		# Aggregate values per months
 		hosts_in_month = NagiosKPI.objects.filter(date__month=month).aggregate(Avg('total_hosts'))['total_hosts__avg']
 		services_in_month = NagiosKPI.objects.filter(date__month=month).aggregate(Avg('total_services'))['total_services__avg']
+		kpi_comments = [ kpi.comment for kpi in NagiosKPI.objects.filter(date__month=month) ]
 		
 		try:
 			hosts_in_month = int(math.ceil(hosts_in_month))
@@ -188,13 +194,21 @@ def total_stat_data(request):
 				y_max_limit = hosts_in_month + 500
 			if services_in_month > y_max_limit:
 				y_max_limit = services_in_month + 500
+
+			# Add Values as dot_value in graph
+			remark = ''
+			if any(kpi_comments):
+				remark = '<br>Remarks:<br>'
+			for comment in kpi_comments:
+				if comment:
+					remark += '{}<br>'.format(comment)
+			
+			hosts.append(dot_value(hosts_in_month, colour='#0000FF', tooltip='Value: #val#{}'.format(remark)))
+			services.append(dot_value(services_in_month, colour='#00FF00', tooltip='Value: #val#{}'.format(remark)))
 		except TypeError:
-			hosts_in_month = None
-			services_in_month = None
-		
-		# Add Values (aggregated)
-		hosts.append(hosts_in_month)
-		services.append(services_in_month)
+			# Add null value
+			hosts.append(None)
+			services.append(None)
 		
 	# Add values to line graph
 	line_hosts.set_values(hosts)
