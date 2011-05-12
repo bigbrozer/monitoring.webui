@@ -131,7 +131,7 @@ class value(dict):
 		self.set_tooltip(tooltip)
 		
 	def set_val(self, val):
-		if val:
+		if val is not None:
 			self['value'] = val
 		
 	def set_colour(self, colour):
@@ -205,7 +205,7 @@ class bar_stack_value(value):
 		self.set_value(val)
 		
 	def set_value(self, val):
-		if val:
+		if val is not None:
 			self['val'] = val
 		
 class pie_value(value):
