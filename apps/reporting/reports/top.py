@@ -34,7 +34,7 @@ class Alert(object):
 		self.state = state
 		self.date = datetime.fromtimestamp(timestamp)
 
-	def __repr__(self):
+	def __str__(self):
 		return repr((self.host, self.service, self.state, str(self.date)))
 
 def get_top_ack_alerts(number=5):
