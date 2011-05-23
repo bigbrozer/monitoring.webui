@@ -4,9 +4,12 @@ import os
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
-DEBUG = True
+# Turn off debugging by default
+DEBUG = False
+DEVMODE = False
 TEMPLATE_DEBUG = DEBUG
 
+# Contacts
 ADMINS = (
     ('Vincent BESANCON', 'vincent.besancon@faurecia.com'),
 )
