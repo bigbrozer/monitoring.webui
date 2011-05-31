@@ -23,12 +23,16 @@ def schedule(request):
 			hosts = form.cleaned_data['host_list'].split(',')
 			start_period = form.cleaned_data['start_period']
 			end_period = form.cleaned_data['end_period']
-			
+
 			for host in hosts:
+				# Skip blank host (skip last comma where host name is empty)
+				if not host:
+					continue
 				command = ScheduleFullDowntime(host, start_period, end_period, request.user.username, downtime_descr)
 				command.send()
+				# TODO: add some security, warn if command was not successfull
 
-			return HttpResponse('Successfully created downtime.')
+			return HttpResponse('Successfully created downtime for hosts.')
 	else:
 		form = ScheduleDowntimeForm()
 	
