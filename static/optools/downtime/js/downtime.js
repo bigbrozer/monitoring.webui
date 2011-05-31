@@ -79,7 +79,7 @@ $(document).ready(function() {
 			})
 			.autocomplete({
 				source: function( request, response ) {
-					$.getJSON( "/nagios/hosts/search", {
+					$.getJSON( "/optools/nagios/hosts/search", {
 						term: extractLast( request.term )
 					}, response );
 				},

@@ -13,28 +13,28 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    (r'^admin/', include(admin.site.urls)),
+    (r'^optools/admin/', include(admin.site.urls)),
     
     # Applications
     # ============
     #
     # Login / Logout
-    (r'^login/$', 'django.contrib.auth.views.login'),
-    (r'^logout/$', 'django.contrib.auth.views.logout'),
+    (r'^optools/login/$', 'django.contrib.auth.views.login'),
+    (r'^optools/logout/$', 'django.contrib.auth.views.logout'),
     
     # Downtime
-    (r'^downtime/schedule/$', 'optools.apps.downtime.views.schedule'),
+    (r'^optools/downtime/schedule/$', 'optools.apps.downtime.views.schedule'),
     
     # Reporting
-    (r'^reporting/stats/$', 'optools.apps.reporting.views.stats'),
-    (r'^reporting/stats/data/alerts$', 'optools.apps.reporting.views.alerts_stat_data'),
-    (r'^reporting/stats/data/procedure$', 'optools.apps.reporting.views.procedure_stat_data'),
-    (r'^reporting/stats/data/total$', 'optools.apps.reporting.views.total_stat_data'),
+    (r'^optools/reporting/stats/$', 'optools.apps.reporting.views.stats'),
+    (r'^optools/reporting/stats/data/alerts$', 'optools.apps.reporting.views.alerts_stat_data'),
+    (r'^optools/reporting/stats/data/procedure$', 'optools.apps.reporting.views.procedure_stat_data'),
+    (r'^optools/reporting/stats/data/total$', 'optools.apps.reporting.views.total_stat_data'),
     
     # Nagios
-    (r'^nagios/satellites/export/$', 'optools.apps.nagios.views.get_satellite_list'),
-    (r'^nagios/satellites/export/(?P<format>\w+)$', 'optools.apps.nagios.views.get_satellite_list'),
-	(r'^nagios/hosts/search$', 'optools.apps.nagios.views.search_hosts'),
+    (r'^optools/nagios/satellites/export/$', 'optools.apps.nagios.views.get_satellite_list'),
+    (r'^optools/nagios/satellites/export/(?P<format>\w+)$', 'optools.apps.nagios.views.get_satellite_list'),
+	(r'^optools/nagios/hosts/search$', 'optools.apps.nagios.views.search_hosts'),
 )
 
 # Server static content locally (from dev alptop only ;-))
