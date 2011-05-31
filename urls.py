@@ -34,6 +34,7 @@ urlpatterns = patterns('',
     # Nagios
     (r'^nagios/satellites/export/$', 'optools.apps.nagios.views.get_satellite_list'),
     (r'^nagios/satellites/export/(?P<format>\w+)$', 'optools.apps.nagios.views.get_satellite_list'),
+	(r'^nagios/hosts/search$', 'optools.apps.nagios.views.search_hosts'),
 )
 
 # Server static content locally (from dev alptop only ;-))
