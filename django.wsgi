@@ -7,5 +7,10 @@ sys.path.append(optools_dir)
 os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
 
 import django.core.handlers.wsgi
-application = django.core.handlers.wsgi.WSGIHandler()
+
+_application = django.core.handlers.wsgi.WSGIHandler()
+
+def application(environ, start_response):
+    environ['PATH_INFO'] = environ['SCRIPT_NAME'] + environ['PATH_INFO']
+    return _application(environ, start_response)
 
