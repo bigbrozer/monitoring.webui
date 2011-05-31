@@ -78,11 +78,17 @@ $(document).ready(function() {
 				}
 			})
 			.autocomplete({
-				minLength: 0,
 				source: function( request, response ) {
-					// delegate back to autocomplete, but extract the last term
-					response( $.ui.autocomplete.filter(
-						availableHosts, extractLast( request.term ) ) );
+					$.getJSON( "/nagios/hosts/search", {
+						term: extractLast( request.term )
+					}, response );
+				},
+				search: function() {
+					// custom minLength
+					var term = extractLast( this.value );
+					if ( term.length < 2 ) {
+						return false;
+					}
 				},
 				focus: function() {
 					// prevent value inserted on focus
@@ -95,8 +101,8 @@ $(document).ready(function() {
 					// add the selected item
 					terms.push( ui.item.value );
 					// add placeholder to get the comma-and-space at the end
-					//terms.push( "" );
-					//this.value = terms.join( ", " );
+					terms.push( "" );
+					this.value = terms.join( ", " );
 					this.value = terms;
 					return false;
 				}
