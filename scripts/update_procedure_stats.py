@@ -67,8 +67,8 @@ results = satellites.query("""GET services\n\
 Columns: host_name description notes_url_expanded contacts\n""")
 
 # Init file to export results as CSV
-output_csv = open(os.path.join(csv_export_dir, "services_without_procedure_in_nagios.csv"), "w")
-output_csv.write('host_name;service;url;contacts\n')
+output_csv = open(os.path.join(csv_export_dir, "services_procedure_in_nagios.csv"), "w")
+output_csv.write('host_name;service;url;contacts;procedure\n')
 
 # Check procedures
 total_services = len(results)
@@ -81,9 +81,10 @@ for service_object in results:
 	procedure = get_raw_procedure(kb_url)
 	if '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0' in procedure:
 		num_without_proc += 1
-		output_csv.write("{0};{1};{2};{3}\n".format(host, service, kb_url, ','.join(contacts)))
+		output_csv.write("{0};{1};{2};{3};No\n".format(host, service, kb_url, ','.join(contacts)))
 	else:
 		num_with_proc += 1
+		output_csv.write("{0};{1};{2};{3};Yes\n".format(host, service, kb_url, ','.join(contacts)))
 	progress+=1
 
 # Close CSV file

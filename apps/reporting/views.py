@@ -148,7 +148,7 @@ def procedure_stat_data(request):
 	
 	# Graphs creation	
 	procedure = Pie(values = proc_stats)
-	procedure.set_on_click(request.build_absolute_uri('/~django/reports/services_without_procedure_in_nagios.csv'))
+	procedure.set_on_click(request.build_absolute_uri('/~django/reports/services_procedure_in_nagios.csv'))
 
 	chart = openFlashChart.template('Procedures statistics\n(Click to download report)')
 	chart.add_element(procedure)
