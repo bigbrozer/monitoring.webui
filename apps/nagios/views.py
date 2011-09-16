@@ -18,7 +18,13 @@ import cjson
 #
 # Return the list of all satellites, format is json by default.
 def get_satellite_list(request, format='json'):
-	return HttpResponse(serializers.serialize(format, Satellite.objects.all()))
+    if format not in "csv":
+    	return HttpResponse(serializers.serialize(format, Satellite.objects.all()))
+    else:
+        csv = ""
+        for sat in Satellite.objects.all():
+            csv += "%s;%s;%s;%s\n" % (sat.name, sat.fqdn, sat.alias, sat.live_port)
+        return HttpResponse(csv)
 
 # Return as JSON the list of hosts that match a string.
 def search_hosts(request):
