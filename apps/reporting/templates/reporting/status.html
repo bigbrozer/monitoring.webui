@@ -17,15 +17,6 @@
 		{"styleclass":"chart piechart"}
 	);
 	
-	// Alerts chart
-	swfobject.embedSWF(
-		"{{ STATIC_URL }}/reporting/ofc.swf", "chart_open_ack",
-		"600", "300", "9.0.0", "{{ STATIC_URL }}/reporting/expressInstall.swf",
-		{"data-file":"{% url optools.apps.reporting.views.alerts_stat_data %}"},
-		null,
-		{"styleclass":"chart barchart"}
-	);
-	
 	// Total chart
 	swfobject.embedSWF(
 		"{{ STATIC_URL }}/reporting/ofc.swf", "chart_total",
