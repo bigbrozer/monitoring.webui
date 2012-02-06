@@ -37,9 +37,3 @@ urlpatterns = patterns('',
 	(r'^optools/nagios/hosts/search$', 'optools.apps.nagios.views.search_hosts'),
 )
 
-# Server static content locally (from dev alptop only ;-))
-if settings.DEVMODE:
-    urlpatterns += patterns('',
-        (r'^static/django/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    )
-

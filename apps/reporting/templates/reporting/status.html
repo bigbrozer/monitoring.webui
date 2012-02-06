@@ -1,17 +1,17 @@
 {% extends "common/base.html" %}
 
 {% block extra_css %}
-<link type="text/css" href="/static/django/optools/reporting/css/page.css" rel="stylesheet" />
-<link type="text/css" href="/static/django/optools/reporting/css/charts.css" rel="stylesheet" />
+<link type="text/css" href="{{ STATIC_URL }}/reporting/css/page.css" rel="stylesheet" />
+<link type="text/css" href="{{ STATIC_URL }}/reporting/css/charts.css" rel="stylesheet" />
 {% endblock %}
 
 {% block extra_scripts %}
-<script type="text/javascript" src="/static/django/optools/reporting/swfobject.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}/reporting/swfobject.js"></script>
 <script type="text/javascript">
 	// Pie chart
 	swfobject.embedSWF(
-		"/static/django/optools/reporting/ofc.swf", "chart_procedure",
-		"300", "300", "9.0.0", "/static/django/optools/reporting/expressInstall.swf",
+		"{{ STATIC_URL }}/reporting/ofc.swf", "chart_procedure",
+		"300", "300", "9.0.0", "{{ STATIC_URL }}/reporting/expressInstall.swf",
 		{"data-file":"{% url optools.apps.reporting.views.procedure_stat_data %}"},
 		null,
 		{"styleclass":"chart piechart"}
@@ -19,8 +19,8 @@
 	
 	// Alerts chart
 	swfobject.embedSWF(
-		"/static/django/optools/reporting/ofc.swf", "chart_open_ack",
-		"600", "300", "9.0.0", "/static/django/optools/reporting/expressInstall.swf",
+		"{{ STATIC_URL }}/reporting/ofc.swf", "chart_open_ack",
+		"600", "300", "9.0.0", "{{ STATIC_URL }}/reporting/expressInstall.swf",
 		{"data-file":"{% url optools.apps.reporting.views.alerts_stat_data %}"},
 		null,
 		{"styleclass":"chart barchart"}
@@ -28,8 +28,8 @@
 	
 	// Total chart
 	swfobject.embedSWF(
-		"/static/django/optools/reporting/ofc.swf", "chart_total",
-		"900", "300", "9.0.0", "/static/django/optools/reporting/expressInstall.swf",
+		"{{ STATIC_URL }}/reporting/ofc.swf", "chart_total",
+		"900", "300", "9.0.0", "{{ STATIC_URL }}/reporting/expressInstall.swf",
 		{"data-file":"{% url optools.apps.reporting.views.total_stat_data %}"},
 		null,
 		{"styleclass":"chart barchart"}

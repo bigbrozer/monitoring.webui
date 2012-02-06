@@ -9,13 +9,6 @@ from django.db.models import Avg
 # Models
 from optools.apps.reporting.models import NagiosKPI
 
-# Open Flash Chart imports
-import openFlashChart
-from openFlashChart_varieties import (Line, dot_value, Bar_Stack, bar_stack_value, Pie, pie_value, x_axis_labels)
-
-# Reports imports
-from optools.apps.reporting.reports.top import get_top_ack_alerts
-
 # Utility
 import math
 from datetime import date

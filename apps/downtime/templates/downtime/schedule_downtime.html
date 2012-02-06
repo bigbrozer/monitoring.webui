@@ -1,15 +1,15 @@
 {% extends "common/base.html" %}
 
 {% block extra_css %}
-<link type="text/css" href="/static/django/optools/common/css/ui-lightness/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
-<link type="text/css" href="/static/django/optools/common/css/timepicker.css" rel="stylesheet" />
+<link type="text/css" href="{{ STATIC_URL }}downtime/css/ui-lightness/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
+<link type="text/css" href="{{ STATIC_URL }}downtime/css/timepicker.css" rel="stylesheet" />
 {% endblock %}
 
 {% block extra_scripts %}
-<script type="text/javascript" src="/static/django/optools/common/js/jquery-1.5.1.min.js"></script>
-<script type="text/javascript" src="/static/django/optools/common/js/jquery-ui-1.8.11.custom.min.js"></script>
-<script type="text/javascript" src="/static/django/optools/common/js/jquery-ui-timepicker-addon.js"></script>
-<script type="text/javascript" src="/static/django/optools/downtime/js/downtime.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}downtime/js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}downtime/js/jquery-ui-1.8.11.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}downtime/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}downtime/js/downtime.js"></script>
 {% endblock %}
 
 {% block content %}

@@ -53,19 +53,44 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_PATH, 'static')
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/home/media/media.lawrence.com/media/"
+MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
+# trailing slash.
+# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = ''
+
+# Absolute path to the directory static files should be collected to.
+# Don't put anything in this directory yourself; store your static files
+# in apps' "static/" subdirectories and in STATICFILES_DIRS.
+# Example: "/home/media/media.lawrence.com/static/"
+STATIC_ROOT = ''
+
+# URL prefix for static files.
+# Example: "http://media.lawrence.com/static/"
+STATIC_URL = '/static/optools/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/static/django/optools/admin/'
+ADMIN_MEDIA_PREFIX = '/static/optools/admin/'
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 
 # Default authentication URL
 LOGIN_URL = '/optools/login/'
@@ -80,16 +105,6 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
-)
-
-# List of template context processors
-TEMPLATE_CONTEXT_PROCESSORS = (
-	'django.core.context_processors.request',
-	'django.core.context_processors.debug',
-	'django.core.context_processors.i18n',
-	'django.core.context_processors.media',
-	'django.contrib.messages.context_processors.messages',
-	'django.contrib.auth.context_processors.auth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,11 +136,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     #'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     
+    # Downtime
+    'optools.apps.downtime',
     # Reporting
 	'optools.apps.reporting',
 	
@@ -135,6 +153,29 @@ INSTALLED_APPS = (
 	# Highlights
 	'optools.apps.highlights',
 )
+
+# A sample logging configuration. The only tangible logging
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error.
+# See http://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
 
 # Local settings (used for overriding values defined in this module, not part of git repo)
 try:
