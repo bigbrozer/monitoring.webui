@@ -135,7 +135,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
+    # Common
+    'optools.apps.common',
     # Downtime
     'optools.apps.downtime',
     # Reporting
@@ -144,6 +145,8 @@ INSTALLED_APPS = (
 	'optools.apps.nagios',
 	# Highlights
 	'optools.apps.highlights',
+    # Admin
+    'django.contrib.admin',
 )
 
 # A sample logging configuration. The only tangible logging
