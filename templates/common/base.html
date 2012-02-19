@@ -1,0 +1,31 @@
+{% extends "common/html_headers.html" %}
+
+{% block page %}
+<!-- Top menu -->
+<div id="top-menu">
+	<div id="account">
+		<ul>
+			{% if user.is_authenticated %}
+			<li>Logged in as: <strong><a href="javascript:void(0);">{{ user.username }}</a></strong></li>
+			<li><strong><a href="{% url django.contrib.auth.views.logout %}">Logout</a></strong></li>
+			{% else %}
+			<li><strong><a href="{% url django.contrib.auth.views.login %}?next={{ request.path }}">Login</a></strong></li>
+			{% endif %}
+		</ul>
+	</div>
+	<ul>
+        <li><a href="/tracking">Home</a></li>
+		{% if user.is_authenticated and user.is_superuser %}
+		<li><a href="{% url admin:index %}">Administration</a></li>
+		{% endif %}
+	</ul>
+</div>
+
+<!-- Title -->
+<div id="title">
+	<h1>{% block title %}{{ title }}{% endblock %}</h1>
+</div>
+
+{% block content %}{% endblock %}
+
+{% endblock %}
