@@ -16,7 +16,7 @@ from datetime import date
 # The view that show graph about stats
 def stats(request):
 	template_context = {
-		'title': 'Nagios KPI',
+		'title': 'Monitoring KPI',
 	}
 	
 	return render_to_response('reporting/status.html', template_context, context_instance=RequestContext(request))

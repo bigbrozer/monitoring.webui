@@ -1,9 +1,6 @@
 {% extends "common/base.html" %}
 
-{% block extra_css %}
-<link type="text/css" href="{{ STATIC_URL }}reporting/css/page.css" rel="stylesheet" />
-<link type="text/css" href="{{ STATIC_URL }}reporting/css/charts.css" rel="stylesheet" />
-{% endblock %}
+{% block hero_desc %}Show graphs for KPI about Monitoring tools.{% endblock %}
 
 {% block extra_scripts %}
 <script type="text/javascript" src="{{ STATIC_URL }}reporting/swfobject.js"></script>
@@ -29,16 +26,16 @@
 {% endblock %}
 
 {% block content %}
-<h2>KPI about procedures and alerts</h2>
-<div class="chart_table">
-	<div id="chart_procedure"></div>
-	<div class="spacer"></div>
+<div class="row">
+    <div class="span6">
+        <h2>Procedure</h2>
+        <div id="chart_procedure"></div>
+    </div>
+    <div class="span6">
+        <h2>Total hosts / services</h2>
+        <div id="chart_total"></div>
+    </div>
 </div>
 
-<h2>KPI about total monitored hosts and services</h2>
-<div class="chart_table">
-	<div id="chart_total"></div>
-	<div class="spacer"></div>
-</div>
-<span class="notes"><strong>Notes:</strong> data are updated each weeks then aggregated (per month, year, etc.).</span>
+<em class="pull-right"><strong>Notes:</strong> data are updated each weeks then aggregated (per month, year, etc.).</em>
 {% endblock %}
