@@ -2,15 +2,35 @@
 
 {% block page %}
 <!-- Top menu -->
-<div id="top-menu">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">Central OpTools</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li><a href="/tracking">Home</a></li>
+                    <li><a href="/optools/reporting/stats">KPI</a></li>
+                </ul>
+                {% if user.is_authenticated %}
+                    <p class="navbar-text pull-right">Logged in as <a
+                    href="#">{{ user.username }}</a> (<a href="{% url django.contrib.auth.views.logout %}">Logout</a>)</p>
+			    {% else %}
+			        <p class="navbar-text pull-right"><a href="{% url django.contrib.auth.views.login %}?next={{ request.path }}">Login</a></p>
+			    {% endif %}
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<!-- <div id="top-menu">
 	<div id="account">
 		<ul>
-			{% if user.is_authenticated %}
-			<li>Logged in as: <strong><a href="javascript:void(0);">{{ user.username }}</a></strong></li>
-			<li><strong><a href="{% url django.contrib.auth.views.logout %}">Logout</a></strong></li>
-			{% else %}
-			<li><strong><a href="{% url django.contrib.auth.views.login %}?next={{ request.path }}">Login</a></strong></li>
-			{% endif %}
+			
 		</ul>
 	</div>
 	<ul>
@@ -19,13 +39,14 @@
 		<li><a href="{% url admin:index %}">Administration</a></li>
 		{% endif %}
 	</ul>
-</div>
+</div> -->
 
-<!-- Title -->
-<div id="title">
-	<h1>{% block title %}{{ title }}{% endblock %}</h1>
-</div>
-
+<div class="container">
+    <div class="hero-unit">
+        <h1>{% block hero_title %}{{ title }}{% endblock %}</h1>
+        <p>{% block hero_desc %}{{ pagedescr }}{% endblock %}</p>
+    </div>
 {% block content %}{% endblock %}
+</div> <!-- /container -->
 
 {% endblock %}
