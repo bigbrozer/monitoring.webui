@@ -26,7 +26,7 @@ urlpatterns = patterns('',
     (r'^optools/downtime/schedule/$', 'optools.apps.downtime.views.schedule'),
     
     # Reporting
-    (r'^optools/reporting/stats/$', 'optools.apps.reporting.views.stats'),
+    (r'^optools/reporting/$', 'optools.apps.reporting.views.index'),
     (r'^optools/reporting/stats/data/procedure$', 'optools.apps.reporting.views.procedure_stat_data'),
     (r'^optools/reporting/stats/data/total$', 'optools.apps.reporting.views.total_stat_data'),
     

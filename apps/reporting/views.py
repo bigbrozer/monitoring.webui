@@ -14,7 +14,7 @@ import math
 from datetime import date
 
 # The view that show graph about stats
-def stats(request):
+def index(request):
 	template_context = {
 		'title': 'Monitoring KPI',
 	}
