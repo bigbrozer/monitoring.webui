@@ -1,39 +1,18 @@
 {% extends "common/base.html" %}
 
-{% block hero_desc %}Show graphs for KPI about Monitoring tools.{% endblock %}
-
-{% block extra_scripts %}
-<script type="text/javascript" src="{{ STATIC_URL }}reporting/swfobject.js"></script>
-<script type="text/javascript">
-	// Pie chart
-	swfobject.embedSWF(
-		"{{ STATIC_URL }}reporting/ofc.swf", "chart_procedure",
-		"300", "300", "9.0.0", "{{ STATIC_URL }}reporting/expressInstall.swf",
-		{"data-file":"{% url optools.apps.reporting.views.procedure_stat_data %}"},
-		null,
-		{"styleclass":"chart piechart"}
-	);
-	
-	// Total chart
-	swfobject.embedSWF(
-		"{{ STATIC_URL }}reporting/ofc.swf", "chart_total",
-		"900", "300", "9.0.0", "{{ STATIC_URL }}reporting/expressInstall.swf",
-		{"data-file":"{% url optools.apps.reporting.views.total_stat_data %}"},
-		null,
-		{"styleclass":"chart barchart"}
-	);
-</script>
+{% block hero_desc %}
+Show graphs for KPI about Monitoring tools. This page is under construction, please come back later.
 {% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="span6">
         <h2>Procedure</h2>
-        <div id="chart_procedure"></div>
+        <p>Come back later...</p>
     </div>
     <div class="span6">
         <h2>Total hosts / services</h2>
-        <div id="chart_total"></div>
+        <p>Come back later...</p>
     </div>
 </div>
 
