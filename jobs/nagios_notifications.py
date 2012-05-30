@@ -1,7 +1,6 @@
 import sys
 import os
 import calendar
-from pprint import pprint
 
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(sys.argv[0])))

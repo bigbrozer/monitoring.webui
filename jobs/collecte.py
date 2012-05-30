@@ -5,7 +5,6 @@ from datetime import datetime
 sys.path.insert(0, os.path.dirname(os.path.dirname(sys.argv[0])))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
 
-import logging
 import nagios
 import nagios_notifications
 import redmine
@@ -38,8 +37,9 @@ def collecte():
         else:
             entree.acknowledged = False
         number +=1
-        print "\r %s entrees sauvees" % number,
+        print "\r %s notifications saved" % number,
         entree.save()
+    print "\n"
         
 
     # End ---------------------------------------------------------------------
@@ -66,20 +66,22 @@ def collecte():
     nagiosR.alerts_acknowledged_warning = resultNagiosNotifications['alerts_acknowledged_warning']
     nagiosR.alerts_acknowledged_critical = resultNagiosNotifications['alerts_acknowledged_critical']
 
-    redmineR = KpiRedmine()
-    redmineR.date = datetime.now(tz=utc)
-
     # Redmine results -----------------------------
     resultRedmine = redmine.request()
-
-    redmineR.requests_opened = resultRedmine['requests_opened']
-    redmineR.requests_closed = resultRedmine['requests_closed']
-    redmineR.requests_remained = resultRedmine['requests_remained']
-    redmineR.requests_lifetime_global = resultRedmine['requests_lifetime']
-
+    numberR = 0
+    for dateR in resultRedmine['requests_opened'].iterkeys():
+        entreeR = KpiRedmine()
+        entreeR.date = dateR
+        entreeR.requests_opened = resultRedmine['requests_opened'][dateR]
+        entreeR.requests_closed = resultRedmine['requests_closed'][dateR]
+        entreeR.requests_remained = resultRedmine['requests_remained'][dateR]
+        entreeR.requests_lifetime = resultRedmine['requests_lifetime'][dateR]
+        entreeR.save()
+        numberR += 1
+        print "\r %s entrees sauvees (kpi redmine)" % numberR,
+        
     nagiosR.save()
-    redmineR.save()
-    return "\n %s lignes ajoutees et 13/15 kpi aussi" % nombre
+    return "\n %s lignes ajoutees et 13/15 kpi aussi" % (number+numberR)
 #resultRedmine = requestRedmine()
 
 if __name__ == '__main__':

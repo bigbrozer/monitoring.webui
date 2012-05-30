@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import timedelta
 
 
 class KpiNagios(models.Model):
@@ -34,6 +35,10 @@ class KpiRedmine(models.Model):
     requests_remained = models.PositiveIntegerField()
     requests_lifetime = models.PositiveIntegerField()
 
+    # def requests_lifetime(self):
+    #     t = timedelta(seconds=(self.request_lifetime))
+    #     return str(t)
+
     def __unicode__(self):
         return str(self.date)
 
@@ -45,7 +50,8 @@ class NagiosNotifications(models.Model):
     host = models.CharField(max_length = 64)
     service = models.CharField(max_length = 128, null = True)
     date = models.DateTimeField(null = True)
-    state = models.PositiveIntegerField()
+    STATE_CHOICES = ((1, 'Warning'),(2, 'Critical'))
+    state = models.PositiveIntegerField(choices = STATE_CHOICES)
     acknowledged = models.BooleanField()
 
     def __unicode__(self):

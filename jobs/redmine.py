@@ -2,6 +2,7 @@ import sqlite3
 from kpi.models import KpiRedmine
 from datetime import datetime, date, timedelta
 from django.utils.timezone import utc
+from pprint import pprint
 
 def request():
     """
@@ -14,59 +15,70 @@ def request():
     # count the number of entry in the programm database for the Redmine kpi
     number = KpiRedmine.objects.count()
 
+    requests_opened = {}
+    requests_closed = {}
+    requests_remained = {}
+    requests_lifetime = {}
+    journey = timedelta(hours = 23, minutes = 59, seconds = 59)
+    oneDay = timedelta(days = 1)
+    #frequency of execution
+    today = datetime.now(tz=utc)
+    today = today.replace(hour = 0, minute = 0, second = 0)    
+
     # first execution of the script
     if number == 0:
         c.execute("SELECT updated_on FROM ISSUES ORDER BY updated_on ASC LIMIT 1")
-        first_date = c.fetchone()[0]
-        first_date.replace(tzinfo = utc)
-        #first_date = datetime.strptime(first_date, "%Y-%m-%d %H:%M:%S")
+        day_midnight = c.fetchone()[0]
+
+
+        day_midnight = day_midnight.replace(hour = 0, minute = 0, second = 0, tzinfo = utc)
         # first date found in redmine database
 
-        t = timedelta(days=1)
-        #frequency of execution
-
-        next_date = first_date + t
-        today = datetime.now(tz=utc)
-        requests_opened = {}
-        requests_closed = {}
-        requests_remained = {}
-        requests_lifetime = {}
-        print first_date
-        while next_date < today: 
+        day_late = day_midnight + journey
+                
+        print day_midnight
+        while day_midnight < today: 
         # loop that goes throuh all the database day per day
-            tu = (first_date, next_date)
-            c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE created_on > ? AND created_on < ?", tu)
-            requests_opened[str(next_date)] = c.fetchone()[0]
-            c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE status_id = 5 AND updated_on > ? AND updated_on < ?", tu)
-            requests_closed[str(next_date)] = c.fetchone()[0]
-            c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE created_on < ? AND updated_on > ?", tu)
-            requests_remained[str(next_date)] = c.fetchone()[0]
+            tu = (day_midnight, day_late)
+            tu2 = (day_late, day_late)
+            c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE created_on >= ? AND created_on < ?", tu)
+            requests_opened[str(day_midnight)] = c.fetchone()[0]            
+            c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE updated_on >= ? AND updated_on < ? AND (status_id = 5 OR status_id = 6 OR status_id = 10)", tu)
+            requests_closed[str(day_midnight)] = c.fetchone()[0]            
+            c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE created_on <= ? AND (updated_on > ? OR (status_id != 5 AND status_id != 6 AND status_id != 10))", tu2)
+            requests_remained[str(day_midnight)] = c.fetchone()[0]            
             lifetime = timedelta(days = 0)
             n = 0
             for request in c.execute('SELECT created_on, updated_on FROM ISSUES WHERE status_id = 5 AND updated_on > ? AND updated_on < ?', tu):
                 lifetime += (request[1] - request[0])
                 n += 1
-            requests_lifetime[str(next_date)] = (lifetime/n)
-            next_date += t
-            first_date += t
+            if n > 0:
+                requests_lifetime[str(day_midnight)] = (lifetime.total_seconds()/n)
+            else:
+                requests_lifetime[str(day_midnight)] = 0
+            day_midnight += oneDay
+            day_late = day_midnight + journey
 
     # at least the second execution        
     else:
-        last_date = KpiRedmine.objects.order_by('-date')[0].date
-        # last date found in the programm database
-        tu = (last_date,)
+        day_midnight = KpiRedmine.objects.order_by('-date')[0].date
+        # last date found in the programm database        
+        tu = (day_midnight,)
         c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE created_on > ?", tu)
-        requests_opened[str(last_date)] = c.fetchone()[0]
+        requests_opened[str(today)] = c.fetchone()[0]
         c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE status_id = 5 AND updated_on > ?", tu)
-        requests_closed[str(last_date)] = c.fetchone()[0]
-        c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE created_on < ? AND status_id != 5 AND status_id != 6", tu)
-        requests_remained[str(last_date)] = c.fetchone()[0]
+        requests_closed[str(today)] = c.fetchone()[0]
+        c.execute("SELECT COUNT (status_id) FROM ISSUES WHERE created_on < ? AND status_id != 5 AND status_id != 6 AND status_id != 10", tu)
+        requests_remained[str(today)] = c.fetchone()[0]
         lifetime = timedelta(days = 0)
         n = 0
-        for request in c.execute("SELECT (created_on, updated_on) FROM ISSUES WHERE status_id = 5 AND updated_on > ?", tu):
+        for request in c.execute("SELECT created_on, updated_on FROM ISSUES WHERE status_id = 5 AND updated_on > ?", tu):
             lifetime += (request[1] - request[0])
             n += 1
-        requests_lifetime[str(last_date)] = (lifetime/n)
+        if n > 0:
+            requests_lifetime[str(today)] = (lifetime/n)
+        else:
+            requests_lifetime[str(today)] = 0
 
     conn.close()
 
