@@ -19,6 +19,12 @@ class KpiNagios(models.Model):
     alerts_hard_critical = models.PositiveIntegerField()
     alerts_acknowledged_warning = models.PositiveIntegerField()
     alerts_acknowledged_critical = models.PositiveIntegerField()
+    alerts_hard_warning.verbose_name = 'Warning alerts'
+    alerts_hard_critical.verbose_name = 'Critical alerts'
+    alerts_acknowledged_warning.verbose_name = 'Warning alerts acknowledged'
+    alerts_acknowledged_critical.verbose_name = 'Critical alerts acknowledged'
+    total_host.verbose_name = 'Hosts'
+    total_services.verbose_name = 'Services'
 
     def __unicode__(self):
         return str(self.date)
@@ -34,6 +40,9 @@ class KpiRedmine(models.Model):
     requests_closed = models.PositiveIntegerField()
     requests_remained = models.PositiveIntegerField()
     requests_lifetime = models.PositiveIntegerField()
+    requests_lifetime_normal = models.PositiveIntegerField()
+    requests_lifetime_high = models.PositiveIntegerField()
+    requests_lifetime_urgent = models.PositiveIntegerField()
 
     # def requests_lifetime(self):
     #     t = timedelta(seconds=(self.request_lifetime))
