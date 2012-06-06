@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>amCharts JS Tutorial Part 1</title>
+
+    <script src="{{ STATIC_URL }}js/amcharts.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var chartData = {{ chart_data|safe }};
+        window.onload = function() {
+
+            createChart();                                               
+
+        }
+
+
+        function createChart(){
+
+            // chart variable is declared in the top
+
+            chart = new AmCharts.AmSerialChart();
+            chart.dataProvider = chartData;
+
+            // here we tell the chart name of category 
+
+            // field in our data provider.
+
+            // we called it "date" (look at parseCSV method)
+
+            chart.categoryField = "date";
+
+            
+
+            // chart must have a graph
+
+            var graph = new AmCharts.AmGraph();
+
+            // graph should know at what field from data
+
+            // provider it should get values.
+
+            // let's assign value1 field for this graph
+
+            graph.valueField = "remained";
+
+            // and add graph to the chart
+
+            chart.addGraph(graph);            
+
+            // 'chartdiv' is id of a container 
+
+            // where our chart will be  
+            chart.validateData();                      
+
+            chart.write('chartContainer');
+
+        }
+    </script>
+</head>
+<body>
+    <div id="chartContainer" style="width: 640px; height: 400px;"></div>
+</body>
+</html>

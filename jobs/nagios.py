@@ -1,12 +1,20 @@
-import livestatus as live
+"""
+get the results from nagios
+"""
 
-def request(lastTimestamp):
+import livestatus as live
+from os import path
+
+
+
+
+def get_satellites():
     """
     return the key indicators from the last timestamp to now 
     param lastTimestamp: the last timestamp found in the database
     type lastTimestamp: integer 
 
-    """
+    """   
 
     connections = {
         'EDC1': {
@@ -60,8 +68,15 @@ def request(lastTimestamp):
 
     }
     satellites = live.MultiSiteConnection(connections)
+    return satellites
 
+def request():
+    """
+    get the kpi from redmine
+    """
+    kbpath = "/home/fellet/pages"
 
+    satellites = get_satellites()
     # Total number of hosts ---------------------------------------------------
 
     nb_total_hosts = satellites.query("""\
@@ -128,8 +143,55 @@ Filter: name = sys_aix
         nombre += sat[0]
 
     nb_aix = nombre
-    
 
+    # get the service with path to the procedure ------------------------------
+
+    services_all = satellites.query("""\
+GET services
+Columns: host_name description notes_url_expanded contact_groups
+""")    
+    written_procedures = 0
+    missing_procedures = 0
+    myreport = open("report.csv", "w")
+    myreport.write("written;hostname;services;procedure;stratos\n")
+    for services in services_all:        
+        procedure_path = services[2].split('/')[-1].replace(':', '/').lower()
+        empty = 1
+        for serv in services[3]:
+            if empty == 1:
+                list_contact = "%s" % serv
+                empty = 0
+            else:
+                list_contact += ", %s" % serv
+                empty = 0
+        if path.lexists("%s/%s.txt" % (kbpath, procedure_path)):
+            written_procedures += 1            
+            myreport.write("yes;%s;%s;%s;%s\n" % (services[0], 
+                services[1], services[2], list_contact))
+        else:
+            missing_procedures += 1
+            myreport.write("no;%s;%s;%s;%s\n" % (services[0], 
+                services[1], services[2], list_contact))
+    myreport.close()    
+
+    result = {
+    'total_hosts': nb_total_hosts,
+    'total_services': nb_total_services,
+    'linux': nb_linux,
+    'windows': nb_windows,
+    'aix': nb_aix,
+    'written_procedures': written_procedures,        
+    'missing_procedures': missing_procedures    
+    }
+
+    return result
+
+def request_notifications(last_timestamp):
+    """
+    get the notifications from nagios
+    """
+
+    satellites = get_satellites()
     # Get ALL the notifications from the last timestamp -----------------------
 
     notifications_satellites = satellites.query("""\
@@ -151,18 +213,10 @@ Filter: options ~ ACKNOWLEDGEMENT
 Filter: state = 2
 And: 2
 Or: 4
-""" % lastTimestamp)
+""" % last_timestamp)
+
+    return notifications_satellites
 
 
-    result = {
-    'total_hosts': nb_total_hosts,
-    'total_services': nb_total_services,
-    'linux': nb_linux,
-    'windows': nb_windows,
-    'aix': nb_aix,
-    'notifications' : notifications_satellites
-    }
-
-    return result
     
 

@@ -1,3 +1,7 @@
+"""
+set the website urls
+"""
+
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
@@ -6,7 +10,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^indicateurs/', 'kpi.views.indicateurs'),
+    url(r'^$', 'kpi.indicateurs.indicateurs'),
+    url(r'^indicateurs/', 'kpi.indicateurs.indicateurs'),
     # url(r'^reporting/', include('reporting.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

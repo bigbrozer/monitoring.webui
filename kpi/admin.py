@@ -1,30 +1,82 @@
+"""
+settings from the admin site
+"""
+
 from django.contrib import admin
 from kpi.models import KpiNagios, KpiRedmine
 from kpi.models import NagiosNotifications
-from datetime import timedelta
+from jobs.insert import insert_redmine, insert_nagios_notifications
+from jobs.insert import get_notifications
+from django.utils import timezone
+import pytz
 
-class kpiNagiosAdmin(admin.ModelAdmin):
-    list_display = ('date', 'total_host', 'total_services', 'linux', 'windows', 'aix','alerts_hard_warning', 'alerts_hard_critical', 'alerts_acknowledged_warning', 'alerts_acknowledged_critical',)
+class KpiNagiosAdmin(admin.ModelAdmin):
+    """
+    modify default settings for kpi nagios
+    """
+    #fields = (('date', 'total_host', 'total_services', 'written_procedures',
+    # 'missing_procedures', 'linux', 'windows', 'aix'),('alerts_hard_warning',
+    #  'alerts_hard_critical', 'alerts_acknowledged_warning',
+    #  'alerts_acknowledged_critical', ))
+    list_display = ('date', 'total_host', 'total_services',
+        'written_procedures', 'missing_procedures', 'linux', 'windows', 'aix',
+        'alerts_hard_warning', 'alerts_hard_critical',
+        'alerts_acknowledged_warning', 'alerts_acknowledged_critical', )
     date_hierarchy = 'date'
     ordering = ['-date']
-    
-class kpiRedmineAdmin(admin.ModelAdmin):
-    list_display = ('date', 'requests_opened', 'requests_closed', 'requests_remained', 'lifetime')
+
+class KpiRedmineAdmin(admin.ModelAdmin):
+    """
+    modify default settings for kpi redmine
+    """
+    list_display = ('date', 'requests_opened', 'requests_closed',
+        'requests_remained', 'lifetime', 'lifetime_normal', 'lifetime_high',
+        'lifetime_urgent')
     date_hierarchy = 'date'
     ordering = ['-date']
+    actions = ['update']
 
-    def lifetime(self, obj):
-        # sec = obj.requests_lifetime
-        # t = timedelta(seconds=sec)
-        # return str(t)
-        return "%s" % timedelta(seconds = obj.requests_lifetime)
+    def update(self, request, queryset):
+        """
+        update database from selected date
+        """
+        tzname = timezone.get_current_timezone_name()
+        tzinfo = pytz.timezone(tzname)
+        date = queryset[0].date
+        date_locale = tzinfo.normalize(date)
+        KpiRedmine.objects.filter(date__gte = date).delete()
+        rows_updated = insert_redmine()
+        self.message_user(
+            request,
+            "%s entries successfully updated from %s" % (rows_updated,
+                                                    date_locale.strftime("%c")))
+        # self.message_user(request, "%s" % (queryset))
+    update.short_description = "Update database from selected date"
 
 class NagiosAdmin(admin.ModelAdmin):
+    """
+    modify default settings for nagios notifications
+    """
     list_display = ('date', 'host', 'service', 'state', 'acknowledged')
     date_hierarchy = 'date'
     ordering = ['-date']
     list_filter = ('acknowledged', 'state')
+    actions = ['update']
+    def update(self, request, queryset):
+        """
+        update database from last date
+        """
+        tzname = timezone.get_current_timezone_name()
+        tzinfo = pytz.timezone(tzname)
+        date = NagiosNotifications.objects.order_by('-date')[0].date
+        date_locale = tzinfo.normalize(date)
+        rows_updated = insert_nagios_notifications(get_notifications())
+        self.message_user(
+            request,
+            "%s new notifications imported from %s" % (rows_updated,
+                                                    date_locale.strftime("%c")))
+    update.short_description = "Update database"
 
-admin.site.register(KpiNagios, kpiNagiosAdmin)
-admin.site.register(KpiRedmine, kpiRedmineAdmin)
+admin.site.register(KpiNagios, KpiNagiosAdmin)
+admin.site.register(KpiRedmine, KpiRedmineAdmin)
 admin.site.register(NagiosNotifications, NagiosAdmin)
