@@ -42,7 +42,8 @@ class KpiRedmineAdmin(admin.ModelAdmin):
         """
         tzname = timezone.get_current_timezone_name()
         tzinfo = pytz.timezone(tzname)
-        date = queryset[0].date
+        for query in queryset:
+            date = query.date
         date_locale = tzinfo.normalize(date)
         KpiRedmine.objects.filter(date__gte = date).delete()
         rows_updated = insert_redmine()
