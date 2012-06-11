@@ -66,7 +66,7 @@ function createRequests(chartData) {
     // PANELS ///////////////////////////////////
 
 //  1) First panel value : remained ----------------------------
-    var period_value = "Open";
+    var period_value = "High";
 
     graphRemained = new AmCharts.StockGraph();
     graphRemained.valueField = "remained";
