@@ -30,13 +30,14 @@ function old_createRequests(chartData) {
     chart.write('chartContainer2');
 }
 
-function createRequests(chartData) {
+function createRequests() {
     "use strict";
 
-    var chart, graphRemained, dataset, categoryAxesSettings, stockPanelRemained,
-        scrollbarSettings, cursorSettings, periodSelector, panelsSettings,
-        graphOpened, stockPanelOpened, graphClosed, stockPanelClosed,
-        stockLegendRemained, stockLegendOpened, stockLegendClosed;
+    var chart, graphRemained, dataset, dataset2, dataset3, categoryAxesSettings,
+        stockPanelRemained, scrollbarSettings, cursorSettings, periodSelector,
+        panelsSettings, graphOpened, stockPanelOpened, graphClosed,
+        stockPanelClosed, stockLegendRemained, stockLegendOpened,
+        stockLegendClosed, period_value;
 
     // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
@@ -48,6 +49,7 @@ function createRequests(chartData) {
     chart.categoryAxesSettings = categoryAxesSettings;
 
     // DATASET //////////////////////////////////
+// Dataset 1 : remained  ---------------------------------------
     dataset = new AmCharts.DataSet();
     dataset.fieldMappings = [{
         fromField: "remained",
@@ -61,35 +63,42 @@ function createRequests(chartData) {
     }];
     dataset.dataProvider = chartData;
     dataset.categoryField = "date";
+
     chart.dataSets = [dataset];
 
     // PANELS ///////////////////////////////////
 
 //  1) First panel value : remained ----------------------------
-    var period_value = "High";
+    period_value = "High";
 
     graphRemained = new AmCharts.StockGraph();
     graphRemained.valueField = "remained";
     graphRemained.type = "smoothedLine";
+    graphRemained.title = "Remained"
+    graphRemained.lineThickness = 2;
+    graphRemained.lineColor = "#FF0000";
+    graphRemained.useDataSetColors = false;
     graphRemained.periodValue = period_value;
 
 //  1) StockPanel options
     stockPanelRemained = new AmCharts.StockPanel();
-    stockPanelRemained.title = "Requests remained";
+    stockPanelRemained.title = "Requests";
     stockPanelRemained.percentHeight = 34;
     stockPanelRemained.addStockGraph(graphRemained);
     stockPanelRemained.showCategoryAxis = false;
 
 //  1) StockLegend options
     stockLegendRemained = new AmCharts.StockLegend();
-    stockLegendRemained.valueTextRegular = " ";
-    stockLegendRemained.markerType = "none";
     stockPanelRemained.stockLegend = stockLegendRemained;
 
 //  2) Second panel value : opened -----------------------------
     graphOpened = new AmCharts.StockGraph();
     graphOpened.valueField = "opened";
     graphOpened.type = "column";
+    graphOpened.title = "Opened";
+    graphOpened.lineThickness = 2;
+    graphOpened.lineColor = "#FF9900";
+    graphOpened.useDataSetColors = false;
     graphOpened.fillAlphas = 1;
     graphOpened.periodValue = period_value;
     graphOpened.cornerRadiusTop = 2;
@@ -97,24 +106,23 @@ function createRequests(chartData) {
 //  2) StockPanel options
     stockPanelOpened = new AmCharts.StockPanel();
     stockPanelOpened.percentHeight = 50;
-    stockPanelOpened.title = "Requests Opened & Closed";
     stockPanelOpened.addStockGraph(graphOpened);
 
 //  2) StockLegend options
     stockLegendOpened = new AmCharts.StockLegend();
-    stockLegendOpened.valueTextRegular = " ";
-    stockLegendOpened.markerType = "none";
     stockPanelOpened.stockLegend = stockLegendOpened;
 
 //  3) Third panel value : closed ------------------------------
     graphClosed = new AmCharts.StockGraph();
     graphClosed.valueField = "closed";
+    graphClosed.title = "Closed";
+    graphClosed.lineThickness = 2;
     graphClosed.type = "smoothedLine";
-    graphClosed.lineColor = "#2d66bb";
-    graphClosed.fillColor = "#2d66bb";
-    graphClosed.fillAlphas = 0.2;
-    graphClosed.cornerRadiusTop = 2;
+    graphClosed.fillColor = "#00CC00";
+    graphClosed.lineColor = "#00CC00";
     graphClosed.useDataSetColors = false;
+    graphClosed.fillAlphas = 0.15;
+    graphClosed.cornerRadiusTop = 2;
     graphClosed.periodValue = period_value;
     stockPanelOpened.addStockGraph(graphClosed);
 
@@ -166,7 +174,7 @@ function createRequests(chartData) {
 
     chart.panelsSettings = panelsSettings;
 
-    chart.write('chartContainer');
+    chart.write('graphRequest');
 }
 
 function deleteAmChart() {

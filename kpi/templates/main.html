@@ -9,14 +9,14 @@
     <script type="text/javascript">
         var chartData = {{ chart_data|safe }};
         AmCharts.ready(function () {
-            createRequests(chartData);
+            createRequests();
             deleteAmChart();
         });
     </script>
 
 </head>
 <body>
-    <div onMouseOver="javascript:deleteAmChart();" id="chartContainer" style="width: 640px; height: 400px;"></div>
+    <div onMouseOver="javascript:deleteAmChart();" id="graphRequest" style="width: 100%; height: 400px;"></div>
     <div onMouseOver="deleteAmChart()" id="chartContainer2" style="width: 640px; height: 400px;"></div>
 </body>
 </html>
