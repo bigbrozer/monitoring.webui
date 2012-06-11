@@ -66,9 +66,12 @@ function createRequests(chartData) {
     // PANELS ///////////////////////////////////
 
 //  1) First panel value : remained ----------------------------
+    var period_value = "Open";
+
     graphRemained = new AmCharts.StockGraph();
     graphRemained.valueField = "remained";
     graphRemained.type = "smoothedLine";
+    graphRemained.periodValue = period_value;
 
 //  1) StockPanel options
     stockPanelRemained = new AmCharts.StockPanel();
@@ -88,6 +91,7 @@ function createRequests(chartData) {
     graphOpened.valueField = "opened";
     graphOpened.type = "column";
     graphOpened.fillAlphas = 1;
+    graphOpened.periodValue = period_value;
     graphOpened.cornerRadiusTop = 2;
 
 //  2) StockPanel options
@@ -111,6 +115,7 @@ function createRequests(chartData) {
     graphClosed.fillAlphas = 0.2;
     graphClosed.cornerRadiusTop = 2;
     graphClosed.useDataSetColors = false;
+    graphClosed.periodValue = period_value;
     stockPanelOpened.addStockGraph(graphClosed);
 
     chart.panels = [stockPanelRemained, stockPanelOpened];
