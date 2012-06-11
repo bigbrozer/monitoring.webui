@@ -3,22 +3,20 @@
 <head>
     <title>Monitoring Keys Indicators</title>
 
-    <script src="{{ STATIC_URL }}js/amcharts.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}js/amstock.js"></script>
     <script src="{{ STATIC_URL }}js/createGraphs.js"></script>
     <link rel="stylesheet" href="{{ STATIC_URL }}js/style.css">
     <script type="text/javascript">
         var chartData = {{ chart_data|safe }};
-        window.onload = function () {
+        AmCharts.ready(function () {
             createRequests(chartData);
             deleteAmChart();
-        }
+        });
     </script>
 
 </head>
 <body>
-    <div onMouseOver="deleteAmChart()" id="chartContainer" style="width: 640px; height: 400px;"></div>
+    <div onMouseOver="javascript:deleteAmChart();" id="chartContainer" style="width: 640px; height: 400px;"></div>
     <div onMouseOver="deleteAmChart()" id="chartContainer2" style="width: 640px; height: 400px;"></div>
 </body>
 </html>
