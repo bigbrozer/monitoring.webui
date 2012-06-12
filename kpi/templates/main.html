@@ -7,16 +7,18 @@
     <script src="{{ STATIC_URL }}js/createGraphs.js"></script>
     <link rel="stylesheet" href="{{ STATIC_URL }}js/style.css">
     <script type="text/javascript">
-        var chartData = {{ chart_data|safe }};
+        var chartDataRequest = {{ chart_data_request|safe }};
+        var chartDataLifetime = {{ chart_data_lifetime|safe }};
         AmCharts.ready(function () {
             createRequests();
+            createLifetime();
             deleteAmChart();
         });
     </script>
 
 </head>
 <body>
-    <div onMouseOver="javascript:deleteAmChart();" id="graphRequest" style="width: 100%; height: 400px;"></div>
-    <div onMouseOver="deleteAmChart()" id="chartContainer2" style="width: 640px; height: 400px;"></div>
+    <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" id="graphRequest" style="width: 100%; height: 400px;"></div>
+    <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" id="graphLifetime" style="width: 100%; height: 400px;"></div>
 </body>
 </html>

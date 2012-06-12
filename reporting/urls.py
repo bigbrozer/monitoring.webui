@@ -10,7 +10,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'kpi.indicateurs.indicateurs'),
+    url(r'^$', 'kpi.indicateurs.redirect_to_indic'),
     url(r'^indicateurs', 'kpi.indicateurs.indicateurs'),
     # url(r'^reporting/', include('reporting.foo.urls')),
 
