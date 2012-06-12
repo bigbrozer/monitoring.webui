@@ -39,7 +39,9 @@ function createRequests() {
         stockPanelRemained, scrollbarSettings, cursorSettings, periodSelector,
         panelsSettings, graphOpened, stockPanelOpened, graphClosed,
         stockPanelClosed, stockLegendRemained, stockLegendOpened,
-        stockLegendClosed, period_value;
+        stockLegendClosed, period_value, graphLifetimeGlobal,
+        stockPanelLifetime, stockLegendLifetime, graphLifetimeNormal,
+        graphLifetimeHigh, graphLifetimeUrgent, panelsSettings2;
 
     // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
@@ -62,6 +64,18 @@ function createRequests() {
     }, {
         fromField: "closed",
         toField: "closed"
+    }, {
+        fromField: "global",
+        toField: "global"
+    }, {
+        fromField: "normal",
+        toField: "normal"
+    }, {
+        fromField: "high",
+        toField: "high"
+    }, {
+        fromField: "urgent",
+        toField: "urgent"
     }];
     dataset.dataProvider = chartDataRequest;
     dataset.categoryField = "date";
@@ -85,7 +99,7 @@ function createRequests() {
 //  1) StockPanel options
     stockPanelRemained = new AmCharts.StockPanel();
     stockPanelRemained.title = "Requests";
-    stockPanelRemained.percentHeight = 34;
+    stockPanelRemained.percentHeight = 25;
     stockPanelRemained.addStockGraph(graphRemained);
     stockPanelRemained.showCategoryAxis = false;
 
@@ -102,12 +116,13 @@ function createRequests() {
     graphOpened.lineColor = "#FF9900";
     graphOpened.useDataSetColors = false;
     graphOpened.fillAlphas = 1;
-    graphOpened.periodValue = period_value;
+    graphOpened.periodValue = "Sum";
     graphOpened.cornerRadiusTop = 2;
 
 //  2) StockPanel options
     stockPanelOpened = new AmCharts.StockPanel();
-    stockPanelOpened.percentHeight = 50;
+    stockPanelOpened.percentHeight = 25;
+    stockPanelOpened.showCategoryAxis = false;
     stockPanelOpened.addStockGraph(graphOpened);
 
 //  2) StockLegend options
@@ -125,10 +140,84 @@ function createRequests() {
     graphClosed.useDataSetColors = false;
     graphClosed.fillAlphas = 0.15;
     graphClosed.cornerRadiusTop = 2;
-    graphClosed.periodValue = period_value;
+    graphClosed.periodValue = "Sum";
     stockPanelOpened.addStockGraph(graphClosed);
 
-    chart.panels = [stockPanelRemained, stockPanelOpened];
+// panel number 3
+    period_value = "Average";
+
+    graphLifetimeGlobal = new AmCharts.StockGraph();
+    graphLifetimeGlobal.valueField = "global";
+    graphLifetimeGlobal.type = "smoothedLine";
+    graphLifetimeGlobal.title = "Global";
+    graphLifetimeGlobal.balloonText += " days";
+    graphLifetimeGlobal.legendValueText += " days";
+    graphLifetimeGlobal.lineThickness = 2;
+    graphLifetimeGlobal.lineColor = "#000000";
+    graphLifetimeGlobal.useDataSetColors = false;
+    graphLifetimeGlobal.fillAlphas = 0.1;
+    graphLifetimeGlobal.periodValue = period_value;
+
+//  1) StockPanel options
+    stockPanelLifetime = new AmCharts.StockPanel();
+    stockPanelLifetime.title = "Lifetime";
+    stockPanelLifetime.percentHeight = 50;
+    stockPanelLifetime.addStockGraph(graphLifetimeGlobal);
+
+//  1) StockLegend options
+    stockLegendLifetime = new AmCharts.StockLegend();
+    stockLegendLifetime.valueTextRegular += " days";
+    stockPanelLifetime.stockLegend = stockLegendLifetime;
+
+//  2) Second graph value : normal -----------------------------
+    graphLifetimeNormal = new AmCharts.StockGraph();
+    graphLifetimeNormal.valueField = "normal";
+    graphLifetimeNormal.type = "smoothedLine";
+    graphLifetimeNormal.title = "Normal";
+    graphLifetimeNormal.balloonText += " days";
+    graphLifetimeNormal.hidden = true;
+    graphLifetimeNormal.lineThickness = 2;
+    graphLifetimeNormal.lineColor = "#0066FF";
+    graphLifetimeNormal.useDataSetColors = false;
+    graphLifetimeNormal.fillAlphas = 0.1;
+    graphLifetimeNormal.periodValue = period_value;
+    graphLifetimeNormal.cornerRadiusTop = 2;
+
+    stockPanelLifetime.addStockGraph(graphLifetimeNormal);
+
+//  3) Third graph value : high ------------------------------
+    graphLifetimeHigh = new AmCharts.StockGraph();
+    graphLifetimeHigh.valueField = "high";
+    graphLifetimeHigh.type = "smoothedLine";
+    graphLifetimeHigh.title = "High";
+    graphLifetimeHigh.balloonText += " days";
+    graphLifetimeHigh.hidden = true;
+    graphLifetimeHigh.lineThickness = 2;
+    graphLifetimeHigh.lineColor = "#FF9900";
+    graphLifetimeHigh.useDataSetColors = false;
+    graphLifetimeHigh.fillAlphas = 0.1;
+    graphLifetimeHigh.periodValue = period_value;
+    graphLifetimeHigh.cornerRadiusTop = 2;
+
+    stockPanelLifetime.addStockGraph(graphLifetimeHigh);
+
+//  4) Fourth graph value : urgent ------------------------------
+    graphLifetimeUrgent = new AmCharts.StockGraph();
+    graphLifetimeUrgent.valueField = "urgent";
+    graphLifetimeUrgent.type = "smoothedLine";
+    graphLifetimeUrgent.title = "Urgent";
+    graphLifetimeUrgent.balloonText += " days";
+    graphLifetimeUrgent.hidden = true;
+    graphLifetimeUrgent.lineThickness = 2;
+    graphLifetimeUrgent.lineColor = "#FF0000";
+    graphLifetimeUrgent.useDataSetColors = false;
+    graphLifetimeUrgent.fillAlphas = 0.1;
+    graphLifetimeUrgent.periodValue = period_value;
+    graphLifetimeUrgent.cornerRadiusTop = 2;
+
+    stockPanelLifetime.addStockGraph(graphLifetimeUrgent);
+
+    chart.panels = [stockPanelRemained, stockPanelOpened, stockPanelLifetime];
 
     // OTHER SETTINGS ///////////////////////////
     scrollbarSettings = new AmCharts.ChartScrollbarSettings();
@@ -180,174 +269,6 @@ function createRequests() {
 
     chart.write('graphRequest');
     deleteAmChart();
-}
-
-
-/////////////////// LIFETIME ///////////////////////////////////////////////////
-
-
-function createLifetime() {
-    "use strict";
-    var chart, categoryAxesSettings, dataset, period_value, graphLifetimeGlobal,
-        stockPanelLifetime, stockLegendLifetime, graphLifetimeNormal,
-        graphLifetimeHigh, graphLifetimeUrgent, scrollbarSettings,
-        cursorSettings, periodSelector, panelsSettings;
-
-    // CHART ////////////////////////////////////
-    chart = new AmCharts.AmStockChart();
-    chart.pathToImages = "/static/js/images/";
-    // chart.dataProvider = chartData;
-
-    categoryAxesSettings = new AmCharts.CategoryAxesSettings();
-    categoryAxesSettings.minPeriod = "DD";
-    chart.categoryAxesSettings = categoryAxesSettings;
-
-    // DATASET //////////////////////////////////
-// Dataset 1 : remained  ---------------------------------------
-    dataset = new AmCharts.DataSet();
-    dataset.fieldMappings = [{
-        fromField: "global",
-        toField: "global"
-    }, {
-        fromField: "normal",
-        toField: "normal"
-    }, {
-        fromField: "high",
-        toField: "high"
-    }, {
-        fromField: "urgent",
-        toField: "urgent"
-    }];
-    dataset.dataProvider = chartDataLifetime;
-    dataset.categoryField = "date";
-
-    chart.dataSets = [dataset];
-
-    // PANELS ///////////////////////////////////
-
-//  1) First graph value : global ----------------------------
-    period_value = "Average";
-
-    graphLifetimeGlobal = new AmCharts.StockGraph();
-    graphLifetimeGlobal.valueField = "global";
-    graphLifetimeGlobal.type = "smoothedLine";
-    graphLifetimeGlobal.title = "Global";
-    graphLifetimeGlobal.lineThickness = 2;
-    graphLifetimeGlobal.lineColor = "#000000";
-    graphLifetimeGlobal.useDataSetColors = false;
-    graphLifetimeGlobal.fillAlphas = 0.1;
-    graphLifetimeGlobal.periodValue = period_value;
-    chart.numberFormatter = {precision: 0};
-
-//  1) StockPanel options
-    stockPanelLifetime = new AmCharts.StockPanel();
-    stockPanelLifetime.title = "Lifetime";
-    stockPanelLifetime.percentHeight = 34;
-    stockPanelLifetime.addStockGraph(graphLifetimeGlobal);
-
-//  1) StockLegend options
-    stockLegendLifetime = new AmCharts.StockLegend();
-    stockPanelLifetime.stockLegend = stockLegendLifetime;
-
-//  2) Second graph value : normal -----------------------------
-    graphLifetimeNormal = new AmCharts.StockGraph();
-    graphLifetimeNormal.valueField = "normal";
-    graphLifetimeNormal.type = "smoothedLine";
-    graphLifetimeNormal.title = "Normal";
-    graphLifetimeNormal.hidden = true;
-    graphLifetimeNormal.lineThickness = 2;
-    graphLifetimeNormal.lineColor = "#0066FF";
-    graphLifetimeNormal.useDataSetColors = false;
-    graphLifetimeNormal.fillAlphas = 0.1;
-    graphLifetimeNormal.periodValue = period_value;
-    graphLifetimeNormal.cornerRadiusTop = 2;
-
-    stockPanelLifetime.addStockGraph(graphLifetimeNormal);
-
-//  3) Third graph value : high ------------------------------
-    graphLifetimeHigh = new AmCharts.StockGraph();
-    graphLifetimeHigh.valueField = "high";
-    graphLifetimeHigh.type = "smoothedLine";
-    graphLifetimeHigh.title = "High";
-    graphLifetimeHigh.hidden = true;
-    graphLifetimeHigh.lineThickness = 2;
-    graphLifetimeHigh.lineColor = "#FF9900";
-    graphLifetimeHigh.useDataSetColors = false;
-    graphLifetimeHigh.fillAlphas = 0.1;
-    graphLifetimeHigh.periodValue = period_value;
-    graphLifetimeHigh.cornerRadiusTop = 2;
-
-    stockPanelLifetime.addStockGraph(graphLifetimeHigh);
-
-//  4) Fourth graph value : urgent ------------------------------
-    graphLifetimeUrgent = new AmCharts.StockGraph();
-    graphLifetimeUrgent.valueField = "urgent";
-    graphLifetimeUrgent.type = "smoothedLine";
-    graphLifetimeUrgent.title = "Urgent";
-    graphLifetimeUrgent.hidden = true;
-    graphLifetimeUrgent.lineThickness = 2;
-    graphLifetimeUrgent.lineColor = "#FF0000";
-    graphLifetimeUrgent.useDataSetColors = false;
-    graphLifetimeUrgent.fillAlphas = 0.1;
-    graphLifetimeUrgent.periodValue = period_value;
-    graphLifetimeUrgent.cornerRadiusTop = 2;
-
-    stockPanelLifetime.addStockGraph(graphLifetimeUrgent);
-
-    chart.panels = [stockPanelLifetime];
-
-    // OTHER SETTINGS ///////////////////////////
-    scrollbarSettings = new AmCharts.ChartScrollbarSettings();
-    scrollbarSettings.graph = graphLifetimeNormal;
-    scrollbarSettings.updateOnReleaseOnly = false;
-    chart.chartScrollbarSettings = scrollbarSettings;
-
-    cursorSettings = new AmCharts.ChartCursorSettings();
-    cursorSettings.valueBalloonsEnabled = true;
-    chart.chartCursorSettings = cursorSettings;
-
-    // PERIOD SELECTOR //////////////////////////
-    periodSelector = new AmCharts.PeriodSelector();
-    periodSelector.periods = [{
-        period: "DD",
-        count: 15,
-        label: "2 Weeks",
-        selected: false
-    }, {
-        period: "MM",
-        count: 1,
-        label: "1 Month",
-        selected: false
-    }, {
-        period: "MM",
-        count: 6,
-        label: "6 Months",
-        selected: false
-    }, {
-        period: "YYYY",
-        count: 1,
-        label: "1 Year",
-        selected: false
-    }, {
-        period: "MAX",
-        label: "MAX",
-        selected: true
-    }];
-    chart.periodSelector = periodSelector;
-
-    // PANEL SETTING ////////////////////////////
-    panelsSettings = new AmCharts.PanelsSettings();
-    panelsSettings.usePrefixes = true;
-    panelsSettings.panEventsEnabled = true;
-    panelsSettings.numberFormatter = {precision: 0, thousandsSeparator: ' '};
-    panelsSettings.usePrefixes = true;
-    panelsSettings.prefixesOfBigNumbers = [{number: 1, prefix: " hours"}, {number: 24, prefix: " days"}];
-
-    chart.panelsSettings = panelsSettings;
-
-    chart.write('graphLifetime');
-    deleteAmChart();
-
 }
 
 function deleteAmChart() {
