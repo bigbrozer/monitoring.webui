@@ -12,8 +12,8 @@ def indicateurs(request):
     kpi_redmine = KpiRedmine.objects.all().order_by("date")
 
     chart_data_request = "[\n"
-    for index, kpi in enumerate(kpi_redmine):
 
+    for index, kpi in enumerate(kpi_redmine):
         lifetime = round(kpi.requests_lifetime/3600/24)
         lifetime_normal = round(kpi.requests_lifetime_normal/3600/24)
         lifetime_high = round(kpi.requests_lifetime_high/3600/24)
@@ -29,6 +29,26 @@ def indicateurs(request):
             chart_data_request += ",\n"
 
     chart_data_request += "\n]"
+
+    chart_data_nagios = "[\n"
+    kpi_nagios = KpiNagios.objects.all().order_by("date")
+
+    for index, kpi in enumerate(kpi_nagios):
+        chart_data_nagios += '{date: new Date("%s"), total_host: %d, '\
+        'total_services: %d, written_procedures: %d, missing_procedures: %d, '\
+        'linux: %d, windows: %d, aix: %d, alerts_hard_warning: %d, '\
+        'alerts_hard_critical: %d, alerts_acknowledged_warning: %d, '\
+        'alerts_acknowledged_critical: %d}' % (kpi.date.isoformat(),\
+        kpi.total_host, kpi.total_services, kpi.written_procedures,\
+        kpi.missing_procedures, kpi.linux, kpi.windows, kpi.aix,\
+        kpi.alerts_hard_warning, kpi.alerts_hard_critical,\
+        kpi.alerts_acknowledged_warning, kpi.alerts_acknowledged_critical)
+
+        if index != len(kpi_nagios)-1:
+            chart_data_nagios += ",\n"
+
+    chart_data_nagios += "\n]"
+
 
     return render_to_response(
         'main.html', locals(), context_instance = RequestContext(request))
