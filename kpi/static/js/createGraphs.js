@@ -440,6 +440,7 @@ function createWritten() {
 
 // valueAxesSettings
     valueAxesSettings = new AmCharts.ValueAxesSettings();
+    valueAxesSettings.stackType = "regular";
     chart.valueAxesSettings = valueAxesSettings;
 
 // DATASET //////////////////////////////////
@@ -462,7 +463,7 @@ function createWritten() {
 
     graphWritten = new AmCharts.StockGraph();
     graphWritten.valueField = "written_procedures";
-    graphWritten.type = "smoothedLine";
+    graphWritten.type = "line";
     graphWritten.title = "Written procedures";
     graphWritten.balloonText += " ([[percents]]%)";
     graphWritten.lineColor = "#00CC00";
@@ -479,7 +480,6 @@ function createWritten() {
     stockPanelWritten = new AmCharts.StockPanel();
     stockPanelWritten.title = "Total Written & Missing procedures";
     stockPanelWritten.percentHeight = 50;
-    stockPanelWritten.addStockGraph(graphWritten);
 
 //  1) stockLegend Written
     stockLegendWritten = new AmCharts.StockLegend();
@@ -490,7 +490,7 @@ function createWritten() {
 
     graphMissing = new AmCharts.StockGraph();
     graphMissing.valueField = "missing_procedures";
-    graphMissing.type = "smoothedLine";
+    graphMissing.type = "line";
     graphMissing.title = "Missing procedures";
     graphMissing.balloonText += " ([[percents]]%)";
     graphMissing.lineColor = "#FF0000";
@@ -503,6 +503,7 @@ function createWritten() {
     graphMissing.hideBulletsCount = 35;
     graphMissing.bullet = "bubble";
 
+    stockPanelWritten.addStockGraph(graphWritten);
     stockPanelWritten.addStockGraph(graphMissing);
 
     chart.panels = [stockPanelWritten];
@@ -559,8 +560,29 @@ function createWritten() {
     deleteAmChart();
 }
 
-/*
-    {
+function createEquipements() {
+    "use strict";
+    var chart, categoryAxesSettings, dataset, graphLinux, stockPanelLinux,
+        stockLegendLinux, graphWindows, graphAix, scrollbarSettings,
+        cursorSettings, periodSelector, panelsSettings, valueAxesSettings;
+
+// CHART ////////////////////////////////////
+    chart = new AmCharts.AmStockChart();
+    chart.pathToImages = "/static/js/images/";
+
+// categoryAxesSettings
+    categoryAxesSettings = new AmCharts.CategoryAxesSettings();
+    categoryAxesSettings.minPeriod = "DD";
+    chart.categoryAxesSettings = categoryAxesSettings;
+
+// valueAxesSettings
+    valueAxesSettings = new AmCharts.ValueAxesSettings();
+    valueAxesSettings.stackType = "regular";
+    chart.valueAxesSettings = valueAxesSettings;
+
+// DATASET //////////////////////////////////
+    dataset = new AmCharts.DataSet();
+    dataset.fieldMappings = [{
         fromField: "linux",
         toField: "linux"
     }, {
@@ -569,7 +591,136 @@ function createWritten() {
     }, {
         fromField: "aix",
         toField: "aix"
+    }];
+    dataset.dataProvider = chartDataNagios;
+    dataset.categoryField = "date";
+
+    chart.dataSets = [dataset];
+
+// PANELS ///////////////////////////////////
+
+//  1) graph Linux
+
+    graphLinux = new AmCharts.StockGraph();
+    graphLinux.valueField = "linux";
+    graphLinux.type = "line";
+    graphLinux.title = "Linux";
+    graphLinux.balloonText += " ([[percents]]%)";
+    graphLinux.lineColor = "#FFFF00";
+    graphLinux.lineThickness = 2;
+    graphLinux.fillColor = "#FFFF00";
+    graphLinux.useDataSetColors = false;
+    graphLinux.periodValue = "Average";
+    graphLinux.fillAlphas = 0.7;
+    graphLinux.stacked = false;
+    graphLinux.hideBulletsCount = 35;
+    graphLinux.bullet = "bubble";
+
+//  1) stockPanel Linux
+    stockPanelLinux = new AmCharts.StockPanel();
+    stockPanelLinux.title = "Number Of Equipement";
+    stockPanelLinux.percentHeight = 50;
+
+//  1) stockLegend Linux
+    stockLegendLinux = new AmCharts.StockLegend();
+    stockLegendLinux.valueTextRegular = "[[percents]]%";
+    stockPanelLinux.stockLegend = stockLegendLinux;
+
+//  2) graph Windows
+
+    graphWindows = new AmCharts.StockGraph();
+    graphWindows.valueField = "windows";
+    graphWindows.type = "line";
+    graphWindows.title = "Windows";
+    graphWindows.balloonText += " ([[percents]]%)";
+    graphWindows.lineColor = "#0066FF";
+    graphWindows.lineThickness = 2;
+    graphWindows.fillColor = "#0066FF";
+    graphWindows.useDataSetColors = false;
+    graphWindows.periodValue = "Average";
+    graphWindows.fillAlphas = 0.7;
+    graphWindows.stacked = false;
+    graphWindows.hideBulletsCount = 35;
+    graphWindows.bullet = "bubble";
+
+//  3) graph Aix
+
+    graphAix = new AmCharts.StockGraph();
+    graphAix.valueField = "aix";
+    graphAix.type = "line";
+    graphAix.title = "Aix";
+    graphAix.balloonText += " ([[percents]]%)";
+    graphAix.lineColor = "#FF0000";
+    graphAix.lineThickness = 2;
+    graphAix.fillColor = "#FF0000";
+    graphAix.useDataSetColors = false;
+    graphAix.periodValue = "Average";
+    graphAix.fillAlphas = 0.7;
+    graphAix.stacked = false;
+    graphAix.hideBulletsCount = 35;
+    graphAix.bullet = "bubble";
+
+    stockPanelLinux.addStockGraph(graphWindows);
+    stockPanelLinux.addStockGraph(graphAix);
+    stockPanelLinux.addStockGraph(graphLinux);
+
+
+    chart.panels = [stockPanelLinux];
+
+// OTHER SETTINGS (scrollBar & cursor)
+    scrollbarSettings = new AmCharts.ChartScrollbarSettings();
+    scrollbarSettings.updateOnReleaseOnly = false;
+    chart.chartScrollbarSettings = scrollbarSettings;
+
+    cursorSettings = new AmCharts.ChartCursorSettings();
+    cursorSettings.valueBalloonsEnabled = true;
+    chart.chartCursorSettings = cursorSettings;
+
+// PERIOD SELECTOR //////////////////////////
+    periodSelector = new AmCharts.PeriodSelector();
+    periodSelector.periods = [{
+        period: "DD",
+        count: 15,
+        label: "2 Weeks",
+        selected: false
     }, {
+        period: "MM",
+        count: 1,
+        label: "1 Month",
+        selected: false
+    }, {
+        period: "MM",
+        count: 6,
+        label: "6 Months",
+        selected: false
+    }, {
+        period: "YYYY",
+        count: 1,
+        label: "1 Year",
+        selected: false
+    }, {
+        period: "MAX",
+        label: "MAX",
+        selected: true
+    }];
+    chart.periodSelector = periodSelector;
+
+// PANEL SETTING ////////////////////////////
+    panelsSettings = new AmCharts.PanelsSettings();
+    panelsSettings.usePrefixes = true;
+    panelsSettings.panEventsEnabled = true;
+    panelsSettings.numberFormatter = {precision: 0, thousandsSeparator: ' ', decimalSeparator: '.'};
+    panelsSettings.usePrefixes = false;
+
+    chart.panelsSettings = panelsSettings;
+    chart.balloon.bulletSize = 4;
+
+    chart.write('graphEquipement');
+    deleteAmChart();
+}
+
+/*
+    {
         fromField: "alerts_hard_warning",
         toField: "alerts_hard_warning"
     }, {
