@@ -19,9 +19,7 @@ class KpiNagiosAdmin(admin.ModelAdmin):
     #  'alerts_hard_critical', 'alerts_acknowledged_warning',
     #  'alerts_acknowledged_critical', ))
     list_display = ('date', 'total_host', 'total_services',
-        'written_procedures', 'missing_procedures', 'linux', 'windows', 'aix',
-        'alerts_hard_warning', 'alerts_hard_critical',
-        'alerts_acknowledged_warning', 'alerts_acknowledged_critical', )
+        'written_procedures', 'missing_procedures', 'linux', 'windows', 'aix')
     date_hierarchy = 'date'
     ordering = ['-date']
 

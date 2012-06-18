@@ -11,23 +11,13 @@ class KpiNagios(models.Model):
     """
     date = models.DateTimeField()
 
-    total_host = models.PositiveIntegerField()
-    total_services = models.PositiveIntegerField()
+    total_host = models.PositiveIntegerField('Hosts')
+    total_services = models.PositiveIntegerField('Services')
     written_procedures = models.PositiveIntegerField()
     missing_procedures = models.PositiveIntegerField()
     linux = models.PositiveIntegerField()
     windows = models.PositiveIntegerField()
     aix = models.PositiveIntegerField()
-    alerts_hard_warning = models.PositiveIntegerField()
-    alerts_hard_critical = models.PositiveIntegerField()
-    alerts_acknowledged_warning = models.PositiveIntegerField()
-    alerts_acknowledged_critical = models.PositiveIntegerField()
-    alerts_hard_warning.verbose_name = 'Warning alerts'
-    alerts_hard_critical.verbose_name = 'Critical alerts'
-    alerts_acknowledged_warning.verbose_name = 'Warning alerts acknowledged'
-    alerts_acknowledged_critical.verbose_name = 'Critical alerts acknowledged'
-    total_host.verbose_name = 'Hosts'
-    total_services.verbose_name = 'Services'
 
     def __unicode__(self):
         return str(self.date)

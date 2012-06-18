@@ -1,9 +1,9 @@
 """
-insert data from nagios, redmine to program database
+insert data from nagios and redmine to program database
 """
+from datetime import datetime, timedelta
 import sys
 import os
-from datetime import datetime, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
@@ -25,38 +25,43 @@ def insert():
 
     result_nagios = get_result_nagios()
     notifications_nagios = get_notifications()
-    
-    number = 0 
+
+    number = 0
 
     number += insert_nagios_notifications(notifications_nagios)
 
     # Calculating from NagiosNotifications ------------------------------------
 
     number += insert_nagios(result_nagios)
-    
+
 
     # Redmine results -----------------------------
-    
-    number += insert_redmine()        
-    
-    return "\n %s lignes ajoutees et 18/18 kpi aussi" % (number)
+
+    number += insert_redmine()
+
+    return "\n %s lignes ajoutees" % (number)
 
 def get_result_nagios():
     """
-    fuck pylinter
+    get the results from nagios database
     """
-    
-    result_nagios = nagios.request()  
+    # return null if a satellite doesn't answer
+    result_nagios = nagios.request()
+    if not result_nagios:
+        raise SystemExit("The connection to a satellite failed")
+        # leave the programm by raising an error if a sattelite is "dead"
     return result_nagios
+    # return the result if there is no errors
 
 def get_notifications():
     """
-    haha
+    get the last timestamp from the database then use it to get the
+    notification from nagios from the last timestamp
     """
 
     last_timestamp = nagios_notifications.get_last_time()
-    
-    notifications_nagios = nagios.request_notifications(last_timestamp)  
+
+    notifications_nagios = nagios.request_notifications(last_timestamp)
     return notifications_nagios
 
 def insert_redmine():
@@ -65,9 +70,8 @@ def insert_redmine():
     """
     result_redmine = redmine.request()
     number = 0
-    #pprint(resultRedmine)
     for date in result_redmine['requests_opened'].iterkeys():
-        #print dateR
+    # iteraton on the keys to get the differents names in the table
         entree = KpiRedmine()
         entree.date = date
         entree.requests_opened = result_redmine['requests_opened'][date]
@@ -93,10 +97,10 @@ def insert_nagios_notifications(notifications_nagios):
     for notifications in notifications_nagios:
         entree = NagiosNotifications()
         entree.host = notifications[0]
-        entree.service = notifications[1]        
-        entree.date = datetime.fromtimestamp(notifications[2], tz=utc)    
+        entree.service = notifications[1]
+        entree.date = datetime.fromtimestamp(notifications[2], tz=utc)
         entree.state = notifications[3]
-        
+
         if "ACKNOWLEDGEMENT" in notifications[4]:
             entree.acknowledged = True
         else:
@@ -111,13 +115,12 @@ def insert_nagios(result_nagios):
     insert nagios kpi into the programm database
     """
     number = 0
-    result_nagios_notifications = nagios_notifications.request()
     one_day = timedelta(days = 1)
     nagios_r = KpiNagios()
-    nagios_r.date = datetime.now(tz=utc).replace(hour = 0, 
+    nagios_r.date = datetime.now(tz=utc).replace(hour = 0,
         minute = 0, second = 0, microsecond = 0)-one_day
 
-    
+
     # Nagios results ----------------------------------------------------------
     try:
         nagios_r.total_host = result_nagios['total_hosts']
@@ -127,16 +130,6 @@ def insert_nagios(result_nagios):
         nagios_r.linux = result_nagios['linux']
         nagios_r.windows = result_nagios['windows']
         nagios_r.aix = result_nagios['aix']
-
-    # NagiosNotifications results -----------------
-        nagios_r.alerts_hard_warning = \
-            result_nagios_notifications['alerts_hard_warning']
-        nagios_r.alerts_hard_critical = \
-            result_nagios_notifications['alerts_hard_critical']
-        nagios_r.alerts_acknowledged_warning = \
-            result_nagios_notifications['alerts_acknowledged_warning']
-        nagios_r.alerts_acknowledged_critical = \
-            result_nagios_notifications['alerts_acknowledged_critical']
 
         nagios_r.save()
         number += 1

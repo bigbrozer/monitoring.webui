@@ -1,27 +1,32 @@
+/* script which generate the differennts charts with the parameters *
+and all the options */
 /*jslint plusplus: true */
 function old_createRequests() {
+    /*
+    example of creation for a simple serial chart, unused for now
+    */
     "use strict";
 
     var chart, graph, categoryAxis, chartScrollbar;
 
-    // CHART ////////////////////////////////////
+// CHART ////////////////////////////////////
     chart = new AmCharts.AmSerialChart();
     chart.pathToImages = "/static/js/images/";
     chart.dataProvider = chartDataRequest;
     chart.categoryField = "date";
 
-    // CATEGORY AXIS ////////////////////////////
+// CATEGORY AXIS ////////////////////////////
     categoryAxis = chart.categoryAxis;
     categoryAxis.parseDates = true;
     categoryAxis.equalSpacing = true;
     categoryAxis.minPeriod = "DD";
 
-    // GRAPH ////////////////////////////////////
+// GRAPH ////////////////////////////////////
     graph = new AmCharts.AmGraph();
     graph.valueField = "remained";
     graph.type = "smoothedLine";
 
-    // SCROLLBAR ////////////////////////////////
+// SCROLLBAR ////////////////////////////////
     chartScrollbar = new AmCharts.ChartScrollbar();
     chartScrollbar.graph = graph;
     chartScrollbar.scrollbarHeight = 25;
@@ -719,21 +724,146 @@ function createEquipements() {
     deleteAmChart();
 }
 
-/*
-    {
-        fromField: "alerts_hard_warning",
-        toField: "alerts_hard_warning"
+function createAlerts() {
+    "use strict";
+
+    "use strict";
+    var chart, categoryAxesSettings, dataset, graphWritten, stockPanelWritten,
+        stockLegendWritten, graphMissing, scrollbarSettings, cursorSettings,
+        periodSelector, panelsSettings, valueAxesSettings;
+
+// CHART ////////////////////////////////////
+    chart = new AmCharts.AmStockChart();
+    chart.pathToImages = "/static/js/images/";
+
+// categoryAxesSettings
+    categoryAxesSettings = new AmCharts.CategoryAxesSettings();
+    categoryAxesSettings.minPeriod = "DD";
+    chart.categoryAxesSettings = categoryAxesSettings;
+
+// valueAxesSettings
+    valueAxesSettings = new AmCharts.ValueAxesSettings();
+    valueAxesSettings.stackType = "regular";
+    chart.valueAxesSettings = valueAxesSettings;
+
+// DATASET //////////////////////////////////
+    dataset = new AmCharts.DataSet();
+    dataset.fieldMappings = [{
+        fromField: "written_procedures",
+        toField: "written_procedures"
     }, {
-        fromField: "alerts_hard_critical",
-        toField: "alerts_hard_critical"
+        fromField: "missing_procedures",
+        toField: "missing_procedures"
+    }];
+    dataset.dataProvider = chartDataNagios;
+    dataset.categoryField = "date";
+
+    chart.dataSets = [dataset];
+
+// PANELS ///////////////////////////////////
+
+//  1) graph Written
+
+    graphWritten = new AmCharts.StockGraph();
+    graphWritten.valueField = "written_procedures";
+    graphWritten.type = "line";
+    graphWritten.title = "Written procedures";
+    graphWritten.balloonText += " ([[percents]]%)";
+    graphWritten.lineColor = "#00CC00";
+    graphWritten.lineThickness = 2;
+    graphWritten.fillColor = "#00CC00";
+    graphWritten.useDataSetColors = false;
+    graphWritten.periodValue = "Average";
+    graphWritten.fillAlphas = 0.7;
+    graphWritten.stacked = true;
+    graphWritten.hideBulletsCount = 35;
+    graphWritten.bullet = "bubble";
+
+//  1) stockPanel Written
+    stockPanelWritten = new AmCharts.StockPanel();
+    stockPanelWritten.title = "Total Written & Missing procedures";
+    stockPanelWritten.percentHeight = 50;
+
+//  1) stockLegend Written
+    stockLegendWritten = new AmCharts.StockLegend();
+    stockLegendWritten.valueTextRegular = "[[percents]]%";
+    stockPanelWritten.stockLegend = stockLegendWritten;
+
+//  2) graph Missing
+
+    graphMissing = new AmCharts.StockGraph();
+    graphMissing.valueField = "missing_procedures";
+    graphMissing.type = "line";
+    graphMissing.title = "Missing procedures";
+    graphMissing.balloonText += " ([[percents]]%)";
+    graphMissing.lineColor = "#FF0000";
+    graphMissing.lineThickness = 2;
+    graphMissing.fillColor = "#FF0000";
+    graphMissing.useDataSetColors = false;
+    graphMissing.periodValue = "Average";
+    graphMissing.fillAlphas = 0.7;
+    graphMissing.stacked = true;
+    graphMissing.hideBulletsCount = 35;
+    graphMissing.bullet = "bubble";
+
+    stockPanelWritten.addStockGraph(graphWritten);
+    stockPanelWritten.addStockGraph(graphMissing);
+
+    chart.panels = [stockPanelWritten];
+
+// OTHER SETTINGS (scrollBar & cursor)
+    scrollbarSettings = new AmCharts.ChartScrollbarSettings();
+    scrollbarSettings.updateOnReleaseOnly = false;
+    chart.chartScrollbarSettings = scrollbarSettings;
+
+    cursorSettings = new AmCharts.ChartCursorSettings();
+    cursorSettings.valueBalloonsEnabled = true;
+    chart.chartCursorSettings = cursorSettings;
+
+// PERIOD SELECTOR //////////////////////////
+    periodSelector = new AmCharts.PeriodSelector();
+    periodSelector.periods = [{
+        period: "DD",
+        count: 15,
+        label: "2 Weeks",
+        selected: false
     }, {
-        fromField: "alerts_acknowledged_warning",
-        toField: "alerts_acknowledged_warning"
+        period: "MM",
+        count: 1,
+        label: "1 Month",
+        selected: false
     }, {
-        fromField: "alerts_acknowledged_critical",
-        toField: "alerts_acknowledged_critical"
-    }
-*/
+        period: "MM",
+        count: 6,
+        label: "6 Months",
+        selected: false
+    }, {
+        period: "YYYY",
+        count: 1,
+        label: "1 Year",
+        selected: false
+    }, {
+        period: "MAX",
+        label: "MAX",
+        selected: true
+    }];
+    chart.periodSelector = periodSelector;
+
+// PANEL SETTING ////////////////////////////
+    panelsSettings = new AmCharts.PanelsSettings();
+    panelsSettings.usePrefixes = true;
+    panelsSettings.panEventsEnabled = true;
+    panelsSettings.numberFormatter = {precision: 0, thousandsSeparator: ' ', decimalSeparator: '.'};
+    panelsSettings.usePrefixes = false;
+
+    chart.panelsSettings = panelsSettings;
+    chart.balloon.bulletSize = 4;
+
+    chart.write('graphWritten');
+    deleteAmChart();
+
+}
+
 function deleteAmChart() {
     "use strict";
     var node, tspan, i, bad;
