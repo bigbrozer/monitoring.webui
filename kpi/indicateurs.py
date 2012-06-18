@@ -36,13 +36,9 @@ def indicateurs(request):
     for index, kpi in enumerate(kpi_nagios):
         chart_data_nagios += '{date: new Date("%s"), total_host: %d, '\
         'total_services: %d, written_procedures: %d, missing_procedures: %d, '\
-        'linux: %d, windows: %d, aix: %d, alerts_hard_warning: %d, '\
-        'alerts_hard_critical: %d, alerts_acknowledged_warning: %d, '\
-        'alerts_acknowledged_critical: %d}' % (kpi.date.isoformat(),\
+        'linux: %d, windows: %d, aix: %d}' % (kpi.date.isoformat(),\
         kpi.total_host, kpi.total_services, kpi.written_procedures,\
-        kpi.missing_procedures, kpi.linux, kpi.windows, kpi.aix,\
-        kpi.alerts_hard_warning, kpi.alerts_hard_critical,\
-        kpi.alerts_acknowledged_warning, kpi.alerts_acknowledged_critical)
+        kpi.missing_procedures, kpi.linux, kpi.windows, kpi.aix)
 
         if index != len(kpi_nagios)-1:
             chart_data_nagios += ",\n"

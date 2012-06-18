@@ -18,14 +18,6 @@ class KpiNagios(models.Model):
     linux = models.PositiveIntegerField()
     windows = models.PositiveIntegerField()
     aix = models.PositiveIntegerField()
-    alerts_hard_warning = models.PositiveIntegerField()
-    alerts_hard_critical = models.PositiveIntegerField()
-    alerts_acknowledged_warning = models.PositiveIntegerField()
-    alerts_acknowledged_critical = models.PositiveIntegerField()
-    alerts_hard_warning.verbose_name = 'Warning alerts'
-    alerts_hard_critical.verbose_name = 'Critical alerts'
-    alerts_acknowledged_warning.verbose_name = 'Warning alerts acknowledged'
-    alerts_acknowledged_critical.verbose_name = 'Critical alerts acknowledged'
     total_host.verbose_name = 'Hosts'
     total_services.verbose_name = 'Services'
 
