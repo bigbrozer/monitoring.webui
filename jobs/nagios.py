@@ -86,7 +86,7 @@ def request():
     if not satellites:
         return False
 
-    print "Fetching informations for the kpi"
+    print "Fetching informations for the kpi nagios"
 
     # Total number of hosts ---------------------------------------------------
 
@@ -203,7 +203,7 @@ def request_notifications(last_timestamp):
     """
 
     satellites = get_satellites()
-    print "Fetching informations for the notifications"
+    print "Fetching informations for the nagios notifications"
     # Get ALL the notifications from the last timestamp -----------------------
 
     notifications_satellites = satellites.query("""\

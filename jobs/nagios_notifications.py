@@ -5,7 +5,7 @@ get the notifications from nagios results
 import calendar
 from datetime import datetime, timedelta
 from django.utils.timezone import utc
-from kpi.models import NagiosNotifications, KpiNagios
+from kpi.models import NagiosNotifications
 
 def get_last_time():
     """
@@ -20,30 +20,33 @@ def get_last_time():
 
     return last_timestamp
 
-def request(today):
+def request(date):
     """
     return a dictionnary containing the number of alerts for each state
     """
     one_day = timedelta(days = 1)
-    today = today.replace(hour = 0, minute = 0, second = 0, microsecond = 0)
-    yesterday = today - one_day
+    date = date.replace(hour = 0, minute = 0, second = 0, microsecond = 0)
+    late = date + one_day
+    now = datetime.now(tz=utc)\
+        .replace(hour = 0, minute = 0, second = 0, microsecond = 0)
 
-    alerts_hard_warning = result.filter(
-        state = 1, acknowledged = False, date__gte = yesterday,
-        date__lt = today).count()
-    alerts_hard_critical = result.filter(
-        state = 2, acknowledged = False, date__gte = yesterday,
-        date__lt = today).count()
-    alerts_acknowledged_warning = result.filter(
-        state = 1, acknowledged = True, date__gte = yesterday,
-        date__lt = today).count()
-    alerts_acknowledged_critical = result.filter(
-        state = 2, acknowledged = True, date__gte = yesterday,
-        date__lt = today).count()
-    result = {
-    'alerts_hard_warning': alerts_hard_warning,
-    'alerts_hard_critical': alerts_hard_critical,
-    'alerts_acknowledged_warning': alerts_acknowledged_warning,
-    'alerts_acknowledged_critical': alerts_acknowledged_critical,
-    }
-    return result
+    if date >= now:
+        return False
+    else:
+        result = NagiosNotifications.objects.filter(date__gte = date,
+            date__lt = late)
+        warning = result.filter(
+            state = 1, acknowledged = False).count()
+        warning_acknowledged = result.filter(
+            state = 1, acknowledged = True).count()
+        critical = result.filter(
+            state = 2, acknowledged = False).count()
+        critical_acknowledged = result.filter(
+            state = 2, acknowledged = True).count()
+        result = {
+        'warning': warning,
+        'warning_acknowledged': warning_acknowledged,
+        'critical': critical,
+        'critical_acknowledged': critical_acknowledged,
+        }
+        return result

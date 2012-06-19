@@ -1,5 +1,5 @@
 from kpi.models import KpiNagios, KpiRedmine
-from kpi.models import NagiosNotifications
+from kpi.models import NagiosNotifications, CountNotifications
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from datetime import datetime, timedelta
@@ -55,47 +55,21 @@ def indicateurs(request):
 
     chart_data_nagios += "\n]"
 
-    # notifs = NagiosNotifications.objects.extra({'dateDay' : "date(date)"})\
-    # .values("dateDay", "acknowledged", "state").annotate(alerts = Count("id"))\
-    # .order_by("dateDay")
-    # result = {}
-    # tmp = {}
-    # chart_data_alerts = ""
-    # for values in notifs:
-    #     result[str(values['dateDay'])] =
-    #     if values['acknowledged']:
-    #         if values['state'] == 1:
-    #             tmp['warning_ack'] = values['alerts']
-    #             result[str(values['dateDay'])].update(tmp)
-    #         if values['state'] == 2:
-    #             result[str(values['dateDay'])] = {}
-    #             result[str(values['dateDay'])]['critical_ack'] += values['alerts']
-    #     if not values['acknowledged']:
-    #         if values['state'] == 1:
-    #             result[str(values['dateDay'])] = {}
-    #             result[str(values['dateDay'])]['warning'] += values['alerts']
-    #         if values['state'] == 2:
-    #             result[str(values['dateDay'])] = {}
-    #             result[str(values['dateDay'])]['critical'] += values['alerts']
+    result = CountNotifications.objects.all().order_by("date")
 
-    # chart_data_alerts = result
+    chart_data_alerts = "[\n"
 
-# result = NagiosNotifications.objects.all()
+    for alerts in result:
+        chart_data_alerts += '{date: new Date("%s"), warning: %d, '\
+            'warning_acknowledged: %d, critical: %d, '\
+            'critical_acknowledged: %d}' % (alerts.date.isoformat(),\
+            alerts.warning,\
+            alerts.warning_acknowledged,\
+            alerts.critical,\
+            alerts.critical_acknowledged)
+        chart_data_alerts += ",\n"
 
-#     chart_data_alerts = "[\n"
-
-#     for alerts in result:
-#         chart_data_alerts += '{date: new Date("%s"), alerts_hard_warning: %d, '\
-#             'alerts_hard_critical: %d, alerts_acknowledged_warning: %d, '\
-#             'alerts_acknowledged_critical: %d}' % (first_date,\
-#             alerts['alerts_hard_warning'],\
-#             alerts['alerts_hard_critical'],\
-#             alerts['alerts_acknowledged_warning'],\
-#             alerts['alerts_acknowledged_critical'])
-#         first_date += one_day
-#         chart_data_alerts += ",\n"
-
-#     chart_data_alerts += "\n]"
+    chart_data_alerts += "\n]"
 
 
     return render_to_response(

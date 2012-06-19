@@ -91,3 +91,17 @@ class NagiosNotifications(models.Model):
 
     def __unicode__(self):
         return str(self.date)
+
+class CountNotifications(models.Model):
+    """
+    Count the notifications group by date, state, and acknowledged
+    """
+
+    date = models.DateTimeField(null = True)
+    warning = models.PositiveIntegerField()
+    warning_acknowledged = models.PositiveIntegerField()
+    critical = models.PositiveIntegerField()
+    critical_acknowledged = models.PositiveIntegerField()
+
+    def __unicode__(self):
+        return str(self.date)

@@ -366,7 +366,6 @@ function createHosts() {
     stockPanelServices.title = "Total Services";
     stockPanelServices.percentHeight = 50;
     stockPanelServices.addStockGraph(graphServices);
-    stockPanelServices.showCategoryAxis = false;
 
 //  2) stockLegend Services
     stockLegendServices = new AmCharts.StockLegend();
@@ -611,9 +610,9 @@ function createEquipements() {
     graphLinux.type = "line";
     graphLinux.title = "Linux";
     graphLinux.balloonText += " ([[percents]]%)";
-    graphLinux.lineColor = "#FFFF00";
+    graphLinux.lineColor = "#FFCC00";
     graphLinux.lineThickness = 2;
-    graphLinux.fillColor = "#FFFF00";
+    graphLinux.fillColor = "#FFCC00";
     graphLinux.useDataSetColors = false;
     graphLinux.periodValue = "Average";
     graphLinux.fillAlphas = 0.7;
@@ -727,10 +726,10 @@ function createEquipements() {
 function createAlerts() {
     "use strict";
 
-    "use strict";
-    var chart, categoryAxesSettings, dataset, graphWritten, stockPanelWritten,
-        stockLegendWritten, graphMissing, scrollbarSettings, cursorSettings,
-        periodSelector, panelsSettings, valueAxesSettings;
+    var chart, categoryAxesSettings, dataset, graphWarning, stockPanelWarning,
+        stockLegendWarning, graphWarningAck, graphCritical, stockPanelCritical,
+        stockLegendCritical, graphCriticalAck, scrollbarSettings,
+        cursorSettings, periodSelector, panelsSettings, valueAxesSettings;
 
 // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
@@ -743,73 +742,117 @@ function createAlerts() {
 
 // valueAxesSettings
     valueAxesSettings = new AmCharts.ValueAxesSettings();
-    valueAxesSettings.stackType = "regular";
+    // valueAxesSettings.stackType = "regular";
     chart.valueAxesSettings = valueAxesSettings;
 
 // DATASET //////////////////////////////////
     dataset = new AmCharts.DataSet();
     dataset.fieldMappings = [{
-        fromField: "written_procedures",
-        toField: "written_procedures"
+        fromField: "warning",
+        toField: "warning"
     }, {
-        fromField: "missing_procedures",
-        toField: "missing_procedures"
+        fromField: "warning_acknowledged",
+        toField: "warning_acknowledged"
+    }, {
+        fromField: "critical",
+        toField: "critical"
+    }, {
+        fromField: "critical_acknowledged",
+        toField: "critical_acknowledged"
     }];
-    dataset.dataProvider = chartDataNagios;
+    dataset.dataProvider = chartDataAlerts;
     dataset.categoryField = "date";
 
     chart.dataSets = [dataset];
 
 // PANELS ///////////////////////////////////
 
-//  1) graph Written
+//  1.1) graph Warning
 
-    graphWritten = new AmCharts.StockGraph();
-    graphWritten.valueField = "written_procedures";
-    graphWritten.type = "line";
-    graphWritten.title = "Written procedures";
-    graphWritten.balloonText += " ([[percents]]%)";
-    graphWritten.lineColor = "#00CC00";
-    graphWritten.lineThickness = 2;
-    graphWritten.fillColor = "#00CC00";
-    graphWritten.useDataSetColors = false;
-    graphWritten.periodValue = "Average";
-    graphWritten.fillAlphas = 0.7;
-    graphWritten.stacked = true;
-    graphWritten.hideBulletsCount = 35;
-    graphWritten.bullet = "bubble";
+    graphWarning = new AmCharts.StockGraph();
+    graphWarning.valueField = "warning";
+    graphWarning.type = "line";
+    graphWarning.title = "Warning alerts";
+    graphWarning.lineColor = "#FF0000";
+    graphWarning.lineThickness = 2;
+    graphWarning.fillColor = "#FF0000";
+    graphWarning.useDataSetColors = false;
+    graphWarning.periodValue = "Sum";
+    graphWarning.fillAlphas = 0.7;
+    graphWarning.hideBulletsCount = 35;
+    graphWarning.bullet = "bubble";
 
-//  1) stockPanel Written
-    stockPanelWritten = new AmCharts.StockPanel();
-    stockPanelWritten.title = "Total Written & Missing procedures";
-    stockPanelWritten.percentHeight = 50;
+//  1.1) stockPanel Warning
+    stockPanelWarning = new AmCharts.StockPanel();
+    stockPanelWarning.title = "Warning alerts";
+    stockPanelWarning.percentHeight = 50;
+    stockPanelWarning.showCategoryAxis = false;
 
-//  1) stockLegend Written
-    stockLegendWritten = new AmCharts.StockLegend();
-    stockLegendWritten.valueTextRegular = "[[percents]]%";
-    stockPanelWritten.stockLegend = stockLegendWritten;
+//  1.1) stockLegend Warning
+    stockLegendWarning = new AmCharts.StockLegend();
+    stockPanelWarning.stockLegend = stockLegendWarning;
 
-//  2) graph Missing
+//  1.2) graph WarningAck
 
-    graphMissing = new AmCharts.StockGraph();
-    graphMissing.valueField = "missing_procedures";
-    graphMissing.type = "line";
-    graphMissing.title = "Missing procedures";
-    graphMissing.balloonText += " ([[percents]]%)";
-    graphMissing.lineColor = "#FF0000";
-    graphMissing.lineThickness = 2;
-    graphMissing.fillColor = "#FF0000";
-    graphMissing.useDataSetColors = false;
-    graphMissing.periodValue = "Average";
-    graphMissing.fillAlphas = 0.7;
-    graphMissing.stacked = true;
-    graphMissing.hideBulletsCount = 35;
-    graphMissing.bullet = "bubble";
+    graphWarningAck = new AmCharts.StockGraph();
+    graphWarningAck.valueField = "warning_acknowledged";
+    graphWarningAck.type = "line";
+    graphWarningAck.title = "Warning alerts acknowledged";
+    graphWarningAck.lineColor = "#00CC00";
+    graphWarningAck.lineThickness = 2;
+    graphWarningAck.fillColor = "#00CC00";
+    graphWarningAck.useDataSetColors = false;
+    graphWarningAck.periodValue = "Sum";
+    graphWarningAck.fillAlphas = 0.7;
+    graphWarningAck.hideBulletsCount = 35;
+    graphWarningAck.bullet = "bubble";
 
-    stockPanelWritten.addStockGraph(graphWritten);
-    stockPanelWritten.addStockGraph(graphMissing);
+    stockPanelWarning.addStockGraph(graphWarning);
+    stockPanelWarning.addStockGraph(graphWarningAck);
 
-    chart.panels = [stockPanelWritten];
+//  2.1) graph Critical
+
+    graphCritical = new AmCharts.StockGraph();
+    graphCritical.valueField = "critical";
+    graphCritical.type = "line";
+    graphCritical.title = "Critical alerts";
+    graphCritical.lineColor = "#FF0000";
+    graphCritical.lineThickness = 2;
+    graphCritical.fillColor = "#FF0000";
+    graphCritical.useDataSetColors = false;
+    graphCritical.periodValue = "Sum";
+    graphCritical.fillAlphas = 0.7;
+    graphCritical.hideBulletsCount = 35;
+    graphCritical.bullet = "bubble";
+
+//  2.1) stockPanel Critical
+    stockPanelCritical = new AmCharts.StockPanel();
+    stockPanelCritical.title = "Critical alerts";
+    stockPanelCritical.percentHeight = 50;
+
+//  2.1) stockLegend Critical
+    stockLegendCritical = new AmCharts.StockLegend();
+    stockPanelCritical.stockLegend = stockLegendCritical;
+
+//  2.2) graph CriticalAck
+
+    graphCriticalAck = new AmCharts.StockGraph();
+    graphCriticalAck.valueField = "critical_acknowledged";
+    graphCriticalAck.type = "line";
+    graphCriticalAck.title = "Critical alerts acknowledged";
+    graphCriticalAck.lineColor = "#00CC00";
+    graphCriticalAck.lineThickness = 2;
+    graphCriticalAck.fillColor = "#00CC00";
+    graphCriticalAck.useDataSetColors = false;
+    graphCriticalAck.periodValue = "Sum";
+    graphCriticalAck.fillAlphas = 0.7;
+    graphCriticalAck.hideBulletsCount = 35;
+    graphCriticalAck.bullet = "bubble";
+
+    stockPanelCritical.addStockGraph(graphCritical);
+    stockPanelCritical.addStockGraph(graphCriticalAck);
+
+    chart.panels = [stockPanelWarning, stockPanelCritical];
 
 // OTHER SETTINGS (scrollBar & cursor)
     scrollbarSettings = new AmCharts.ChartScrollbarSettings();
@@ -859,7 +902,7 @@ function createAlerts() {
     chart.panelsSettings = panelsSettings;
     chart.balloon.bulletSize = 4;
 
-    chart.write('graphWritten');
+    chart.write('graphAlerts');
     deleteAmChart();
 
 }

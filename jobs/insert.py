@@ -11,7 +11,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
 import nagios
 import nagios_notifications
 import redmine
-from kpi.models import NagiosNotifications
+from kpi.models import NagiosNotifications, CountNotifications
 from kpi.models import KpiRedmine, KpiNagios
 from django.utils.timezone import utc
 
@@ -20,24 +20,45 @@ def insert():
     """
     Execute the requests in the differents databases, then stock the result in the programm database
     """
-
-    # Stock the notifications from Nagios database in the program database ----
-
-    result_nagios = get_result_nagios()
-    notifications_nagios = get_notifications()
-
     number = 0
-
+    notifications_nagios = get_notifications()
     number += insert_nagios_notifications(notifications_nagios)
 
-    # Calculating from NagiosNotifications ------------------------------------
+    one_day = timedelta(days = 1)
+    yesterday = datetime.now(tz=utc).replace(hour = 0,
+        minute = 0, second = 0, microsecond = 0)-one_day
 
-    number += insert_nagios(result_nagios)
+    if KpiNagios.objects.all().count() != 0:
+        last_date = KpiNagios.objects.order_by('-date')[0].date
+        last_date = last_date.replace(hour = 0,
+        minute = 0, second = 0, microsecond = 0)
+    else:
+        last_date = yesterday-one_day
 
 
-    # Redmine results -----------------------------
+    if last_date != yesterday:
+        result_nagios = get_result_nagios()
+        number += insert_nagios(result_nagios)
 
-    number += insert_redmine()
+    if CountNotifications.objects.all().count() != 0:
+        last_date = CountNotifications.objects.order_by('-date')[0].date
+        last_date = last_date.replace(hour = 0,
+        minute = 0, second = 0, microsecond = 0)
+    else:
+        last_date = yesterday-one_day
+
+    if last_date != yesterday:
+        number += insert_count_notifications()
+
+    if KpiRedmine.objects.all().count() != 0:
+        last_date = KpiRedmine.objects.order_by('-date')[0].date
+        last_date = last_date.replace(hour = 0,
+        minute = 0, second = 0, microsecond = 0)
+    else:
+        last_date = yesterday-one_day
+
+    if last_date != yesterday:
+        number += insert_redmine()
 
     return "\n %s lignes ajoutees" % (number)
 
@@ -133,9 +154,38 @@ def insert_nagios(result_nagios):
 
         nagios_r.save()
         number += 1
-        print "\n1 kpi nagios saved\n"
+        print "\n1 kpi nagios saved"
     except:
         pass
+    return number
+
+def insert_count_notifications():
+    """
+    insert the number of notifications for each state every day
+    """
+    print "\nCounting Nagios notifications"
+    one_day = timedelta(days = 1)
+    number = 0
+    result = True
+    if CountNotifications.objects.all().count() == 0:
+        first_date = NagiosNotifications.objects.order_by('date')[0].date
+    else:
+        first_date = CountNotifications.objects.order_by('-date')[0].date
+    first_date = first_date\
+        .replace(hour = 0, minute = 0, second = 0, microsecond = 0)
+    result = nagios_notifications.request(first_date)
+    while result != False:
+        notif = CountNotifications()
+        notif.date = first_date
+        notif.warning = result['warning']
+        notif.warning_acknowledged = result['warning_acknowledged']
+        notif.critical = result['critical']
+        notif.critical_acknowledged = result['critical_acknowledged']
+        notif.save()
+        first_date += one_day
+        number += 1
+        print "\r %s kpi notifications count saved" % number,
+        result = nagios_notifications.request(first_date)
     return number
 
 if __name__ == '__main__':
