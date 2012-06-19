@@ -1,13 +1,22 @@
 from kpi.models import KpiNagios, KpiRedmine
-from kpi.models import NagiosNotifications
+from kpi.models import NagiosNotifications, CountNotifications
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from datetime import timedelta
+from datetime import datetime, timedelta
 from django.shortcuts import redirect
+from django.db.models import Count
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
+
+from jobs import nagios_notifications
 
 def indicateurs(request):
     """
-    vue qui affiche les indicateurs
+    View showing the charts for the differents kpi requested
+    param: http request
     """
     kpi_redmine = KpiRedmine.objects.all().order_by("date")
 
@@ -32,6 +41,7 @@ def indicateurs(request):
 
     chart_data_nagios = "[\n"
     kpi_nagios = KpiNagios.objects.all().order_by("date")
+    alerts = []
 
     for index, kpi in enumerate(kpi_nagios):
         chart_data_nagios += '{date: new Date("%s"), total_host: %d, '\
@@ -44,6 +54,22 @@ def indicateurs(request):
             chart_data_nagios += ",\n"
 
     chart_data_nagios += "\n]"
+
+    result = CountNotifications.objects.all().order_by("date")
+
+    chart_data_alerts = "[\n"
+
+    for alerts in result:
+        chart_data_alerts += '{date: new Date("%s"), warning: %d, '\
+            'warning_acknowledged: %d, critical: %d, '\
+            'critical_acknowledged: %d}' % (alerts.date.isoformat(),\
+            alerts.warning,\
+            alerts.warning_acknowledged,\
+            alerts.critical,\
+            alerts.critical_acknowledged)
+        chart_data_alerts += ",\n"
+
+    chart_data_alerts += "\n]"
 
 
     return render_to_response(

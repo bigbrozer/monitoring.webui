@@ -1,27 +1,32 @@
+/* script which generate the differennts charts with the parameters *
+and all the options */
 /*jslint plusplus: true */
 function old_createRequests() {
+    /*
+    example of creation for a simple serial chart, unused for now
+    */
     "use strict";
 
     var chart, graph, categoryAxis, chartScrollbar;
 
-    // CHART ////////////////////////////////////
+// CHART ////////////////////////////////////
     chart = new AmCharts.AmSerialChart();
     chart.pathToImages = "/static/js/images/";
     chart.dataProvider = chartDataRequest;
     chart.categoryField = "date";
 
-    // CATEGORY AXIS ////////////////////////////
+// CATEGORY AXIS ////////////////////////////
     categoryAxis = chart.categoryAxis;
     categoryAxis.parseDates = true;
     categoryAxis.equalSpacing = true;
     categoryAxis.minPeriod = "DD";
 
-    // GRAPH ////////////////////////////////////
+// GRAPH ////////////////////////////////////
     graph = new AmCharts.AmGraph();
     graph.valueField = "remained";
     graph.type = "smoothedLine";
 
-    // SCROLLBAR ////////////////////////////////
+// SCROLLBAR ////////////////////////////////
     chartScrollbar = new AmCharts.ChartScrollbar();
     chartScrollbar.graph = graph;
     chartScrollbar.scrollbarHeight = 25;
@@ -361,7 +366,6 @@ function createHosts() {
     stockPanelServices.title = "Total Services";
     stockPanelServices.percentHeight = 50;
     stockPanelServices.addStockGraph(graphServices);
-    stockPanelServices.showCategoryAxis = false;
 
 //  2) stockLegend Services
     stockLegendServices = new AmCharts.StockLegend();
@@ -606,9 +610,9 @@ function createEquipements() {
     graphLinux.type = "line";
     graphLinux.title = "Linux";
     graphLinux.balloonText += " ([[percents]]%)";
-    graphLinux.lineColor = "#FFFF00";
+    graphLinux.lineColor = "#FFCC00";
     graphLinux.lineThickness = 2;
-    graphLinux.fillColor = "#FFFF00";
+    graphLinux.fillColor = "#FFCC00";
     graphLinux.useDataSetColors = false;
     graphLinux.periodValue = "Average";
     graphLinux.fillAlphas = 0.7;
@@ -719,21 +723,190 @@ function createEquipements() {
     deleteAmChart();
 }
 
-/*
-    {
-        fromField: "alerts_hard_warning",
-        toField: "alerts_hard_warning"
+function createAlerts() {
+    "use strict";
+
+    var chart, categoryAxesSettings, dataset, graphWarning, stockPanelWarning,
+        stockLegendWarning, graphWarningAck, graphCritical, stockPanelCritical,
+        stockLegendCritical, graphCriticalAck, scrollbarSettings,
+        cursorSettings, periodSelector, panelsSettings, valueAxesSettings;
+
+// CHART ////////////////////////////////////
+    chart = new AmCharts.AmStockChart();
+    chart.pathToImages = "/static/js/images/";
+
+// categoryAxesSettings
+    categoryAxesSettings = new AmCharts.CategoryAxesSettings();
+    categoryAxesSettings.minPeriod = "DD";
+    chart.categoryAxesSettings = categoryAxesSettings;
+
+// valueAxesSettings
+    valueAxesSettings = new AmCharts.ValueAxesSettings();
+    // valueAxesSettings.stackType = "regular";
+    chart.valueAxesSettings = valueAxesSettings;
+
+// DATASET //////////////////////////////////
+    dataset = new AmCharts.DataSet();
+    dataset.fieldMappings = [{
+        fromField: "warning",
+        toField: "warning"
     }, {
-        fromField: "alerts_hard_critical",
-        toField: "alerts_hard_critical"
+        fromField: "warning_acknowledged",
+        toField: "warning_acknowledged"
     }, {
-        fromField: "alerts_acknowledged_warning",
-        toField: "alerts_acknowledged_warning"
+        fromField: "critical",
+        toField: "critical"
     }, {
-        fromField: "alerts_acknowledged_critical",
-        toField: "alerts_acknowledged_critical"
-    }
-*/
+        fromField: "critical_acknowledged",
+        toField: "critical_acknowledged"
+    }];
+    dataset.dataProvider = chartDataAlerts;
+    dataset.categoryField = "date";
+
+    chart.dataSets = [dataset];
+
+// PANELS ///////////////////////////////////
+
+//  1.1) graph Warning
+
+    graphWarning = new AmCharts.StockGraph();
+    graphWarning.valueField = "warning";
+    graphWarning.type = "line";
+    graphWarning.title = "Warning alerts";
+    graphWarning.lineColor = "#FF0000";
+    graphWarning.lineThickness = 2;
+    graphWarning.fillColor = "#FF0000";
+    graphWarning.useDataSetColors = false;
+    graphWarning.periodValue = "Sum";
+    graphWarning.fillAlphas = 0.7;
+    graphWarning.hideBulletsCount = 35;
+    graphWarning.bullet = "bubble";
+
+//  1.1) stockPanel Warning
+    stockPanelWarning = new AmCharts.StockPanel();
+    stockPanelWarning.title = "Warning alerts";
+    stockPanelWarning.percentHeight = 50;
+    stockPanelWarning.showCategoryAxis = false;
+
+//  1.1) stockLegend Warning
+    stockLegendWarning = new AmCharts.StockLegend();
+    stockPanelWarning.stockLegend = stockLegendWarning;
+
+//  1.2) graph WarningAck
+
+    graphWarningAck = new AmCharts.StockGraph();
+    graphWarningAck.valueField = "warning_acknowledged";
+    graphWarningAck.type = "line";
+    graphWarningAck.title = "Warning alerts acknowledged";
+    graphWarningAck.lineColor = "#00CC00";
+    graphWarningAck.lineThickness = 2;
+    graphWarningAck.fillColor = "#00CC00";
+    graphWarningAck.useDataSetColors = false;
+    graphWarningAck.periodValue = "Sum";
+    graphWarningAck.fillAlphas = 0.7;
+    graphWarningAck.hideBulletsCount = 35;
+    graphWarningAck.bullet = "bubble";
+
+    stockPanelWarning.addStockGraph(graphWarning);
+    stockPanelWarning.addStockGraph(graphWarningAck);
+
+//  2.1) graph Critical
+
+    graphCritical = new AmCharts.StockGraph();
+    graphCritical.valueField = "critical";
+    graphCritical.type = "line";
+    graphCritical.title = "Critical alerts";
+    graphCritical.lineColor = "#FF0000";
+    graphCritical.lineThickness = 2;
+    graphCritical.fillColor = "#FF0000";
+    graphCritical.useDataSetColors = false;
+    graphCritical.periodValue = "Sum";
+    graphCritical.fillAlphas = 0.7;
+    graphCritical.hideBulletsCount = 35;
+    graphCritical.bullet = "bubble";
+
+//  2.1) stockPanel Critical
+    stockPanelCritical = new AmCharts.StockPanel();
+    stockPanelCritical.title = "Critical alerts";
+    stockPanelCritical.percentHeight = 50;
+
+//  2.1) stockLegend Critical
+    stockLegendCritical = new AmCharts.StockLegend();
+    stockPanelCritical.stockLegend = stockLegendCritical;
+
+//  2.2) graph CriticalAck
+
+    graphCriticalAck = new AmCharts.StockGraph();
+    graphCriticalAck.valueField = "critical_acknowledged";
+    graphCriticalAck.type = "line";
+    graphCriticalAck.title = "Critical alerts acknowledged";
+    graphCriticalAck.lineColor = "#00CC00";
+    graphCriticalAck.lineThickness = 2;
+    graphCriticalAck.fillColor = "#00CC00";
+    graphCriticalAck.useDataSetColors = false;
+    graphCriticalAck.periodValue = "Sum";
+    graphCriticalAck.fillAlphas = 0.7;
+    graphCriticalAck.hideBulletsCount = 35;
+    graphCriticalAck.bullet = "bubble";
+
+    stockPanelCritical.addStockGraph(graphCritical);
+    stockPanelCritical.addStockGraph(graphCriticalAck);
+
+    chart.panels = [stockPanelWarning, stockPanelCritical];
+
+// OTHER SETTINGS (scrollBar & cursor)
+    scrollbarSettings = new AmCharts.ChartScrollbarSettings();
+    scrollbarSettings.updateOnReleaseOnly = false;
+    chart.chartScrollbarSettings = scrollbarSettings;
+
+    cursorSettings = new AmCharts.ChartCursorSettings();
+    cursorSettings.valueBalloonsEnabled = true;
+    chart.chartCursorSettings = cursorSettings;
+
+// PERIOD SELECTOR //////////////////////////
+    periodSelector = new AmCharts.PeriodSelector();
+    periodSelector.periods = [{
+        period: "DD",
+        count: 15,
+        label: "2 Weeks",
+        selected: false
+    }, {
+        period: "MM",
+        count: 1,
+        label: "1 Month",
+        selected: false
+    }, {
+        period: "MM",
+        count: 6,
+        label: "6 Months",
+        selected: false
+    }, {
+        period: "YYYY",
+        count: 1,
+        label: "1 Year",
+        selected: false
+    }, {
+        period: "MAX",
+        label: "MAX",
+        selected: true
+    }];
+    chart.periodSelector = periodSelector;
+
+// PANEL SETTING ////////////////////////////
+    panelsSettings = new AmCharts.PanelsSettings();
+    panelsSettings.usePrefixes = true;
+    panelsSettings.panEventsEnabled = true;
+    panelsSettings.numberFormatter = {precision: 0, thousandsSeparator: ' ', decimalSeparator: '.'};
+    panelsSettings.usePrefixes = false;
+
+    chart.panelsSettings = panelsSettings;
+    chart.balloon.bulletSize = 4;
+
+    chart.write('graphAlerts');
+    deleteAmChart();
+
+}
+
 function deleteAmChart() {
     "use strict";
     var node, tspan, i, bad;

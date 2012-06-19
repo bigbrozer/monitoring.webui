@@ -11,15 +11,18 @@ class KpiNagios(models.Model):
     """
     date = models.DateTimeField()
 
-    total_host = models.PositiveIntegerField()
-    total_services = models.PositiveIntegerField()
+    total_host = models.PositiveIntegerField('Hosts')
+    total_services = models.PositiveIntegerField('Services')
     written_procedures = models.PositiveIntegerField()
     missing_procedures = models.PositiveIntegerField()
     linux = models.PositiveIntegerField()
     windows = models.PositiveIntegerField()
     aix = models.PositiveIntegerField()
+<<<<<<< HEAD
     total_host.verbose_name = 'Hosts'
     total_services.verbose_name = 'Services'
+=======
+>>>>>>> testNotifs
 
     def __unicode__(self):
         return str(self.date)
@@ -90,6 +93,20 @@ class NagiosNotifications(models.Model):
     STATE_CHOICES = ((1, 'Warning'),(2, 'Critical'))
     state = models.PositiveIntegerField(choices = STATE_CHOICES)
     acknowledged = models.BooleanField()
+
+    def __unicode__(self):
+        return str(self.date)
+
+class CountNotifications(models.Model):
+    """
+    Count the notifications group by date, state, and acknowledged
+    """
+
+    date = models.DateTimeField(null = True)
+    warning = models.PositiveIntegerField()
+    warning_acknowledged = models.PositiveIntegerField()
+    critical = models.PositiveIntegerField()
+    critical_acknowledged = models.PositiveIntegerField()
 
     def __unicode__(self):
         return str(self.date)

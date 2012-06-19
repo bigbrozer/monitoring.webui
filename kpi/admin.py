@@ -4,7 +4,7 @@ settings from the admin site
 
 from django.contrib import admin
 from kpi.models import KpiNagios, KpiRedmine
-from kpi.models import NagiosNotifications
+from kpi.models import NagiosNotifications, CountNotifications
 from jobs.insert import insert_redmine, insert_nagios_notifications
 from jobs.insert import get_notifications
 from django.utils import timezone
@@ -76,6 +76,16 @@ class NagiosAdmin(admin.ModelAdmin):
                                                     date_locale.strftime("%c")))
     update.short_description = "Update database"
 
+class CountNotificationsAdmin(admin.ModelAdmin):
+    """
+    modify default settings for count notifications
+    """
+    list_display = ('date', 'warning', 'warning_acknowledged', 'critical',
+        'critical_acknowledged')
+    date_hierarchy = 'date'
+    ordering = ['-date']
+
 admin.site.register(KpiNagios, KpiNagiosAdmin)
 admin.site.register(KpiRedmine, KpiRedmineAdmin)
 admin.site.register(NagiosNotifications, NagiosAdmin)
+admin.site.register(CountNotifications, CountNotificationsAdmin)

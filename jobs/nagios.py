@@ -10,11 +10,11 @@ from os import path
 
 def get_satellites():
     """
-    return the key indicators from the last timestamp to now 
+    return the key indicators from the last timestamp to now
     param lastTimestamp: the last timestamp found in the database
-    type lastTimestamp: integer 
+    type lastTimestamp: integer
 
-    """   
+    """
 
     connections = {
         'EDC1': {
@@ -67,8 +67,14 @@ def get_satellites():
         },
 
     }
-    satellites = live.MultiSiteConnection(connections)
-    return satellites
+    print "connection in progress"
+    for i in range(0, 2):
+        satellites = live.MultiSiteConnection(connections)
+        if not satellites.dead_sites():
+            print "connection initialized"
+            return satellites
+
+    return False
 
 def request():
     """
@@ -77,6 +83,11 @@ def request():
     kbpath = "/home/fellet/pages"
 
     satellites = get_satellites()
+    if not satellites:
+        return False
+
+    print "Fetching informations for the kpi nagios"
+
     # Total number of hosts ---------------------------------------------------
 
     nb_total_hosts = satellites.query("""\
@@ -137,7 +148,7 @@ Filter: name = sys_windows
 GET hostgroups
 Columns: num_hosts
 Filter: name = sys_aix
-""")    
+""")
     nombre = 0
     for sat in nb_aix:
         nombre += sat[0]
@@ -149,12 +160,12 @@ Filter: name = sys_aix
     services_all = satellites.query("""\
 GET services
 Columns: host_name description notes_url_expanded contact_groups
-""")    
+""")
     written_procedures = 0
     missing_procedures = 0
     myreport = open("report.csv", "w")
     myreport.write("written;hostname;services;procedure;stratos\n")
-    for services in services_all:        
+    for services in services_all:
         procedure_path = services[2].split('/')[-1].replace(':', '/').lower()
         empty = 1
         for serv in services[3]:
@@ -165,14 +176,14 @@ Columns: host_name description notes_url_expanded contact_groups
                 list_contact += ", %s" % serv
                 empty = 0
         if path.lexists("%s/%s.txt" % (kbpath, procedure_path)):
-            written_procedures += 1            
-            myreport.write("yes;%s;%s;%s;%s\n" % (services[0], 
+            written_procedures += 1
+            myreport.write("yes;%s;%s;%s;%s\n" % (services[0],
                 services[1], services[2], list_contact))
         else:
             missing_procedures += 1
-            myreport.write("no;%s;%s;%s;%s\n" % (services[0], 
+            myreport.write("no;%s;%s;%s;%s\n" % (services[0],
                 services[1], services[2], list_contact))
-    myreport.close()    
+    myreport.close()
 
     result = {
     'total_hosts': nb_total_hosts,
@@ -180,8 +191,8 @@ Columns: host_name description notes_url_expanded contact_groups
     'linux': nb_linux,
     'windows': nb_windows,
     'aix': nb_aix,
-    'written_procedures': written_procedures,        
-    'missing_procedures': missing_procedures    
+    'written_procedures': written_procedures,
+    'missing_procedures': missing_procedures
     }
 
     return result
@@ -192,6 +203,7 @@ def request_notifications(last_timestamp):
     """
 
     satellites = get_satellites()
+    print "Fetching informations for the nagios notifications"
     # Get ALL the notifications from the last timestamp -----------------------
 
     notifications_satellites = satellites.query("""\
@@ -218,5 +230,5 @@ Or: 4
     return notifications_satellites
 
 
-    
+
 
