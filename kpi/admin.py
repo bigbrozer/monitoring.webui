@@ -4,7 +4,7 @@ settings from the admin site
 
 from django.contrib import admin
 from kpi.models import KpiNagios, KpiRedmine
-from kpi.models import NagiosNotifications, CountNotifications
+from kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts, OldestAlerts
 from jobs.insert import insert_redmine, insert_nagios_notifications
 from jobs.insert import get_notifications
 from django.utils import timezone
@@ -85,7 +85,25 @@ class CountNotificationsAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
     ordering = ['-date']
 
+class RecurrentAlertsAdmin(admin.ModelAdmin):
+    """
+    modify default settings for count notifications
+    """
+    list_display = ('date', 'host', 'service', 'frequency')
+    date_hierarchy = 'date'
+    ordering = ['-date']
+
+class OldestAlertsAdmin(admin.ModelAdmin):
+    """
+    modify default settings for count notifications
+    """
+    list_display = ('date', 'host', 'service', 'date_error')
+    date_hierarchy = 'date'
+    ordering = ['-date']
+
 admin.site.register(KpiNagios, KpiNagiosAdmin)
 admin.site.register(KpiRedmine, KpiRedmineAdmin)
 admin.site.register(NagiosNotifications, NagiosAdmin)
 admin.site.register(CountNotifications, CountNotificationsAdmin)
+admin.site.register(RecurrentAlerts, RecurrentAlertsAdmin)
+admin.site.register(OldestAlerts, OldestAlertsAdmin)

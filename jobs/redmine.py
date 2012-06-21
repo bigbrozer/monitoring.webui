@@ -63,10 +63,8 @@ def request():
         n_normal = 0
         n_high = 0
         n_urgent = 0
-        left = 0
         for requests in cur.execute("SELECT created_on, priority_id, status_id, id, subject FROM ISSUES WHERE created_on <= ? AND (updated_on > ? OR (status_id != 5 AND status_id != 6 AND status_id != 10))", tu2):
             if requests[2] != '6' or requests[2] != '10':
-                left += 1
                 if requests[1] != 3:
                     lifetime += (day_late - requests[0])
                     num += 1
@@ -88,7 +86,7 @@ def request():
                     # % (request[3], request[4], request[0])
 
                     n_urgent += 1
-        requests_remained[str(day_midnight)] = left
+        requests_remained[str(day_midnight)] = n_normal + n_high + n_urgent
         if num > 0:
             requests_lifetime[str(day_midnight)] = \
                 (lifetime.total_seconds()/num)

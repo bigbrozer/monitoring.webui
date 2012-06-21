@@ -6,8 +6,6 @@ import livestatus as live
 from os import path
 
 
-
-
 def get_satellites():
     """
     return the key indicators from the last timestamp to now
@@ -67,6 +65,7 @@ def get_satellites():
         },
 
     }
+
     print "connection in progress"
     for i in range(0, 2):
         satellites = live.MultiSiteConnection(connections)
@@ -76,21 +75,22 @@ def get_satellites():
 
     return False
 
+SATELLITES = get_satellites()
+
 def request():
     """
     get the kpi from redmine
     """
     kbpath = "/home/fellet/pages"
 
-    satellites = get_satellites()
-    if not satellites:
+    if not SATELLITES:
         return False
 
     print "Fetching informations for the kpi nagios"
 
     # Total number of hosts ---------------------------------------------------
 
-    nb_total_hosts = satellites.query("""\
+    nb_total_hosts = SATELLITES.query("""\
 GET hosts
 Stats: name != \" \"
 """)
@@ -103,7 +103,7 @@ Stats: name != \" \"
 
     # Total number of services ------------------------------------------------
 
-    nb_total_services = satellites.query("""\
+    nb_total_services = SATELLITES.query("""\
 GET services
 Stats: description != \" \"
 """)
@@ -116,7 +116,7 @@ Stats: description != \" \"
 
     # Total number of Linux ---------------------------------------------------
 
-    nb_linux = satellites.query("""\
+    nb_linux = SATELLITES.query("""\
 GET hostgroups
 Columns: num_hosts
 Filter: name = sys_linux
@@ -130,7 +130,7 @@ Filter: name = sys_linux
 
     # Total number of Windows -------------------------------------------------
 
-    nb_windows = satellites.query("""\
+    nb_windows = SATELLITES.query("""\
 GET hostgroups
 Columns: num_hosts
 Filter: name = sys_windows
@@ -144,7 +144,7 @@ Filter: name = sys_windows
 
     # Total number of AIX -----------------------------------------------------
 
-    nb_aix = satellites.query("""\
+    nb_aix = SATELLITES.query("""\
 GET hostgroups
 Columns: num_hosts
 Filter: name = sys_aix
@@ -157,7 +157,7 @@ Filter: name = sys_aix
 
     # get the service with path to the procedure ------------------------------
 
-    services_all = satellites.query("""\
+    services_all = SATELLITES.query("""\
 GET services
 Columns: host_name description notes_url_expanded contact_groups
 """)
@@ -201,12 +201,10 @@ def request_notifications(last_timestamp):
     """
     get the notifications from nagios
     """
-
-    satellites = get_satellites()
     print "Fetching informations for the nagios notifications"
     # Get ALL the notifications from the last timestamp -----------------------
 
-    notifications_satellites = satellites.query("""\
+    notifications_satellites = SATELLITES.query("""\
 GET log
 Columns: host_name service_description time state options
 Filter: class = 3
@@ -228,6 +226,19 @@ Or: 4
 """ % last_timestamp)
 
     return notifications_satellites
+
+def get_hosts():
+    """
+    get the hosts from nagios
+    """
+    print "\nFetching informations for the hosts"
+    hosts = SATELLITES.query("""\
+GET hosts
+Column: name
+""")
+    return hosts
+
+
 
 
 

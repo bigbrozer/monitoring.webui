@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.db.models import Count
 import sys
 import os
+from operator import itemgetter
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
@@ -30,9 +31,9 @@ def indicateurs(request):
 
         chart_data_request += '{date: new Date("%s"), remained: %d, '\
             'opened: %d, closed: %d, global: %d, '\
-            'normal: %d, high: %d, urgent: %d}' % (kpi.date.isoformat(),\
-            kpi.requests_remained, kpi.requests_opened, kpi.requests_closed,\
-            lifetime, lifetime_normal, lifetime_high, lifetime_urgent)
+            'normal: %d, high: %d, urgent: %d}' % (kpi.date.isoformat(),
+                                                   kpi.requests_remained, kpi.requests_opened, kpi.requests_closed,
+                                                   lifetime, lifetime_normal, lifetime_high, lifetime_urgent)
 
         if index != len(kpi_redmine)-1:
             chart_data_request += ",\n"
@@ -46,9 +47,9 @@ def indicateurs(request):
     for index, kpi in enumerate(kpi_nagios):
         chart_data_nagios += '{date: new Date("%s"), total_host: %d, '\
         'total_services: %d, written_procedures: %d, missing_procedures: %d, '\
-        'linux: %d, windows: %d, aix: %d}' % (kpi.date.isoformat(),\
-        kpi.total_host, kpi.total_services, kpi.written_procedures,\
-        kpi.missing_procedures, kpi.linux, kpi.windows, kpi.aix)
+        'linux: %d, windows: %d, aix: %d}' % (kpi.date.isoformat(),
+                                              kpi.total_host, kpi.total_services, kpi.written_procedures,
+                                              kpi.missing_procedures, kpi.linux, kpi.windows, kpi.aix)
 
         if index != len(kpi_nagios)-1:
             chart_data_nagios += ",\n"
@@ -62,15 +63,14 @@ def indicateurs(request):
     for alerts in result:
         chart_data_alerts += '{date: new Date("%s"), warning: %d, '\
             'warning_acknowledged: %d, critical: %d, '\
-            'critical_acknowledged: %d}' % (alerts.date.isoformat(),\
-            alerts.warning,\
-            alerts.warning_acknowledged,\
-            alerts.critical,\
-            alerts.critical_acknowledged)
+            'critical_acknowledged: %d}' % (alerts.date.isoformat(),
+                                            alerts.warning,
+                                            alerts.warning_acknowledged,
+                                            alerts.critical,
+                                            alerts.critical_acknowledged)
         chart_data_alerts += ",\n"
 
     chart_data_alerts += "\n]"
-
 
     return render_to_response(
         'main.html', locals(), context_instance = RequestContext(request))

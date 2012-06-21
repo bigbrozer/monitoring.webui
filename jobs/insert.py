@@ -11,7 +11,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
 import nagios
 import nagios_notifications
 import redmine
-from kpi.models import NagiosNotifications, CountNotifications
+from kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts
 from kpi.models import KpiRedmine, KpiNagios
 from django.utils.timezone import utc
 
@@ -28,26 +28,18 @@ def insert():
     yesterday = datetime.now(tz=utc).replace(hour = 0,
         minute = 0, second = 0, microsecond = 0)-one_day
 
-    if KpiNagios.objects.all().count() != 0:
+    if KpiNagios.objects.all().count():
         last_date = KpiNagios.objects.order_by('-date')[0].date
         last_date = last_date.replace(hour = 0,
         minute = 0, second = 0, microsecond = 0)
     else:
         last_date = yesterday-one_day
 
-<<<<<<< HEAD
-    result_nagios = get_result_nagios()
-    notifications_nagios = get_notifications()
-
-    number = 0
-=======
->>>>>>> testNotifs
-
     if last_date != yesterday:
         result_nagios = get_result_nagios()
         number += insert_nagios(result_nagios)
 
-    if CountNotifications.objects.all().count() != 0:
+    if CountNotifications.objects.all().count():
         last_date = CountNotifications.objects.order_by('-date')[0].date
         last_date = last_date.replace(hour = 0,
         minute = 0, second = 0, microsecond = 0)
@@ -57,43 +49,37 @@ def insert():
     if last_date != yesterday:
         number += insert_count_notifications()
 
-    if KpiRedmine.objects.all().count() != 0:
+    if KpiRedmine.objects.all().count():
         last_date = KpiRedmine.objects.order_by('-date')[0].date
         last_date = last_date.replace(hour = 0,
         minute = 0, second = 0, microsecond = 0)
     else:
         last_date = yesterday-one_day
 
-<<<<<<< HEAD
-    number += insert_nagios(result_nagios)
-
-
-    # Redmine results -----------------------------
-
-    number += insert_redmine()
-
-    return "\n %s lignes ajoutees et 18/18 kpi aussi" % (number)
-=======
     if last_date != yesterday:
         number += insert_redmine()
 
-    return "\n %s lignes ajoutees" % (number)
->>>>>>> testNotifs
+    if RecurrentAlerts.objects.all().count():
+        last_date = KpiRedmine.objects.order_by('-date')[0].date
+        last_date = last_date.replace(hour = 0,
+            minute = 0, second = 0, microsecond = 0)
+    else:
+        last_date = yesterday-one_day
+
+    if last_date != yesterday:
+        number += insert_recurrent_alerts()
+
+    return "\n %s lignes ajoutees" % number
 
 def get_result_nagios():
     """
     get the results from nagios database
     """
-<<<<<<< HEAD
-
-    result_nagios = nagios.request()
-=======
     # return null if a satellite doesn't answer
     result_nagios = nagios.request()
     if not result_nagios:
         raise SystemExit("The connection to a satellite failed")
         # leave the programm by raising an error if a sattelite is "dead"
->>>>>>> testNotifs
     return result_nagios
     # return the result if there is no errors
 
@@ -190,14 +176,14 @@ def insert_count_notifications():
     one_day = timedelta(days = 1)
     number = 0
     result = True
-    if CountNotifications.objects.all().count() == 0:
+    if not CountNotifications.objects.all().count():
         first_date = NagiosNotifications.objects.order_by('date')[0].date
     else:
         first_date = CountNotifications.objects.order_by('-date')[0].date
     first_date = first_date\
         .replace(hour = 0, minute = 0, second = 0, microsecond = 0)
     result = nagios_notifications.request(first_date)
-    while result != False:
+    while result:
         notif = CountNotifications()
         notif.date = first_date
         notif.warning = result['warning']
@@ -209,6 +195,26 @@ def insert_count_notifications():
         number += 1
         print "\r %s kpi notifications count saved" % number,
         result = nagios_notifications.request(first_date)
+    return number
+
+def insert_recurrent_alerts():
+    """
+    insert all the distincts alerts with the number of times they occured
+    """
+    print "\nCounting Recurrents alerts"
+    recurrents_alerts = nagios_notifications.request_recurrent_alerts()
+    date = datetime.now(tz=utc).replace(hour = 0, minute = 0, second = 0, microsecond = 0)
+    number = 0
+    for alerts, frequency in recurrents_alerts.items():
+        name = str(alerts).split(';')
+        recurrent_alert = RecurrentAlerts()
+        recurrent_alert.date = date
+        recurrent_alert.host = name[0]
+        recurrent_alert.service = name[1]
+        recurrent_alert.frequency = frequency
+        recurrent_alert.save()
+        number += 1
+        print "\r %s Recurrents alerts saved" % number,
     return number
 
 if __name__ == '__main__':

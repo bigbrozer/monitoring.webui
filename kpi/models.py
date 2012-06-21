@@ -18,11 +18,6 @@ class KpiNagios(models.Model):
     linux = models.PositiveIntegerField()
     windows = models.PositiveIntegerField()
     aix = models.PositiveIntegerField()
-<<<<<<< HEAD
-    total_host.verbose_name = 'Hosts'
-    total_services.verbose_name = 'Services'
-=======
->>>>>>> testNotifs
 
     def __unicode__(self):
         return str(self.date)
@@ -110,3 +105,28 @@ class CountNotifications(models.Model):
 
     def __unicode__(self):
         return str(self.date)
+
+class RecurrentAlerts(models.Model):
+    """
+    Stock the recurrent alerts for the last 31 days
+    """
+
+    date = models.DateTimeField(null = True)
+    host = models.CharField(max_length = 64)
+    service = models.CharField(max_length = 128, null = True)
+    frequency = models.PositiveIntegerField()
+    def __unicode__(self):
+        return str(self.date)
+
+class OldestAlerts(models.Model):
+    """
+    Stock the oldest active alerts
+    """
+
+    date = models.DateTimeField(null = True)
+    host = models.CharField(max_length = 64)
+    service = models.CharField(max_length = 128, null = True)
+    date_error = models.DateTimeField(null = True)
+    def __unicode__(self):
+        return str(self.date)
+

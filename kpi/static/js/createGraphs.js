@@ -1,7 +1,6 @@
-/* script which generate the differennts charts with the parameters *
+/* script which generate the different charts with the parameters *
 and all the options */
-/*jslint plusplus: true */
-function old_createRequests() {
+function oldCreateRequests() {
     /*
     example of creation for a simple serial chart, unused for now
     */
@@ -41,13 +40,13 @@ function old_createRequests() {
 function createRequests() {
     "use strict";
 
-    var chart, graphRemained, dataset, dataset2, dataset3, categoryAxesSettings,
+    var chart, graphRemained, dataset, categoryAxesSettings,
         stockPanelRemained, scrollbarSettings, cursorSettings, periodSelector,
         panelsSettings, graphOpened, stockPanelOpened, graphClosed,
         stockPanelClosed, stockLegendRemained, stockLegendOpened,
         stockLegendClosed, period_value, graphLifetimeGlobal,
         stockPanelLifetime, stockLegendLifetime, graphLifetimeNormal,
-        graphLifetimeHigh, graphLifetimeUrgent, panelsSettings2;
+        graphLifetimeHigh, graphLifetimeUrgent;
 
 // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
