@@ -1,5 +1,5 @@
 from kpi.models import KpiNagios, KpiRedmine
-from kpi.models import NagiosNotifications, CountNotifications
+from kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from datetime import datetime, timedelta
@@ -60,17 +60,31 @@ def indicateurs(request):
 
     chart_data_alerts = "[\n"
 
-    for alerts in result:
+    for alert in result:
         chart_data_alerts += '{date: new Date("%s"), warning: %d, '\
             'warning_acknowledged: %d, critical: %d, '\
-            'critical_acknowledged: %d}' % (alerts.date.isoformat(),
-                                            alerts.warning,
-                                            alerts.warning_acknowledged,
-                                            alerts.critical,
-                                            alerts.critical_acknowledged)
+            'critical_acknowledged: %d}' % (alert.date.isoformat(),
+                                            alert.warning,
+                                            alert.warning_acknowledged,
+                                            alert.critical,
+                                            alert.critical_acknowledged)
         chart_data_alerts += ",\n"
 
     chart_data_alerts += "\n]"
+
+    chart_data_recurrents_alerts = "[\n"
+
+    recurrents_alerts = RecurrentAlerts.objects.all().order_by("-frequency")[:15]
+
+    for alert in recurrents_alerts:
+        chart_data_recurrents_alerts += '{name: "%s@%s", repetitions: %d, '\
+        'url: "http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?host=%s"}' % (alert.service,
+                                                                              alert.host,
+                                                                              alert.frequency,
+                                                                              alert.host)
+        chart_data_recurrents_alerts += ",\n"
+
+    chart_data_recurrents_alerts += "\n]"
 
     return render_to_response(
         'main.html', locals(), context_instance = RequestContext(request))

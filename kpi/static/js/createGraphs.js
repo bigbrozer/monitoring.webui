@@ -906,6 +906,25 @@ function createAlerts() {
 
 }
 
+function createRecurrentsAlerts() {
+    "use strict";
+    var chart, legend, host;
+
+// CHART ///////////////////////////////////
+    chart = new AmCharts.AmPieChart();
+    chart.dataProvider = chartDataRecurrentsAlerts;
+    chart.titleField = "name";
+    chart.valueField = "repetitions";
+    chart.balloonText = "[[title]] : [[value]]";
+    chart.labelText = "[[title]] : [[value]]";
+    chart.urlField = "url";
+    chart.urlTarget = "_blank";
+    chart.pullOutRadius = "0%";
+    chart.radius = "30%";
+
+    chart.write('graphRecurrentsAlerts');
+}
+
 function deleteAmChart() {
     "use strict";
     var node, tspan, i, bad;
