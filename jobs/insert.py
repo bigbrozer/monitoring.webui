@@ -11,9 +11,9 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
 import nagios
 import nagios_notifications
 import redmine
-from kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts
+from kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts, OldestAlerts
 from kpi.models import KpiRedmine, KpiNagios
-from django.utils.timezone import utc
+from django.utils.timezone import utc, UTC
 
 
 def insert():
@@ -25,8 +25,9 @@ def insert():
     number += insert_nagios_notifications(notifications_nagios)
 
     one_day = timedelta(days = 1)
-    yesterday = datetime.now(tz=utc).replace(hour = 0,
-        minute = 0, second = 0, microsecond = 0)-one_day
+    today = datetime.now(tz=utc).replace(hour = 0,
+        minute = 0, second = 0, microsecond = 0)
+    yesterday = today - one_day
 
     if KpiNagios.objects.all().count():
         last_date = KpiNagios.objects.order_by('-date')[0].date
@@ -60,14 +61,26 @@ def insert():
         number += insert_redmine()
 
     if RecurrentAlerts.objects.all().count():
-        last_date = KpiRedmine.objects.order_by('-date')[0].date
+        last_date = RecurrentAlerts.objects.order_by('-date')[0].date
         last_date = last_date.replace(hour = 0,
             minute = 0, second = 0, microsecond = 0)
     else:
-        last_date = yesterday-one_day
+        last_date = yesterday
 
-    if last_date != yesterday:
+    if last_date != today:
+        RecurrentAlerts.objects.all().delete()
         number += insert_recurrent_alerts()
+
+    if OldestAlerts.objects.all().count():
+        last_date = OldestAlerts.objects.order_by('-date')[0].date
+        last_date = last_date.replace(hour = 0,
+            minute = 0, second = 0, microsecond = 0)
+    else:
+        last_date = yesterday
+
+    if last_date != today:
+        OldestAlerts.objects.all().delete()
+        number += insert_oldest_alerts()
 
     return "\n %s lignes ajoutees" % number
 
@@ -215,6 +228,36 @@ def insert_recurrent_alerts():
         recurrent_alert.save()
         number += 1
         print "\r %s Recurrents alerts saved" % number,
+    return number
+
+def insert_oldest_alerts():
+    """
+    insert the oldest alerts active in the database
+    """
+    print "\nFetching informations for the oldest alerts"
+    oldest_alerts = nagios.request_oldest_alerts_hosts()
+    date = datetime.now(tz=utc).replace(hour = 0, minute = 0, second = 0, microsecond = 0)
+    number = 0
+    for alert in oldest_alerts:
+        old_alert = OldestAlerts()
+        old_alert.date = date
+        old_alert.host = alert[0]
+        old_alert.service = ""
+        old_alert.date_error = datetime.fromtimestamp(alert[1], tz=utc)
+        old_alert.save()
+        number += 1
+        print "\r %s Recurrents alerts saved" % number,
+    oldest_alerts = nagios.request_oldest_alerts_services()
+    for alert in oldest_alerts:
+        old_alert = OldestAlerts()
+        old_alert.date = date
+        old_alert.host = alert[0]
+        old_alert.service = alert[1]
+        old_alert.date_error = datetime.fromtimestamp(alert[2], tz=utc)
+        old_alert.save()
+        number += 1
+        print "\r %s Recurrents alerts saved" % number,
+
     return number
 
 if __name__ == '__main__':

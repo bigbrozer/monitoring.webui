@@ -24,10 +24,10 @@ def indicateurs(request):
     chart_data_request = "[\n"
 
     for index, kpi in enumerate(kpi_redmine):
-        lifetime = round(kpi.requests_lifetime/3600/24)
-        lifetime_normal = round(kpi.requests_lifetime_normal/3600/24)
-        lifetime_high = round(kpi.requests_lifetime_high/3600/24)
-        lifetime_urgent = round(kpi.requests_lifetime_urgent/3600/24)
+        lifetime = kpi.requests_lifetime/3600/24
+        lifetime_normal = kpi.requests_lifetime_normal/3600/24
+        lifetime_high = kpi.requests_lifetime_high/3600/24
+        lifetime_urgent = kpi.requests_lifetime_urgent/3600/24
 
         chart_data_request += '{date: new Date("%s"), remained: %d, '\
             'opened: %d, closed: %d, global: %d, '\

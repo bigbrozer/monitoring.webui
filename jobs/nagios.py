@@ -238,6 +238,33 @@ Column: name
 """)
     return hosts
 
+def request_oldest_alerts_hosts():
+    """
+    return a dictionnary containing the oldest active alerts
+    """
+    oldest_alerts = SATELLITES.query("""\
+GET hosts
+Columns: name last_hard_state_change
+Filter: hard_state = 1
+Filter: state > 0
+""")
+    return oldest_alerts
+
+def request_oldest_alerts_services():
+    """
+    return a dictionnary containing the oldest active alerts
+    """
+    oldest_alerts = SATELLITES.query("""\
+GET services
+Columns: host_name description last_hard_state_change
+Filter: state_type = 1
+Filter: state = 1
+Filter: state = 2
+Or: 2
+""")
+    return oldest_alerts
+
+
 
 
 

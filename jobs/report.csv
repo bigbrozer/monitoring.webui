@@ -61,6 +61,8 @@ yes;DEBMESEQ0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;DEBMESEQ0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_FR_PILOTS
 yes;DEBMESEQ0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS
 yes;DEBMESEQ0001;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_FR_PILOTS
+no;DEBMESEQ0001;gIMM_BBDD_gIMM.Data;http://monitoring-dc.app.corp/kb/app:gimm:bbdd:;OP_FR_PILOTS
+no;DEBMESEQ0001;gIMM_BBDD_gIMM.Log;http://monitoring-dc.app.corp/kb/app:gimm:bbdd:;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_Count_Debug;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_Count_JIT;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_Count_MAS;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
@@ -373,11 +375,10 @@ yes;EUEDCELB0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/syst
 yes;EUEDCELB0001;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0001;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;EUEDCELB0001;URL_Coswin;http://monitoring-dc.app.corp/kb/app:coswin:url;OP_FR_PILOTS, OP_SYSTEM_WIN
-yes;EUEDCELB0001;URL_PDM_Cheops;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0001;URL_PDM_Galileo;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0001;URL_PDM_Magellan;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0001;URL_PDM_Octopus;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;EUEDCELB0001;URL_PDM_Cheops;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_APPLI
+yes;EUEDCELB0001;URL_PDM_Galileo;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_APPLI
+yes;EUEDCELB0001;URL_PDM_Magellan;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_APPLI
+yes;EUEDCELB0001;URL_PDM_Octopus;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_APPLI
 yes;EUEDCELB0001;URL_Stratos;http://monitoring-dc.app.corp/kb/app:stratos:url;OP_FR_PILOTS, OP_SYSTEM_UNIX
 yes;EUEDCELB0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0002;Connection_rate_Cheops_11104;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -518,12 +519,25 @@ yes;EUEDCROU0005;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCROU0005;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROU0005;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROU0005;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROU0005;Net_port_GigabitEthernet_1:0:23;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROU0005;Net_port_GigabitEthernet_1:0:24;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROU0005;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROU0005;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC021;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC021;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC021;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC021;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:10;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:5;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:6;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:7;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:8;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_Ethernet_1:9;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC021;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC021;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC021;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC021;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -531,6 +545,17 @@ yes;EUEDCROUC022;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCROUC022;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC022;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC022;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:10;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:5;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:6;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:7;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:8;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_Ethernet_1:9;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUC022;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC022;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC022;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUC022;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -538,6 +563,17 @@ yes;EUEDCROUF021;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCROUF021;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF021;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF021;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:10;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:5;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:6;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:7;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:8;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_Ethernet_1:9;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF021;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF021;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF021;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF021;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -545,6 +581,17 @@ yes;EUEDCROUF022;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCROUF022;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF022;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF022;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:10;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:5;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:6;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:7;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:8;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_Ethernet_1:9;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCROUF022;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF022;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF022;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCROUF022;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -593,6 +640,17 @@ yes;EUEDCSWTA051;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTA051;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA051;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA051;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_131:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_151:1:46;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_151:1:47;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_151:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_1:21;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_1:22;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA051;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA051;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA051;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA051;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -600,6 +658,17 @@ yes;EUEDCSWTA052;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTA052;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA052;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA052;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_132:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_152:1:46;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_152:1:47;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_152:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_1:21;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_1:22;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTA052;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA052;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA052;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTA052;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -643,6 +712,15 @@ yes;EUEDCSWTC031;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTC031;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC031;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC031;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC031;Net_port_Ethernet_131:1:46;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC031;Net_port_Ethernet_131:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC031;Net_port_Ethernet_141:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC031;Net_port_Ethernet_151:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC031;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC031;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC031;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC031;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC031;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC031;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC031;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC031;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -650,6 +728,15 @@ yes;EUEDCSWTC032;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTC032;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC032;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC032;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC032;Net_port_Ethernet_132:1:46;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC032;Net_port_Ethernet_132:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC032;Net_port_Ethernet_142:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC032;Net_port_Ethernet_152:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC032;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC032;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC032;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC032;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTC032;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC032;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC032;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTC032;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -720,6 +807,18 @@ yes;EUEDCSWTD121;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTD121;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD121;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD121;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_101:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_111:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_121:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_131:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_141:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_181:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_191:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD121;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD121;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD121;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD121;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -727,6 +826,18 @@ yes;EUEDCSWTD122;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTD122;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD122;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD122;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_102:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_112:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_122:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_132:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_142:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_182:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_192:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTD122;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD122;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD122;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTD122;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -797,6 +908,18 @@ yes;EUEDCSWTE121;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTE121;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE121;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE121;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_101:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_111:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_121:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_131:1:47;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_131:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_181:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_191:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE121;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE121;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE121;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE121;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -804,6 +927,18 @@ yes;EUEDCSWTE122;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTE122;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE122;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE122;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_102:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_112:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_122:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_132:1:47;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_132:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_182:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_192:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTE122;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE122;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE122;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTE122;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -838,6 +973,16 @@ yes;EUEDCSWTF031;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTF031;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF031;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF031;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_Ethernet_131:1:44;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_Ethernet_131:1:46;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_Ethernet_131:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_Ethernet_141:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_Ethernet_151:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF031;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF031;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF031;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF031;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -845,6 +990,15 @@ yes;EUEDCSWTF032;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTF032;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF032;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF032;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF032;Net_port_Ethernet_132:1:46;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF032;Net_port_Ethernet_132:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF032;Net_port_Ethernet_142:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF032;Net_port_Ethernet_152:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF032;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF032;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF032;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF032;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTF032;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF032;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF032;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTF032;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -897,6 +1051,18 @@ yes;EUEDCSWTH051;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTH051;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH051;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH051;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_131:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_151:1:46;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_151:1:47;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_151:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_161:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_1:21;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_1:22;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH051;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH051;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH051;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH051;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -904,6 +1070,18 @@ yes;EUEDCSWTH052;CPU;http://monitoring-dc.app.corp/kb/network:cisco_switch:cpu;O
 yes;EUEDCSWTH052;Config_status;http://monitoring-dc.app.corp/kb/network:cisco_switch:config_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH052;Hardware_sensors_status;http://monitoring-dc.app.corp/kb/network:cisco_core_switch:sensors_state;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH052;IOS_Version;http://monitoring-dc.app.corp/kb/network:cisco_switch:ios;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_132:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_152:1:46;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_152:1:47;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_152:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_162:1:48;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_1:1;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_1:2;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_1:21;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_1:22;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_1:3;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_Ethernet_1:4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+yes;EUEDCSWTH052;Net_port_mgmt0;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH052;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH052;System_cisco_uptime;http://monitoring-dc.app.corp/kb/network:cisco_switch:uptime;OP_NETWORK_DC, OP_FR_PILOTS
 yes;EUEDCSWTH052;Temperature_meter;http://monitoring-dc.app.corp/kb/network:cisco_switch:temperature;OP_NETWORK_DC, OP_FR_PILOTS
@@ -1023,6 +1201,8 @@ yes;FRSELIND0023;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;FRSELIND0023;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_FR_PILOTS
 yes;FRSELIND0023;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS
 yes;FRSELIND0023;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_FR_PILOTS
+no;FRSELIND0023;gIMM_BBDD_gIMM.Data;http://monitoring-dc.app.corp/kb/app:gimm:bbdd:;OP_FR_PILOTS
+no;FRSELIND0023;gIMM_BBDD_gIMM.Log;http://monitoring-dc.app.corp/kb/app:gimm:bbdd:;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_Count_Debug;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_Count_JIT;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_Count_MAS;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
@@ -1393,12 +1573,14 @@ no;WWGRPSCE1001;Exalead_Deployment_status;http://monitoring-dc.app.corp/kb/app:e
 no;WWGRPSCE1001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE1001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE1001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1001;Partition_exalead_used_space;http://monitoring-dc.app.corp/kb/app:exalead:partition:/Exalead;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE1001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1001;Technical_Ping_Search_API;http://monitoring-dc.app.corp/kb/app:exalead:technical_ping:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE1002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE1002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE1002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1002;Partition_exalead_used_space;http://monitoring-dc.app.corp/kb/app:exalead:partition:/Exalead;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE1002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE2001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE2001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -1563,6 +1745,12 @@ yes;EUEDCBKU2002;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;EUEDCBKU2002;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;EUEDCBKU2002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;EUEDCBKU2002;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;EUEDCBKU2004;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;EUEDCBKU2004;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;EUEDCBKU2004;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;EUEDCBKU2004;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;EUEDCBKU2004;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;EUEDCBKU2004;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;EUEDCVMW1001;CPU;http://monitoring-dc.app.corp/kb/system:vmware:esx;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;EUEDCVMW1001;Connection_State;http://monitoring-dc.app.corp/kb/system:vmware:esx;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;EUEDCVMW1001;Datastore_usage;http://monitoring-dc.app.corp/kb/system:vmware:esx;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -2660,6 +2848,11 @@ yes;WWMETAPP0119;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:
 no;WWMETAPP0119;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0119;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0119;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETAPP0303;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0303;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETAPP0303;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETAPP0303;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETAPP0303;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP1001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETAPP1001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETAPP1001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -2737,6 +2930,16 @@ yes;WWMETEAL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWMETEAL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETEAL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETEAL0001;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;WWMETORA0301;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0301;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETORA0301;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETORA0301;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETORA0301;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETORA0302;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0302;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETORA0302;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETORA0302;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETORA0302;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA1001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWMETORA1001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA1001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -2981,6 +3184,11 @@ yes;WWMETWWW0108;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWMETWWW0108;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWWW0108;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWWW0108;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;WWMETWWW0301;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0301;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETWWW0301;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETWWW0301;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWMETWWW0301;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;CLUSTER_BIS6_EU;BIS6_FTP;http://monitoring-dc.app.corp/kb/special:CLUSTER_BIS6_EU:BIS6_FTP;OP_EDI, OP_FR_PILOTS
 yes;CLUSTER_BIS6_EU;BIS6_Today_process;http://monitoring-dc.app.corp/kb/special:CLUSTER_BIS6_EU:BIS6_Today_process;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;CLUSTER_BIS6_EU;BIS6_critical_processes;http://monitoring-dc.app.corp/kb/special:CLUSTER_BIS6_EU:BIS6_critical_processes;OP_EDI, OP_FR_PILOTS
@@ -3011,6 +3219,7 @@ yes;CLUSTER_BIS6_EU;Queue_status_oftp;http://monitoring-dc.app.corp/kb/special:C
 yes;CLUSTER_BIS6_EU;Queue_status_sftp;http://monitoring-dc.app.corp/kb/special:CLUSTER_BIS6_EU:Queue_status_sftp;OP_EDI, OP_FR_PILOTS
 yes;CLUSTER_BIS6_EU;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;CLUSTER_BIS6_EU;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;CLUSTER_BIS6_EU;URL_BIS6;http://monitoring-dc.app.corp/kb/app:bis6:url;OP_EDI
 yes;CLUSTER_WWGRPFIN0001;Gateway;http://monitoring-dc.app.corp/kb/system:aix:gateway;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;CLUSTER_WWGRPFIN0001;HACMP;http://monitoring-dc.app.corp/kb/system:hacmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;CLUSTER_WWGRPFIN0001;Oracle_Tablespace_APPS_TS_ARCHIVE;http://monitoring-dc.app.corp/kb/app:finance:Oracle_Tablespace;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -4329,6 +4538,7 @@ yes;WWGRPAPP0016;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:wind
 yes;WWGRPAPP0016;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPAPP0016;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPAPP0016;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;WWGRPAPP0016;Service_Apache_Tomcat;http://monitoring-dc.app.corp/kb/system:windows:services:sumac;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPAPP0016;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPAPP0026;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPAPP0026;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -6461,13 +6671,6 @@ yes;SKBTSCTL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;SKBTSCTL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;SKBTSCTL0001;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;SKBTSCTL0001;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;SKHLOCTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;SKHLOCTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;SKHLOCTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;SKHLOCTL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;SKHLOCTL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-no;SKHLOCTL0001;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-no;SKHLOCTL0001;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;SKHLOCTL0002;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;SKHLOCTL0002;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;SKHLOCTL0002;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -7042,6 +7245,13 @@ yes;CACA2CTL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;CACA2CTL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;CACA2CTL0001;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;CACA2CTL0001;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;CNBJSCTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;CNBJSCTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;CNBJSCTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;CNBJSCTL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;CNBJSCTL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;CNBJSCTL0001;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;CNBJSCTL0001;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;CNCN2CTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;CNCN2CTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;CNCN2CTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -7301,6 +7511,13 @@ yes;ESABRCTL0002;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;ESABRCTL0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;ESABRCTL0002;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;ESABRCTL0002;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;ESABRCTL0003;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;ESABRCTL0003;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;ESABRCTL0003;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;ESABRCTL0003;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;ESABRCTL0003;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;ESABRCTL0003;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;ESABRCTL0003;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;ESALMCTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;ESALMCTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;ESALMCTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -8788,6 +9005,13 @@ yes;SESE2CTL0002;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;SESE2CTL0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;SESE2CTL0002;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;SESE2CTL0002;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;SKHLOCTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;SKHLOCTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;SKHLOCTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;SKHLOCTL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;SKHLOCTL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;SKHLOCTL0001;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;SKHLOCTL0001;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;SKSK2CTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;SKSK2CTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;SKSK2CTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -8865,13 +9089,13 @@ yes;USARJCTL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;USARJCTL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;USARJCTL0001;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;USARJCTL0001;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;USCHACTL1000;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;USCHACTL1000;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;USCHACTL1000;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;USCHACTL1000;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;USCHACTL1000;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-no;USCHACTL1000;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-no;USCHACTL1000;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USCHACTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USCHACTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USCHACTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USCHACTL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USCHACTL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;USCHACTL0001;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;USCHACTL0001;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;USCLECTL1000;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;USCLECTL1000;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;USCLECTL1000;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -9655,6 +9879,16 @@ yes;HACMP_EAS_SCORE;Gateway;http://monitoring-dc.app.corp/kb/system:aix:gateway;
 yes;HACMP_EAS_SCORE;HACMP;http://monitoring-dc.app.corp/kb/system:hacmp;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;HACMP_EAS_SCORE;Oracle_Login_MA;http://monitoring-dc.app.corp/kb/app:magnitude;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;HACMP_EAS_SCORE;Oracle_Login_MA_ARCHE;http://monitoring-dc.app.corp/kb/app:magnitude;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_AUT_DATA;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_AUT_DATA_IDX;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_AUT_SYSTEM;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_AUT_SYSTEM_IDX;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_DATA;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_DATA_IDX;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_SYSTEM;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_SYSTEM_IDX;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_TEMP;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SCORE;Oracle_Tablespace_CT_TEMP_IDX;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;HACMP_EAS_SCORE;Partition_Databasem__datafile_MA_ARCHE_used_space;http://monitoring-dc.app.corp/kb/app:magnitude;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;HACMP_EAS_SCORE;Partition_Databasem_datafile_MA2_used_space;http://monitoring-dc.app.corp/kb/app:magnitude;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;HACMP_EAS_SCORE;Partition_Databasem_datafile_used_space;http://monitoring-dc.app.corp/kb/app:magnitude;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -10055,6 +10289,7 @@ no;WWEASORA0002;Partition_Home_used_space;http://monitoring-dc.app.corp/kb/syste
 no;WWEASORA0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASORA0002;Partition_Tmp_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASORA0002;Partition_Var_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASORA0002;Partition_oracle_log_used_space;http://monitoring-dc.app.corp/kb/app:magnitude:partition:/databasem/log;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASORA0002;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASORA0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASORA0002;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -10314,6 +10549,26 @@ yes;WWEASSWT0010;net_port_EXT3;http://monitoring-dc.app.corp/kb/network:port_sta
 yes;WWEASSWT0010;net_port_EXT4;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;WWEASSWT0010;net_port_EXT5;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
 yes;WWEASSWT0010;net_port_EXT6;http://monitoring-dc.app.corp/kb/network:port_status;OP_NETWORK_DC, OP_FR_PILOTS
+no;WWEASUNIA006;BIS6_critical_processes;http://monitoring-dc.app.corp/kb/special:WWEASUNIA006:BIS6_critical_processes;OP_EDI, OP_FR_PILOTS
+no;WWEASUNIA006;CPU;http://monitoring-dc.app.corp/kb/system:aix:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;Hotfolder_engine_status;http://monitoring-dc.app.corp/kb/special:WWEASUNIA006:Hotfolder_engine_status;OP_EDI, OP_FR_PILOTS
+no;WWEASUNIA006;LVM_status;http://monitoring-dc.app.corp/kb/system:aix:lvm:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;Memory;http://monitoring-dc.app.corp/kb/system:aix:memory:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWEASUNIA006;Nagios_Unix_Plugins;http://monitoring-dc.app.corp/kb/monitoring:unix_plugins;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;Partition_Home_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;Partition_Tmp_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;Partition_Var_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;Process_JAVA_BIS6;http://monitoring-dc.app.corp/kb/special:WWEASUNIA006:Process_JAVA_BIS6;OP_EDI, OP_FR_PILOTS
+no;WWEASUNIA006;Queue_status_ftp;http://monitoring-dc.app.corp/kb/special:WWEASUNIA006:Queue_status_ftp;OP_EDI, OP_FR_PILOTS
+no;WWEASUNIA006;Queue_status_mail;http://monitoring-dc.app.corp/kb/special:WWEASUNIA006:Queue_status_mail;OP_EDI, OP_FR_PILOTS
+no;WWEASUNIA006;Queue_status_oftp;http://monitoring-dc.app.corp/kb/special:WWEASUNIA006:Queue_status_oftp;OP_EDI, OP_FR_PILOTS
+no;WWEASUNIA006;Queue_status_sftp;http://monitoring-dc.app.corp/kb/special:WWEASUNIA006:Queue_status_sftp;OP_EDI, OP_FR_PILOTS
+yes;WWEASUNIA006;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWEASUNIA006;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;Swap_used_space;http://monitoring-dc.app.corp/kb/system:aix:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIA006;URL_BIS6;http://monitoring-dc.app.corp/kb/app:bis6:url;OP_EDI
 no;WWEASUNIA301;CPU;http://monitoring-dc.app.corp/kb/system:aix:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASUNIA301;LVM_status;http://monitoring-dc.app.corp/kb/system:aix:lvm:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASUNIA301;Memory;http://monitoring-dc.app.corp/kb/system:aix:memory:;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -11303,6 +11558,29 @@ yes;WWFCSUNIA104;SAP_Status;http://monitoring-dc.app.corp/kb/app:fcs:dev:sap_sta
 yes;WWFCSUNIA104;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWFCSUNIA104;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWFCSUNIA104;Swap_used_space;http://monitoring-dc.app.corp/kb/system:aix:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;CPU;http://monitoring-dc.app.corp/kb/system:aix:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA106;DB2_Status;http://monitoring-dc.app.corp/kb/app:fcs:dev:db2_status;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;LVM_status;http://monitoring-dc.app.corp/kb/system:aix:lvm:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Memory;http://monitoring-dc.app.corp/kb/system:aix:memory:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA106;Nagios_Unix_Plugins;http://monitoring-dc.app.corp/kb/monitoring:unix_plugins;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA106;Partition_DB2_DBI_log_dir_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:log_dir_partitions;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_Home_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_Sap_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:sap;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_Sapdata_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:sapdata;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_Sapmnt_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:sapmnt;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_Tmp_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_Var_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_db2_dump_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:db2dump;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_db2_instance_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:db2_instance;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_db2_software_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:db2_software;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_sap_home_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:sap_home;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partition_simpana_arch_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:simpana_arch;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA106;SAP_Status;http://monitoring-dc.app.corp/kb/app:fcs:dev:sap_status;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA106;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA106;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA106;Swap_used_space;http://monitoring-dc.app.corp/kb/system:aix:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWFCSUNIA107;CPU;http://monitoring-dc.app.corp/kb/system:aix:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWFCSUNIA107;DB2_Status;http://monitoring-dc.app.corp/kb/app:fcs:dev:db2_status;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWFCSUNIA107;LVM_status;http://monitoring-dc.app.corp/kb/system:aix:lvm:;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -11621,6 +11899,38 @@ yes;WWFCSUNIA123;SAP_Status;http://monitoring-dc.app.corp/kb/app:fcs:dev:sap_sta
 yes;WWFCSUNIA123;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWFCSUNIA123;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWFCSUNIA123;Swap_used_space;http://monitoring-dc.app.corp/kb/system:aix:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;CPU;http://monitoring-dc.app.corp/kb/system:aix:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;LVM_status;http://monitoring-dc.app.corp/kb/system:aix:lvm:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;Memory;http://monitoring-dc.app.corp/kb/system:aix:memory:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;NFS_Share_Archives_availability;http://monitoring-dc.app.corp/kb/app:fcs:dev:nfs_share;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;NFS_Share_EDI_availability;http://monitoring-dc.app.corp/kb/app:fcs:dev:nfs_share;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;NFS_Share_Sapmnt_availability;http://monitoring-dc.app.corp/kb/app:fcs:dev:nfs_share;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA127;Nagios_Unix_Plugins;http://monitoring-dc.app.corp/kb/monitoring:unix_plugins;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;Partition_Home_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;Partition_Sap_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:sap;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;Partition_Tmp_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;Partition_Var_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA127;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA127;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA127;Swap_used_space;http://monitoring-dc.app.corp/kb/system:aix:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;CPU;http://monitoring-dc.app.corp/kb/system:aix:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;LVM_status;http://monitoring-dc.app.corp/kb/system:aix:lvm:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;Memory;http://monitoring-dc.app.corp/kb/system:aix:memory:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;NFS_Share_Archives_availability;http://monitoring-dc.app.corp/kb/app:fcs:dev:nfs_share;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;NFS_Share_EDI_availability;http://monitoring-dc.app.corp/kb/app:fcs:dev:nfs_share;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;NFS_Share_Sapmnt_availability;http://monitoring-dc.app.corp/kb/app:fcs:dev:nfs_share;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA128;Nagios_Unix_Plugins;http://monitoring-dc.app.corp/kb/monitoring:unix_plugins;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;Partition_Home_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;Partition_Sap_used_space;http://monitoring-dc.app.corp/kb/app:fcs:dev:sap;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;Partition_Tmp_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;Partition_Var_used_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA128;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;WWFCSUNIA128;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWFCSUNIA128;Swap_used_space;http://monitoring-dc.app.corp/kb/system:aix:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWFCSWTS0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;WWFCSWTS0001;Citrix_Event_Log;http://monitoring-dc.app.corp/kb/windows:citrix:eventlog:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWFCSWTS0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS

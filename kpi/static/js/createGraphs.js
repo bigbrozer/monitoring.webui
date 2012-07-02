@@ -23,7 +23,7 @@ function oldCreateRequests() {
 // GRAPH ////////////////////////////////////
     graph = new AmCharts.AmGraph();
     graph.valueField = "remained";
-    graph.type = "smoothedLine";
+    graph.type = "line";
 
 // SCROLLBAR ////////////////////////////////
     chartScrollbar = new AmCharts.ChartScrollbar();
@@ -93,7 +93,7 @@ function createRequests() {
 
     graphRemained = new AmCharts.StockGraph();
     graphRemained.valueField = "remained";
-    graphRemained.type = "smoothedLine";
+    graphRemained.type = "line";
     graphRemained.title = "Remained";
     graphRemained.hideBulletsCount = 35;
     graphRemained.bullet = "bubble";
@@ -145,7 +145,7 @@ function createRequests() {
     graphClosed.hideBulletsCount = 35;
     graphClosed.bullet = "bubble";
     graphClosed.lineThickness = 2;
-    graphClosed.type = "smoothedLine";
+    graphClosed.type = "line";
     graphClosed.fillColor = "#00CC00";
     graphClosed.lineColor = "#00CC00";
     graphClosed.useDataSetColors = false;
@@ -159,13 +159,14 @@ function createRequests() {
 
     graphLifetimeGlobal = new AmCharts.StockGraph();
     graphLifetimeGlobal.valueField = "global";
-    graphLifetimeGlobal.type = "smoothedLine";
-    graphLifetimeGlobal.title = "Global";
+    graphLifetimeGlobal.type = "line";
+    graphLifetimeGlobal.title = "Low";
     graphLifetimeGlobal.hideBulletsCount = 35;
     graphLifetimeGlobal.bullet = "bubble";
-    graphLifetimeGlobal.balloonText += " days";
-    graphLifetimeGlobal.legendValueText += " days";
+//    graphLifetimeGlobal.balloonText += " days";
+//    graphLifetimeGlobal.legendValueText += " days";
     graphLifetimeGlobal.lineThickness = 2;
+    graphLifetimeGlobal.hidden = true;
     graphLifetimeGlobal.lineColor = "#000000";
     graphLifetimeGlobal.useDataSetColors = false;
     graphLifetimeGlobal.fillAlphas = 0.1;
@@ -179,18 +180,18 @@ function createRequests() {
 
 //  2.1) stockLegend Lifetime (all)
     stockLegendLifetime = new AmCharts.StockLegend();
-    stockLegendLifetime.valueTextRegular += " days";
+//    stockLegendLifetime.valueTextRegular += " days";
     stockPanelLifetime.stockLegend = stockLegendLifetime;
 
 //  2.2) graph Lifetime Normal
     graphLifetimeNormal = new AmCharts.StockGraph();
     graphLifetimeNormal.valueField = "normal";
-    graphLifetimeNormal.type = "smoothedLine";
+    graphLifetimeNormal.type = "line";
     graphLifetimeNormal.title = "Normal";
     graphLifetimeNormal.hideBulletsCount = 35;
     graphLifetimeNormal.bullet = "bubble";
-    graphLifetimeNormal.balloonText += " days";
-    graphLifetimeNormal.hidden = true;
+//    graphLifetimeNormal.balloonText += " days";
+    graphLifetimeNormal.hidden = false;
     graphLifetimeNormal.lineThickness = 2;
     graphLifetimeNormal.lineColor = "#0066FF";
     graphLifetimeNormal.useDataSetColors = false;
@@ -203,12 +204,12 @@ function createRequests() {
 //  2.3) graph Lifetime High
     graphLifetimeHigh = new AmCharts.StockGraph();
     graphLifetimeHigh.valueField = "high";
-    graphLifetimeHigh.type = "smoothedLine";
+    graphLifetimeHigh.type = "line";
     graphLifetimeHigh.title = "High";
     graphLifetimeHigh.hideBulletsCount = 35;
     graphLifetimeHigh.bullet = "bubble";
-    graphLifetimeHigh.balloonText += " days";
-    graphLifetimeHigh.hidden = true;
+//    graphLifetimeHigh.balloonText += " days";
+    graphLifetimeHigh.hidden = false;
     graphLifetimeHigh.lineThickness = 2;
     graphLifetimeHigh.lineColor = "#FF9900";
     graphLifetimeHigh.useDataSetColors = false;
@@ -221,11 +222,11 @@ function createRequests() {
 //  2.4) graph Lifetime Urgent
     graphLifetimeUrgent = new AmCharts.StockGraph();
     graphLifetimeUrgent.valueField = "urgent";
-    graphLifetimeUrgent.type = "smoothedLine";
+    graphLifetimeUrgent.type = "line";
     graphLifetimeUrgent.title = "Urgent";
     graphLifetimeUrgent.hideBulletsCount = 35;
     graphLifetimeUrgent.bullet = "bubble";
-    graphLifetimeUrgent.balloonText += " days";
+//    graphLifetimeUrgent.balloonText += " days";
     graphLifetimeUrgent.hidden = true;
     graphLifetimeUrgent.lineThickness = 2;
     graphLifetimeUrgent.lineColor = "#FF0000";
@@ -259,6 +260,11 @@ function createRequests() {
         period: "MM",
         count: 1,
         label: "1 Month",
+        selected: false
+    },{
+        period: "MM",
+        count: 3,
+        label: "3 Month",
         selected: false
     }, {
         period: "MM",
@@ -327,7 +333,7 @@ function createHosts() {
 
     graphHosts = new AmCharts.StockGraph();
     graphHosts.valueField = "total_host";
-    graphHosts.type = "smoothedLine";
+    graphHosts.type = "line";
     graphHosts.title = "Hosts";
     graphHosts.hideBulletsCount = 35;
     graphHosts.bullet = "bubble";
@@ -352,7 +358,7 @@ function createHosts() {
 
     graphServices = new AmCharts.StockGraph();
     graphServices.valueField = "total_services";
-    graphServices.type = "smoothedLine";
+    graphServices.type = "line";
     graphServices.hideBulletsCount = 35;
     graphServices.bullet = "bubble";
     graphServices.title = "Services";
@@ -921,6 +927,11 @@ function createRecurrentsAlerts() {
     chart.urlTarget = "_blank";
     chart.pullOutRadius = "0%";
     chart.radius = "30%";
+    chart.outlineThickness = 1.2;
+    chart.outlineAlpha = 1;
+    chart.outlineColor = "#FFFFFF";
+    chart.depth3D = 15;
+    chart.angle = 30;
 
     chart.write('graphRecurrentsAlerts');
 }

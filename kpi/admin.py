@@ -90,8 +90,7 @@ class RecurrentAlertsAdmin(admin.ModelAdmin):
     modify default settings for count notifications
     """
     list_display = ('date', 'host', 'service', 'frequency')
-    date_hierarchy = 'date'
-    ordering = ['-date']
+    ordering = ['-frequency']
 
 class OldestAlertsAdmin(admin.ModelAdmin):
     """
@@ -99,7 +98,7 @@ class OldestAlertsAdmin(admin.ModelAdmin):
     """
     list_display = ('date', 'host', 'service', 'date_error')
     date_hierarchy = 'date'
-    ordering = ['-date']
+    ordering = ['date_error']
 
 admin.site.register(KpiNagios, KpiNagiosAdmin)
 admin.site.register(KpiRedmine, KpiRedmineAdmin)

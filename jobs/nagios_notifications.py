@@ -62,8 +62,6 @@ def request_recurrent_alerts():
         .replace(hour = 0, minute = 0, second = 0, microsecond = 0)
     period = timedelta(days = 31)
     first_date = today - period
-    if RecurrentAlerts.objects.all().count():
-        RecurrentAlerts.objects.all().delete()
     alerts = NagiosNotifications.objects\
         .filter(date__gte = first_date, date__lt = today)\
         .values('host', 'service')
