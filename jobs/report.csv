@@ -70,6 +70,9 @@ no;DEBMESEQ0001;gIMM_Count_OSLD;http://monitoring-dc.app.corp/kb/app:gimm:count;
 no;DEBMESEQ0001;gIMM_Count_Rejected;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_Count_STRU;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_Count_TEIL;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
+no;DEBMESEQ0001;gIMM_Hist_Tables;http://monitoring-dc.app.corp/kb/app:gimm:hist_tables:;OP_FR_PILOTS
+no;DEBMESEQ0001;gIMM_Rep_Tables;http://monitoring-dc.app.corp/kb/app:gimm:rep_tables:;OP_FR_PILOTS
+no;DEBMESEQ0001;gIMM_Sysdb_Data;http://monitoring-dc.app.corp/kb/app:gimm:sysdb_data:;OP_FR_PILOTS
 yes;DEBMESEQ0002;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_FR_PILOTS
 yes;DEBMESEQ0002;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_FR_PILOTS
 yes;DEBMESEQ0002;Drive_D_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_FR_PILOTS
@@ -467,6 +470,8 @@ no;EUEDCFLS2001;NFS_bad_calls;http://monitoring-dc.app.corp/kb/storage:netapp;OP
 no;EUEDCFLS2001;NFS_operations;http://monitoring-dc.app.corp/kb/storage:netapp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCFLS2001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCFLS2001;Volume_VOL0_used_space;http://monitoring-dc.app.corp/kb/system:netapp:volume;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCFLS2001;Volume_VOLARCHE_used_space;http://monitoring-dc.app.corp/kb/storage:netapp;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCFLS2001;Volume_VOLDXMDATA_used_space;http://monitoring-dc.app.corp/kb/storage:netapp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCFLS2002;Battery_status;http://monitoring-dc.app.corp/kb/system:netapp:battery_status;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCFLS2002;CIFS_bad_calls;http://monitoring-dc.app.corp/kb/storage:netapp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCFLS2002;CIFS_operations;http://monitoring-dc.app.corp/kb/storage:netapp;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -1210,6 +1215,9 @@ no;FRSELIND0023;gIMM_Count_OSLD;http://monitoring-dc.app.corp/kb/app:gimm:count;
 no;FRSELIND0023;gIMM_Count_Rejected;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_Count_STRU;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_Count_TEIL;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
+no;FRSELIND0023;gIMM_Hist_Tables;http://monitoring-dc.app.corp/kb/app:gimm:hist_tables:;OP_FR_PILOTS
+no;FRSELIND0023;gIMM_Rep_Tables;http://monitoring-dc.app.corp/kb/app:gimm:rep_tables:;OP_FR_PILOTS
+no;FRSELIND0023;gIMM_Sysdb_Data;http://monitoring-dc.app.corp/kb/app:gimm:sysdb_data:;OP_FR_PILOTS
 yes;GBGB2CTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;GBGB2CTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;GBGB2CTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -7364,6 +7372,13 @@ yes;DELEJCTL0003;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;DELEJCTL0003;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;DELEJCTL0003;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;DELEJCTL0003;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;DELIUCTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;DELIUCTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;DELIUCTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;DELIUCTL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;DELIUCTL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;DELIUCTL0001;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+no;DELIUCTL0001;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;DELOHCTL0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;DELOHCTL0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;DELOHCTL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -9707,6 +9722,11 @@ no;ZAZA2CTL0002;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:window
 yes;DEFAURHAG0007R;Virtual_Address;http://monitoring-dc.app.corp/kb/network:att_router:hsrp;OP_NETWORK_DC, OP_FR_PILOTS
 yes;DEFAURHAG0008R;Virtual_Address;http://monitoring-dc.app.corp/kb/network:att_router:hsrp;OP_NETWORK_DC, OP_FR_PILOTS
 no;DEHGBIPANEMA;Ping;http://monitoring-dc.app.corp/kb/ping;OP_NETWORK_DC, OP_FR_PILOTS
+yes;HACMP_EAS_SAP_FA1;Gateway;http://monitoring-dc.app.corp/kb/system:aix:gateway;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;HACMP_EAS_SAP_FA1;HACMP;http://monitoring-dc.app.corp/kb/system:hacmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;HACMP_EAS_SAP_FA1;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
+yes;HACMP_EAS_SAP_FA1;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FC1_DB;DB2_Bufferpool;http://monitoring-dc.app.corp/kb/app:fcs:prod:db2_bufferpool;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FC1_DB;DB2_Status;http://monitoring-dc.app.corp/kb/app:fcs:prod:db2_status;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FC1_DB;Gateway;http://monitoring-dc.app.corp/kb/system:aix:gateway;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -9749,17 +9769,6 @@ yes;HACMP_EAS_SAP_FE1;SAP_Status;http://monitoring-dc.app.corp/kb/app:fcs:prod:s
 yes;HACMP_EAS_SAP_FE1;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FE1;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;HACMP_EAS_SAP_FE1;URL_SAP_NetWeaver_Portal_FE1;http://monitoring-dc.app.corp/kb/app:sap:url;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;DB2_Status;http://monitoring-dc.app.corp/kb/app:fcs:prod:db2_status;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;Gateway;http://monitoring-dc.app.corp/kb/system:aix:gateway;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;HACMP;http://monitoring-dc.app.corp/kb/system:hacmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;Partition_DB2_FMD_log_dir_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:log_dir_partitions;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;Partition_DB2_galaxy_arch_used_space;http://monitoring-dc.app.corp/kb/special:HACMP_EAS_SAP_FMD:Partition_DB2_galaxy_arch_used_space;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;Partition_Sapdata_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:sapdata;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;Partition_Sapmnt_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:sapmnt;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;HACMP_EAS_SAP_FMD;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;SAP_Status;http://monitoring-dc.app.corp/kb/app:fcs:prod:sap_status;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;HACMP_EAS_SAP_FMD;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FR1;DB2_Status;http://monitoring-dc.app.corp/kb/app:fcs:prod:db2_status;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FR1;Gateway;http://monitoring-dc.app.corp/kb/system:aix:gateway;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FR1;HACMP;http://monitoring-dc.app.corp/kb/system:hacmp;OP_SYSTEM_UNIX, OP_FR_PILOTS

@@ -921,7 +921,7 @@ function createRecurrentsAlerts() {
     chart.dataProvider = chartDataRecurrentsAlerts;
     chart.titleField = "name";
     chart.valueField = "repetitions";
-    chart.balloonText = "[[title]] : [[value]]";
+    chart.balloonText = "[[title]] : [[value]]/" + other;
     chart.labelText = "[[title]] : [[value]]";
     chart.urlField = "url";
     chart.urlTarget = "_blank";
@@ -934,6 +934,30 @@ function createRecurrentsAlerts() {
     chart.angle = 30;
 
     chart.write('graphRecurrentsAlerts');
+    deleteAmChart();
+}
+
+function createOldestsAlerts() {
+    "use strict";
+    var chart;
+
+// CHART ///////////////////////////////////
+    chart = new AmCharts.AmPieChart();
+    chart.dataProvider = chartDataOldestsAlerts;
+    chart.titleField = "name";
+    chart.valueField = "days";
+    chart.balloonText = "[[title]] : [[value]]";
+    chart.labelText = "[[title]] : [[value]]";
+    chart.pullOutRadius = "0%";
+    chart.radius = "30%";
+    chart.outlineThickness = 1.2;
+    chart.outlineAlpha = 1;
+    chart.outlineColor = "#FFFFFF";
+    chart.depth3D = 15;
+    chart.angle = 30;
+
+    chart.write('graphOldestsAlerts');
+    deleteAmChart();
 }
 
 function deleteAmChart() {

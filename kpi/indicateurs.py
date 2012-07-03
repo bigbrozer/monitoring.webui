@@ -1,18 +1,13 @@
 from kpi.models import KpiNagios, KpiRedmine
-from kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts
+from kpi.models import  CountNotifications, RecurrentAlerts, OldestAlerts
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from datetime import datetime, timedelta
 from django.shortcuts import redirect
-from django.db.models import Count
 import sys
 import os
-from operator import itemgetter
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
-
-from jobs import nagios_notifications
 
 def indicateurs(request):
     """
@@ -75,6 +70,8 @@ def indicateurs(request):
     chart_data_recurrents_alerts = "[\n"
 
     recurrents_alerts = RecurrentAlerts.objects.all().order_by("-frequency")[:15]
+    others = RecurrentAlerts.objects.all()
+    number_others = 0
 
     for alert in recurrents_alerts:
         chart_data_recurrents_alerts += '{name: "%s@%s", repetitions: %d, '\
@@ -83,12 +80,26 @@ def indicateurs(request):
                                                                               alert.frequency,
                                                                               alert.host)
         chart_data_recurrents_alerts += ",\n"
-
+    for alert in others:
+        number_others += alert.frequency
+#    chart_data_recurrents_alerts += '{name: "others", repetitions: %d, '\
+#        'url: "http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi"}' % number_others
     chart_data_recurrents_alerts += "\n]"
+
+    chart_data_oldests_alerts = "[\n"
+    oldest_alerts = OldestAlerts.objects.all().order_by("date_error")[:25]
+    for alert in oldest_alerts:
+        days = alert.date - alert.date_error
+        days = days.total_seconds()/60/60/24
+        chart_data_oldests_alerts += '{name: "%s@%s", days: %d}' % (alert.service,
+                                                                    alert.host, days)
+        chart_data_oldests_alerts += ",\n"
+
+    chart_data_oldests_alerts += "\n]"
 
     return render_to_response(
         'main.html', locals(), context_instance = RequestContext(request))
 
 def redirect_to_indic(request):
     """ redirect the users to indicateurs"""
-    return redirect("/indicateurs")
+    return redirect("/indicateurs/")
