@@ -36,15 +36,17 @@ def request():
         cur.execute(
             "SELECT created_on FROM ISSUES ORDER BY created_on ASC LIMIT 1")
         day_midnight = cur.fetchone()[0]
+        day_midnight -= one_day
+        nrest = 0
     else:
         day_midnight = KpiRedmine.objects.order_by('-date')[0].date
-        day_midnight += one_day
 
 
     day_midnight = day_midnight.replace(
         hour = 0, minute = 0, second = 0, microsecond = 0, tzinfo = utc)
     # first date found in redmine database
     day_late = day_midnight + one_day
+
     while day_late <= today:
     # loop that goes throuh all the database day per day
         date_midnight = day_midnight.date()
@@ -57,6 +59,7 @@ def request():
             WHERE due_date = ? \
             AND (status_id = 5 OR status_id = 6 OR status_id = 10) AND project_id != 12", (date_midnight,))
         requests_closed[str(day_midnight)] = cur.fetchone()[0]
+#        nrest = nrest + requests_opened[str(day_midnight)] - requests_closed[str(day_midnight)]
         lifetime = timedelta()
         lifetime_normal = timedelta()
         lifetime_high = timedelta()
@@ -65,8 +68,14 @@ def request():
         n_normal = 0
         n_high = 0
         n_urgent = 0
+#        cur.execute("Select count(status_id) from issues Where created_on < ? AND project_id != 12", (day_late,))
+#        num1 = cur.fetchone()[0]
+#        cur.execute("Select count(status_id) from issues Where due_date <= ? "\
+#            "And (status_id = 5 OR status_id = 6 OR status_id = 10) AND project_id != 12", (day_midnight,))
+#        num2 = cur.fetchone()[0]
+#        num = num1 - num2
         for requests in cur.execute("SELECT created_on, priority_id, status_id, id, subject FROM ISSUES "\
-            "WHERE created_on <= ? "\
+            "WHERE created_on < ? "\
             "AND (due_date > ? "\
             "OR (status_id != 5 AND status_id != 6 AND status_id != 10)) "\
             "AND project_id != 12", tu2):
