@@ -9,7 +9,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$/', 'kpi.indicateurs.redirect_to_indic'),
+    url(r'^$', 'kpi.indicateurs.redirect_to_indic'),
     url(r'^indicateurs/', 'kpi.indicateurs.indicateurs'),
     # url(r'^reporting/', include('reporting.foo.urls')),
 
