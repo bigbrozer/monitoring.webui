@@ -75,10 +75,12 @@ def insert():
         last_date = OldestAlerts.objects.order_by('-date')[0].date
         last_date = last_date.replace(hour = 0,
             minute = 0, second = 0, microsecond = 0)
+        OldestAlerts.objects.all().delete()
     else:
         last_date = yesterday
 
     if last_date != today:
+        print "\n inserting"
         number += insert_oldest_alerts()
 
     return "\n %s lignes ajoutees" % number
@@ -233,7 +235,6 @@ def insert_oldest_alerts():
     """
     insert the oldest alerts active in the database
     """
-    OldestAlerts.objects.all().delete()
     print "\nFetching informations for the oldest alerts"
     oldest_alerts = nagios.request_oldest_alerts_hosts()
     date = datetime.now(tz=utc).replace(hour = 0, minute = 0, second = 0, microsecond = 0)

@@ -63,6 +63,7 @@ yes;DEBMESEQ0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PIL
 yes;DEBMESEQ0001;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_BBDD_gIMM.Data;http://monitoring-dc.app.corp/kb/app:gimm:bbdd:;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_BBDD_gIMM.Log;http://monitoring-dc.app.corp/kb/app:gimm:bbdd:;OP_FR_PILOTS
+no;DEBMESEQ0001;gIMM_Check_Forecast;http://monitoring-dc.app.corp/kb/app:gimm:forecast:;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_Count_Debug;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_Count_JIT;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;DEBMESEQ0001;gIMM_Count_MAS;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
@@ -94,25 +95,25 @@ no;DEDE1APP0004;Service_Crystal_Reports;http://monitoring-dc.app.corp/kb/system:
 no;DEDE1APP0004;Service_Desktop_Intelligence;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;DEDE1APP0004;Service_Web_Intelligence;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;DEDE1APP0004;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;DEDE1APP2000;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;DEDE1APP2000;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DEDE1APP2000;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1APP2000;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1APP2000;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1APP2000;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DEDE1APP2000;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DEDE1APP2000;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1APP2000;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DEDE1APP2000;Process_Scmail;http://monitoring-dc.app.corp/kb/special:DEDE1APP2000:Process_Scmail;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DEDE1APP2000;Process_Sm;http://monitoring-dc.app.corp/kb/special:DEDE1APP2000:Process_Sm;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DEDE1APP2000;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DEDE1WWW0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;DEDE1WWW0001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DEDE1WWW0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DEDE1WWW0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1WWW0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1WWW0001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1WWW0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1WWW0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DEDE1WWW0001;Process_Httpd;http://monitoring-dc.app.corp/kb/app:stratos:process_httpd;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DEDE1WWW0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;DEDE1WWW0001;Total_Connection_Stratos;http://monitoring-dc.app.corp/kb/app:stratos;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DEDE1WWW0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;DEDE1WWW0002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DEDE1WWW0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DEDE1WWW0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1WWW0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1WWW0002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1WWW0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;DEDE1WWW0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DEDE1WWW0002;Process_Httpd;http://monitoring-dc.app.corp/kb/app:stratos:process_httpd;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DEDE1WWW0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;DEDE1WWW0002;Total_Connection_Stratos;http://monitoring-dc.app.corp/kb/app:stratos;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -355,7 +356,7 @@ yes;EUEDCDIR0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;EUEDCDIR0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;EUEDCDIR0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;EUEDCDIR0001;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;EUEDCELB0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0001;Connection_rate_Cheops_11104;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0001;Connection_rate_Cheops_11204;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0001;Connection_rate_Coswin;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -371,10 +372,10 @@ no;EUEDCELB0001;Connection_rate_Tempo;http://monitoring-dc.app.corp/kb/system:lo
 no;EUEDCELB0001;Connection_rate_magellan_11100;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0001;Connection_rate_magellan_11200;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0001;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_master;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;EUEDCELB0001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0001;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0001;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -383,7 +384,7 @@ yes;EUEDCELB0001;URL_PDM_Galileo;http://monitoring-dc.app.corp/kb/app:pdm:index;
 yes;EUEDCELB0001;URL_PDM_Magellan;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_APPLI
 yes;EUEDCELB0001;URL_PDM_Octopus;http://monitoring-dc.app.corp/kb/app:pdm:index;OP_APPLI
 yes;EUEDCELB0001;URL_Stratos;http://monitoring-dc.app.corp/kb/app:stratos:url;OP_FR_PILOTS, OP_SYSTEM_UNIX
-yes;EUEDCELB0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0002;Connection_rate_Cheops_11104;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0002;Connection_rate_Cheops_11204;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0002;Connection_rate_Coswin;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -399,14 +400,14 @@ no;EUEDCELB0002;Connection_rate_Tempo;http://monitoring-dc.app.corp/kb/system:lo
 no;EUEDCELB0002;Connection_rate_magellan_11100;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0002;Connection_rate_magellan_11200;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0002;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_slave;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;EUEDCELB0002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0002;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0002;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0002;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0003;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0003;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0003;Connection_rate_GATEWAY_9278;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0003;Connection_rate_IAM_443;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0003;Connection_rate_IAM_80;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -417,14 +418,14 @@ no;EUEDCELB0003;Connection_rate_LDAP_389;http://monitoring-dc.app.corp/kb/system
 no;EUEDCELB0003;Connection_rate_LDAP_636;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0003;Connection_rate_MSMQ_7676;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0003;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_master;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;EUEDCELB0003;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0003;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0003;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0003;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0003;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0003;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0003;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0003;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0003;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0003;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0004;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0004;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0004;Connection_rate_GATEWAY_9278;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0004;Connection_rate_IAM_443;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0004;Connection_rate_IAM_80;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -435,10 +436,10 @@ no;EUEDCELB0004;Connection_rate_LDAP_389;http://monitoring-dc.app.corp/kb/system
 no;EUEDCELB0004;Connection_rate_LDAP_636;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0004;Connection_rate_MSMQ_7676;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;EUEDCELB0004;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_slave;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;EUEDCELB0004;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0004;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0004;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0004;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;EUEDCELB0004;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0004;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;EUEDCELB0004;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0004;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0004;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;EUEDCELB0004;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -502,10 +503,10 @@ yes;EUEDCMGT0002;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;EUEDCMGT0002;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;EUEDCMGT0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;EUEDCMGT0002;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;EUEDCMON0004;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, nagios_dc_administrators
-no;EUEDCMON0004;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, nagios_dc_administrators
-yes;EUEDCMON0004;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, nagios_dc_administrators
-yes;EUEDCMON0004;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, nagios_dc_administrators
+no;EUEDCMON0004;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, nagios_dc_administrators
+no;EUEDCMON0004;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, nagios_dc_administrators
+no;EUEDCMON0004;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, nagios_dc_administrators
+no;EUEDCMON0004;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, nagios_dc_administrators
 no;EUEDCMON0004;Process_Omnibus_Core;http://monitoring-dc.app.corp/kb/app:omnibus:process;OP_FR_PILOTS, nagios_dc_administrators
 no;EUEDCMON0004;Process_Omnibus_GUI;http://monitoring-dc.app.corp/kb/app:omnibus:process;OP_FR_PILOTS, nagios_dc_administrators
 no;EUEDCMON0004;Process_Omnibus_Gateway;http://monitoring-dc.app.corp/kb/app:omnibus:process;OP_FR_PILOTS, nagios_dc_administrators
@@ -1208,6 +1209,7 @@ yes;FRSELIND0023;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PIL
 yes;FRSELIND0023;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_BBDD_gIMM.Data;http://monitoring-dc.app.corp/kb/app:gimm:bbdd:;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_BBDD_gIMM.Log;http://monitoring-dc.app.corp/kb/app:gimm:bbdd:;OP_FR_PILOTS
+no;FRSELIND0023;gIMM_Check_Forecast;http://monitoring-dc.app.corp/kb/app:gimm:forecast:;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_Count_Debug;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_Count_JIT;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
 no;FRSELIND0023;gIMM_Count_MAS;http://monitoring-dc.app.corp/kb/app:gimm:count;OP_FR_PILOTS
@@ -1232,11 +1234,11 @@ yes;GBGB2CTL0002;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;GBGB2CTL0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;GBGB2CTL0002;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;GBGB2CTL0002;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_EDC2;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC2;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_EDC2;Image_version;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
-no;NAGIOS_DC_SATELLITE_EDC2;Load;http://monitoring-dc.app.corp/kb/system:unix:load;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_EDC2;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_EDC2;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC2;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC2;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC2;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_EDC2;Process_Nagios;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
 yes;NAGIOS_DC_SATELLITE_EDC2;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_EDC2;Service_Apache;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
@@ -1572,38 +1574,38 @@ yes;WWGRPINT2001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWGRPINT2001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPINT2001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPINT2001;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWGRPSCE1001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1001;Exalead_Buildgroup_FAE_status;http://monitoring-dc.app.corp/kb/app:exalead:buildgroup_status:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1001;Exalead_Buildgroup_FAS_status;http://monitoring-dc.app.corp/kb/app:exalead:buildgroup_status:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1001;Exalead_Buildgroup_FECT_status;http://monitoring-dc.app.corp/kb/app:exalead:buildgroup_status:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1001;Exalead_Buildgroup_FIS_status;http://monitoring-dc.app.corp/kb/app:exalead:buildgroup_status:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1001;Exalead_Deployment_status;http://monitoring-dc.app.corp/kb/app:exalead:deployment_status:$HOST_KBEXTEND$;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPSCE1001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE1001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE1001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1001;Partition_exalead_used_space;http://monitoring-dc.app.corp/kb/app:exalead:partition:/Exalead;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE1001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1001;Technical_Ping_Search_API;http://monitoring-dc.app.corp/kb/app:exalead:technical_ping:;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE1002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPSCE1002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE1002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE1002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE1002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPSCE1002;Partition_exalead_used_space;http://monitoring-dc.app.corp/kb/app:exalead:partition:/Exalead;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE1002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE2001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPSCE2001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE2001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE2001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE2001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE2001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE2001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE2001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE2001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE2002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPSCE2002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE2002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPSCE2002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE2002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE2002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE2002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPSCE2002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPSCE2002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL101;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPUNIL101;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL101;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL101;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL101;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL101;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL101;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL101;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL101;Partition_home_local_used_space;http://monitoring-dc.app.corp/kb/app:safe:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL101;Partition_opt_simpana_used_space;http://monitoring-dc.app.corp/kb/app:safe:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL101;Partition_tmp_used_space;http://monitoring-dc.app.corp/kb/app:safe:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -1663,23 +1665,23 @@ yes;WWGRPWWW0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYS
 no;WWGRPWWW0001;URL_BI;http://monitoring-dc.app.corp/kb/app:bptool:url;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;WWGRPWWW0001;URL_TM1;http://monitoring-dc.app.corp/kb/app:bptool:url;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPWWW0001;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWMETELB0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETELB0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETELB0001;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_master;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETELB0001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETELB0001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETELB0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETELB0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETELB0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETELB0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETELB0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETELB0001;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETELB0001;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETELB0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWMETELB0001;URL_Metis_interop_preprod;http://monitoring-dc.app.corp/kb/app:metis:url;OP_FR_PILOTS, OP_METIS
 no;WWMETELB0001;URL_Metis_wokspace_preprod;http://monitoring-dc.app.corp/kb/app:metis:url;OP_FR_PILOTS, OP_METIS
-yes;WWMETELB0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETELB0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWMETELB0002;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_slave;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETELB0002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETELB0002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETELB0002;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETELB0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETELB0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETELB0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETELB0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETELB0002;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETELB0002;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETELB0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -1951,11 +1953,11 @@ no;HACMP_EAS_PDM;Partition_Simpana_Log_used_space;http://monitoring-dc.app.corp/
 no;HACMP_EAS_PDM;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_PDM;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_PDM;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_EDC3;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC3;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_EDC3;Image_version;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
-no;NAGIOS_DC_SATELLITE_EDC3;Load;http://monitoring-dc.app.corp/kb/system:unix:load;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_EDC3;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_EDC3;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC3;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC3;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC3;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_EDC3;Process_Nagios;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
 yes;NAGIOS_DC_SATELLITE_EDC3;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_EDC3;Service_Apache;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
@@ -2024,10 +2026,10 @@ yes;WWEASAPP0072;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWEASAPP0072;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWEASAPP0072;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWEASAPP0072;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWEASAPP0073;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWEASAPP0073;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASAPP0073;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASAPP0073;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASAPP0073;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASAPP0073;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASAPP0073;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASAPP0073;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASAPP0073;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASAPP0074;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWEASAPP0074;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -2518,16 +2520,16 @@ yes;WWEASUNIA104;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_APPLI,
 yes;WWEASUNIA104;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASUNIA104;Service_HACMP;http://monitoring-dc.app.corp/kb/system:aix:hacmp:service;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASUNIA104;Swap_used_space;http://monitoring-dc.app.corp/kb/system:aix:swap:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASUNIL001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWEASUNIL001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASUNIL001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASUNIL001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIL001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIL001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIL001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIL001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASUNIL001;Process_Essbase;http://monitoring-dc.app.corp/kb/middleware:essbase;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASUNIL001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASUNIL002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWEASUNIL002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASUNIL002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASUNIL002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIL002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIL002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIL002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASUNIL002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASUNIL002;Process_Essbase;http://monitoring-dc.app.corp/kb/middleware:essbase;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASUNIL002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASVIO1001;CPU;http://monitoring-dc.app.corp/kb/system:aix_vio:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -2574,10 +2576,10 @@ no;WWEASVIO2002;Partition_Tmp_used_space;http://monitoring-dc.app.corp/kb/system
 no;WWEASVIO2002;Partition_Usr_used_space;http://monitoring-dc.app.corp/kb/system:aix_vio:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASVIO2002;Partition_Var_used_space;http://monitoring-dc.app.corp/kb/system:aix_vio:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASVIO2002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASWWW0010;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWEASWWW0010;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASWWW0010;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASWWW0010;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASWWW0010;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASWWW0010;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASWWW0010;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASWWW0010;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASWWW0010;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASWWW0010;URL_Shared_Services;http://monitoring-dc.app.corp/kb/app:metis:url;OP_METIS
 no;WWEASWWW0010;URL_Workspace;http://monitoring-dc.app.corp/kb/app:metis:url;OP_METIS
@@ -2675,65 +2677,65 @@ yes;WWMETAPP0007;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWMETAPP0007;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETAPP0007;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETAPP0007;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWMETAPP0008;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0008;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0008;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0008;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0008;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0008;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0008;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0008;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0008;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0009;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0009;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0009;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0009;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0009;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0009;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0009;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0009;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0009;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0010;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0010;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0010;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0010;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0010;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0010;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0010;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0010;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0010;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0011;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0011;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0011;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0011;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0011;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0011;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0011;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0011;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0011;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0012;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0012;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0012;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0012;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0012;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0012;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0012;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0012;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0012;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0013;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0013;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0013;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0013;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0013;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0013;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0013;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0013;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0013;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0014;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0014;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0014;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0014;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0014;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0014;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0014;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0014;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0014;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0015;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0015;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0015;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0015;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0015;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0015;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0015;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0015;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0015;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0016;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0016;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0016;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0016;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0016;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0016;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0016;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0016;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0016;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0017;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0017;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0017;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0017;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0017;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0017;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0017;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0017;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0017;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0018;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0018;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0018;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0018;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0018;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0018;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0018;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0018;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0018;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0019;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0019;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0019;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0019;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0019;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0019;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0019;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0019;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0019;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0101;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETAPP0101;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -2784,82 +2786,82 @@ yes;WWMETAPP0107;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWMETAPP0107;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETAPP0107;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETAPP0107;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWMETAPP0108;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0108;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0108;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0108;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0108;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0108;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0108;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0108;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0108;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0108;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0108;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0109;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0109;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0109;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0109;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0109;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0109;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0109;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0109;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0109;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0109;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0109;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0110;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0110;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0110;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0110;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0110;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0110;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0110;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0110;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0110;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0110;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0110;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0111;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0111;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0111;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0111;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0111;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0111;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0111;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0111;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0111;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0111;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0111;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0112;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0112;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0112;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0112;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0112;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0112;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0112;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0112;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0112;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0112;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0112;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0113;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0113;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0113;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0113;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0113;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0113;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0113;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0113;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0113;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0113;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0113;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0114;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0114;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0114;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0114;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0114;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0114;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0114;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0114;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0114;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0114;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0114;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0115;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0115;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0115;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0115;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0115;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0115;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0115;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0115;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0115;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0115;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0115;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0116;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0116;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0116;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0116;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0116;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0116;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0116;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0116;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0116;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0116;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0116;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0117;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0117;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0117;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0117;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0117;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0117;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0117;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0117;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0117;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0117;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0117;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0118;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0118;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0118;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0118;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0118;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0118;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0118;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0118;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0118;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0118;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0118;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0119;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0119;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0119;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0119;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0119;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0119;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0119;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0119;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0119;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0119;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0119;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0303;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETAPP0303;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0303;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETAPP0303;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0303;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0303;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0303;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETAPP0303;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP0303;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETAPP1001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETAPP1001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -2938,59 +2940,59 @@ yes;WWMETEAL0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWMETEAL0001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETEAL0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETEAL0001;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWMETORA0301;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA0301;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA0301;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA0301;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0301;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0301;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0301;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0301;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA0301;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA0302;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA0302;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA0302;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA0302;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0302;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0302;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0302;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA0302;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA0302;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA1001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA1001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA1002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA1002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1101;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA1101;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1101;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA1101;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1101;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1101;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1101;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1101;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1101;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1101;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA1101;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1102;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA1102;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1102;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA1102;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA1102;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1102;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1102;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1102;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1102;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA1102;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA1102;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA2001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA2001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA2002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA2002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2101;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA2101;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2101;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA2101;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2101;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2101;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2101;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2101;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2101;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2101;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA2101;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2102;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA2102;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2102;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETORA2102;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETORA2102;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2102;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2102;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2102;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2102;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETORA2102;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETORA2102;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETPRN0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETPRN0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -3096,25 +3098,25 @@ yes;WWMETWTS0002;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWMETWTS0002;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWTS0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWTS0002;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWMETWWW0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0003;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0003;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0003;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0003;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0003;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0003;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0003;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0003;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0003;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0004;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0004;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0004;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0004;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0004;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0004;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0004;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0004;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0004;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0005;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWWW0005;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -3140,29 +3142,29 @@ yes;WWMETWWW0008;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWMETWWW0008;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWWW0008;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWWW0008;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWMETWWW0101;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0101;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0101;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0101;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0101;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0101;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0101;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0101;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0101;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0101;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0101;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0102;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0102;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0102;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0102;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0102;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0102;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0102;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0102;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0102;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0102;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0102;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0103;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0103;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0103;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0103;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0103;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0103;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0103;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0103;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0103;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0103;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0103;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0104;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0104;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0104;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0104;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0104;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0104;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0104;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0104;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0104;Partition_Opt_Oracle_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0104;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:prod;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0104;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0105;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWWW0105;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -3192,10 +3194,10 @@ yes;WWMETWWW0108;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWMETWWW0108;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWWW0108;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWMETWWW0108;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_METIS, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWMETWWW0301;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWMETWWW0301;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0301;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWMETWWW0301;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0301;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0301;Load;http://monitoring-dc.app.corp/kb/system:linux:load:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0301;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWMETWWW0301;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:metis:dev;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWMETWWW0301;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_METIS, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;CLUSTER_BIS6_EU;BIS6_FTP;http://monitoring-dc.app.corp/kb/special:CLUSTER_BIS6_EU:BIS6_FTP;OP_EDI, OP_FR_PILOTS
 yes;CLUSTER_BIS6_EU;BIS6_Today_process;http://monitoring-dc.app.corp/kb/special:CLUSTER_BIS6_EU:BIS6_Today_process;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -4477,11 +4479,11 @@ yes;FRFR1ARC0005;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;FRFR1ARC0005;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;FRFR1ARC0005;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;IAM;URL_IAM;http://monitoring-dc.app.corp/kb/app:iam:services;OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_EDC1;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC1;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_EDC1;Image_version;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
-no;NAGIOS_DC_SATELLITE_EDC1;Load;http://monitoring-dc.app.corp/kb/system:unix:load;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_EDC1;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_EDC1;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC1;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC1;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_EDC1;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_EDC1;Process_Nagios;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
 yes;NAGIOS_DC_SATELLITE_EDC1;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_EDC1;Service_Apache;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
@@ -4581,22 +4583,22 @@ yes;WWGRPAPP2001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWGRPAPP2001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPAPP2001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPAPP2001;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWGRPCTM0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPCTM0001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPCTM0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPCTM0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM0001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPCTM0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPCTM0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPCTM0002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPCTM0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPCTM0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM0002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPCTM0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPCTM1000;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM1000;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPCTM1000;Engine_Frame_Agent_PORT;http://monitoring-dc.app.corp/kb/app:nemo:engine_frame;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPCTM1000;FTP;http://monitoring-dc.app.corp/kb/app:nemo:master;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPCTM1000;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPCTM1000;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPCTM1000;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM1000;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM1000;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPCTM1000;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPCTM1000;Process_Apache_Tomcat;http://monitoring-dc.app.corp/kb/app:nemo:master;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPCTM1000;Process_Engine_Frame_Agent;http://monitoring-dc.app.corp/kb/app:nemo:master;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPCTM1000;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -5047,7 +5049,7 @@ yes;WWGRPLIC0022;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWGRPLIC0022;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_APPLI, OP_SYSTEM_UNIX, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPLIC0022;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_APPLI, OP_SYSTEM_UNIX, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPLIC0022;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_APPLI, OP_SYSTEM_UNIX, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWGRPLIC0023;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPLIC0023;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPLIC0023;License_server_LSDyna_status;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-eu:lsdyna;OP_FR_PILOTS, OP_APPLI
 yes;WWGRPLIC0023;License_server_MSC_expiration;http://monitoring-dc.app.corp/kb/app:colisee:license_expiration;OP_FR_PILOTS, OP_APPLI
 yes;WWGRPLIC0023;License_server_MSC_status;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-eu:msc;OP_FR_PILOTS, OP_APPLI
@@ -5057,11 +5059,11 @@ yes;WWGRPLIC0023;License_server_TCE_expiration;http://monitoring-dc.app.corp/kb/
 yes;WWGRPLIC0023;License_server_TCE_status;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-eu:tce;OP_FR_PILOTS, OP_APPLI
 yes;WWGRPLIC0023;License_server_VIS_expiration;http://monitoring-dc.app.corp/kb/app:colisee:license_expiration;OP_FR_PILOTS, OP_APPLI
 yes;WWGRPLIC0023;License_server_VIS_status;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-eu:vis;OP_FR_PILOTS, OP_APPLI
-no;WWGRPLIC0023;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPLIC0023;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPLIC0023;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPLIC0023;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPLIC0023;Partition_Local_used_space;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-eu:local_partition;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPLIC0023;Partition_Log_used_space;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-eu:log_partition;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPLIC0023;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPLIC0023;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPLIC0023;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPLIC0101;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPLIC0101;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -5229,34 +5231,34 @@ yes;WWGRPSQL2001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWGRPSQL2001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPSQL2001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPSQL2001;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWGRPUNIL001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL001;Database_MIT_DB_Status;http://monitoring-dc.app.corp/kb/special:WWGRPUNIL001:Database_MIT_DB_Status;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPUNIL001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL001;Process_Apache;http://monitoring-dc.app.corp/kb/special:WWGRPUNIL001:Process_Apache;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL001;Process_MySQL;http://monitoring-dc.app.corp/kb/special:WWGRPUNIL001:Process_MySQL;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPUNIL002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL002;Log_Catalina;http://monitoring-dc.app.corp/kb/app:mdm:log;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL002;Process_Tomcat;http://monitoring-dc.app.corp/kb/app:mdm:process;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL002;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL003;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPUNIL003;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL003;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL003;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL003;Log_Catalina;http://monitoring-dc.app.corp/kb/app:mdm:log;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL003;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL003;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL003;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL003;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL003;Process_Tomcat;http://monitoring-dc.app.corp/kb/app:mdm:process;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL003;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL003;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL006;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWGRPUNIL006;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL006;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPUNIL006;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL006;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL006;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL006;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPUNIL006;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPUNIL006;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPWSS0001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPWSS0001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -5471,11 +5473,11 @@ no;CNCN1MRG1002;Service_SMTP;http://monitoring-dc.app.corp/kb/system:windows:ser
 no;CNCN1MRG1002;Service_World_Wide_Web_Publishing;http://monitoring-dc.app.corp/kb/app:exchange:mrg:service;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;CNCN1MRG1002;Services_Exchange;http://monitoring-dc.app.corp/kb/app:exchange:mrg:service;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;CNCN1MRG1002;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_ADC;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_ADC;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_ADC;Image_version;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
-no;NAGIOS_DC_SATELLITE_ADC;Load;http://monitoring-dc.app.corp/kb/system:unix:load;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_ADC;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_ADC;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_ADC;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_ADC;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_ADC;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_ADC;Process_Nagios;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
 yes;NAGIOS_DC_SATELLITE_ADC;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_ADC;Service_Apache;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
@@ -5511,6 +5513,7 @@ no;ASADCMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;ASADCMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;ASADCMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;ASADCMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;ASADCMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;ASADCMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;ASADCMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;ASADCMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -5561,6 +5564,7 @@ no;CABRPMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;CABRPMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;CABRPMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;CABRPMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;CABRPMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;CABRPMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;CABRPMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;CABRPMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -5604,6 +5608,7 @@ no;CZBKVMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;CZBKVMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;CZBKVMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;CZBKVMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;CZBKVMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;CZBKVMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;CZBKVMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;CZBKVMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -5657,6 +5662,7 @@ no;DENEUMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;DENEUMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;DENEUMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;DENEUMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;DENEUMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;DENEUMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;DENEUMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;DENEUMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -5699,6 +5705,7 @@ no;ESALMMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;ESALMMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;ESALMMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;ESALMMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;ESALMMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;ESALMMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;ESALMMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;ESALMMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -5735,6 +5742,7 @@ no;ESOREMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;ESOREMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;ESOREMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;ESOREMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;ESOREMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;ESOREMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;ESOREMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;ESOREMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -5771,6 +5779,7 @@ no;ESPORMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;ESPORMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;ESPORMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;ESPORMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;ESPORMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;ESPORMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;ESPORMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;ESPORMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -5807,6 +5816,7 @@ no;ESVLCAPP0006;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;ESVLCAPP0006;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;ESVLCAPP0006;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;ESVLCAPP0006;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;ESVLCAPP0006;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;ESVLCAPP0006;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;ESVLCAPP0006;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;ESVLCAPP0006;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -5857,6 +5867,7 @@ no;FRETUMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;FRETUMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;FRETUMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;FRETUMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;FRETUMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;FRETUMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;FRETUMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;FRETUMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -5893,6 +5904,7 @@ no;FRMERMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;FRMERMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;FRMERMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;FRMERMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;FRMERMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;FRMERMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;FRMERMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;FRMERMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6447,6 +6459,7 @@ no;MXPUEMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;MXPUEMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;MXPUEMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;MXPUEMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;MXPUEMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;MXPUEMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;MXPUEMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;MXPUEMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6472,11 +6485,11 @@ no;MXPUEMII0002;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/app:mii:mem
 yes;MXPUEMII0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_MII
 yes;MXPUEMII0002;Service_Double_Take;http://monitoring-dc.app.corp/kb/app:mii:service:doubletake;OP_FR_PILOTS, OP_MII
 yes;MXPUEMII0002;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_FR_PILOTS, OP_MII
-yes;NAGIOS_DC_SATELLITE_HGB2;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_HGB2;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_HGB2;Image_version;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
-no;NAGIOS_DC_SATELLITE_HGB2;Load;http://monitoring-dc.app.corp/kb/system:unix:load;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_HGB2;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_HGB2;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_HGB2;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_HGB2;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_HGB2;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_HGB2;Process_Nagios;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
 yes;NAGIOS_DC_SATELLITE_HGB2;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_HGB2;Service_Apache;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
@@ -6499,6 +6512,7 @@ no;PLGROMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;PLGROMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;PLGROMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;PLGROMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;PLGROMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;PLGROMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;PLGROMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;PLGROMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6633,6 +6647,7 @@ no;ROMIOMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;ROMIOMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;ROMIOMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;ROMIOMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;ROMIOMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;ROMIOMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;ROMIOMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;ROMIOMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6725,6 +6740,7 @@ no;USARJMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;USARJMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;USARJMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;USARJMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;USARJMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;USARJMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;USARJMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;USARJMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6761,6 +6777,7 @@ no;USFLHMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;USFLHMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;USFLHMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;USFLHMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;USFLHMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;USFLHMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;USFLHMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;USFLHMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6797,6 +6814,7 @@ no;USFOUMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;USFOUMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;USFOUMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;USFOUMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;USFOUMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;USFOUMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;USFOUMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;USFOUMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6833,6 +6851,7 @@ no;USLOUMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;USLOUMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;USLOUMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;USLOUMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;USLOUMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;USLOUMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;USLOUMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;USLOUMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6869,6 +6888,7 @@ no;USLUIMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;USLUIMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;USLUIMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;USLUIMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;USLUIMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;USLUIMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;USLUIMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;USLUIMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6905,6 +6925,7 @@ no;USTDOMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;USTDOMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;USTDOMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;USTDOMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;USTDOMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;USTDOMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;USTDOMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;USTDOMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -6941,6 +6962,7 @@ no;USTRYMII0001;MSSQL_cpu_busy;http://monitoring-dc.app.corp/kb/app:mii:cpu_busy
 no;USTRYMII0001;MSSQL_free_list_stalls;http://monitoring-dc.app.corp/kb/app:mii:free_list_stalls;OP_FR_PILOTS, OP_MII
 no;USTRYMII0001;MSSQL_io_busy;http://monitoring-dc.app.corp/kb/app:mii:io_busy;OP_FR_PILOTS, OP_MII
 no;USTRYMII0001;MSSQL_latches_waits;http://monitoring-dc.app.corp/kb/app:mii:latches_waits;OP_FR_PILOTS, OP_MII
+no;USTRYMII0001;MSSQL_lazy_writes;http://monitoring-dc.app.corp/kb/app:mii:lazy_writes;OP_FR_PILOTS, OP_MII
 no;USTRYMII0001;MSSQL_locks_deadlocks;http://monitoring-dc.app.corp/kb/app:mii:locks_deadlocks;OP_FR_PILOTS, OP_MII
 no;USTRYMII0001;MSSQL_locks_timeouts;http://monitoring-dc.app.corp/kb/app:mii:locks_timeouts;OP_FR_PILOTS, OP_MII
 no;USTRYMII0001;MSSQL_locks_waits;http://monitoring-dc.app.corp/kb/app:mii:locks_waits;OP_FR_PILOTS, OP_MII
@@ -8188,25 +8210,25 @@ yes;FRHQRCTL0020;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;FRHQRCTL0020;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;FRHQRCTL0020;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;FRHQRCTL0020;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;FRHQRELB0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;FRHQRELB0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;FRHQRELB0001;Connection_rate_BO;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;FRHQRELB0001;Connection_rate_Datawarehouse;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;FRHQRELB0001;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_master;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;FRHQRELB0001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;FRHQRELB0001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;FRHQRELB0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;FRHQRELB0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;FRHQRELB0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;FRHQRELB0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;FRHQRELB0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;FRHQRELB0001;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;FRHQRELB0001;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;FRHQRELB0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;FRHQRELB0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;FRHQRELB0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;FRHQRELB0002;Connection_rate_BO;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;FRHQRELB0002;Connection_rate_Datawarehouse;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;FRHQRELB0002;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_slave;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;FRHQRELB0002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;FRHQRELB0002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;FRHQRELB0002;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;FRHQRELB0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;FRHQRELB0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;FRHQRELB0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;FRHQRELB0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;FRHQRELB0002;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;FRHQRELB0002;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;FRHQRELB0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -8885,11 +8907,11 @@ yes;MXSLPCTL1001;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;MXSLPCTL1001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;MXSLPCTL1001;Service_File_Replication;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;MXSLPCTL1001;Service_Net_Logon;http://monitoring-dc.app.corp/kb/system:windows:services:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_MOP;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_MOP;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_MOP;Image_version;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
-no;NAGIOS_DC_SATELLITE_MOP;Load;http://monitoring-dc.app.corp/kb/system:unix:load;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_MOP;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_MOP;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_MOP;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_MOP;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_MOP;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_MOP;Process_Nagios;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
 yes;NAGIOS_DC_SATELLITE_MOP;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_MOP;Service_Apache;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
@@ -9724,7 +9746,26 @@ yes;DEFAURHAG0008R;Virtual_Address;http://monitoring-dc.app.corp/kb/network:att_
 no;DEHGBIPANEMA;Ping;http://monitoring-dc.app.corp/kb/ping;OP_NETWORK_DC, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FA1;Gateway;http://monitoring-dc.app.corp/kb/system:aix:gateway;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FA1;HACMP;http://monitoring-dc.app.corp/kb/system:hacmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;NFS_Share_archives_nfs_availability;http://monitoring-dc.app.corp/kb/app:fcs:/app:fcs:$_HOSTSAPENV:nfs_share;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Oracle_Tablespace_ECR_DATA;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Oracle_Tablespace_ECR_INDEX;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Oracle_Tablespace_RCS_DATA;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Oracle_Tablespace_RCS_INDEX;http://monitoring-dc.app.corp/kb/app:oracle:tablespace:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_appli_oraarchive_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_appli_oradata_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_appli_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_archive_forms_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_archivecache_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_archives_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_burnbuffer_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_diskbuffer_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_dp_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_galaxylog_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_simpana-local_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Partition_stormfs_used_space;http://monitoring-dc.app.corp/kb/app:fcs:prod:partition;OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;HACMP_EAS_SAP_FA1;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Process_java-catalina;http://monitoring-dc.app.corp/kb/system:aix:process:;OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;HACMP_EAS_SAP_FA1;Process_spawner;http://monitoring-dc.app.corp/kb/system:aix:process:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FA1;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FA1;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_EAS_SAP_FC1_DB;DB2_Bufferpool;http://monitoring-dc.app.corp/kb/app:fcs:prod:db2_bufferpool;OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -9917,11 +9958,11 @@ no;HACMP_LISA;Partition_Wweasunia302_galaxylog_used_space;http://monitoring-dc.a
 no;HACMP_LISA;Partitions_free_space;http://monitoring-dc.app.corp/kb/system:aix:partition:;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_LISA;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;HACMP_LISA;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_HGB;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_HGB;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_HGB;Image_version;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
-no;NAGIOS_DC_SATELLITE_HGB;Load;http://monitoring-dc.app.corp/kb/system:unix:load;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_HGB;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_HGB;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_HGB;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_HGB;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_HGB;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_HGB;Process_Nagios;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
 yes;NAGIOS_DC_SATELLITE_HGB;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_HGB;Service_Apache;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
@@ -10207,7 +10248,7 @@ yes;WWEASBKU0002;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:win
 yes;WWEASBKU0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_BACKUP, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWEASBKU0002;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_BACKUP, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;WWEASCLS0002;Ping;http://monitoring-dc.app.corp/kb/ping;OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWEASELB0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASELB0001;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0001;Connection_rate_ICS;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0001;Connection_rate_LDAP;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0001;Connection_rate_LISA;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -10215,15 +10256,15 @@ no;WWEASELB0001;Connection_rate_Magnitude;http://monitoring-dc.app.corp/kb/syste
 no;WWEASELB0001;Connection_rate_PSNEXT;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0001;Connection_rate_SapConsole;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASELB0001;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_master;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWEASELB0001;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASELB0001;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASELB0001;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASELB0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASELB0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASELB0001;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASELB0001;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASELB0001;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASELB0001;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASELB0001;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0001;URL_Magnitude_Score;http://monitoring-dc.app.corp/kb/app:magnitude;OP_APPLI
-yes;WWEASELB0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASELB0002;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0002;Connection_rate_ICS;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0002;Connection_rate_LDAP;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0002;Connection_rate_LISA;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -10231,10 +10272,10 @@ no;WWEASELB0002;Connection_rate_Magnitude;http://monitoring-dc.app.corp/kb/syste
 no;WWEASELB0002;Connection_rate_PSNEXT;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0002;Connection_rate_SapConsole;http://monitoring-dc.app.corp/kb/system:loadbalancer:connection_rate;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWEASELB0002;LBL_Productive_State;http://monitoring-dc.app.corp/kb/system:loadbalancer:prod_state_slave;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-no;WWEASELB0002;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASELB0002;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASELB0002;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:loadbalancer:memory;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASELB0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWEASELB0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASELB0002;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWEASELB0002;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASELB0002;Partition_Var_log_used_space;http://monitoring-dc.app.corp/kb/system:loadbalancer:disk_partitions;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASELB0002;Process_LDIRECTORD;http://monitoring-dc.app.corp/kb/system:loadbalancer:process_ldirectord;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWEASELB0002;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NETWORK_DC, OP_SYSTEM_UNIX, OP_FR_PILOTS
@@ -12013,17 +12054,17 @@ yes;WWGRPLIC0024;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWGRPLIC0024;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_APPLI, OP_SYSTEM_UNIX, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPLIC0024;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_APPLI, OP_SYSTEM_UNIX, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPLIC0024;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_APPLI, OP_SYSTEM_UNIX, OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWGRPLIC0025;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPLIC0025;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPLIC0025;License_server_LSDyna_backup_status;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-bck-eu:lsdyna;OP_FR_PILOTS, OP_APPLI
 yes;WWGRPLIC0025;License_server_MSC_backup_status;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-bck-eu:msc;OP_FR_PILOTS, OP_APPLI
 yes;WWGRPLIC0025;License_server_STA_backup_status;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-bck-eu:sta;OP_FR_PILOTS, OP_APPLI
 yes;WWGRPLIC0025;License_server_TCE_backup_status;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-bck-eu:tce;OP_FR_PILOTS, OP_APPLI
 yes;WWGRPLIC0025;License_server_VIS_backup_status;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-bck-eu:vis;OP_FR_PILOTS, OP_APPLI
-no;WWGRPLIC0025;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPLIC0025;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPLIC0025;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPLIC0025;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPLIC0025;Partition_Local_used_space;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-eu:local_partition;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 no;WWGRPLIC0025;Partition_Log_used_space;http://monitoring-dc.app.corp/kb/app:colisee:servliclnx-eu:log_partition;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
-yes;WWGRPLIC0025;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
+no;WWGRPLIC0025;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPLIC0025;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_APPLI, OP_SYSTEM_UNIX, OP_FR_PILOTS
 yes;WWGRPWTS1001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 no;WWGRPWTS1001;Citrix_Event_Log;http://monitoring-dc.app.corp/kb/windows:citrix:eventlog:;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -12050,13 +12091,13 @@ no;ANXCHRYSLERPROD;FTP;http://monitoring-dc.app.corp/kb/app:firewall;OP_FR_PILOT
 no;ANXCHRYSLERPROD;Ping;http://monitoring-dc.app.corp/kb/ping;OP_FR_PILOTS, OP_NA_NETWORK_DC
 no;ANXCOVISINT;FTP;http://monitoring-dc.app.corp/kb/app:firewall;OP_FR_PILOTS, OP_NA_NETWORK_DC
 no;ANXCOVISINT;Ping;http://monitoring-dc.app.corp/kb/ping;OP_FR_PILOTS, OP_NA_NETWORK_DC
-yes;APP1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;APP1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP1FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP1FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;APP1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;APP1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;APP1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;APP1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP1FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;APP1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;APP1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP1FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP1FAURDCA;Process_FTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP1FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
@@ -12064,13 +12105,13 @@ yes;APP1FAURDCA;Process_SSH;http://monitoring-dc.app.corp/kb/app:QAD:services;OP
 yes;APP1FAURDCA;Process_Telnet;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP1FAURDCA;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP1FAURDCA-DRAC;DRAC5_Web_Console_Status;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_NA_SYSTEM_WIN, OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
-yes;APP2FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;APP2FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP2FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP2FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;APP2FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;APP2FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;APP2FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;APP2FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP2FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;APP2FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;APP2FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP2FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP2FAURDCA;Process_FTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP2FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
@@ -12078,13 +12119,13 @@ yes;APP2FAURDCA;Process_SSH;http://monitoring-dc.app.corp/kb/app:QAD:services;OP
 yes;APP2FAURDCA;Process_Telnet;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP2FAURDCA;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;APP2FAURDCA-DRAC;DRAC5_Web_Console_Status;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_NA_SYSTEM_WIN, OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DEV1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DEV1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DEV1FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DEV1FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;DEV1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;DEV1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DEV1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DEV1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DEV1FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;DEV1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DEV1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DEV1FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DEV1FAURDCA;Process_FTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DEV1FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
@@ -12140,13 +12181,13 @@ yes;DRSPBFAURDCA;Port_state_A;http://monitoring-dc.app.corp/kb/storage:emc;OP_NA
 yes;DRSPBFAURDCA;Port_state_B;http://monitoring-dc.app.corp/kb/storage:emc;OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DRSPBFAURDCA;Storage_processor_A;http://monitoring-dc.app.corp/kb/storage:emc;OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
 yes;DRSPBFAURDCA;Storage_processor_B;http://monitoring-dc.app.corp/kb/storage:emc;OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DRSRV1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DRSRV1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV1FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV1FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;DRSRV1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;DRSRV1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DRSRV1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DRSRV1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV1FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;DRSRV1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DRSRV1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV1FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV1FAURDCA;Process_FTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV1FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
@@ -12154,13 +12195,13 @@ yes;DRSRV1FAURDCA;Process_SSH;http://monitoring-dc.app.corp/kb/app:QAD:services;
 yes;DRSRV1FAURDCA;Process_Telnet;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV1FAURDCA;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV1FAURDCA-DRAC;DRAC5_Web_Console_Status;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_NA_SYSTEM_WIN, OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
-yes;DRSRV2FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DRSRV2FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV2FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV2FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;DRSRV2FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;DRSRV2FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DRSRV2FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DRSRV2FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV2FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;DRSRV2FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;DRSRV2FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV2FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV2FAURDCA;Process_FTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;DRSRV2FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
@@ -12508,24 +12549,24 @@ yes;INDQPRD3;Partition_var_used_space;http://monitoring-dc.app.corp/kb/area:us:s
 yes;INDQPRD3;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;INDQPRD3;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;INDQPRD3;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;INDSAPAPP3;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;INDSAPAPP3;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;INDSAPAPP3;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;INDSAPAPP3;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP3;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP3;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP3;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP3;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;INDSAPAPP3;Process_Backup;http://monitoring-dc.app.corp/kb/os:process;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;INDSAPAPP3;Process_NTP;http://monitoring-dc.app.corp/kb/os:process;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;INDSAPAPP3;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;INDSAPAPP4;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;INDSAPAPP4;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;INDSAPAPP4;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;INDSAPAPP4;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP4;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP4;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP4;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP4;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;INDSAPAPP4;Process_Backup;http://monitoring-dc.app.corp/kb/os:process;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;INDSAPAPP4;Process_NTP;http://monitoring-dc.app.corp/kb/os:process;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;INDSAPAPP4;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;INDSAPAPP5;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;INDSAPAPP5;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;INDSAPAPP5;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;INDSAPAPP5;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP5;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP5;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP5;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;INDSAPAPP5;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;INDSAPAPP5;Process_Backup;http://monitoring-dc.app.corp/kb/os:process;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;INDSAPAPP5;Process_NTP;http://monitoring-dc.app.corp/kb/os:process;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;INDSAPAPP5;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
@@ -12712,37 +12753,37 @@ yes;INDWTS010;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_W
 no;INETGXS;FTP;http://monitoring-dc.app.corp/kb/app:firewall;OP_FR_PILOTS, OP_NA_NETWORK_DC
 no;INETGXS;Port_GXS_FTP11521;http://monitoring-dc.app.corp/kb/app:firewall;OP_FR_PILOTS, OP_NA_NETWORK_DC
 no;INETGXS;Port_GXS_FTP11522;http://monitoring-dc.app.corp/kb/app:firewall;OP_FR_PILOTS, OP_NA_NETWORK_DC
-yes;LB1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;LB1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB1FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB1FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;LB1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;LB1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;LB1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;LB1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB1FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;LB1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;LB1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB1FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB1FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB1FAURDCA;Process_SSH;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB1FAURDCA;Process_Telnet;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB1FAURDCA;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB1FAURDCA-DRAC;DRAC5_Web_Console_Status;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_NA_SYSTEM_WIN, OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
-yes;LB2FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;LB2FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB2FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB2FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;LB2FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;LB2FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;LB2FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;LB2FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB2FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;LB2FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;LB2FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB2FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB2FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB2FAURDCA;Process_SSH;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB2FAURDCA;Process_Telnet;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB2FAURDCA;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;LB2FAURDCA-DRAC;DRAC5_Web_Console_Status;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_NA_SYSTEM_WIN, OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_IDC;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_IDC;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_IDC;Image_version;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
-no;NAGIOS_DC_SATELLITE_IDC;Load;http://monitoring-dc.app.corp/kb/system:unix:load;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_IDC;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;nagios_dc_administrators, OP_FR_PILOTS
-yes;NAGIOS_DC_SATELLITE_IDC;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_IDC;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_IDC;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;nagios_dc_administrators, OP_FR_PILOTS
+no;NAGIOS_DC_SATELLITE_IDC;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_IDC;Process_Nagios;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
 yes;NAGIOS_DC_SATELLITE_IDC;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;nagios_dc_administrators, OP_FR_PILOTS
 no;NAGIOS_DC_SATELLITE_IDC;Service_Apache;http://monitoring-dc.app.corp/kb/app:nagios;nagios_dc_administrators, OP_FR_PILOTS
@@ -12788,13 +12829,13 @@ yes;SPBFAURDCA;Port_state_A;http://monitoring-dc.app.corp/kb/storage:emc;OP_NA_S
 yes;SPBFAURDCA;Port_state_B;http://monitoring-dc.app.corp/kb/storage:emc;OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
 yes;SPBFAURDCA;Storage_processor_A;http://monitoring-dc.app.corp/kb/storage:emc;OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
 yes;SPBFAURDCA;Storage_processor_B;http://monitoring-dc.app.corp/kb/storage:emc;OP_NA_SYSTEM_UNIX, OP_FR_PILOTS
-yes;SRV1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV1FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV1FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV1FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;SRV1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;SRV1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV1FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV1FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV1FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;SRV1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV1FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV1FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV1FAURDCA;Process_FTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV1FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
@@ -12818,13 +12859,13 @@ no;SRV1FAURDCA-USER;Partition_logqlinq_used_space;http://monitoring-dc.app.corp/
 yes;SRV1FAURDCA-USER;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV1FAURDCA-USER;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV1FAURDCA-USER;Telnet;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;SRV2FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV2FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV2FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV2FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;SRV2FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;SRV2FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV2FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV2FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV2FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;SRV2FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV2FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV2FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV2FAURDCA;Process_FTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV2FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
@@ -12845,13 +12886,13 @@ no;SRV2FAURDCA-USER;Partition_logqlinq_used_space;http://monitoring-dc.app.corp/
 yes;SRV2FAURDCA-USER;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV2FAURDCA-USER;SSH;http://monitoring-dc.app.corp/kb/monitoring:ssh;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV2FAURDCA-USER;Telnet;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;SRV3FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV3FAURDCA;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV3FAURDCA;Dell_Open_Manage_Critical;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV3FAURDCA;Dell_Open_Manage_Warning;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;SRV3FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;SRV3FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV3FAURDCA;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV3FAURDCA;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV3FAURDCA;Partition_Boot_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;SRV3FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;SRV3FAURDCA;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV3FAURDCA;Process_Backup;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV3FAURDCA;Process_FTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;SRV3FAURDCA;Process_NTP;http://monitoring-dc.app.corp/kb/app:QAD:services;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
@@ -13356,6 +13397,13 @@ yes;USIDCSQL0002;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTE
 no;USIDCSQL0002_DS3400;Controller_A;http://monitoring-dc.app.corp/kb/storage:controller:us;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;USIDCSQL0002_DS3400;Controller_B;http://monitoring-dc.app.corp/kb/storage:controller:us;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 yes;USIDCSQL0002_DS3400;TRAP;http://monitoring-dc.app.corp/kb/storage:trap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+yes;USIDCSQL0010;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USIDCSQL0010;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USIDCSQL0010;Drive_E_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USIDCSQL0010;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USIDCSQL0010;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USIDCSQL0010;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
+yes;USIDCSQL0010;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;USIDCSQL3001;CPU;http://monitoring-dc.app.corp/kb/system:windows:cpu;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;USIDCSQL3001;Drive_C_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;USIDCSQL3001;Drive_H_used_space;http://monitoring-dc.app.corp/kb/system:windows:partition;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
@@ -13655,7 +13703,6 @@ yes;USUS1EXC2001;EIS_service_Status;http://monitoring-dc.app.corp/kb/app:exchang
 yes;USUS1EXC2001;EIS_service_database_Status;http://monitoring-dc.app.corp/kb/app:exchange:us:common;OP_FR_PILOTS, OP_NA_SYSTEM_WIN
 yes;USUS1EXC2001;EIS_service_disk_Status;http://monitoring-dc.app.corp/kb/app:exchange:us:common;OP_FR_PILOTS, OP_NA_SYSTEM_WIN
 yes;USUS1EXC2001;EIS_service_engine_Status;http://monitoring-dc.app.corp/kb/app:exchange:us:common;OP_FR_PILOTS, OP_NA_SYSTEM_WIN
-yes;USUS1EXC2001;Exchange_SG1_Database_size;http://monitoring-dc.app.corp/kb/app:exchange:us:common;OP_FR_PILOTS, OP_NA_SYSTEM_WIN
 yes;USUS1EXC2001;Exchange_SG2_Database_size;http://monitoring-dc.app.corp/kb/app:exchange:us:common;OP_FR_PILOTS, OP_NA_SYSTEM_WIN
 yes;USUS1EXC2001;Log_file_Status;http://monitoring-dc.app.corp/kb/app:exchange:us:common;OP_FR_PILOTS, OP_NA_SYSTEM_WIN
 yes;USUS1EXC2001;Log_sequence_numbers_Status;http://monitoring-dc.app.corp/kb/app:exchange:us:common;OP_FR_PILOTS, OP_NA_SYSTEM_WIN
@@ -13898,10 +13945,10 @@ yes;WWGRPDMT0018;Memory_Physical_used;http://monitoring-dc.app.corp/kb/system:wi
 yes;WWGRPDMT0018;Memory_Virtual_used;http://monitoring-dc.app.corp/kb/system:windows:memory_usage;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPDMT0018;SNMP;http://monitoring-dc.app.corp/kb/monitoring:snmp;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
 yes;WWGRPDMT0018;WMI;http://monitoring-dc.app.corp/kb/monitoring:wmi;OP_NA_SYSTEM_WIN, OP_SYSTEM_WIN, OP_FR_PILOTS
-yes;WWGRPENC1000;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-no;WWGRPENC1000;Load;http://monitoring-dc.app.corp/kb/system:unix:load;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;WWGRPENC1000;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
-yes;WWGRPENC1000;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;WWGRPENC1000;CPU;http://monitoring-dc.app.corp/kb/system:linux:cpu:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;WWGRPENC1000;Load;http://monitoring-dc.app.corp/kb/system:linux:load:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;WWGRPENC1000;Memory_Swap_used;http://monitoring-dc.app.corp/kb/system:linux:swap:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
+no;WWGRPENC1000;Partition_Root_used_space;http://monitoring-dc.app.corp/kb/system:linux:partition:;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;WWGRPENC1000;Process_PGPproxyd;http://monitoring-dc.app.corp/kb/app:pgp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;WWGRPENC1000;Process_PGPsyncd;http://monitoring-dc.app.corp/kb/app:pgp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX
 no;WWGRPENC1000;Process_PGPtcpwrapper;http://monitoring-dc.app.corp/kb/app:pgp;OP_FR_PILOTS, OP_NA_SYSTEM_UNIX

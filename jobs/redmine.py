@@ -34,11 +34,12 @@ def request():
     # first execution of the script
     if number == 0:
         cur.execute(
-            "SELECT updated_on FROM ISSUES ORDER BY updated_on ASC LIMIT 1")
+            "SELECT created_on FROM ISSUES ORDER BY created_on ASC LIMIT 1")
         day_midnight = cur.fetchone()[0]
     else:
         day_midnight = KpiRedmine.objects.order_by('-date')[0].date
         day_midnight += one_day
+
 
     day_midnight = day_midnight.replace(
         hour = 0, minute = 0, second = 0, microsecond = 0, tzinfo = utc)
@@ -46,14 +47,15 @@ def request():
     day_late = day_midnight + one_day
     while day_late <= today:
     # loop that goes throuh all the database day per day
+        date_midnight = day_midnight.date()
         tu1 = (day_midnight, day_late)
-        tu2 = (day_late, day_late)
+        tu2 = (day_late, day_midnight)
         cur.execute("SELECT COUNT (status_id) FROM ISSUES\
             WHERE created_on >= ? AND created_on < ? AND project_id != 12", tu1)
         requests_opened[str(day_midnight)] = cur.fetchone()[0]
         cur.execute("SELECT COUNT (status_id) FROM ISSUES\
-            WHERE updated_on >= ? AND updated_on < ?\
-            AND (status_id = 5 OR status_id = 6 OR status_id = 10) AND project_id != 12", tu1)
+            WHERE due_date = ? \
+            AND (status_id = 5 OR status_id = 6 OR status_id = 10) AND project_id != 12", (date_midnight,))
         requests_closed[str(day_midnight)] = cur.fetchone()[0]
         lifetime = timedelta()
         lifetime_normal = timedelta()
@@ -63,7 +65,13 @@ def request():
         n_normal = 0
         n_high = 0
         n_urgent = 0
-        for requests in cur.execute("SELECT created_on, priority_id, status_id, id, subject FROM ISSUES WHERE created_on <= ? AND (updated_on > ? OR (status_id != 5 AND status_id != 6 AND status_id != 10)) AND project_id != 12", tu2):
+        for requests in cur.execute("SELECT created_on, priority_id, status_id, id, subject FROM ISSUES "\
+            "WHERE created_on <= ? "\
+            "AND (due_date > ? "\
+            "OR (status_id != 5 AND status_id != 6 AND status_id != 10)) "\
+            "AND project_id != 12", tu2):
+
+            num += 1
             if requests[2] != '6' or requests[2] != '10':
                 if requests[1] == 3:
                     lifetime += (day_late - requests[0])
@@ -87,7 +95,6 @@ def request():
                     # % (request[3], request[4], request[0])
 
 #                    n_urgent += 1
-                num += 1
         requests_remained[str(day_midnight)] = num
 #        if num > 0:
         requests_lifetime[str(day_midnight)] = \
