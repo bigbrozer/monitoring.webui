@@ -946,7 +946,8 @@ function createOldestsAlerts() {
     chart.dataProvider = chartDataOldestsAlerts;
     chart.titleField = "name";
     chart.valueField = "days";
-    chart.balloonText = "[[title]] : [[value]] days";
+    chart.descriptionField = "date_error"
+    chart.balloonText = "[[title]] : [[value]] days ([[description]])";
     chart.labelText = "[[title]] : [[value]] days";
     chart.pullOutRadius = "0%";
     chart.radius = "30%";

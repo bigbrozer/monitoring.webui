@@ -90,9 +90,10 @@ def indicateurs(request):
     oldest_alerts = OldestAlerts.objects.all().order_by("date_error")[:25]
     for alert in oldest_alerts:
         days = alert.date - alert.date_error
+        date_error = "%s-%s-%s" % (alert.date_error.year, alert.date_error.month, alert.date_error.day)
         days = days.total_seconds()/60/60/24
-        chart_data_oldests_alerts += '{name: "%s@%s", days: %d}' % (alert.service,
-                                                                    alert.host, days)
+        chart_data_oldests_alerts += '{name: "%s@%s", days: %d, date_error: "%s"}' % (alert.service,
+                                                                    alert.host, days, date_error)
         chart_data_oldests_alerts += ",\n"
 
     chart_data_oldests_alerts += "\n]"
