@@ -40,6 +40,7 @@ def request():
         nrest = 0
     else:
         day_midnight = KpiRedmine.objects.order_by('-date')[0].date
+        day_midnight += one_day
 
 
     day_midnight = day_midnight.replace(
