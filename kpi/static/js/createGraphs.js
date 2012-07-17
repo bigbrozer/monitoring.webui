@@ -171,13 +171,13 @@ function createRequests() {
     graphLifetimeGlobal = new AmCharts.StockGraph();
     graphLifetimeGlobal.valueField = "global";
     graphLifetimeGlobal.type = "line";
-    graphLifetimeGlobal.title = "Low";
+    graphLifetimeGlobal.title = "Global";
     graphLifetimeGlobal.hideBulletsCount = 35;
     graphLifetimeGlobal.bullet = "bubble";
 //    graphLifetimeGlobal.balloonText += " days";
 //    graphLifetimeGlobal.legendValueText += " days";
     graphLifetimeGlobal.lineThickness = 2;
-    graphLifetimeGlobal.hidden = true;
+    graphLifetimeGlobal.hidden = false;
     graphLifetimeGlobal.lineColor = "#000000";
     graphLifetimeGlobal.useDataSetColors = false;
     graphLifetimeGlobal.fillAlphas = 0.1;
@@ -202,7 +202,7 @@ function createRequests() {
     graphLifetimeNormal.hideBulletsCount = 35;
     graphLifetimeNormal.bullet = "bubble";
 //    graphLifetimeNormal.balloonText += " days";
-    graphLifetimeNormal.hidden = false;
+    graphLifetimeNormal.hidden = true;
     graphLifetimeNormal.lineThickness = 2;
     graphLifetimeNormal.lineColor = "#0066FF";
     graphLifetimeNormal.useDataSetColors = false;
@@ -220,7 +220,7 @@ function createRequests() {
     graphLifetimeHigh.hideBulletsCount = 35;
     graphLifetimeHigh.bullet = "bubble";
 //    graphLifetimeHigh.balloonText += " days";
-    graphLifetimeHigh.hidden = false;
+    graphLifetimeHigh.hidden = true;
     graphLifetimeHigh.lineThickness = 2;
     graphLifetimeHigh.lineColor = "#FF9900";
     graphLifetimeHigh.useDataSetColors = false;
@@ -246,7 +246,11 @@ function createRequests() {
     graphLifetimeUrgent.periodValue = period_value;
     graphLifetimeUrgent.cornerRadiusTop = 2;
 
+    stockPanelLifetime.usePrefixes = true;
+    stockPanelLifetime.prefixesOfBigNumbers = [{number:24,prefix:" days"}];
     stockPanelLifetime.addStockGraph(graphLifetimeUrgent);
+
+
 
     chart.panels = [stockPanelRemained, stockPanelOpened, stockPanelLifetime];
 
@@ -298,8 +302,8 @@ function createRequests() {
     panelsSettings = new AmCharts.PanelsSettings();
     panelsSettings.usePrefixes = true;
     panelsSettings.panEventsEnabled = true;
-    panelsSettings.numberFormatter = {precision: 0, thousandsSeparator: ' ', decimalSeparator: '.'};
-    panelsSettings.usePrefixes = false;
+//    panelsSettings.numberFormatter = {precision: 0, thousandsSeparator: ' ', decimalSeparator: '.'};
+//    panelsSettings.usePrefixes = false;
 
     chart.panelsSettings = panelsSettings;
     chart.balloon.bulletSize = 4;

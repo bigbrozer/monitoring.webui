@@ -19,10 +19,10 @@ def indicateurs(request):
     chart_data_request = "[\n"
 
     for index, kpi in enumerate(kpi_redmine):
-        lifetime = kpi.requests_lifetime/3600/24
-        lifetime_normal = kpi.requests_lifetime_normal/3600/24
-        lifetime_high = kpi.requests_lifetime_high/3600/24
-        lifetime_urgent = kpi.requests_lifetime_urgent/3600/24
+        lifetime = kpi.requests_lifetime/3600
+        lifetime_normal = kpi.requests_lifetime_normal/3600
+        lifetime_high = kpi.requests_lifetime_high/3600
+        lifetime_urgent = kpi.requests_lifetime_urgent/3600
         url = "http://monitoring-dc.app.corp/tracking/activity?from="
         url += '%d-%d-%d' % (kpi.date.year, kpi.date.month, kpi.date.day)
 

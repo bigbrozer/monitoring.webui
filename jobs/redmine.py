@@ -172,7 +172,7 @@ def request():
         else:
             requests_lifetime_urgent[str(day_midnight)] = 0
         if n_normal + n_high + n_urgent != 0:
-            requests_lifetime_normal[str(day_midnight)] = (lifetime_normal.total_seconds() + lifetime_high.total_seconds() + lifetime_urgent.total_seconds()) / (n_normal + n_high + n_urgent)
+            requests_lifetime_low[str(day_midnight)] = (lifetime_normal.total_seconds() + lifetime_high.total_seconds() + lifetime_urgent.total_seconds()) / (n_normal + n_high + n_urgent)
         else:
             requests_lifetime_normal[str(day_midnight)] = 0
         day_midnight += one_day
