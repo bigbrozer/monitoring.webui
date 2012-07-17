@@ -80,11 +80,15 @@ function createRequests() {
     }, {
         fromField: "urgent",
         toField: "urgent"
+    }, {
+        fromField: "url",
+        toField: "url"
     }];
     dataset.dataProvider = chartDataRequest;
     dataset.categoryField = "date";
 
     chart.dataSets = [dataset];
+    chart.balloon.showBullet = false;
 
 // PANELS ///////////////////////////////////
 
@@ -93,9 +97,12 @@ function createRequests() {
 
     graphRemained = new AmCharts.StockGraph();
     graphRemained.valueField = "remained";
+    graphRemained.urlField = "url";
+    graphRemained.urlTarget = "_blank";
     graphRemained.type = "line";
     graphRemained.title = "Remained";
-    graphRemained.hideBulletsCount = 35;
+    graphRemained.hideBulletsCount = 100;
+    graphRemained.bulletSize = 8;
     graphRemained.bullet = "bubble";
     graphRemained.lineThickness = 2;
     graphRemained.lineColor = "#FF0000";
@@ -117,6 +124,8 @@ function createRequests() {
 //  1.2) graph Opened
     graphOpened = new AmCharts.StockGraph();
     graphOpened.valueField = "opened";
+    graphOpened.urlField = "url";
+    graphOpened.urlTarget = "_blank";
     graphOpened.type = "column";
     graphOpened.title = "Opened";
     // graphOpened.hideBulletsCount = 50;
@@ -141,6 +150,8 @@ function createRequests() {
 //  1.3) graph Closed
     graphClosed = new AmCharts.StockGraph();
     graphClosed.valueField = "closed";
+    graphClosed.urlField = "url";
+    graphClosed.urlTarget = "_blank";
     graphClosed.title = "Closed";
     graphClosed.hideBulletsCount = 35;
     graphClosed.bullet = "bubble";
@@ -149,7 +160,7 @@ function createRequests() {
     graphClosed.fillColor = "#00CC00";
     graphClosed.lineColor = "#00CC00";
     graphClosed.useDataSetColors = false;
-    graphClosed.fillAlphas = 0.15;
+//    graphClosed.fillAlphas = 0.15;
     graphClosed.cornerRadiusTop = 2;
     graphClosed.periodValue = "Sum";
     stockPanelOpened.addStockGraph(graphClosed);
@@ -261,11 +272,11 @@ function createRequests() {
         count: 1,
         label: "1 Month",
         selected: false
-    },{
+    }, {
         period: "MM",
         count: 3,
         label: "3 Month",
-        selected: false
+        selected: true
     }, {
         period: "MM",
         count: 6,
@@ -279,7 +290,7 @@ function createRequests() {
     }, {
         period: "MAX",
         label: "MAX",
-        selected: true
+        selected: false
     }];
     chart.periodSelector = periodSelector;
 

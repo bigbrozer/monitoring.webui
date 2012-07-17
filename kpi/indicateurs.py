@@ -23,12 +23,15 @@ def indicateurs(request):
         lifetime_normal = kpi.requests_lifetime_normal/3600/24
         lifetime_high = kpi.requests_lifetime_high/3600/24
         lifetime_urgent = kpi.requests_lifetime_urgent/3600/24
+        url = "http://monitoring-dc.app.corp/tracking/activity?from="
+        url += '%d-%d-%d' % (kpi.date.year, kpi.date.month, kpi.date.day)
 
         chart_data_request += '{date: new Date("%s"), remained: %d, '\
             'opened: %d, closed: %d, global: %d, '\
-            'normal: %d, high: %d, urgent: %d}' % (kpi.date.isoformat(),
+            'normal: %d, high: %d, urgent: %d, url: "%s"}' % (kpi.date.isoformat(),
                                                    kpi.requests_remained, kpi.requests_opened, kpi.requests_closed,
-                                                   lifetime, lifetime_normal, lifetime_high, lifetime_urgent)
+                                                   lifetime, lifetime_normal, lifetime_high, lifetime_urgent,
+                                                   url)
 
         if index != len(kpi_redmine)-1:
             chart_data_request += ",\n"

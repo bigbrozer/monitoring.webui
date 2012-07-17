@@ -62,7 +62,7 @@ def request():
             AND (status_id = 5 OR status_id = 6 OR status_id = 10) AND project_id != 12", (date_midnight,))
         requests_closed[str(day_midnight)] = cur.fetchone()[0]
 #        nrest = nrest + requests_opened[str(day_midnight)] - requests_closed[str(day_midnight)]
-        avg = timedelta(days = 14)
+        avg = timedelta(days = 6*30)
         lifetime_low = timedelta()
         lifetime_normal = timedelta()
         lifetime_high = timedelta()
