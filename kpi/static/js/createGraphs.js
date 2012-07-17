@@ -403,6 +403,11 @@ function createHosts() {
         selected: false
     }, {
         period: "MM",
+        count: 3,
+        label: "3 Month",
+        selected: false
+    }, {
+        period: "MM",
         count: 6,
         label: "6 Months",
         selected: false
@@ -537,6 +542,11 @@ function createWritten() {
         period: "MM",
         count: 1,
         label: "1 Month",
+        selected: false
+    }, {
+        period: "MM",
+        count: 3,
+        label: "3 Month",
         selected: false
     }, {
         period: "MM",
@@ -696,6 +706,11 @@ function createEquipements() {
         period: "MM",
         count: 1,
         label: "1 Month",
+        selected: false
+    }, {
+        period: "MM",
+        count: 3,
+        label: "3 Month",
         selected: false
     }, {
         period: "MM",
@@ -879,6 +894,11 @@ function createAlerts() {
         period: "MM",
         count: 1,
         label: "1 Month",
+        selected: false
+    }, {
+        period: "MM",
+        count: 3,
+        label: "3 Month",
         selected: false
     }, {
         period: "MM",
