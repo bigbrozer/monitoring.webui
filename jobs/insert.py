@@ -50,6 +50,18 @@ def insert():
     if last_date != yesterday:
         number += insert_count_notifications()
 
+    if OldestAlerts.objects.all().count():
+        last_date = OldestAlerts.objects.order_by('-date')[0].date
+        last_date = last_date.replace(hour = 0,
+            minute = 0, second = 0, microsecond = 0)
+    else:
+        last_date = yesterday
+
+    if last_date != today:
+        OldestAlerts.objects.all().delete()
+        print "\n inserting"
+        number += insert_oldest_alerts()
+
     if KpiRedmine.objects.all().count():
         last_date = KpiRedmine.objects.order_by('-date')[0].date
         last_date = last_date.replace(hour = 0,
@@ -70,18 +82,6 @@ def insert():
     if last_date != today:
         RecurrentAlerts.objects.all().delete()
         number += insert_recurrent_alerts()
-
-    if OldestAlerts.objects.all().count():
-        last_date = OldestAlerts.objects.order_by('-date')[0].date
-        last_date = last_date.replace(hour = 0,
-            minute = 0, second = 0, microsecond = 0)
-    else:
-        last_date = yesterday
-
-    if last_date != today:
-        OldestAlerts.objects.all().delete()
-        print "\n inserting"
-        number += insert_oldest_alerts()
 
     return "\n %s lignes ajoutees" % number
 
@@ -121,7 +121,7 @@ def insert_redmine():
         entree.requests_opened = result_redmine['requests_opened'][date]
         entree.requests_closed = result_redmine['requests_closed'][date]
         entree.requests_remained = result_redmine['requests_remained'][date]
-        entree.requests_lifetime = result_redmine['requests_lifetime'][date]
+        entree.requests_lifetime = result_redmine['requests_lifetime_low'][date]
         entree.requests_lifetime_normal = \
             result_redmine['requests_lifetime_normal'][date]
         entree.requests_lifetime_high  = \
@@ -237,10 +237,6 @@ def insert_oldest_alerts():
     """
     print "\nFetching informations for the oldest alerts"
     oldest_alerts = nagios.request_oldest_alerts_hosts()
-    if oldest_alerts:
-        print "\n ok"
-    else:
-        print "\n pas ok"
     date = datetime.now(tz=utc).replace(hour = 0, minute = 0, second = 0, microsecond = 0)
     number = 0
     for alert in oldest_alerts:
