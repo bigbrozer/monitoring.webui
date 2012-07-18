@@ -420,7 +420,7 @@ function createHosts() {
         period: "MM",
         count: 3,
         label: "3 Month",
-        selected: false
+        selected: true
     }, {
         period: "MM",
         count: 6,
@@ -434,7 +434,7 @@ function createHosts() {
     }, {
         period: "MAX",
         label: "MAX",
-        selected: true
+        selected: false
     }];
     chart.periodSelector = periodSelector;
 
@@ -562,7 +562,7 @@ function createWritten() {
         period: "MM",
         count: 3,
         label: "3 Month",
-        selected: false
+        selected: true
     }, {
         period: "MM",
         count: 6,
@@ -576,7 +576,7 @@ function createWritten() {
     }, {
         period: "MAX",
         label: "MAX",
-        selected: true
+        selected: false
     }];
     chart.periodSelector = periodSelector;
 
@@ -726,7 +726,7 @@ function createEquipements() {
         period: "MM",
         count: 3,
         label: "3 Month",
-        selected: false
+        selected: true
     }, {
         period: "MM",
         count: 6,
@@ -740,7 +740,7 @@ function createEquipements() {
     }, {
         period: "MAX",
         label: "MAX",
-        selected: true
+        selected: false
     }];
     chart.periodSelector = periodSelector;
 
@@ -914,7 +914,7 @@ function createAlerts() {
         period: "MM",
         count: 3,
         label: "3 Month",
-        selected: false
+        selected: true
     }, {
         period: "MM",
         count: 6,
@@ -928,7 +928,7 @@ function createAlerts() {
     }, {
         period: "MAX",
         label: "MAX",
-        selected: true
+        selected: false
     }];
     chart.periodSelector = periodSelector;
 
