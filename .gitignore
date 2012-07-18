@@ -5,3 +5,4 @@
 .ropeproject/
 *.csv
 *~
+nohup.out
