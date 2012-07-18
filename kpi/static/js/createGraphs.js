@@ -914,12 +914,12 @@ function createAlerts() {
         period: "MM",
         count: 3,
         label: "3 Month",
-        selected: true
+        selected: false
     }, {
         period: "MM",
         count: 6,
         label: "6 Months",
-        selected: false
+        selected: true
     }, {
         period: "YYYY",
         count: 1,
