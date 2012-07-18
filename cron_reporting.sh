@@ -2,8 +2,8 @@
 
 source ~/Envs/stage/bin/activate
 
-cd $HOME
+cd $HOME/reporting
 
 ./get_fresh_redmine.sh
-python ./reporting/jobs/insert.py
+python ./jobs/insert.py
 
