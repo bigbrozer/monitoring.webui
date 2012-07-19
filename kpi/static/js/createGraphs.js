@@ -83,6 +83,9 @@ function createRequests() {
     }, {
         fromField: "url",
         toField: "url"
+    }, {
+        fromField: "comment_lifetime",
+        toField: "comment_lifetime"
     }];
     dataset.dataProvider = chartDataRequest;
     dataset.categoryField = "date";
@@ -174,6 +177,8 @@ function createRequests() {
     graphLifetimeGlobal.valueField = "global";
     graphLifetimeGlobal.type = "line";
     graphLifetimeGlobal.title = "Global";
+    graphLifetimeGlobal.descriptionField = "comment_lifetime";
+    graphLifetimeGlobal.balloonText += "\n[[description]]";
     graphLifetimeGlobal.hideBulletsCount = 35;
     graphLifetimeGlobal.bullet = "bubble";
 //    graphLifetimeGlobal.balloonText += " days";
@@ -338,6 +343,9 @@ function createHosts() {
     }, {
         fromField: "total_services",
         toField: "total_services"
+    }, {
+        fromField: "comment_host",
+        toField: "comment_host"
     }];
     dataset.dataProvider = chartDataNagios;
     dataset.categoryField = "date";
@@ -350,6 +358,8 @@ function createHosts() {
 
     graphHosts = new AmCharts.StockGraph();
     graphHosts.valueField = "total_host";
+    graphHosts.descriptionField = "comment_host";
+    graphHosts.balloonText += "\n[[description]]";
     graphHosts.type = "line";
     graphHosts.title = "Hosts";
     graphHosts.hideBulletsCount = 35;
@@ -375,6 +385,8 @@ function createHosts() {
 
     graphServices = new AmCharts.StockGraph();
     graphServices.valueField = "total_services";
+    graphServices.descriptionField = "comment_host";
+    graphServices.balloonText += "\n[[description]]";
     graphServices.type = "line";
     graphServices.hideBulletsCount = 35;
     graphServices.bullet = "bubble";
@@ -482,6 +494,9 @@ function createWritten() {
     }, {
         fromField: "missing_procedures",
         toField: "missing_procedures"
+    }, {
+        fromField: "comment_procedure",
+        toField: "comment_procedure"
     }];
     dataset.dataProvider = chartDataNagios;
     dataset.categoryField = "date";
@@ -494,9 +509,11 @@ function createWritten() {
 
     graphWritten = new AmCharts.StockGraph();
     graphWritten.valueField = "written_procedures";
+    graphWritten.descriptionField = "comment_procedure";
     graphWritten.type = "line";
     graphWritten.title = "Written procedures";
     graphWritten.balloonText += " ([[percents]]%)";
+    graphWritten.balloonText += "\n[[description]]";
     graphWritten.lineColor = "#00CC00";
     graphWritten.lineThickness = 2;
     graphWritten.fillColor = "#00CC00";
@@ -521,9 +538,11 @@ function createWritten() {
 
     graphMissing = new AmCharts.StockGraph();
     graphMissing.valueField = "missing_procedures";
+    graphMissing.descriptionField = "comment_procedure";
     graphMissing.type = "line";
     graphMissing.title = "Missing procedures";
     graphMissing.balloonText += " ([[percents]]%)";
+    graphMissing.balloonText += "\n[[description]]";
     graphMissing.lineColor = "#FF0000";
     graphMissing.lineThickness = 2;
     graphMissing.fillColor = "#FF0000";
@@ -796,6 +815,9 @@ function createAlerts() {
     }, {
         fromField: "critical_acknowledged",
         toField: "critical_acknowledged"
+    }, {
+        fromField: "comment_notifications",
+        toField: "comment_notifications"
     }];
     dataset.dataProvider = chartDataAlerts;
     dataset.categoryField = "date";
@@ -808,6 +830,8 @@ function createAlerts() {
 
     graphWarning = new AmCharts.StockGraph();
     graphWarning.valueField = "warning";
+    graphWarning.descriptionField = "comment_notifications";
+    graphWarning.balloonText += "\n[[description]]";
     graphWarning.type = "line";
     graphWarning.title = "Warning alerts";
     graphWarning.lineColor = "#FF0000";

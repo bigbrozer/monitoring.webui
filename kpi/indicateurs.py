@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.shortcuts import redirect
 import sys
 import os
+from urllib import quote
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
@@ -28,10 +29,10 @@ def indicateurs(request):
 
         chart_data_request += '{date: new Date("%s"), remained: %d, '\
             'opened: %d, closed: %d, global: %d, '\
-            'normal: %d, high: %d, urgent: %d, url: "%s"}' % (kpi.date.isoformat(),
+            'normal: %d, high: %d, urgent: %d, url: "%s", comment_lifetime: "%s"}' % (kpi.date.isoformat(),
                                                    kpi.requests_remained, kpi.requests_opened, kpi.requests_closed,
                                                    lifetime, lifetime_normal, lifetime_high, lifetime_urgent,
-                                                   url)
+                                                   url, (kpi.comment_lifetime).replace("\r\n", "\\n"))
 
         if index != len(kpi_redmine)-1:
             chart_data_request += ",\n"
@@ -45,9 +46,11 @@ def indicateurs(request):
     for index, kpi in enumerate(kpi_nagios):
         chart_data_nagios += '{date: new Date("%s"), total_host: %d, '\
         'total_services: %d, written_procedures: %d, missing_procedures: %d, '\
-        'linux: %d, windows: %d, aix: %d}' % (kpi.date.isoformat(),
+        'linux: %d, windows: %d, aix: %d, comment_host: "%s", comment_procedure: "%s"}' % (kpi.date.isoformat(),
                                               kpi.total_host, kpi.total_services, kpi.written_procedures,
-                                              kpi.missing_procedures, kpi.linux, kpi.windows, kpi.aix)
+                                              kpi.missing_procedures, kpi.linux, kpi.windows, kpi.aix,
+                                              (kpi.comment_host).replace("\r\n", "\\n"),
+                                              kpi.comment_procedure.replace("\r\n", "\\n"))
 
         if index != len(kpi_nagios)-1:
             chart_data_nagios += ",\n"
@@ -61,11 +64,12 @@ def indicateurs(request):
     for alert in result:
         chart_data_alerts += '{date: new Date("%s"), warning: %d, '\
             'warning_acknowledged: %d, critical: %d, '\
-            'critical_acknowledged: %d}' % (alert.date.isoformat(),
+            'critical_acknowledged: %d, comment_notifications: "%s"}' % (alert.date.isoformat(),
                                             alert.warning,
                                             alert.warning_acknowledged,
                                             alert.critical,
-                                            alert.critical_acknowledged)
+                                            alert.critical_acknowledged,
+                                            (alert.comment_notification).replace("\r\n", "\\n"))
         chart_data_alerts += ",\n"
 
     chart_data_alerts += "\n]"

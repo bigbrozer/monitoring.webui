@@ -18,6 +18,8 @@ class KpiNagios(models.Model):
     linux = models.PositiveIntegerField()
     windows = models.PositiveIntegerField()
     aix = models.PositiveIntegerField()
+    comment_host = models.TextField(blank=True, default="")
+    comment_procedure = models.TextField(blank=True, default="")
 
     def __unicode__(self):
         return str(self.date)
@@ -36,7 +38,7 @@ class KpiRedmine(models.Model):
     requests_lifetime_normal = models.PositiveIntegerField()
     requests_lifetime_high = models.PositiveIntegerField()
     requests_lifetime_urgent = models.PositiveIntegerField()
-
+    comment_lifetime = models.TextField(blank=True, default="")
 
     def lifetime(self):
         """
@@ -83,8 +85,8 @@ class NagiosNotifications(models.Model):
     """
 
     host = models.CharField(max_length = 64)
-    service = models.CharField(max_length = 128, null = True)
-    date = models.DateTimeField(null = True)
+    service = models.CharField(max_length = 128, null = True, blank=True)
+    date = models.DateTimeField(blank=True)
     STATE_CHOICES = ((1, 'Warning'),(2, 'Critical'))
     state = models.PositiveIntegerField(choices = STATE_CHOICES)
     acknowledged = models.BooleanField()
@@ -97,11 +99,12 @@ class CountNotifications(models.Model):
     Count the notifications group by date, state, and acknowledged
     """
 
-    date = models.DateTimeField(null = True)
+    date = models.DateTimeField(null = True, blank=True)
     warning = models.PositiveIntegerField()
     warning_acknowledged = models.PositiveIntegerField()
     critical = models.PositiveIntegerField()
     critical_acknowledged = models.PositiveIntegerField()
+    comment_notification = models.TextField(blank=True, default="")
 
     def __unicode__(self):
         return str(self.date)
@@ -111,9 +114,9 @@ class RecurrentAlerts(models.Model):
     Stock the recurrent alerts for the last 31 days
     """
 
-    date = models.DateTimeField(null = True)
+    date = models.DateTimeField(null = True, blank=True)
     host = models.CharField(max_length = 64)
-    service = models.CharField(max_length = 128, null = True)
+    service = models.CharField(max_length = 128, null = True, blank=True)
     frequency = models.PositiveIntegerField()
     def __unicode__(self):
         return str(self.date)
@@ -123,10 +126,10 @@ class OldestAlerts(models.Model):
     Stock the oldest active alerts
     """
 
-    date = models.DateTimeField(null = True)
+    date = models.DateTimeField(null = True, blank=True)
     host = models.CharField(max_length = 64)
-    service = models.CharField(max_length = 128, null = True)
-    date_error = models.DateTimeField(null = True)
+    service = models.CharField(max_length = 128, null = True, blank=True)
+    date_error = models.DateTimeField(null = True, blank=True)
     def __unicode__(self):
         return str(self.date)
 
