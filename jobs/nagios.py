@@ -9,9 +9,6 @@ from os import path
 def get_satellites():
     """
     return the key indicators from the last timestamp to now
-    param lastTimestamp: the last timestamp found in the database
-    type lastTimestamp: integer
-
     """
 
     connections = {

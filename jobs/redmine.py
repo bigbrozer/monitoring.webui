@@ -32,7 +32,7 @@ def request():
     today = today.replace(hour = 0, minute = 0, second = 0, microsecond = 0)
 
     # first execution of the script
-    if number == 0:
+    if not number:
         cur.execute(
             "SELECT created_on FROM ISSUES ORDER BY created_on ASC LIMIT 1")
         day_midnight = cur.fetchone()[0]

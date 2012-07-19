@@ -29,13 +29,17 @@ def insert():
         minute = 0, second = 0, microsecond = 0)
     yesterday = today - one_day
 
+    # Test if the table KpiNagios of the program is not empty
     if KpiNagios.objects.all().count():
+        # Takes the last date foud in the table
         last_date = KpiNagios.objects.order_by('-date')[0].date
         last_date = last_date.replace(hour = 0,
         minute = 0, second = 0, microsecond = 0)
     else:
+        # set a random date different of yesterday
         last_date = yesterday-one_day
 
+    # If the table has not been updated yesterday
     if last_date != yesterday:
         result_nagios = get_result_nagios()
         number += insert_nagios(result_nagios)
@@ -59,7 +63,6 @@ def insert():
 
     if last_date != today:
         OldestAlerts.objects.all().delete()
-        print "\n inserting"
         number += insert_oldest_alerts()
 
     if KpiRedmine.objects.all().count():
@@ -102,7 +105,6 @@ def get_notifications():
     get the last timestamp from the database then use it to get the
     notification from nagios from the last timestamp
     """
-
     last_timestamp = nagios_notifications.get_last_time()
 
     notifications_nagios = nagios.request_notifications(last_timestamp)

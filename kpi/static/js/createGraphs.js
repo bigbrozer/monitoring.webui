@@ -89,6 +89,7 @@ function createRequests() {
 
     chart.dataSets = [dataset];
     chart.balloon.showBullet = false;
+    // Allow the user to click on the graph bullet to open an url and not on the balloon bullet
 
 // PANELS ///////////////////////////////////
 
@@ -96,29 +97,29 @@ function createRequests() {
     period_value = "Average";
 
     graphRemained = new AmCharts.StockGraph();
-    graphRemained.valueField = "remained";
-    graphRemained.urlField = "url";
-    graphRemained.urlTarget = "_blank";
-    graphRemained.type = "line";
-    graphRemained.title = "Remained";
-    graphRemained.hideBulletsCount = 100;
-    graphRemained.bulletSize = 8;
-    graphRemained.bullet = "bubble";
-    graphRemained.lineThickness = 2;
-    graphRemained.lineColor = "#FF0000";
-    graphRemained.useDataSetColors = false;
-    graphRemained.periodValue = "Close";
-
+    graphRemained.valueField = "remained"; // Field used to draw the graph
+    graphRemained.urlField = "url"; // Field containing the url to open if the user click on the graph
+    graphRemained.urlTarget = "_blank"; // Open the url into a new tab
+    graphRemained.type = "line"; // Draw the graph with a line form. others options are smoothedLine and columns
+    graphRemained.title = "Remained"; // Title of the graph
+    graphRemained.hideBulletsCount = 100; // Show the bullet if there is less than 100 data shown on the graph
+    graphRemained.bulletSize = 8; // Increase the default bullet size to allow the users to click more easily on it
+    graphRemained.bullet = "bubble"; // Style of the bullets
+    graphRemained.lineThickness = 2; // Increase default line thickness
+    graphRemained.lineColor = "#FF0000"; // Change the color of the line
+    graphRemained.useDataSetColors = false; // Use custom colors and not default colors
+    graphRemained.periodValue = "Close"; // When the data are show for each week,
+                                         // it will draw the final value of the week
 //  1.1) stockPanel Remained
     stockPanelRemained = new AmCharts.StockPanel();
-    stockPanelRemained.title = "Requests";
-    stockPanelRemained.percentHeight = 25;
-    stockPanelRemained.addStockGraph(graphRemained);
-    stockPanelRemained.showCategoryAxis = false;
+    stockPanelRemained.title = "Requests"; // Title of the panel
+    stockPanelRemained.percentHeight = 25; // Height of the panel over 100
+    stockPanelRemained.addStockGraph(graphRemained); // Add the graph to the panel
+    stockPanelRemained.showCategoryAxis = false; // Hide the dates under this panel
 
 //  1.1) stockLegend Remained
     stockLegendRemained = new AmCharts.StockLegend();
-    stockLegendRemained.switchable = false;
+    stockLegendRemained.switchable = false; // Disable the options to hide the graph by clicking on his name
     stockPanelRemained.stockLegend = stockLegendRemained;
 
 //  1.2) graph Opened
@@ -134,8 +135,9 @@ function createRequests() {
     graphOpened.lineColor = "#FF9900";
     graphOpened.useDataSetColors = false;
     graphOpened.fillAlphas = 1;
-    graphOpened.periodValue = "Sum";
-    graphOpened.cornerRadiusTop = 2;
+    graphOpened.periodValue = "Sum"; // When the data are show for each week,
+                                     // it will draw the sum of all the values of the week
+    graphOpened.cornerRadiusTop = 2; // round the corners of the columns
 
 //  1.2) stockPanel Opened (& Closed)
     stockPanelOpened = new AmCharts.StockPanel();
