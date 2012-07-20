@@ -99,8 +99,9 @@ def indicateurs(request):
         days = alert.date - alert.date_error
         date_error = "%s-%s-%s" % (alert.date_error.year, alert.date_error.month, alert.date_error.day)
         days = days.total_seconds()/60/60/24
-        chart_data_oldests_alerts += '{name: "%s@%s", days: %d, date_error: "%s"}' % (alert.service,
-                                                                    alert.host, days, date_error)
+        chart_data_oldests_alerts += '{name: "%s@%s", days: %d, date_error: "%s", '\
+        'url: "http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?host=%s"}' % (alert.service,
+                                                                    alert.host, days, date_error, alert.host)
         chart_data_oldests_alerts += ",\n"
 
     chart_data_oldests_alerts += "\n]"

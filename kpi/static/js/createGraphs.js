@@ -1007,6 +1007,8 @@ function createOldestsAlerts() {
     chart.dataProvider = chartDataOldestsAlerts;
     chart.titleField = "name";
     chart.valueField = "days";
+    chart.urlField = "url";
+    chart.urlTarget = "_blank";
     chart.descriptionField = "date_error"
     chart.balloonText = "[[title]] : [[value]] days ([[description]])";
     chart.labelText = "[[title]] : [[value]] days";
