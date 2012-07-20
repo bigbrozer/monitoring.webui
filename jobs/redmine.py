@@ -2,6 +2,7 @@
 get the redmine kpi from redmine
 """
 
+from django.conf import settings
 import sqlite3
 from kpi.models import KpiRedmine
 from datetime import datetime, timedelta
@@ -12,8 +13,9 @@ def request():
     return the key indicators from redmine database
     """
 
+    db_file = "/tmp/redmine_default" if settings.DEBUG else "/var/lib/dbconfig-common/sqlite3/redmine/instances/default/redmine_default"
     conn = sqlite3.connect(
-        "/tmp/redmine_default", detect_types = sqlite3.PARSE_DECLTYPES)
+        db_file, detect_types = sqlite3.PARSE_DECLTYPES)
     cur = conn.cursor()
 
     # count the number of entry in the programm database for the Redmine kpi
