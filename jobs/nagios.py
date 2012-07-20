@@ -160,8 +160,11 @@ Columns: host_name description notes_url_expanded contact_groups
 """)
     written_procedures = 0
     missing_procedures = 0
-    myreport = open("report.csv", "w")
+    myreport = open("kpi/static/detailled_report.csv", "w")
+    my_simple_report = open("kpi/static/simple_report.csv", "w")
     myreport.write("written;hostname;services;procedure;stratos\n")
+    my_simple_report.write("written;procedure;\n")
+    procedures = {}
     for services in services_all:
         procedure_path = services[2].split('/')[-1].replace(':', '/').lower()
         empty = 1
@@ -176,10 +179,17 @@ Columns: host_name description notes_url_expanded contact_groups
             written_procedures += 1
             myreport.write("yes;%s;%s;%s;%s\n" % (services[0],
                 services[1], services[2], list_contact))
+            procedures[str(services[2])] = 1
         else:
             missing_procedures += 1
             myreport.write("no;%s;%s;%s;%s\n" % (services[0],
                 services[1], services[2], list_contact))
+            procedures[str(services[2])] = 0
+    for procedure, written in procedures.items():
+        if written:
+            my_simple_report.write("yes;%s\n" % procedure)
+        else:
+            my_simple_report.write("no;%s\n" % procedure)
     myreport.close()
 
     result = {
