@@ -2,6 +2,7 @@
 get the results from nagios
 """
 
+from django.conf import settings
 import livestatus as live
 from os import path
 
@@ -78,7 +79,7 @@ def request():
     """
     get the kpi from redmine
     """
-    kbpath = "/tmp/pages"
+    kbpath = "/tmp/pages" if settings.DEBUG else "/var/www/kb/data/pages"
 
     if not SATELLITES:
         return False
