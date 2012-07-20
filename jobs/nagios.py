@@ -78,7 +78,7 @@ def request():
     """
     get the kpi from redmine
     """
-    kbpath = "/home/fellet/pages"
+    kbpath = "/tmp/pages"
 
     if not SATELLITES:
         return False

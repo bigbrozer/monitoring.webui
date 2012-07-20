@@ -13,7 +13,7 @@ def request():
     """
 
     conn = sqlite3.connect(
-        "/home/fellet/redmine_default", detect_types = sqlite3.PARSE_DECLTYPES)
+        "/tmp/redmine_default", detect_types = sqlite3.PARSE_DECLTYPES)
     cur = conn.cursor()
 
     # count the number of entry in the programm database for the Redmine kpi

@@ -1,8 +1,10 @@
 #!/bin/bash
 
-source ~/Envs/stage/bin/activate
+PROGPATH=$(dirname $0)
 
-cd $HOME/reporting
+source $HOME/Envs/stage/bin/activate
+
+cd "$PROGPATH"
 
 ./get_fresh_redmine.sh
 ./get_kb_pages.sh

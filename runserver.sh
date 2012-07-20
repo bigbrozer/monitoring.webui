@@ -1,8 +1,9 @@
 #!/bin/bash
 
-source /usr/local/bin/virtualenvwrapper.sh
+PROGPATH=$(dirname $0)
 
-workon stage
-cd ~/reporting/
-python ./manage.py runserver monadm.edc.eu.corp:8080
+source $HOME/Envs/stage/bin/activate
+
+cd "$PROGPATH"
+python ./manage.py runserver 0.0.0.0:8080
 
