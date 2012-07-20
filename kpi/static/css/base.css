@@ -8,3 +8,7 @@
     background-color: #333;
     color: #999;
 }
+
+.footer a.logo {
+    padding-right: 35px;
+}
