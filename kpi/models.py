@@ -9,7 +9,7 @@ class KpiNagios(models.Model):
     """
     Stock all the key indicators found in Nagios Database
     """
-    date = models.DateTimeField()
+    date = models.DateTimeField(null=True)
 
     total_host = models.PositiveIntegerField('Hosts')
     total_services = models.PositiveIntegerField('Services')
@@ -29,7 +29,7 @@ class KpiRedmine(models.Model):
     Stock all the key indicators found in Redmine Database
     """
 
-    date = models.DateTimeField()
+    date = models.DateTimeField(null=True)
 
     requests_opened = models.PositiveIntegerField('opened')
     requests_closed = models.PositiveIntegerField('closed')
@@ -99,7 +99,7 @@ class CountNotifications(models.Model):
     Count the notifications group by date, state, and acknowledged
     """
 
-    date = models.DateTimeField(null = True, blank=True)
+    date = models.DateTimeField(null = True)
     warning = models.PositiveIntegerField()
     warning_acknowledged = models.PositiveIntegerField()
     critical = models.PositiveIntegerField()
@@ -114,7 +114,7 @@ class RecurrentAlerts(models.Model):
     Stock the recurrent alerts for the last 31 days
     """
 
-    date = models.DateTimeField(null = True, blank=True)
+    date = models.DateTimeField(null = True)
     host = models.CharField(max_length = 64)
     service = models.CharField(max_length = 128, null = True, blank=True)
     frequency = models.PositiveIntegerField()
@@ -126,7 +126,7 @@ class OldestAlerts(models.Model):
     Stock the oldest active alerts
     """
 
-    date = models.DateTimeField(null = True, blank=True)
+    date = models.DateTimeField(null = True)
     host = models.CharField(max_length = 64)
     service = models.CharField(max_length = 128, null = True, blank=True)
     date_error = models.DateTimeField(null = True, blank=True)
