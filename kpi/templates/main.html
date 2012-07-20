@@ -101,6 +101,7 @@
         chartDataNagios = {{ chart_data_nagios|safe }},
         other = {{ number_others|safe }},
         chartDataOldestsAlerts = {{ chart_data_oldests_alerts|safe }};
+        chartDataProcedures = {{ chart_data_procedures|safe }};
 
         AmCharts.ready(function () {
             createRequests();

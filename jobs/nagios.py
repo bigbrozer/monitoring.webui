@@ -177,20 +177,20 @@ Columns: host_name description notes_url_expanded contact_groups
                 list_contact += ", %s" % serv
                 empty = 0
         if path.lexists("%s/%s.txt" % (kbpath, procedure_path)):
-            written_procedures += 1
             myreport.write("yes;%s;%s;%s;%s\n" % (services[0],
                 services[1], services[2], list_contact))
             procedures[str(services[2])] = 1
         else:
-            missing_procedures += 1
             myreport.write("no;%s;%s;%s;%s\n" % (services[0],
                 services[1], services[2], list_contact))
             procedures[str(services[2])] = 0
     for procedure, written in procedures.items():
         if written:
             my_simple_report.write("yes;%s\n" % procedure)
+            written_procedures += 1
         else:
             my_simple_report.write("no;%s\n" % procedure)
+            missing_procedures += 1
     myreport.close()
 
     result = {

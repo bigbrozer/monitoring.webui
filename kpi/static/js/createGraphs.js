@@ -498,7 +498,7 @@ function createWritten() {
         fromField: "comment_procedure",
         toField: "comment_procedure"
     }];
-    dataset.dataProvider = chartDataNagios;
+    dataset.dataProvider = chartDataProcedures;
     dataset.categoryField = "date";
 
     chart.dataSets = [dataset];

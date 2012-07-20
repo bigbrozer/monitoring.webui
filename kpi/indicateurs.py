@@ -40,22 +40,29 @@ def indicateurs(request):
     chart_data_request += "\n]"
 
     chart_data_nagios = "[\n"
+    chart_data_procedures = "[\n"
     kpi_nagios = KpiNagios.objects.all().order_by("date")
     alerts = []
 
     for index, kpi in enumerate(kpi_nagios):
         chart_data_nagios += '{date: new Date("%s"), total_host: %d, '\
-        'total_services: %d, written_procedures: %d, missing_procedures: %d, '\
-        'linux: %d, windows: %d, aix: %d, comment_host: "%s", comment_procedure: "%s"}' % (kpi.date.isoformat(),
-                                              kpi.total_host, kpi.total_services, kpi.written_procedures,
-                                              kpi.missing_procedures, kpi.linux, kpi.windows, kpi.aix,
-                                              (kpi.comment_host).replace("\r\n", "\\n"),
-                                              kpi.comment_procedure.replace("\r\n", "\\n"))
+        'total_services: %d, '\
+        'linux: %d, windows: %d, aix: %d}' % (kpi.date.isoformat(),
+                                              kpi.total_host, kpi.total_services, kpi.linux, kpi.windows, kpi.aix)
+        if kpi.written_procedures:
+            chart_data_procedures += '{date: new Date("%s"), written_procedures: %d, '\
+            'missing_procedures: %d, comment_procedure: "%s", comment_host: "%s"}' % (kpi.date.isoformat(),
+                                                                        kpi.written_procedures,
+                                                                        kpi.missing_procedures,
+                                                                        kpi.comment_host.replace("\r\n", "\\n"),
+                                                                        kpi.comment_procedure.replace("\r\n", "\\n"))
+            chart_data_procedures += ",\n"
 
         if index != len(kpi_nagios)-1:
             chart_data_nagios += ",\n"
 
     chart_data_nagios += "\n]"
+    chart_data_procedures += "\n]"
 
     result = CountNotifications.objects.all().order_by("date")
 
