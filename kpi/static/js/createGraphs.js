@@ -118,20 +118,19 @@ function createRequests() {
                                          // it will draw the final value of the week
 //  1.1b) graph waiting
     graphWaiting = new AmCharts.StockGraph();
-    graphWaiting.valueField = "requests_waiting"; // Field used to draw the graph
-    graphWaiting.urlField = "url"; // Field containing the url to open if the user click on the graph
-    graphWaiting.urlTarget = "_blank"; // Open the url into a new tab
-    graphWaiting.type = "line"; // Draw the graph with a line form. others options are smoothedLine and columns
-    graphWaiting.title = "Waiting"; // Title of the graph
-    graphWaiting.hideBulletsCount = 35; // Show the bullet if there is less than 100 data shown on the graph
-    graphWaiting.bulletSize = 8; // Increase the default bullet size to allow the users to click more easily on it
-    graphWaiting.bullet = "bubble"; // Style of the bullets
-    graphWaiting.fillAlphas = 0.8; //
-    graphWaiting.lineThickness = 2; // Increase default line thickness
-    graphWaiting.lineColor = "#666699"; // Change the color of the line
-    graphWaiting.useDataSetColors = false; // Use custom colors and not default colors
-    graphWaiting.periodValue = "Close"; // When the data are show for each week,
-    // it will draw the final value of the week
+    graphWaiting.valueField = "requests_waiting";
+    graphWaiting.urlField = "url";
+    graphWaiting.urlTarget = "_blank";
+    graphWaiting.type = "line";
+    graphWaiting.title = "Waiting";
+    graphWaiting.hideBulletsCount = 35;
+    graphWaiting.bulletSize = 8;
+    graphWaiting.bullet = "bubble";
+    graphWaiting.fillAlphas = 0.8;
+    graphWaiting.lineThickness = 2;
+    graphWaiting.lineColor = "#666699";
+    graphWaiting.useDataSetColors = false;
+    graphWaiting.periodValue = "Close";
 
 //  1.1) stockPanel Remained
     stockPanelRemained = new AmCharts.StockPanel();
