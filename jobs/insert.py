@@ -168,20 +168,19 @@ def insert_nagios(result_nagios):
 
 
     # Nagios results ----------------------------------------------------------
-    try:
-        nagios_r.total_host = result_nagios['total_hosts']
-        nagios_r.total_services = result_nagios['total_services']
-        nagios_r.written_procedures = result_nagios['written_procedures']
-        nagios_r.missing_procedures = result_nagios['missing_procedures']
-        nagios_r.linux = result_nagios['linux']
-        nagios_r.windows = result_nagios['windows']
-        nagios_r.aix = result_nagios['aix']
+    nagios_r.total_host = result_nagios['total_hosts']
+    nagios_r.total_services = result_nagios['total_services']
+    nagios_r.written_procedures = result_nagios['written_procedures']
+    nagios_r.total_written = result_nagios['total_written']
+    nagios_r.missing_procedures = result_nagios['missing_procedures']
+    nagios_r.total_missing = result_nagios['total_missing']
+    nagios_r.linux = result_nagios['linux']
+    nagios_r.windows = result_nagios['windows']
+    nagios_r.aix = result_nagios['aix']
 
-        nagios_r.save()
-        number += 1
-        print "\n1 kpi nagios saved"
-    except:
-        pass
+    nagios_r.save()
+    number += 1
+    print "\n1 kpi nagios saved"
     return number
 
 def insert_count_notifications():

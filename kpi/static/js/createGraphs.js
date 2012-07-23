@@ -492,9 +492,15 @@ function createWritten() {
         fromField: "written_procedures",
         toField: "written_procedures"
     }, {
+        fromField: "total_written",
+        toField: "total_written"
+    }, {
         fromField: "missing_procedures",
         toField: "missing_procedures"
     }, {
+        fromField: "total_missing",
+        toField: "total_missing"
+    },{
         fromField: "comment_procedure",
         toField: "comment_procedure"
     }];
@@ -513,6 +519,7 @@ function createWritten() {
     graphWritten.type = "line";
     graphWritten.title = "Written procedures";
     graphWritten.balloonText += " ([[percents]]%)";
+    graphWritten.balloonText += " related services: [[total_written]]";
     graphWritten.balloonText += "\n[[description]]";
     graphWritten.lineColor = "#00CC00";
     graphWritten.lineThickness = 2;
@@ -542,6 +549,7 @@ function createWritten() {
     graphMissing.type = "line";
     graphMissing.title = "Missing procedures";
     graphMissing.balloonText += " ([[percents]]%)";
+    graphMissing.balloonText += " related services: [[total_missing]]";
     graphMissing.balloonText += "\n[[description]]";
     graphMissing.lineColor = "#FF0000";
     graphMissing.lineThickness = 2;
@@ -834,9 +842,9 @@ function createAlerts() {
     graphWarning.balloonText += "\n[[description]]";
     graphWarning.type = "line";
     graphWarning.title = "Warning alerts";
-    graphWarning.lineColor = "#FF0000";
+    graphWarning.lineColor = "#FF9900";
     graphWarning.lineThickness = 2;
-    graphWarning.fillColor = "#FF0000";
+    graphWarning.fillColor = "#FF9900";
     graphWarning.useDataSetColors = false;
     graphWarning.periodValue = "Sum";
     graphWarning.fillAlphas = 0.7;
@@ -982,8 +990,8 @@ function createRecurrentsAlerts() {
     chart.dataProvider = chartDataRecurrentsAlerts;
     chart.titleField = "name";
     chart.valueField = "repetitions";
-    chart.balloonText = "[[title]] : [[value]]/" + other;
-    chart.labelText = "[[title]] : [[value]]";
+    chart.balloonText = "[[title]]: [[value]]/" + other;
+    chart.labelText = "[[title]]: [[value]]";
     chart.urlField = "url";
     chart.urlTarget = "_blank";
     chart.pullOutRadius = "0%";
@@ -1009,9 +1017,9 @@ function createOldestsAlerts() {
     chart.valueField = "days";
     chart.urlField = "url";
     chart.urlTarget = "_blank";
-    chart.descriptionField = "date_error"
-    chart.balloonText = "[[title]] : [[value]] days ([[description]])";
-    chart.labelText = "[[title]] : [[value]] days";
+    chart.descriptionField = "date_error";
+    chart.balloonText = "[[title]]: [[value]] days ([[description]])";
+    chart.labelText = "[[title]]: [[value]] days";
     chart.pullOutRadius = "0%";
     chart.radius = "30%";
     chart.outlineThickness = 1.2;

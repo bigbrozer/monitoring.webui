@@ -5,7 +5,6 @@ from django.template import RequestContext
 from django.shortcuts import redirect
 import sys
 import os
-from urllib import quote
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
@@ -16,6 +15,10 @@ def indicateurs(request):
     param: http request
     """
     kpi_redmine = KpiRedmine.objects.all().order_by("date")
+    today = KpiRedmine.objects.all().order_by("-date")[0]
+    today = str(today).split(' ')
+    date_today = today[0]
+    time_today = today[1]
 
     chart_data_request = "[\n"
 
@@ -47,15 +50,18 @@ def indicateurs(request):
     for index, kpi in enumerate(kpi_nagios):
         chart_data_nagios += '{date: new Date("%s"), total_host: %d, '\
         'total_services: %d, '\
-        'linux: %d, windows: %d, aix: %d}' % (kpi.date.isoformat(),
-                                              kpi.total_host, kpi.total_services, kpi.linux, kpi.windows, kpi.aix)
+        'linux: %d, windows: %d, aix: %d, comment_host: "%s"}' % (kpi.date.isoformat(),
+                                              kpi.total_host, kpi.total_services, kpi.linux,
+                                              kpi.windows, kpi.aix, kpi.comment_host.replace("\r\n", "\\n"))
         if kpi.written_procedures:
             chart_data_procedures += '{date: new Date("%s"), written_procedures: %d, '\
-            'missing_procedures: %d, comment_procedure: "%s", comment_host: "%s"}' % (kpi.date.isoformat(),
-                                                                        kpi.written_procedures,
-                                                                        kpi.missing_procedures,
-                                                                        kpi.comment_host.replace("\r\n", "\\n"),
-                                                                        kpi.comment_procedure.replace("\r\n", "\\n"))
+            'total_written: %d, missing_procedures: %d, total_missing: %d, comment_procedure: "%s"}' % (
+                kpi.date.isoformat(),
+                kpi.written_procedures,
+                kpi.total_written,
+                kpi.missing_procedures,
+                kpi.total_missing,
+                kpi.comment_procedure.replace("\r\n", "\\n"))
             chart_data_procedures += ",\n"
 
         if index != len(kpi_nagios)-1:
@@ -112,6 +118,8 @@ def indicateurs(request):
         chart_data_oldests_alerts += ",\n"
 
     chart_data_oldests_alerts += "\n]"
+
+
 
     return render_to_response(
         'main.html', locals(), context_instance = RequestContext(request))

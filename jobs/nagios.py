@@ -161,6 +161,8 @@ Columns: host_name description notes_url_expanded contact_groups
 """)
     written_procedures = 0
     missing_procedures = 0
+    total_written = 0
+    total_missing = 0
     myreport = open("kpi/static/detailled_report.csv", "w")
     my_simple_report = open("kpi/static/simple_report.csv", "w")
     myreport.write("written;hostname;services;procedure;stratos\n")
@@ -177,10 +179,12 @@ Columns: host_name description notes_url_expanded contact_groups
                 list_contact += ", %s" % serv
                 empty = 0
         if path.lexists("%s/%s.txt" % (kbpath, procedure_path)):
+            total_written +=1
             myreport.write("yes;%s;%s;%s;%s\n" % (services[0],
                 services[1], services[2], list_contact))
             procedures[str(services[2])] = 1
         else:
+            total_missing += 1
             myreport.write("no;%s;%s;%s;%s\n" % (services[0],
                 services[1], services[2], list_contact))
             procedures[str(services[2])] = 0
@@ -200,7 +204,9 @@ Columns: host_name description notes_url_expanded contact_groups
     'windows': nb_windows,
     'aix': nb_aix,
     'written_procedures': written_procedures,
-    'missing_procedures': missing_procedures
+    'missing_procedures': missing_procedures,
+    'total_written' : total_written,
+    'total_missing' : total_missing
     }
 
     return result

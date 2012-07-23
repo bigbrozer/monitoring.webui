@@ -20,6 +20,8 @@ class KpiNagios(models.Model):
     aix = models.PositiveIntegerField()
     comment_host = models.TextField(blank=True, default="")
     comment_procedure = models.TextField(blank=True, default="")
+    total_written = models.PositiveIntegerField()
+    total_missing = models.PositiveIntegerField()
 
     def __unicode__(self):
         return str(self.date)

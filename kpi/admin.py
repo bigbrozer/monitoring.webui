@@ -19,7 +19,8 @@ class KpiNagiosAdmin(admin.ModelAdmin):
     #  'alerts_hard_critical', 'alerts_acknowledged_warning',
     #  'alerts_acknowledged_critical', ))
     list_display = ('date', 'total_host', 'total_services',
-        'written_procedures', 'missing_procedures', 'linux', 'windows', 'aix')
+        'written_procedures', 'total_written', 'missing_procedures', 'total_missing',
+        'linux', 'windows', 'aix', 'comment_host', 'comment_procedure')
     date_hierarchy = 'date'
     ordering = ['-date']
 
@@ -29,7 +30,7 @@ class KpiRedmineAdmin(admin.ModelAdmin):
     """
     list_display = ('date', 'requests_opened', 'requests_closed',
         'requests_remained', 'lifetime', 'lifetime_normal', 'lifetime_high',
-        'lifetime_urgent')
+        'lifetime_urgent', 'comment_lifetime')
     date_hierarchy = 'date'
     ordering = ['-date']
     actions = ['update']
@@ -81,7 +82,7 @@ class CountNotificationsAdmin(admin.ModelAdmin):
     modify default settings for count notifications
     """
     list_display = ('date', 'warning', 'warning_acknowledged', 'critical',
-        'critical_acknowledged')
+        'critical_acknowledged', 'comment_notification')
     date_hierarchy = 'date'
     ordering = ['-date']
 
