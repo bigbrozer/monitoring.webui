@@ -181,7 +181,8 @@ def request():
 
 
         if day_late == today:
-            cur.execute("SELECT COUNT(id) FROM issues WHERE (status_id = 4 OR status_id = 9)")
+            cur.execute("SELECT COUNT(id) FROM issues WHERE (status_id = 4 OR status_id = 9)"
+                        "AND project_id != 12")
             requests_waiting[str(day_midnight)] = cur.fetchone()[0]
         else:
             requests_waiting[str(day_midnight)] = 0
