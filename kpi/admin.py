@@ -29,7 +29,7 @@ class KpiRedmineAdmin(admin.ModelAdmin):
     modify default settings for kpi redmine
     """
     list_display = ('date', 'requests_opened', 'requests_closed',
-        'requests_remained', 'lifetime', 'lifetime_normal', 'lifetime_high',
+        'requests_remained', 'requests_waiting', 'lifetime', 'lifetime_normal', 'lifetime_high',
         'lifetime_urgent', 'comment_lifetime')
     date_hierarchy = 'date'
     ordering = ['-date']

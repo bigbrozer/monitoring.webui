@@ -46,7 +46,7 @@ function createRequests() {
         stockPanelClosed, stockLegendRemained, stockLegendOpened,
         stockLegendClosed, period_value, graphLifetimeGlobal,
         stockPanelLifetime, stockLegendLifetime, graphLifetimeNormal,
-        graphLifetimeHigh, graphLifetimeUrgent;
+        graphLifetimeHigh, graphLifetimeUrgent, graphWaiting;
 
 // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
@@ -86,6 +86,9 @@ function createRequests() {
     }, {
         fromField: "comment_lifetime",
         toField: "comment_lifetime"
+    }, {
+        fromField: "requests_waiting",
+        toField: "requests_waiting"
     }];
     dataset.dataProvider = chartDataRequest;
     dataset.categoryField = "date";
@@ -113,16 +116,34 @@ function createRequests() {
     graphRemained.useDataSetColors = false; // Use custom colors and not default colors
     graphRemained.periodValue = "Close"; // When the data are show for each week,
                                          // it will draw the final value of the week
+//  1.1b) graph waiting
+    graphWaiting = new AmCharts.StockGraph();
+    graphWaiting.valueField = "requests_waiting"; // Field used to draw the graph
+    graphWaiting.urlField = "url"; // Field containing the url to open if the user click on the graph
+    graphWaiting.urlTarget = "_blank"; // Open the url into a new tab
+    graphWaiting.type = "line"; // Draw the graph with a line form. others options are smoothedLine and columns
+    graphWaiting.title = "Waiting"; // Title of the graph
+    graphWaiting.hideBulletsCount = 35; // Show the bullet if there is less than 100 data shown on the graph
+    graphWaiting.bulletSize = 8; // Increase the default bullet size to allow the users to click more easily on it
+    graphWaiting.bullet = "bubble"; // Style of the bullets
+    graphWaiting.fillAlphas = 0.8; //
+    graphWaiting.lineThickness = 2; // Increase default line thickness
+    graphWaiting.lineColor = "#666699"; // Change the color of the line
+    graphWaiting.useDataSetColors = false; // Use custom colors and not default colors
+    graphWaiting.periodValue = "Close"; // When the data are show for each week,
+    // it will draw the final value of the week
+
 //  1.1) stockPanel Remained
     stockPanelRemained = new AmCharts.StockPanel();
     stockPanelRemained.title = "Requests"; // Title of the panel
     stockPanelRemained.percentHeight = 25; // Height of the panel over 100
     stockPanelRemained.addStockGraph(graphRemained); // Add the graph to the panel
+    stockPanelRemained.addStockGraph(graphWaiting); // Add the graph to the panel
     stockPanelRemained.showCategoryAxis = false; // Hide the dates under this panel
 
 //  1.1) stockLegend Remained
     stockLegendRemained = new AmCharts.StockLegend();
-    stockLegendRemained.switchable = false; // Disable the options to hide the graph by clicking on his name
+    stockLegendRemained.switchable = true; // Disable the options to hide the graph by clicking on his name
     stockPanelRemained.stockLegend = stockLegendRemained;
 
 //  1.2) graph Opened

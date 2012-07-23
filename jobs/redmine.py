@@ -28,6 +28,7 @@ def request():
     requests_lifetime_normal = {}
     requests_lifetime_high = {}
     requests_lifetime_urgent = {}
+    requests_waiting = {}
     one_day = timedelta(days = 1)
     #frequency of execution
     today = datetime.now(tz=utc)
@@ -177,8 +178,17 @@ def request():
             requests_lifetime_low[str(day_midnight)] = (lifetime_normal.total_seconds() + lifetime_high.total_seconds() + lifetime_urgent.total_seconds()) / (n_normal + n_high + n_urgent)
         else:
             requests_lifetime_normal[str(day_midnight)] = 0
+
+
+        if day_late == today:
+            cur.execute("SELECT COUNT(id) FROM issues WHERE (status_id = 4 OR status_id = 9)")
+            requests_waiting[str(day_midnight)] = cur.fetchone()[0]
+        else:
+            requests_waiting[str(day_midnight)] = 0
+
         day_midnight += one_day
         day_late += one_day
+
     conn.close()
 
     results = {
@@ -188,7 +198,8 @@ def request():
     'requests_lifetime_low': requests_lifetime_low,
     'requests_lifetime_normal': requests_lifetime_normal,
     'requests_lifetime_high': requests_lifetime_high,
-    'requests_lifetime_urgent': requests_lifetime_urgent
+    'requests_lifetime_urgent': requests_lifetime_urgent,
+    'requests_waiting': requests_waiting
     }
 
     return results

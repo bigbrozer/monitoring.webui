@@ -32,10 +32,14 @@ def indicateurs(request):
 
         chart_data_request += '{date: new Date("%s"), remained: %d, '\
             'opened: %d, closed: %d, global: %d, '\
-            'normal: %d, high: %d, urgent: %d, url: "%s", comment_lifetime: "%s"}' % (kpi.date.isoformat(),
+            'normal: %d, high: %d, urgent: %d, url: "%s", comment_lifetime: "%s"' % (kpi.date.isoformat(),
                                                    kpi.requests_remained, kpi.requests_opened, kpi.requests_closed,
                                                    lifetime, lifetime_normal, lifetime_high, lifetime_urgent,
-                                                   url, (kpi.comment_lifetime).replace("\r\n", "\\n"))
+                                                   url, kpi.comment_lifetime.replace("\r\n", "\\n"))
+        if kpi.requests_waiting is not None:
+            chart_data_request += ', requests_waiting: %d}' % kpi.requests_waiting
+        else:
+            chart_data_request += '}'
 
         if index != len(kpi_redmine)-1:
             chart_data_request += ",\n"

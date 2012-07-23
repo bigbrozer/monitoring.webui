@@ -130,6 +130,7 @@ def insert_redmine():
             result_redmine['requests_lifetime_high'][date]
         entree.requests_lifetime_urgent = \
             result_redmine['requests_lifetime_urgent'][date]
+        entree.requests_waiting = result_redmine['requests_waiting'][date]
         entree.save()
         number += 1
         print "\r %s kpi redmine saved" % number,
