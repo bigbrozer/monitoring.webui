@@ -15,10 +15,7 @@ def indicateurs(request):
     param: http request
     """
     kpi_redmine = KpiRedmine.objects.all().order_by("date")
-    today = KpiRedmine.objects.all().order_by("-date")[0]
-    today = str(today).split(' ')
-    date_today = today[0]
-    time_today = today[1]
+    today = KpiRedmine.objects.all().order_by("-date")[0].date
 
     chart_data_request = "[\n"
 
