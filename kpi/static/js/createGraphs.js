@@ -1021,6 +1021,7 @@ function createRecurrentsAlerts() {
     chart.outlineColor = "#FFFFFF";
     chart.depth3D = 15;
     chart.angle = 30;
+    chart.startDuration = 0;
 
     chart.write('graphRecurrentsAlerts');
     deleteAmChart();
@@ -1047,6 +1048,7 @@ function createOldestsAlerts() {
     chart.outlineColor = "#FFFFFF";
     chart.depth3D = 15;
     chart.angle = 30;
+    chart.startDuration = 0;
 
     chart.write('graphOldestsAlerts');
     deleteAmChart();

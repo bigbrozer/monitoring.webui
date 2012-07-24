@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}js/style.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
     <!--<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css">-->
-    <link rel="stylesheet" href="{{ STATIC_URL }}docs.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/docs.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css">
     <style>
         .graph {
@@ -53,42 +53,93 @@
                     </ul>
             </div>
     </header>
-        <p style="margin-top: 100px;" class="pull-right"><small>Data actualised the {{ date_today|localize }} at {{ time_today|localize }}</small></p>
-        <section id="Redmine"><div class="page-header"><h1>Requests <small>additions &amp; changes</small></h1>
-        <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphRequest" style="width: 100%; height: 800px; margin-bottom: 100px;"></div>
-        </div></section>
+        <p style="margin-top: 100px;" class="pull-right">
+            <small>Data actualised the {{ date_today|localize }} at {{ time_today|localize }}</small>
+        </p>
+        <section id="Redmine">
+            <div class="page-header">
+                <h1>Requests <small>additions &amp; changes</small></h1>
+                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphRequest" style="width: 100%; height: 800px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                    <h3 style="margin-bottom: 20px;">Quick links</h3>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/tracking/issues?query_id=4" target="_blank">Opened Requests</a>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/tracking/issues?query_id=36" target="_blank">Hot subjects</a>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/tracking/issues?query_id=33" target="_blank">Issues closed last 30 days</a>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/tracking/projects" target="_blank">Projects</a>
+                </div>
+            </div>
+        </section>
 
-        <section id="Hosts"><div class="page-header"><h1>Hosts & Services <small>monitored in Nagios</small></h1>
-        <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphHosts" style="width: 100%; height: 400px; margin-bottom: 100px;"></div>
-        </div></section>
+        <section id="Hosts">
+            <div class="page-header">
+                <h1>Hosts & Services <small>monitored in Nagios</small></h1>
+                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphHosts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                    <h3 style="margin-bottom: 20px;">Quick links</h3>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?hostgroup=all&style=hostdetail" target="_blank">List all Hosts</a>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?style=detail" target="_blank">List all Services</a>
+                </div>
+            </div>
+        </section>
 
-        <section id="Procedures"><div class="page-header"><h1>Procedures <small>assigned to Nagios alerts</small></h1>
-        <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphWritten" style="width: 100%; height: 400px; margin-bottom: 50px;"></div>
-        <div style="text-align: center; width: 100%; margin-bottom: 50px;"><a class="btn btn-success" href="{{ STATIC_URL }}detailled_report.csv">Download detailled csv</a>
-        <a class="btn btn-success" href="{{ STATIC_URL }}simple_report.csv">Download simple csv</a></div></div></section>
+        <section id="Procedures">
+            <div class="page-header">
+                <h1>Procedures <small>assigned to Nagios alerts</small></h1>
+                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphWritten" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                    <h3 style="margin-bottom: 20px;">Quick links</h3>
+                    <a class="btn btn-success" href="{{ STATIC_URL }}simple_report.csv"><i class="icon-download-alt"></i>Download csv - Procedures</a>
+                    <a class="btn btn-success" href="{{ STATIC_URL }}detailled_report.csv"><i class="icon-download-alt"></i>Download csv - Services and Procedures</a>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/kb/start?do=index" target="_blank">List all Procedures</a>
+                </div>
+            </div>
+        </section>
 
-        <section id="Repartition"><div class="page-header"><h1>Operating System Repartition <small>as seen in Nagios</small></h1>
-        <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphEquipement" style="width: 100%; height: 400px; margin-bottom: 100px;"></div>
-        </div></section>
+        <section id="Repartition">
+            <div class="page-header">
+                <h1>Operating System Repartition <small>as seen in Nagios</small></h1>
+                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphEquipement" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                    <h3 style="margin-bottom: 20px;">Quick links</h3>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?hostgroup=sys_windows&style=hostdetail" target="_blank">List all Windows</a>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?hostgroup=sys_aix&style=hostdetail" target="_blank">List all Aix</a>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?hostgroup=sys_linux&style=hostdetail" target="_blank">List all Linux</a>
+                </div>
+            </div>
+        </section>
 
-        <section id="Alerts"><div class="page-header"><h1>Alerts <small>triggered in Nagios</small></h1>
-        <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphAlerts" style="width: 100%; height: 400px; margin-bottom: 100px;"></div>
-        </div></section>
+        <section id="Alerts">
+            <div class="page-header">
+                <h1>Alerts <small>triggered in Nagios</small></h1>
+                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphAlerts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                    <h3 style="margin-bottom: 20px;">Quick links</h3>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/history.cgi?host=all" target="_blank">Alert History</a>
+                    <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/tac.cgi" target="_blank">Tactical Overview</a>
+                </div>
+            </div>
+        </section>
 
-        <section id="RecurrentsAlerts"><div class="page-header"><h1>Recurrents Alerts <small>on the last 31 days</small></h1>
-        <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphRecurrentsAlerts" style="width: 100%; height: 600px; margin-bottom: 100px;"></div>
-        </div></section>
+        <section id="RecurrentsAlerts">
+            <div class="page-header">
+                <h1>Recurrents Alerts <small>on the last 31 days</small></h1>
+                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphRecurrentsAlerts" style="width: 100%; height: 600px; margin-bottom: 10px;"></div>
+            </div>
+        </section>
 
-        <section id="OldestsAlerts"><div class="page-header"><h1>Oldests Alerts <small>active in Nagios</small></h1>
-        <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphOldestsAlerts" style="width: 100%; height: 600px; margin-bottom: 100px;"></div>
-        </div></section>
+        <section id="OldestsAlerts">
+            <div class="page-header">
+                <h1>Oldests Alerts <small>active in Nagios</small></h1>
+                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphOldestsAlerts" style="width: 100%; height: 600px; margin-bottom: 10px;"></div>
+            </div>
+        </section>
     </div>
 
     <!-- FOOTER -->
     <footer class="footer">
         <div class="pull-right"><a class="logo" href="http://intranet.faurecia/" target="_blank"><img src="{{ STATIC_URL }}img/logo_faurecia.png"/></a></div>
         <p>Graphs generated by <a href="http://www.amcharts.com" target="_blank">AmCharts</a></p>
-        <p>Brought to you by Monitoring &amp; Reporting Team, 2006-2012</p>
+        <p>Brought to you by <a href="mailto:DL-ITOP-MONITORING?cc=9OPMonitoring@faurecia.com&subject=Monitoring%20Keys%20Indicators%20:%20"> Monitoring &amp; Reporting Team</a>, 2006-2012</p>
     </footer>
     <!-- /FOOTER -->
 
