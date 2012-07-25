@@ -196,6 +196,7 @@ def insert_count_notifications():
         first_date = NagiosNotifications.objects.order_by('date')[0].date
     else:
         first_date = CountNotifications.objects.order_by('-date')[0].date
+        first_date += one_day
     first_date = first_date\
         .replace(hour = 0, minute = 0, second = 0, microsecond = 0)
     result = nagios_notifications.request(first_date)

@@ -22,6 +22,7 @@ class KpiNagios(models.Model):
     comment_procedure = models.TextField(blank=True, default="")
     total_written = models.PositiveIntegerField()
     total_missing = models.PositiveIntegerField()
+    comment_service = models.TextField(blank=True, default="")
 
     def __unicode__(self):
         return str(self.date)
@@ -107,7 +108,10 @@ class CountNotifications(models.Model):
     warning_acknowledged = models.PositiveIntegerField()
     critical = models.PositiveIntegerField()
     critical_acknowledged = models.PositiveIntegerField()
-    comment_notification = models.TextField(blank=True, default="")
+    comment_notification_warning = models.TextField(blank=True, default="")
+    comment_notification_warning_ack = models.TextField(blank=True, default="")
+    comment_notification_critical = models.TextField(blank=True, default="")
+    comment_notification_critical_ack = models.TextField(blank=True, default="")
 
     def __unicode__(self):
         return str(self.date)

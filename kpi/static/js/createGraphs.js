@@ -366,6 +366,9 @@ function createHosts() {
     }, {
         fromField: "comment_host",
         toField: "comment_host"
+    }, {
+        fromField: "comment_service",
+        toField: "comment_service"
     }];
     dataset.dataProvider = chartDataNagios;
     dataset.categoryField = "date";
@@ -405,7 +408,7 @@ function createHosts() {
 
     graphServices = new AmCharts.StockGraph();
     graphServices.valueField = "total_services";
-    graphServices.descriptionField = "comment_host";
+    graphServices.descriptionField = "comment_service";
     graphServices.balloonText += "\n[[description]]";
     graphServices.type = "line";
     graphServices.hideBulletsCount = 35;
@@ -565,7 +568,7 @@ function createWritten() {
 
     graphMissing = new AmCharts.StockGraph();
     graphMissing.valueField = "missing_procedures";
-    graphMissing.descriptionField = "comment_procedure";
+//    graphMissing.descriptionField = "comment_procedure";
     graphMissing.type = "line";
     graphMissing.title = "Missing procedures";
     graphMissing.balloonText += " ([[percents]]%)";
@@ -844,8 +847,17 @@ function createAlerts() {
         fromField: "critical_acknowledged",
         toField: "critical_acknowledged"
     }, {
-        fromField: "comment_notifications",
-        toField: "comment_notifications"
+        fromField: "comment_notifications_warning",
+        toField: "comment_notifications_warning"
+    }, {
+        fromField: "comment_notifications_warning_ack",
+        toField: "comment_notifications_warning_ack"
+    }, {
+        fromField: "comment_notifications_critical",
+        toField: "comment_notifications_critical"
+    }, {
+        fromField: "comment_notifications_critical_ack",
+        toField: "comment_notifications_critical_ack"
     }];
     dataset.dataProvider = chartDataAlerts;
     dataset.categoryField = "date";
@@ -858,7 +870,7 @@ function createAlerts() {
 
     graphWarning = new AmCharts.StockGraph();
     graphWarning.valueField = "warning";
-    graphWarning.descriptionField = "comment_notifications";
+    graphWarning.descriptionField = "comment_notifications_warning";
     graphWarning.balloonText += "\n[[description]]";
     graphWarning.type = "line";
     graphWarning.title = "Warning alerts";
@@ -885,6 +897,7 @@ function createAlerts() {
 
     graphWarningAck = new AmCharts.StockGraph();
     graphWarningAck.valueField = "warning_acknowledged";
+    graphWarningAck.descriptionField = "comment_notifications_warning_ack";
     graphWarningAck.type = "line";
     graphWarningAck.title = "Warning alerts acknowledged";
     graphWarningAck.lineColor = "#00CC00";
@@ -903,6 +916,7 @@ function createAlerts() {
 
     graphCritical = new AmCharts.StockGraph();
     graphCritical.valueField = "critical";
+    graphCritical.descriptionField = "comment_notifications_critical";
     graphCritical.type = "line";
     graphCritical.title = "Critical alerts";
     graphCritical.lineColor = "#FF0000";
@@ -927,6 +941,7 @@ function createAlerts() {
 
     graphCriticalAck = new AmCharts.StockGraph();
     graphCriticalAck.valueField = "critical_acknowledged";
+    graphCriticalAck.descriptionField = "comment_notifications_critical";
     graphCriticalAck.type = "line";
     graphCriticalAck.title = "Critical alerts acknowledged";
     graphCriticalAck.lineColor = "#00CC00";

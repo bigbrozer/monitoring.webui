@@ -20,7 +20,7 @@ class KpiNagiosAdmin(admin.ModelAdmin):
     #  'alerts_acknowledged_critical', ))
     list_display = ('date', 'total_host', 'total_services',
         'written_procedures', 'total_written', 'missing_procedures', 'total_missing',
-        'linux', 'windows', 'aix', 'comment_host', 'comment_procedure')
+        'linux', 'windows', 'aix', 'comment_host', 'comment_service', 'comment_procedure')
     date_hierarchy = 'date'
     ordering = ['-date']
 
@@ -82,7 +82,8 @@ class CountNotificationsAdmin(admin.ModelAdmin):
     modify default settings for count notifications
     """
     list_display = ('date', 'warning', 'warning_acknowledged', 'critical',
-        'critical_acknowledged', 'comment_notification')
+        'critical_acknowledged', 'comment_notification_warning', 'comment_notification_warning_ack',
+        'comment_notification_critical', 'comment_notification_critical_ack')
     date_hierarchy = 'date'
     ordering = ['-date']
 

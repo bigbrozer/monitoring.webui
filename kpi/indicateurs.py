@@ -54,9 +54,15 @@ def indicateurs(request):
     for index, kpi in enumerate(kpi_nagios):
         chart_data_nagios += '{date: new Date("%s"), total_host: %d, '\
         'total_services: %d, '\
-        'linux: %d, windows: %d, aix: %d, comment_host: "%s"}' % (kpi.date.isoformat(),
-                                              kpi.total_host, kpi.total_services, kpi.linux,
-                                              kpi.windows, kpi.aix, kpi.comment_host.replace("\r\n", "\\n"))
+        'linux: %d, windows: %d, aix: %d, comment_host: "%s", comment_service: "%s"}' % (
+            kpi.date.isoformat(),
+            kpi.total_host,
+            kpi.total_services,
+            kpi.linux,
+            kpi.windows,
+            kpi.aix,
+            kpi.comment_host.replace("\r\n", "\\n"),
+            kpi.comment_service.replace("\r\n", "\\n"))
         if kpi.written_procedures:
             chart_data_procedures += '{date: new Date("%s"), written_procedures: %d, '\
             'total_written: %d, missing_procedures: %d, total_missing: %d, comment_procedure: "%s"}' % (
@@ -81,12 +87,18 @@ def indicateurs(request):
     for alert in result:
         chart_data_alerts += '{date: new Date("%s"), warning: %d, '\
             'warning_acknowledged: %d, critical: %d, '\
-            'critical_acknowledged: %d, comment_notifications: "%s"}' % (alert.date.isoformat(),
-                                            alert.warning,
-                                            alert.warning_acknowledged,
-                                            alert.critical,
-                                            alert.critical_acknowledged,
-                                            (alert.comment_notification).replace("\r\n", "\\n"))
+            'critical_acknowledged: %d, comment_notifications_warning: "%s", '\
+            'comment_notification_warning_ack: "%s", comment_notification_critical: "%s", '\
+            'comment_notification_critical_ack: "%s"}' % (
+            alert.date.isoformat(),
+            alert.warning,
+            alert.warning_acknowledged,
+            alert.critical,
+            alert.critical_acknowledged,
+            alert.comment_notification_warning.replace("\r\n", "\\n"),
+            alert.comment_notification_warning_ack.replace("\r\n", "\\n"),
+            alert.comment_notification_critical.replace("\r\n", "\\n"),
+            alert.comment_notification_critical_ack.replace("\r\n", "\\n"))
         chart_data_alerts += ",\n"
 
     chart_data_alerts += "\n]"
@@ -98,8 +110,11 @@ def indicateurs(request):
     number_others = 0
 
     for alert in recurrents_alerts:
-        chart_data_recurrents_alerts += '{name: "%s@%s", repetitions: %d, '\
-        'url: "http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?host=%s"}' % (alert.service,
+        serv = alert.service
+        if serv:
+            serv += "@"
+        chart_data_recurrents_alerts += '{name: "%s%s", repetitions: %d, '\
+        'url: "http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?host=%s"}' % (serv,
                                                                               alert.host,
                                                                               alert.frequency,
                                                                               alert.host)
@@ -116,8 +131,11 @@ def indicateurs(request):
         days = alert.date - alert.date_error
         date_error = "%s-%s-%s" % (alert.date_error.year, alert.date_error.month, alert.date_error.day)
         days = days.total_seconds()/60/60/24
-        chart_data_oldests_alerts += '{name: "%s@%s", days: %d, date_error: "%s", '\
-        'url: "http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?host=%s"}' % (alert.service,
+        serv = alert.service
+        if serv:
+            serv += "@"
+        chart_data_oldests_alerts += '{name: "%s%s", days: %d, date_error: "%s", '\
+        'url: "http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?host=%s"}' % (serv,
                                                                     alert.host, days, date_error, alert.host)
         chart_data_oldests_alerts += ",\n"
 

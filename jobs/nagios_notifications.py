@@ -64,11 +64,12 @@ def request_recurrent_alerts():
     first_date = today - period
     alerts = NagiosNotifications.objects\
         .filter(date__gte = first_date, date__lt = today)\
+        .filter(acknowledged = 0)\
         .values('host', 'service')
     alerts_list = list(alerts)
-    for index, alert in enumerate(alerts_list):
-        if not alert['host'] in hosts:
-            del alerts_list[index]
+#    for index, alert in enumerate(alerts_list):
+#        if not alert['host'] in hosts:
+#            del alerts_list[index]
     count = {}
     name = ""
     for alert in alerts_list:
