@@ -23,6 +23,12 @@ class KpiNagiosAdmin(admin.ModelAdmin):
         'linux', 'windows', 'aix', 'comment_host', 'comment_service', 'comment_procedure')
     date_hierarchy = 'date'
     ordering = ['-date']
+    fieldsets = [
+        ('Date information',{'fields': ['date'], 'classes': ['collapse']}),
+        ('Host & Services', {'fields': ['total_host', 'comment_host', 'total_services', 'comment_service']}),
+        ('Operating Systems', {'fields': ['linux', 'windows', 'aix']}),
+        ('Procedures', {'fields': ['written_procedures', 'total_written', 'missing_procedures', 'total_missing', 'comment_procedure']}),
+    ]
 
 class KpiRedmineAdmin(admin.ModelAdmin):
     """
@@ -34,6 +40,11 @@ class KpiRedmineAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
     ordering = ['-date']
     actions = ['update']
+    fieldsets = [
+        ('Date information',{'fields': ['date'], 'classes': ['collapse']}),
+        ('Requests', {'fields': ['requests_opened', 'requests_closed', 'requests_remained', 'requests_waiting']}),
+        ('Lifetime', {'fields': ['requests_lifetime', 'comment_lifetime', 'requests_lifetime_normal', 'requests_lifetime_high', 'requests_lifetime_urgent']}),
+    ]
 
     def update(self, request, queryset):
         """
@@ -62,6 +73,10 @@ class NagiosAdmin(admin.ModelAdmin):
     ordering = ['-date']
     list_filter = ('acknowledged', 'state')
     actions = ['update']
+    fieldsets = [
+        ('Date information',{'fields': ['date'], 'classes': ['collapse']}),
+        (None, {'fields': ['host', 'service', 'state', 'acknowledged']}),
+    ]
     def update(self, request, queryset):
         """
         update database from last date
@@ -86,6 +101,11 @@ class CountNotificationsAdmin(admin.ModelAdmin):
         'comment_notification_critical', 'comment_notification_critical_ack')
     date_hierarchy = 'date'
     ordering = ['-date']
+    fieldsets = [
+        ('Date information',{'fields': ['date'], 'classes': ['collapse']}),
+        ('Warning', {'fields': ['warning', 'comment_notification_warning', 'warning_acknowledged', 'comment_notification_warning_ack']}),
+        ('Critical', {'fields': ['critical', 'comment_notification_critical', 'critical_acknowledged', 'comment_notification_critical_ack']}),
+    ]
 
 class RecurrentAlertsAdmin(admin.ModelAdmin):
     """
@@ -93,6 +113,10 @@ class RecurrentAlertsAdmin(admin.ModelAdmin):
     """
     list_display = ('date', 'host', 'service', 'frequency')
     ordering = ['-frequency']
+    fieldsets = [
+        ('Date information',{'fields': ['date'], 'classes': ['collapse']}),
+        (None, {'fields': ['host', 'service', 'frequency']}),
+    ]
 
 class OldestAlertsAdmin(admin.ModelAdmin):
     """
@@ -101,6 +125,10 @@ class OldestAlertsAdmin(admin.ModelAdmin):
     list_display = ('date', 'host', 'service', 'date_error')
     date_hierarchy = 'date'
     ordering = ['date_error']
+    fieldsets = [
+        ('Date information',{'fields': ['date'], 'classes': ['collapse']}),
+        (None, {'fields': ['host', 'service', 'date_error']}),
+    ]
 
 admin.site.register(KpiNagios, KpiNagiosAdmin)
 admin.site.register(KpiRedmine, KpiRedmineAdmin)

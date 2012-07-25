@@ -13,16 +13,16 @@ class KpiNagios(models.Model):
 
     total_host = models.PositiveIntegerField('Hosts')
     total_services = models.PositiveIntegerField('Services')
-    written_procedures = models.PositiveIntegerField()
-    missing_procedures = models.PositiveIntegerField()
+    written_procedures = models.PositiveIntegerField('written proc')
+    missing_procedures = models.PositiveIntegerField('missing proc')
     linux = models.PositiveIntegerField()
     windows = models.PositiveIntegerField()
     aix = models.PositiveIntegerField()
     comment_host = models.TextField(blank=True, default="")
-    comment_procedure = models.TextField(blank=True, default="")
+    comment_procedure = models.TextField('comment proc', blank=True, default="")
     total_written = models.PositiveIntegerField()
     total_missing = models.PositiveIntegerField()
-    comment_service = models.TextField(blank=True, default="")
+    comment_service = models.TextField('comment serv', blank=True, default="")
 
     def __unicode__(self):
         return str(self.date)
@@ -69,16 +69,16 @@ class KpiRedmine(models.Model):
         return "%s" % timedelta(seconds = self.requests_lifetime_urgent)
 
     lifetime.admin_order_field = 'requests_lifetime'
-    lifetime.short_description = 'average lifetime (global)'
+    lifetime.short_description = 'lifetime (global)'
 
     lifetime_normal.admin_order_field = 'requests_lifetime_normal'
-    lifetime_normal.short_description = 'average lifetime (normal)'
+    lifetime_normal.short_description = 'lifetime (normal)'
 
     lifetime_high.admin_order_field = 'requests_lifetime_high'
-    lifetime_high.short_description = 'average lifetime (high)'
+    lifetime_high.short_description = 'lifetime (high)'
 
     lifetime_urgent.admin_order_field = 'requests_lifetime_urgent'
-    lifetime_urgent.short_description = 'average lifetime (urgent)'
+    lifetime_urgent.short_description = 'lifetime (urgent)'
 
     def __unicode__(self):
         return str(self.date)
@@ -108,10 +108,10 @@ class CountNotifications(models.Model):
     warning_acknowledged = models.PositiveIntegerField()
     critical = models.PositiveIntegerField()
     critical_acknowledged = models.PositiveIntegerField()
-    comment_notification_warning = models.TextField(blank=True, default="")
-    comment_notification_warning_ack = models.TextField(blank=True, default="")
-    comment_notification_critical = models.TextField(blank=True, default="")
-    comment_notification_critical_ack = models.TextField(blank=True, default="")
+    comment_notification_warning = models.TextField('comment warning', blank=True, default="")
+    comment_notification_warning_ack = models.TextField('comment warning ack', blank=True, default="")
+    comment_notification_critical = models.TextField('comment critical', blank=True, default="")
+    comment_notification_critical_ack = models.TextField('comment critical ack', blank=True, default="")
 
     def __unicode__(self):
         return str(self.date)
