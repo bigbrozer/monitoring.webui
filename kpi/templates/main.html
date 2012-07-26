@@ -8,6 +8,7 @@
     <!--<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css">-->
     <link rel="stylesheet" href="{{ STATIC_URL }}css/docs.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/print.css">
     <style>
         .graph {
             padding-top: 20px;
@@ -19,8 +20,8 @@
     <link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico">
 
 </head>
-<body data-spy="scroll" data-target=".subnav" data-offset="50">
-<div class="navbar navbar-fixed-top">
+<body data-spy="scroll" data-target=".subnav" data-offset="50" onmouseover="deleteAmChart()" onmousewheel="deleteAmChart()">
+<div class="navbar navbar-fixed-top hideprint">
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -39,7 +40,7 @@
     </div>
 </div>
 <div class="container">
-    <header class="jumbotron subhead" id="overview">
+    <header class="jumbotron subhead hideprint" id="overview">
         <div class="subnav">
                     <ul class="nav nav-pills">
                         <li><a href="#Redmine">Requests</a></li>
@@ -49,6 +50,7 @@
                         <li><a href="#Alerts">Alerts</a></li>
                         <li><a href="#RecurrentsAlerts">Recurrents Alerts</a></li>
                         <li><a href="#OldestsAlerts">Oldests Alerts</a></li>
+                        <li class="pull-right"><a href="javascript:affichage_popup('Graphiques.html','PrintGraphs');"><i class="icon-print"></i> Imprimer</a></li>
                     </ul>
             </div>
     </header>
@@ -58,8 +60,8 @@
         <section id="Redmine">
             <div class="page-header">
                 <h1>Requests <small>additions &amp; changes</small></h1>
-                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphRequest" style="width: 100%; height: 800px; margin-bottom: 20px;"></div>
-                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                <div class="graph" id="graphRequest" style="width: 100%; height: 800px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
                     <h3 style="margin-bottom: 20px;">Quick links</h3>
                     <a class="btn btn-primary" href="http://monitoring-dc.app.corp/tracking/issues?query_id=4" target="_blank">Opened Requests</a>
                     <a class="btn btn-primary" href="http://monitoring-dc.app.corp/tracking/issues?query_id=36" target="_blank">Hot subjects</a>
@@ -72,8 +74,8 @@
         <section id="Hosts">
             <div class="page-header">
                 <h1>Hosts & Services <small>monitored in Nagios</small></h1>
-                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphHosts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
-                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                <div class="graph" id="graphHosts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
                     <h3 style="margin-bottom: 20px;">Quick links</h3>
                     <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?hostgroup=all&style=hostdetail" target="_blank">List all Hosts</a>
                     <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?style=detail" target="_blank">List all Services</a>
@@ -84,8 +86,8 @@
         <section id="Procedures">
             <div class="page-header">
                 <h1>Procedures <small>assigned to Nagios alerts</small></h1>
-                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphWritten" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
-                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                <div class="graph" id="graphWritten" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
                     <h3 style="margin-bottom: 20px;">Quick links</h3>
                     <a class="btn btn-success" href="{{ STATIC_URL }}simple_report.csv"><i class="icon-download-alt icon-white"></i> Download csv - Procedures</a>
                     <a class="btn btn-success" href="{{ STATIC_URL }}detailled_report.csv"><i class="icon-download-alt icon-white"></i> Download csv - Services and Procedures</a>
@@ -97,8 +99,8 @@
         <section id="Repartition">
             <div class="page-header">
                 <h1>Operating System Repartition <small>as seen in Nagios</small></h1>
-                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphEquipement" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
-                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                <div class="graph" id="graphEquipement" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
                     <h3 style="margin-bottom: 20px;">Quick links</h3>
                     <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?hostgroup=sys_windows&style=hostdetail" target="_blank">List all Windows</a>
                     <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/status.cgi?hostgroup=sys_aix&style=hostdetail" target="_blank">List all Aix</a>
@@ -110,8 +112,8 @@
         <section id="Alerts">
             <div class="page-header">
                 <h1>Alerts <small>triggered in Nagios</small></h1>
-                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphAlerts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
-                <div style="text-align: center; width: 100%; margin-bottom: 50px;">
+                <div id="graphAlerts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+                <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
                     <h3 style="margin-bottom: 20px;">Quick links</h3>
                     <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/history.cgi?host=all" target="_blank">Alert History</a>
                     <a class="btn btn-primary" href="http://monitoring-dc.app.corp/thruk/cgi-bin/tac.cgi" target="_blank">Tactical Overview</a>
@@ -119,23 +121,23 @@
             </div>
         </section>
 
-        <section id="RecurrentsAlerts">
+        <section id="RecurrentsAlerts" class="hideprint">
             <div class="page-header">
                 <h1>Recurrents Alerts <small>on the last 31 days</small></h1>
-                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphRecurrentsAlerts" style="width: 100%; height: 500px; margin-bottom: 10px;"></div>
+                <div class="graph" id="graphRecurrentsAlerts" style="width: 100%; height: 500px; margin-bottom: 10px;"></div>
             </div>
         </section>
 
-        <section id="OldestsAlerts">
+        <section id="OldestsAlerts" class="hideprint">
             <div class="page-header">
                 <h1>Oldests Alerts <small>active in Nagios</small></h1>
-                <div onMouseOver="javascript:deleteAmChart();" onClick="javascript:deleteAmChart();" class="graph" id="graphOldestsAlerts" style="width: 100%; height: 500px; margin-bottom: 10px;"></div>
+                <div class="graph" id="graphOldestsAlerts" style="width: 100%; height: 500px; margin-bottom: 10px;"></div>
             </div>
         </section>
     </div>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer hideprint">
         <div class="pull-right"><a class="logo" href="http://intranet.faurecia/" target="_blank"><img src="{{ STATIC_URL }}img/logo_faurecia.png"/></a></div>
         <p>Graphs generated by <a href="http://www.amcharts.com" target="_blank">AmCharts</a></p>
         <p>Brought to you by <a href="mailto:DL-ITOP-MONITORING@faurecia.com?cc=9OPMonitoring@faurecia.com&subject=Monitoring%20Keys%20Indicators%20:%20"> Monitoring &amp; Reporting Team</a>, 2006-2012</p>
@@ -145,6 +147,14 @@
     <script src="{{ STATIC_URL }}js/amstock.js"></script>
     <script src="{{ STATIC_URL }}js/createGraphs.js"></script>
     <link rel="stylesheet" href="{{ STATIC_URL }}js/style.css">
+<script language="JavaScript">
+    function affichage_popup(nom_de_la_page, nom_interne_de_la_fenetre)
+    {
+        var win = window.open (nom_de_la_page, nom_interne_de_la_fenetre, config='height=800, width=900, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, directories=no, status=no')
+        win.document.close();
+        win.focus();
+    }
+</script>
     <script type="text/javascript">
         var chartDataRecurrentsAlerts = {{ chart_data_recurrents_alerts|safe }},
         chartDataAlerts = {{ chart_data_alerts|safe }},
@@ -163,12 +173,15 @@
             createRecurrentsAlerts();
             createOldestsAlerts();
             deleteAmChart();
+            if (window.location.href == "http://monadm.edc.eu.corp:8080/indicateurs/Graphiques.html") {
+                print();
+            }
         });
     </script>
     <!--<script src="{{ STATIC_URL }}js/bootstrap.js"></script>-->
     <!--<script src="{{ STATIC_URL }}js/bootstrap-collapse.js"></script>-->
     <!--<script src="{{ STATIC_URL }}js/bootstrap-scrollspy.js"></script>-->
-    <!--<script src="{{ STATIC_URL }}js/jquery.js"></script>-->
+    <script src="{{ STATIC_URL }}js/jquery.js"></script>
 
 </body>
 </html>

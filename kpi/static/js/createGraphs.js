@@ -334,7 +334,12 @@ function createRequests() {
 
     chart.panelsSettings = panelsSettings;
     chart.balloon.bulletSize = 4;
-
+    chart.addListener('dataUpdated', function (event){
+        deleteAmChart();
+    });
+    chart.addListener('zoomed', function (event) {
+        deleteAmChart();
+    });
     chart.write('graphRequest');
     deleteAmChart();
 }
@@ -484,7 +489,12 @@ function createHosts() {
 
     chart.panelsSettings = panelsSettings;
     chart.balloon.bulletSize = 4;
-
+    chart.addListener('dataUpdated', function (event){
+        deleteAmChart();
+    });
+    chart.addListener('zoomed', function (event) {
+        deleteAmChart();
+    });
     chart.write('graphHosts');
     deleteAmChart();
 }
@@ -641,7 +651,12 @@ function createWritten() {
 
     chart.panelsSettings = panelsSettings;
     chart.balloon.bulletSize = 4;
-
+    chart.addListener('dataUpdated', function (event){
+        deleteAmChart();
+    });
+    chart.addListener('zoomed', function (event) {
+        deleteAmChart();
+    });
     chart.write('graphWritten');
     deleteAmChart();
 }
@@ -805,7 +820,12 @@ function createEquipements() {
 
     chart.panelsSettings = panelsSettings;
     chart.balloon.bulletSize = 4;
-
+    chart.addListener('dataUpdated', function (event){
+        deleteAmChart();
+    });
+    chart.addListener('zoomed', function (event) {
+        deleteAmChart();
+    });
     chart.write('graphEquipement');
     deleteAmChart();
 }
@@ -1037,7 +1057,7 @@ function createRecurrentsAlerts() {
     chart.depth3D = 15;
     chart.angle = 30;
     chart.startDuration = 0;
-
+    
     chart.write('graphRecurrentsAlerts');
     deleteAmChart();
 }
