@@ -145,4 +145,4 @@ def indicateurs(request):
 
 def redirect_to_indic(request):
     """ redirect the users to indicateurs"""
-    return redirect("/indicateurs/")
+    return redirect("/reporting/indicateurs/")
