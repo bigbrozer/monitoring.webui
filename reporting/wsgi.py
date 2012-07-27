@@ -27,7 +27,7 @@ site.addsitedir('/home/django/Envs/reporting/lib/python2.7/site-packages')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "reporting.settings")
 
 # Add project directory to Python Path
-sys.path.append(project_dir)
+sys.path.insert(0, project_dir)
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
