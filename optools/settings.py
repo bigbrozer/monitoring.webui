@@ -50,8 +50,11 @@ SITE_ID = 1
 USE_I18N = True
 
 # If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale
+# calendars according to the current locale.
 USE_L10N = True
+
+# If you set this to False, Django will not use timezone-aware datetimes.
+USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -72,11 +75,6 @@ STATIC_ROOT = '/var/www/static/optools/'
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/optools/'
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/static/optools/admin/'
-
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -92,13 +90,8 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Default authentication URL
-LOGIN_URL = '/optools/login/'
-LOGOUT_URL = '/optools/logout/'
-LOGIN_REDIRECT_URL = '/optools/profile/'
-
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '5w=ojm+vgosx4au22-=+zbfa@e((67*%m#%mv!tumnawm98+s6'
+SECRET_KEY = 'k6k^1fvqhj(-rod&amp;xcray3wr=)p!de_x(u(*d@f_da7036749@'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -123,6 +116,9 @@ AUTHENTICATION_BACKENDS = (
 
 ROOT_URLCONF = 'optools.urls'
 
+# Python dotted path to the WSGI application used by Django's runserver.
+WSGI_APPLICATION = 'optools.wsgi.application'
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -133,33 +129,36 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Common
     'optools.apps.common',
-    # Downtime
-    'optools.apps.downtime',
-    # Reporting
-	'optools.apps.reporting',
 	# Nagios
 	'optools.apps.nagios',
-	# Highlights
-	'optools.apps.highlights',
-    # Admin
+    # Admin interface
     'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error.
+# the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
+            'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         }
     },
