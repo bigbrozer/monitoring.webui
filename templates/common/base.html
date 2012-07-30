@@ -14,38 +14,37 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <li><a href="/tracking">Home</a></li>
-                    <li><a href="/optools/reporting/">KPI</a></li>
+                    <li><a href="{% url apps.kpi.indicateurs.indicateurs %}">KPI</a></li>
+                    {% if user.is_authenticated and user.is_superuser %}
+                        <li class="pull-right"><a href="{% url admin:index %}">Administration</a></li>
+                    {% endif %}
                 </ul>
                 {% if user.is_authenticated %}
                     <p class="navbar-text pull-right">Logged in as <a
                     href="#">{{ user.username }}</a> (<a href="{% url django.contrib.auth.views.logout %}">Logout</a>)</p>
-			    {% else %}
-			        <p class="navbar-text pull-right"><a href="{% url django.contrib.auth.views.login %}?next={{ request.path }}">Login</a></p>
-			    {% endif %}
+                {% else %}
+                    <p class="navbar-text pull-right"><a href="{% url django.contrib.auth.views.login %}?next={{ request.path }}">Login</a></p>
+                {% endif %}
             </div><!--/.nav-collapse -->
         </div>
     </div>
 </div>
 
 <!-- <div id="top-menu">
-	<div id="account">
-		<ul>
-			
-		</ul>
-	</div>
-	<ul>
+    <div id="account">
+        <ul>
+            
+        </ul>
+    </div>
+    <ul>
         <li><a href="/tracking">Home</a></li>
-		{% if user.is_authenticated and user.is_superuser %}
-		<li><a href="{% url admin:index %}">Administration</a></li>
-		{% endif %}
-	</ul>
+        {% if user.is_authenticated and user.is_superuser %}
+        <li><a href="{% url admin:index %}">Administration</a></li>
+        {% endif %}
+    </ul>
 </div> -->
 
 <div class="container">
-    <div class="hero-unit">
-        <h1>{% block hero_title %}{{ title }}{% endblock %}</h1>
-        <p>{% block hero_desc %}{{ pagedescr }}{% endblock %}</p>
-    </div>
 {% block content %}{% endblock %}
 </div> <!-- /container -->
 
