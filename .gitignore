@@ -3,3 +3,4 @@
 *~
 testing.db
 settings_local.py
+*.db-journal
