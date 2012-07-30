@@ -18,10 +18,23 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
+"""
+Fabric tasks available for project IT Operations Tools.
+"""
+
 from fabric.api import *
 from fabric.colors import *
 from contextlib import nested
 from monitoring.fabric import servers
+
+@task
+@hosts('monitoring-dc.app.corp')
+def static():
+    """Run collectstatic for the project."""
+    env.user = 'django'
+    with nested(prefix('workon optools'), cd('optools')):
+        puts(green('Updating static files...'))
+        run('python ./manage.py collectstatic')
 
 @task
 @hosts('monitoring-dc.app.corp')
@@ -30,42 +43,36 @@ def setup():
     env.user = 'django'
 
     with settings(warn_only=True):
-        if run('test -d reporting').succeeded:
+        if run('test -d optools').succeeded:
             abort('Aborting. Project already setup.')
 
     # Clone the repository
     with cd('$HOME'):
         puts(green('Clone git repository...'))
-        run('git clone /git/repositories/admin/reporting.git')
-        run('mkdir -p /var/www/static/reporting')
+        run('git clone /git/repositories/admin/optools.git')
+        run('mkdir -p /var/www/static/optools')
 
     # Create te virtualenv for the project
     puts(green('Creating Python virtual environment...'))
-    run('mkvirtualenv reporting')
+    run('mkvirtualenv optools')
 
-    with cd('reporting'):
+    with cd('optools'):
         puts(green('Installing project dependencies...'))
-        run('~/Envs/reporting/bin/pip install -r requirements.txt')
+        run('~/Envs/optools/bin/pip install -r requirements.txt')
 
     # Setup Apache config
-    with nested(cd('~django/reporting'), settings(user='root')):
+    with nested(cd('~django/optools'), settings(user='root')):
         puts(green('Set the Apache configuration...'))
-        run('ln -sf ~django/reporting/apache/django_reporting /etc/apache2/conf.d/django_reporting')
+        run('ln -sf ~django/optools/apache/django_optools /etc/apache2/conf.d/django_optools')
         run('service apache2 force-reload')
 
-@task
-@hosts('monitoring-dc.app.corp')
-def static():
-    """Run collectstatic for the project."""
-    env.user = 'django'
-    with nested(prefix('workon reporting'), cd('reporting')):
-        puts(green('Updating static files...'))
-        run('python ./manage.py collectstatic')
+    # Collect static files
+    static()
 
 @task
 @hosts('monitoring-dc.app.corp')
 def update():
     """Update project source."""
     env.user = 'django'
-    run('cd reporting && git pull')
+    run('cd optools && git pull')
 
