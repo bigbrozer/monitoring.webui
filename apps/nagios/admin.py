@@ -1,7 +1,7 @@
 # Adding models to Admin site for Nagios app
 
 from django.contrib import admin
-from optools.apps.nagios.models import Satellite
+from apps.nagios.models import Satellite
 
 class SatelliteAdmin(admin.ModelAdmin):
 	list_display = ('name', 'alias', 'fqdn', 'live_port', 'nagios_url')
