@@ -16,11 +16,10 @@ urlpatterns = patterns('',
     # ============
     #
     # Nagios
-    (r'^nagios/satellites/export/$', 'optools.apps.nagios.views.get_satellite_list'),
-    (r'^nagios/satellites/export/(?P<format>\w+)$', 'optools.apps.nagios.views.get_satellite_list'),
-    (r'^nagios/hosts/search$', 'optools.apps.nagios.views.search_hosts'),
+    (r'^nagios/satellites/export/$', 'apps.nagios.views.get_satellite_list'),
+    (r'^nagios/satellites/export/(?P<format>\w+)$', 'apps.nagios.views.get_satellite_list'),
 
     # Reporting
-    url(r'^reporting/', 'kpi.indicateurs.indicateurs'),
+    url(r'^reporting/', 'apps.kpi.indicateurs.indicateurs'),
 )
 
