@@ -38,21 +38,28 @@ def static():
 
 @task
 @hosts('monitoring-dc.app.corp')
+def update():
+    """Update project source."""
+    env.user = 'django'
+    run('cd optools && git pull')
+
+@task
+@hosts('monitoring-dc.app.corp')
 def setup():
     """Setup the project in production."""
     env.user = 'django'
 
+    # Clone / update the repository
     with settings(warn_only=True):
-        if run('test -d optools').succeeded:
-            abort('Aborting. Project already setup.')
-
-    # Clone the repository
-    with cd('$HOME'):
-        puts(green('Clone git repository...'))
-        run('git clone /git/repositories/admin/optools.git')
-        run('mkdir -p /var/www/static/optools')
-
-    # Create te virtualenv for the project
+        if run('test -d optools').failed:
+            with cd('$HOME'):
+                puts(green('Clone git repository...'))
+                run('git clone /git/repositories/admin/optools.git')
+                run('mkdir -p /var/www/static/optools')
+        else:
+            update()
+    
+    # Create the virtualenv for the project
     puts(green('Creating Python virtual environment...'))
     run('mkvirtualenv optools')
 
@@ -68,11 +75,4 @@ def setup():
 
     # Collect static files
     static()
-
-@task
-@hosts('monitoring-dc.app.corp')
-def update():
-    """Update project source."""
-    env.user = 'django'
-    run('cd optools && git pull')
 
