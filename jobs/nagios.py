@@ -163,8 +163,11 @@ Columns: host_name description notes_url_expanded contact_groups
     missing_procedures = 0
     total_written = 0
     total_missing = 0
-    myreport = open("kpi/static/detailled_report.csv", "w")
-    my_simple_report = open("kpi/static/simple_report.csv", "w")
+
+    csv_report_dir = "/tmp" if settings.DEBUG else settings.STATIC_ROOT
+
+    myreport = open(path.join(csv_report_dir, "detailled_report.csv"), "w")
+    my_simple_report = open(path.join(csv_report_dir, "simple_report.csv"), "w")
     myreport.write("written;hostname;services;procedure;stratos\n")
     my_simple_report.write("written;procedure;\n")
     procedures = {}
