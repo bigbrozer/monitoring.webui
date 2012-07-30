@@ -1,1 +1,1 @@
-WSGIScriptAlias /optools /home/django/optools/django.wsgi
+WSGIScriptAlias /optools /home/django/optools/optools/wsgi.py
