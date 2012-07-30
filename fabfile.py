@@ -34,7 +34,7 @@ def static():
     env.user = 'django'
     with nested(prefix('workon optools'), cd('optools')):
         puts(green('Updating static files...'))
-        run('python ./manage.py collectstatic')
+        run('python ./manage.py collectstatic --noinput -c')
 
 @task
 @hosts('monitoring-dc.app.corp')
