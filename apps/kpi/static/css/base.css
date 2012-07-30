@@ -1,0 +1,14 @@
+/* CSS for reporting web app */
+
+/* footer */
+.footer {
+    margin-top: 45px;
+    padding: 15px 0 15px 35px;
+    border-top: 1px solid #E5E5E5;
+    background-color: #333;
+    color: #999;
+}
+
+.footer a.logo {
+    padding-right: 35px;
+}
