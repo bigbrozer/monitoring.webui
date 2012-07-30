@@ -15,19 +15,19 @@ ADMINS = (
 )
 
 MANAGERS = (
-	('Mohamed CHERROUD', 'mohamed.cherroud-ext@faurecia.com'),
+    ('Mohamed CHERROUD', 'mohamed.cherroud-ext@faurecia.com'),
 )
 
 # Default database connection if not provided by local settings
 DATABASES = {
-	'default': {
-	    'ENGINE': 'django.db.backends.sqlite3', 					# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-	    'NAME': 'testing.db',										# Or path to database file if using sqlite3.
-	    'USER': '',                      							# Not used with sqlite3.
-	    'PASSWORD': '',                  							# Not used with sqlite3.
-	    'HOST': '',                      							# Set to empty string for localhost. Not used with sqlite3.
-	    'PORT': '',                      							# Set to empty string for default. Not used with sqlite3.
-	},
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'testing.db',                   # Or path to database file if using sqlite3.
+        'USER': '',                             # Not used with sqlite3.
+        'PASSWORD': '',                         # Not used with sqlite3.
+        'HOST': '',                             # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                             # Set to empty string for default. Not used with sqlite3.
+    },
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -133,9 +133,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Common
-    'optools.apps.common',
-	# Nagios
-	'optools.apps.nagios',
+    'apps.common',
+    # Nagios
+    'apps.nagios',
     # Admin interface
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -173,7 +173,7 @@ LOGGING = {
 
 # Local settings (used for overriding values defined in this module, not part of git repo)
 try:
-	from settings_local import *
+    from optools.settings_local import *
 except ImportError:
-	pass
+    pass
 
