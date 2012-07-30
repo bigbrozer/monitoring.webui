@@ -6,13 +6,13 @@ import sys
 import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
 
 import nagios
 import nagios_notifications
 import redmine
-from kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts, OldestAlerts
-from kpi.models import KpiRedmine, KpiNagios
+from apps.kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts, OldestAlerts
+from apps.kpi.models import KpiRedmine, KpiNagios
 from django.utils.timezone import utc, UTC
 
 

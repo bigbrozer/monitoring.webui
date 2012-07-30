@@ -5,9 +5,9 @@ get the notifications from nagios results
 import calendar
 from datetime import datetime, timedelta
 from django.utils.timezone import utc
-from kpi.models import NagiosNotifications, RecurrentAlerts
+from apps.kpi.models import NagiosNotifications, RecurrentAlerts
 from pprint import pprint
-from nagios import get_hosts
+from jobs.nagios import get_hosts
 
 def get_last_time():
     """

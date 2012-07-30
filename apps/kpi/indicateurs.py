@@ -1,5 +1,5 @@
-from kpi.models import KpiNagios, KpiRedmine
-from kpi.models import  CountNotifications, RecurrentAlerts, OldestAlerts
+from apps.kpi.models import KpiNagios, KpiRedmine
+from apps.kpi.models import  CountNotifications, RecurrentAlerts, OldestAlerts
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.shortcuts import redirect
@@ -7,7 +7,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ['DJANGO_SETTINGS_MODULE'] = 'reporting.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
 
 def indicateurs(request):
     """
@@ -143,6 +143,3 @@ def indicateurs(request):
     return render_to_response(
         'main.html', locals(), context_instance = RequestContext(request))
 
-def redirect_to_indic(request):
-    """ redirect the users to indicateurs"""
-    return redirect("/reporting/indicateurs/")

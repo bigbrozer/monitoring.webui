@@ -4,7 +4,7 @@ get the redmine kpi from redmine
 
 from django.conf import settings
 import sqlite3
-from kpi.models import KpiRedmine
+from apps.kpi.models import KpiRedmine
 from datetime import datetime, timedelta
 from django.utils.timezone import utc
 

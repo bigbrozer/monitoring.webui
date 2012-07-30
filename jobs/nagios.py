@@ -3,7 +3,7 @@ get the results from nagios
 """
 
 from django.conf import settings
-import livestatus as live
+import jobs.livestatus as live
 from os import path
 
 

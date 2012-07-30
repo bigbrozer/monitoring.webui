@@ -3,8 +3,8 @@ settings from the admin site
 """
 
 from django.contrib import admin
-from kpi.models import KpiNagios, KpiRedmine
-from kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts, OldestAlerts
+from apps.kpi.models import KpiNagios, KpiRedmine
+from apps.kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts, OldestAlerts
 from jobs.insert import insert_redmine, insert_nagios_notifications
 from jobs.insert import get_notifications
 from django.utils import timezone
