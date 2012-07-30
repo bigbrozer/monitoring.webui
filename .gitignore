@@ -1,8 +1,0 @@
-*.db
-*.pyc
-*.swp
-~*
-.ropeproject/
-*.csv
-*~
-nohup.out

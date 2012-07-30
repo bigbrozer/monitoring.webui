@@ -1,8 +1,0 @@
-# Requirements
-# Author: Monitoring & Reporting, 2012
-#
-# Install project dependencies
-#
-Django==1.4
-pytz==2012c
-MySQL-python==1.2.3

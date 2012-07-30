@@ -1,1 +1,0 @@
-WSGIScriptAlias /reporting /home/django/reporting/reporting/wsgi.py
