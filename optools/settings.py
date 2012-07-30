@@ -136,6 +136,8 @@ INSTALLED_APPS = (
     'apps.common',
     # Nagios
     'apps.nagios',
+    # Reporting
+    'apps.kpi',
     # Admin interface
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
