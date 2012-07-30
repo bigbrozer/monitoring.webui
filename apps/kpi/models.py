@@ -42,7 +42,7 @@ class KpiRedmine(models.Model):
     requests_lifetime_high = models.PositiveIntegerField()
     requests_lifetime_urgent = models.PositiveIntegerField()
     comment_lifetime = models.TextField(blank=True, default="")
-    requests_waiting = models.PositiveIntegerField('waiting')
+    requests_waiting = models.PositiveIntegerField('waiting', null=True)
 
     def lifetime(self):
         """
