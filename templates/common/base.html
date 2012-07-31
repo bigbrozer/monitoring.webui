@@ -25,6 +25,7 @@
                             <i class="icon-user"></i> {{ user.first_name }} {{ user.last_name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a href="{% url user_profile %}">Profile</a></li>
                             <li class="divider"></li>
                             <li><a href="{% url django.contrib.auth.views.logout %}">Sign Out</a></li>
                         </ul>
