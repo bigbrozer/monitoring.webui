@@ -142,17 +142,19 @@ def request():
 #        "AND (due_date > ? "
 #        "OR (status_id != 5 AND status_id != 6 AND status_id != 10)) "
 #        "AND project_id != 12", tu2):
+            created_on = datetime.strptime(request[0], "%Y-%m-%d %H:%M:%S").date()
+
             if request[2] == 3:
-                lifetime_low += request[1] - datetime.date(request[0])
+                lifetime_low += request[1] - created_on
                 n_low += 1
             elif request[2] == 4:
-                lifetime_normal += request[1] - datetime.date(request[0])
+                lifetime_normal += request[1] - created_on
                 n_normal += 1
             elif request[2] == 5:
-                lifetime_high += request[1] - datetime.date(request[0])
+                lifetime_high += request[1] - created_on
                 n_high += 1
             elif request[2] >= 6:
-                lifetime_urgent += request[1] - datetime.date(request[0])
+                lifetime_urgent += request[1] - created_on
                 n_urgent += 1
         if n_low > 0:
             requests_lifetime_low[str(day_midnight)] =\
