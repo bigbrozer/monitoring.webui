@@ -10,7 +10,7 @@ function oldCreateRequests() {
 
 // CHART ////////////////////////////////////
     chart = new AmCharts.AmSerialChart();
-    chart.pathToImages = "/static/js/images/";
+    chart.pathToImages = "/static/optools/kpi/js/images/";
     chart.dataProvider = chartDataRequest;
     chart.categoryField = "date";
 
