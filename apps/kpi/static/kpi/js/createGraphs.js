@@ -50,7 +50,7 @@ function createRequests() {
 
 // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
-    chart.pathToImages = "/static/js/images/";
+    chart.pathToImages = "/static/optools/kpi/js/images/";
 
 // categoryAxesSettings
     categoryAxesSettings = new AmCharts.CategoryAxesSettings();
@@ -353,7 +353,7 @@ function createHosts() {
 
 // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
-    chart.pathToImages = "/static/js/images/";
+    chart.pathToImages = "/static/optools/kpi/js/images/";
 
 // categoryAxesSettings
     categoryAxesSettings = new AmCharts.CategoryAxesSettings();
@@ -507,7 +507,7 @@ function createWritten() {
 
 // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
-    chart.pathToImages = "/static/js/images/";
+    chart.pathToImages = "/static/optools/kpi/js/images/";
 
 // categoryAxesSettings
     categoryAxesSettings = new AmCharts.CategoryAxesSettings();
@@ -669,7 +669,7 @@ function createEquipements() {
 
 // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
-    chart.pathToImages = "/static/js/images/";
+    chart.pathToImages = "/static/optools/kpi/js/images/";
 
 // categoryAxesSettings
     categoryAxesSettings = new AmCharts.CategoryAxesSettings();
@@ -840,7 +840,7 @@ function createAlerts() {
 
 // CHART ////////////////////////////////////
     chart = new AmCharts.AmStockChart();
-    chart.pathToImages = "/static/js/images/";
+    chart.pathToImages = "/static/optools/kpi/js/images/";
 
 // categoryAxesSettings
     categoryAxesSettings = new AmCharts.CategoryAxesSettings();
