@@ -1,0 +1,40 @@
+/* Common CSS definitions */
+
+html, body {
+    height: 100%;
+}
+
+/* Wrapper */
+#wrap > .container {
+    padding-top: 70px;
+}
+
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 100px; /* this needs to be bigger than footer height*/
+}
+
+/* footer */
+footer {
+    position: relative;
+    height: 100px;
+    clear:both;
+    margin-top: -100px; /* negative value of footer height */
+    background-color: #333;
+    color: #999;
+}
+
+footer .container {
+    padding-top: 15px;
+}
+
+footer a.logo-faurecia {
+    background-image: url("img/logo_faurecia.png");
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 43px;
+}

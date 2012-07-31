@@ -10,42 +10,37 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">Central OpTools</a>
+            <a class="brand" href="#">Central Operations Tools</a>
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li><a href="/tracking">Home</a></li>
-                    <li><a href="{% url apps.kpi.indicateurs.indicateurs %}">KPI</a></li>
+                    <li class="{{ section.home }}"><a href="/tracking"><i class="icon-home icon-white"></i> Home</a></li>
+                    <li class="{{ section.kpi }}"><a href="{% url apps.kpi.indicateurs.indicateurs %}"><i class="icon-picture icon-white"></i> Reporting</a></li>
                     {% if user.is_authenticated and user.is_superuser %}
-                        <li class="pull-right"><a href="{% url admin:index %}">Administration</a></li>
+                    <li class="pull-right"><a href="{% url admin:index %}"><i class="icon-fire icon-white"></i> Administration</a></li>
                     {% endif %}
                 </ul>
                 {% if user.is_authenticated %}
-                    <p class="navbar-text pull-right">Logged in as <a
-                    href="#">{{ user.username }}</a> (<a href="{% url django.contrib.auth.views.logout %}">Logout</a>)</p>
+                    <div class="btn-group pull-right">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-user"></i> {{ user.first_name }} {{ user.last_name }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="divider"></li>
+                            <li><a href="{% url django.contrib.auth.views.logout %}">Sign Out</a></li>
+                        </ul>
+                    </div>
                 {% else %}
-                    <p class="navbar-text pull-right"><a href="{% url django.contrib.auth.views.login %}?next={{ request.path }}">Login</a></p>
+                    <p class="navbar-text pull-right"><a class="btn" href="{% url django.contrib.auth.views.login %}?next={{ request.path }}"><i class="icon-user"></i> Login</a></p>
                 {% endif %}
             </div><!--/.nav-collapse -->
         </div>
     </div>
 </div>
 
-<!-- <div id="top-menu">
-    <div id="account">
-        <ul>
-            
-        </ul>
-    </div>
-    <ul>
-        <li><a href="/tracking">Home</a></li>
-        {% if user.is_authenticated and user.is_superuser %}
-        <li><a href="{% url admin:index %}">Administration</a></li>
-        {% endif %}
-    </ul>
-</div> -->
-
-<div class="container">
-{% block content %}{% endblock %}
-</div> <!-- /container -->
-
+<div id="wrap">
+    <div id="main" class="container">
+        {% block content %}{% endblock %}
+        <div class="push"></div>
+    </div> <!-- /container -->
+</div>
 {% endblock %}

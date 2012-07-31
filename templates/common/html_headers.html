@@ -1,45 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>ITOP Tools - {{ title }}</title>
+        <title>Central Operations Tools - {{ title }}</title>
 
         <meta name="author" content="Vincent Besançon" />
         <meta name="copyright" content="(c) 2011-2012 Vincent BESANCON"/>
         <meta name="keywords" content="monitoring,nagios,operations,livestatus"/>
         <meta name="description" content="IT Operations Tools provided by Monitoring & Reporting"/>
+        {% block extra_meta %}{% endblock %}
 
-        <!-- Stylesheets -->
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
-            <!-- Bootstrap CSS
-            ================================================== -->
+        <link href="{{ STATIC_URL }}common.css" rel="stylesheet">
+        <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        {% block extra_css %}{% endblock %}
 
-            <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-            <!--[if lt IE 9]>
-              <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-            <![endif]-->
-
-            <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
-            <style>
-              body {
-                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-              }
-            </style>
-            {% block extra_css %}{% endblock %}
-
-        <!-- Scripts -->
-        {% block extra_scripts %}{% endblock %}
+        
     </head>
     <body>
         {% block page %}{% endblock %}
 
-        <footer>
-            <p>&copy; 2009-2012 Monitoring &amp; Reporting</p>
-        </footer>
-        <!-- Bootstrap javascript
-        ================================================== -->
+        {% block footer %}
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="span4">
+                            <p>
+                            <a href="mailto:DL-ITOP-MONITORING@faurecia.com?cc=9OPMonitoring@faurecia.com&subject=Monitoring%20Keys%20Indicators%20:%20">GIS / Monitoring &amp; Reporting</a>, 2006-{{ current_year|default:"Present" }}
+                            </p>
+                        </div>
+                        <div class="span4">{% block extra_footer %}&nbsp;{% endblock %}</div>
+                        <div class="span4">
+                            <p>
+                            <a class="pull-right logo-faurecia" href="http://intranet.faurecia/" target="_blank"></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
 
-        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- ###################################### -->
+        <!-- Scripts (at then end to load faster)   -->
+        <!-- ###################################### -->
+
+        <!-- Jquery -->
+        <script src="{{ STATIC_URL }}js/jquery.js"></script>
+
+        <!-- Twitter Bootstrap -->
         <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Enable tooltip -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("[rel=tooltip]").tooltip();
+            });
+        </script>
+
+        {% block extra_scripts %}{% endblock %}
     </body>
 </html>
 
