@@ -3,17 +3,27 @@ from apps.kpi.models import  CountNotifications, RecurrentAlerts, OldestAlerts
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.shortcuts import redirect
+import httpagentparser
 import sys
 import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
 
+
 def indicateurs(request):
     """
     View showing the charts for the differents kpi requested
     param: http request
     """
+    section = dict({'kpi': "active"})
+    title = "Reporting"
+
+    # Parse user agent
+    browser = httpagentparser.detect(request.META['HTTP_USER_AGENT'])['browser']
+    if "internet explorer" in browser['name'].lower() and int(browser['version'].split('.')[0]) < 9:
+        return render_to_response("common/browser_not_supported.html", locals(), context_instance = RequestContext(request))
+
     kpi_redmine = KpiRedmine.objects.all().order_by("date")
     today = KpiRedmine.objects.all().order_by("-date")[0].date
 
@@ -139,7 +149,12 @@ def indicateurs(request):
     chart_data_oldests_alerts += "\n]"
 
 
+    # Choose template to render
+    if request.GET.get('action') == 'print':
+        tpl = 'kpi/kpi_print_page.html'
+    else:
+        tpl = 'kpi/kpi_one_page.html'
 
     return render_to_response(
-        'main.html', locals(), context_instance = RequestContext(request))
+        tpl, locals(), context_instance = RequestContext(request))
 

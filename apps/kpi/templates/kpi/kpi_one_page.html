@@ -1,0 +1,175 @@
+{% extends "common/base.html" %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}kpi/js/style.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}kpi/css/docs.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}kpi/css/base.css"/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ STATIC_URL }}kpi/favicon.ico"/>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ STATIC_URL }}kpi/js/amstock.js"></script>
+<script src="{{ STATIC_URL }}kpi/js/createGraphs.js"></script>
+<script language="JavaScript">
+    function affichage_popup(nom_de_la_page, nom_interne_de_la_fenetre)
+    {
+        var expression = /Graphiques.html/g;
+        if (window.location.href.match(expression)) {
+            window.focus();
+            window.resizeTo(900, 800);
+            print();
+        }
+        else {
+            var win = window.open (nom_de_la_page, nom_interne_de_la_fenetre, config='height=800, width=900, toolbar=no, menubar=no, scrollbars=no, resizable=0, location=no, directories=no, status=no')
+            win.document.close();
+            win.focus();
+            window.resizeTo(900, 800);
+        }
+    }
+</script>
+<script type="text/javascript">
+    var chartDataRecurrentsAlerts = {{ chart_data_recurrents_alerts|safe }},
+    chartDataAlerts = {{ chart_data_alerts|safe }},
+    chartDataRequest = {{ chart_data_request|safe }},
+    chartDataNagios = {{ chart_data_nagios|safe }},
+    other = {{ number_others|safe }},
+    chartDataOldestsAlerts = {{ chart_data_oldests_alerts|safe }};
+    chartDataProcedures = {{ chart_data_procedures|safe }};
+
+    AmCharts.ready(function () {
+        createRequests();
+        createHosts();
+        createWritten();
+        createEquipements();
+        createAlerts();
+        createRecurrentsAlerts();
+        createOldestsAlerts();
+        deleteAmChart();
+        var expression = /Graphiques.html/g;
+        if (window.location.href.match(expression)) {
+            print();
+        }
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<header class="jumbotron subhead hideprint" id="overview">
+<div class="subnav">
+    <ul class="nav nav-pills">
+        <li><a href="#Redmine">Requests</a></li>
+        <li><a href="#Hosts">Hosts & Services</a></li>
+        <li><a href="#Procedures">Procedures</a></li>
+        <li><a href="#Repartition">Operating System Repartition</a></li>
+        <li><a href="#Alerts">Alerts</a></li>
+        <li><a href="#RecurrentsAlerts">Recurrents Alerts</a></li>
+        <li><a href="#OldestsAlerts">Oldests Alerts</a></li>
+        <li><a href="/webalizer" title="Exit to Webalizer"><i class="icon-globe"></i> HTTP Server</a></li>
+        <li class="pull-right">
+        <a href="{% url apps.kpi.indicateurs.indicateurs %}?action=print">
+            <i class="icon-print"></i> Print
+        </a>
+        </li>
+    </ul>
+</div>
+</header>
+
+<p class="pull-right">
+<small>Last update: {{ today }}</small>
+</p>
+
+<section style="padding-top: 20px;">
+<div class="hero-unit">
+    <h1>Monitoring Key Indicators</h1>
+    <p>This web application provides some statistics about what we do within GIS / Monitoring &amp; Reporting.
+    Check out how many requests we are handling, number of equipments being monitored or the most recurrents alerts.</p>
+    <p>
+        <a class="btn btn-primary btn-large" href="/tracking/projects/optools/wiki/reporting" target="_blank">Learn more</a>
+        <a class="btn btn-info btn-large" href="/tracking/projects/optools" target="_blank">About Central Operations Tools</a>
+    </p>
+</div>
+
+</section>
+<section id="Redmine">
+<div class="page-header">
+    <h1>Requests <small>additions &amp; changes</small></h1>
+    <div class="graph" id="graphRequest" style="width: 100%; height: 800px; margin-bottom: 20px;"></div>
+    <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
+        <h3 style="margin-bottom: 20px;">Quick links</h3>
+        <a class="btn btn-primary" href="/tracking/issues?query_id=4" target="_blank">Opened Requests</a>
+        <a class="btn btn-primary" href="/tracking/issues?query_id=36" target="_blank">Hot subjects</a>
+        <a class="btn btn-primary" href="/tracking/issues?query_id=33" target="_blank">Issues closed last 30 days</a>
+        <a class="btn btn-primary" href="/tracking/projects" target="_blank">Projects</a>
+    </div>
+</div>
+</section>
+
+<section id="Hosts">
+<div class="page-header">
+    <h1>Hosts & Services <small>monitored in Nagios</small></h1>
+    <div class="graph" id="graphHosts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+    <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
+        <h3 style="margin-bottom: 20px;">Quick links</h3>
+        <a class="btn btn-primary" href="/thruk/cgi-bin/status.cgi?hostgroup=all&style=hostdetail" target="_blank">List all Hosts</a>
+        <a class="btn btn-primary" href="/thruk/cgi-bin/status.cgi?style=detail" target="_blank">List all Services</a>
+    </div>
+</div>
+</section>
+
+<section id="Procedures">
+<div class="page-header">
+    <h1>Procedures <small>assigned to Nagios alerts</small></h1>
+    <div class="graph" id="graphWritten" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+    <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
+        <h3 style="margin-bottom: 20px;">Quick links</h3>
+        <a class="btn btn-success" href="{{ STATIC_URL }}simple_report.csv"><i class="icon-download-alt icon-white"></i> Download csv - Procedures</a>
+        <a class="btn btn-success" href="{{ STATIC_URL }}detailled_report.csv"><i class="icon-download-alt icon-white"></i> Download csv - Services and Procedures</a>
+        <a class="btn btn-primary" href="/kb/start?do=index" target="_blank">List all Procedures</a>
+    </div>
+</div>
+</section>
+
+<section id="Repartition">
+<div class="page-header">
+    <h1>Operating System Repartition <small>as seen in Nagios</small></h1>
+    <div class="graph" id="graphEquipement" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+    <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
+        <h3 style="margin-bottom: 20px;">Quick links</h3>
+        <a class="btn btn-primary" href="/thruk/cgi-bin/status.cgi?hostgroup=sys_windows&style=hostdetail" target="_blank">List all Windows</a>
+        <a class="btn btn-primary" href="/thruk/cgi-bin/status.cgi?hostgroup=sys_aix&style=hostdetail" target="_blank">List all Aix</a>
+        <a class="btn btn-primary" href="/thruk/cgi-bin/status.cgi?hostgroup=sys_linux&style=hostdetail" target="_blank">List all Linux</a>
+    </div>
+</div>
+</section>
+
+<section id="Alerts">
+<div class="page-header">
+    <h1>Alerts <small>triggered in Nagios</small></h1>
+    <div class="graph" id="graphAlerts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+    <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
+        <h3 style="margin-bottom: 20px;">Quick links</h3>
+        <a class="btn btn-primary" href="/thruk/cgi-bin/history.cgi?host=all" target="_blank">Alert History</a>
+        <a class="btn btn-primary" href="/thruk/cgi-bin/tac.cgi" target="_blank">Tactical Overview</a>
+    </div>
+</div>
+</section>
+
+<section id="RecurrentsAlerts">
+<div class="page-header">
+    <h1>Recurrents Alerts <small>on the last 31 days</small></h1>
+    <div class="graph" id="graphRecurrentsAlerts" style="width: 100%; height: 500px; margin-bottom: 10px;"></div>
+</div>
+</section>
+
+<section id="OldestsAlerts">
+<div class="page-header">
+    <h1>Oldests Alerts <small>active in Nagios</small></h1>
+    <div id="graphOldestsAlerts" style="width: 100%; height: 500px; margin-bottom: 10px;"></div>
+</div>
+</section>
+{% endblock %}
+
+{% block extra_footer %}
+<p>Propulsed by <a href="https://www.djangoproject.com/" rel="tooltip" title="Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.">Django</a> & <a href="http://www.python.org/" rel="tooltip" title="Python is a programming language that lets you work more quickly and integrate your systems more effectively.">Python</a>.</p>
+{% endblock %}

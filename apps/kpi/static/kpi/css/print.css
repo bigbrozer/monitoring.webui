@@ -1,60 +1,24 @@
 /* CSS for reporting web app print */
 
-/*@media print {
-	.hideprint {
-		display: none;
-        margin: 0;
-	}
-    @page {
-        margin: 1cm;
-    }
-    h1 {
-        margin: 0;
-        padding: 0;
-    }
-    p {
-        margin: 0;
-        padding: 0;
-    }
-    .graph {
-        text-align: left;
-        margin: 0;
-        padding: 0;
-        page-break-after: always;
-        max-height: 20cm;
-        max-width: 20cm;
-    }
-    .graph svg {
-        width: 800px;
-    }
-    div {
-        width: 800px;
-    }
-    section {
-        margin: 0;
-        padding: 0;
-    }
-    body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-    #Alerts {
-        page-break-after: avoid;
-    }
-    .container {
-        page-break-after: avoid;
-    }
+body {
+    padding-top: 0;
+    width: 800px;
+}
 
-}*/
+section {
+    padding-top: 100px;
+}
+
+.graph {
+    page-break-after: always;
+}
+
+.print-intro {
+    padding: 15px 35px 15px 35px;
+}
+
 @media print {
-    .hideprint {
+    .hide-print {
         display: none;
-    }
-    .graph {
-        page-break-after: always;
-    }
-    div {
-        width: 800px;
     }
 }

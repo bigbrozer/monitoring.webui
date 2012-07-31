@@ -1,0 +1,103 @@
+{% extends "common/html_headers.html" %}
+
+{% block footer %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}kpi/js/style.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}kpi/css/docs.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}kpi/css/base.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}kpi/css/print.css"/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ STATIC_URL }}kpi/favicon.ico"/>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ STATIC_URL }}kpi/js/amstock.js"></script>
+<script src="{{ STATIC_URL }}kpi/js/createGraphs.js"></script>
+<script type="text/javascript">
+    var chartDataRecurrentsAlerts = {{ chart_data_recurrents_alerts|safe }},
+    chartDataAlerts = {{ chart_data_alerts|safe }},
+    chartDataRequest = {{ chart_data_request|safe }},
+    chartDataNagios = {{ chart_data_nagios|safe }},
+    other = {{ number_others|safe }},
+    chartDataOldestsAlerts = {{ chart_data_oldests_alerts|safe }};
+    chartDataProcedures = {{ chart_data_procedures|safe }};
+
+    AmCharts.ready(function () {
+        createRequests();
+        createHosts();
+        createWritten();
+        createEquipements();
+        createAlerts();
+        createRecurrentsAlerts();
+        createOldestsAlerts();
+        deleteAmChart();
+        var expression = /Graphiques.html/g;
+        if (window.location.href.match(expression)) {
+            print();
+        }
+    });
+</script>
+{% endblock %}
+
+{% block page %}
+<div class="row print-intro hide-print">
+    <div class="span2"><p>Prepare your graphs then print this page.</p></div>
+    <div class="span3 offset5" style="text-align: center;">
+        <a class="btn btn-large btn-primary" href="javascript:print();">Print this page</a>
+        <a class="btn btn-large btn-info" href="/reporting">Return back</a>
+    </div>
+</div>
+
+<p class="pull-right">
+<small>Last update: {{ today }}</small>
+</p>
+<section id="Redmine">
+<div class="page-header">
+    <h1>Requests <small>additions &amp; changes</small></h1>
+    <div class="graph" id="graphRequest" style="width: 100%; height: 800px; margin-bottom: 20px;"></div>
+</div>
+</section>
+
+<section id="Hosts">
+<div class="page-header">
+    <h1>Hosts & Services <small>monitored in Nagios</small></h1>
+    <div class="graph" id="graphHosts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+</div>
+</section>
+
+<section id="Procedures">
+<div class="page-header">
+    <h1>Procedures <small>assigned to Nagios alerts</small></h1>
+    <div class="graph" id="graphWritten" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+</div>
+</section>
+
+<section id="Repartition">
+<div class="page-header">
+    <h1>Operating System Repartition <small>as seen in Nagios</small></h1>
+    <div class="graph" id="graphEquipement" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+</div>
+</section>
+
+<section id="Alerts">
+<div class="page-header">
+    <h1>Alerts <small>triggered in Nagios</small></h1>
+    <div class="graph" id="graphAlerts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+</div>
+</section>
+
+<section id="RecurrentsAlerts">
+<div class="page-header">
+    <h1>Recurrents Alerts <small>on the last 31 days</small></h1>
+    <div class="graph" id="graphRecurrentsAlerts" style="width: 100%; height: 500px; margin-bottom: 10px;"></div>
+</div>
+</section>
+
+<section id="OldestsAlerts">
+<div class="page-header">
+    <h1>Oldests Alerts <small>active in Nagios</small></h1>
+    <div id="graphOldestsAlerts" style="width: 100%; height: 500px; margin-bottom: 10px;"></div>
+</div>
+</section>
+{% endblock %}
