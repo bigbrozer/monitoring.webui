@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     # Login / Logout
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
-    url(r'^accounts/profile/$', UserEdit.as_view(), name='user_profile'),
+    url(r'^optools/accounts/profile/$', UserEdit.as_view(), name='user_profile'),
 
     # Applications
     # ============
