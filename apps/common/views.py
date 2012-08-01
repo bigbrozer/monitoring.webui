@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.views.generic import UpdateView
-from django.core.urlresolvers import reverse
 
 from apps.common.forms import UserEditForm
 
@@ -16,4 +15,4 @@ class UserEdit(UpdateView):
         return obj
 
     def get_success_url(self):
-        return reverse('user_profile')
+        return "/optools/accounts/profile/"
