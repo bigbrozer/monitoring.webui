@@ -114,6 +114,10 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.CryptPasswordHasher',
+)
+
 ROOT_URLCONF = 'optools.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
