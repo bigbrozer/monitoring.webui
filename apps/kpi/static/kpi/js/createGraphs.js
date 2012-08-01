@@ -138,7 +138,7 @@ function createRequests() {
     stockPanelRemained.percentHeight = 25; // Height of the panel over 100
     stockPanelRemained.addStockGraph(graphRemained); // Add the graph to the panel
     stockPanelRemained.addStockGraph(graphWaiting); // Add the graph to the panel
-    stockPanelRemained.showCategoryAxis = false; // Hide the dates under this panel
+    stockPanelRemained.showCategoryAxis = true; // hide the dates under this panel
 
 //  1.1) stockLegend Remained
     stockLegendRemained = new AmCharts.StockLegend();
@@ -165,7 +165,7 @@ function createRequests() {
 //  1.2) stockPanel Opened (& Closed)
     stockPanelOpened = new AmCharts.StockPanel();
     stockPanelOpened.percentHeight = 25;
-    stockPanelOpened.showCategoryAxis = false;
+    stockPanelOpened.showCategoryAxis = true;
     stockPanelOpened.addStockGraph(graphOpened);
 
 //  1.2) stockLegend Opened (& Closed)
