@@ -29,7 +29,7 @@
                         </ul>
                     </div>
                 {% else %}
-                    <p class="navbar-text pull-right"><a class="btn" href="{% url django.contrib.auth.views.login %}?next={{ request.path }}"><i class="icon-user"></i> Login</a></p>
+                    <p class="navbar-text pull-right"><a class="btn" href="{% url user_profile %}"><i class="icon-user"></i> Login</a></p>
                 {% endif %}
             </div><!--/.nav-collapse -->
         </div>
