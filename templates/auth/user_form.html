@@ -6,7 +6,10 @@
 </div>
 
 {% if form.errors %}
-<div class="alert alert-error">Please correct the following errors</div>
+<div class="alert alert-error">
+    <p>Please correct the following errors.</p>
+    {{ form.errors }}
+</div>
 {% endif %}
 
 <div class="row">
