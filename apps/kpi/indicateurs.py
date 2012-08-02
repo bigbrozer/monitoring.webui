@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 import httpagentparser
 import sys
 import os
+from datetime import timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
@@ -25,7 +26,7 @@ def indicateurs(request):
         return render_to_response("common/browser_not_supported.html", locals(), context_instance = RequestContext(request))
 
     kpi_redmine = KpiRedmine.objects.all().order_by("date")
-    today = KpiRedmine.objects.all().order_by("-date")[0].date
+    today = KpiRedmine.objects.all().order_by("-date")[0].date + timedelta(days=1)
 
     chart_data_request = "[\n"
 
