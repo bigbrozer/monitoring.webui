@@ -136,6 +136,8 @@ INSTALLED_APPS = (
     #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Portal
+    'apps.portal',
     # Common
     'apps.common',
     # Nagios

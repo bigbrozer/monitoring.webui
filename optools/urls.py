@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
+from django.views.generic import TemplateView
 
 from apps.common.views import UserEdit
 
@@ -14,6 +15,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
     
+    # Portal
+    (r'^$', TemplateView.as_view(template_name="portal/portal.html")),
+
     # Login / Logout
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
