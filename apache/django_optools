@@ -1,1 +1,8 @@
 WSGIScriptAlias /optools /home/django/optools/optools/wsgi.py
+
+<Location "/optools">
+     Order deny,allow
+     Allow from all
+     RewriteEngine on
+     RewriteRule  !^.*/$  /optools/  [R]
+</Location>
