@@ -23,7 +23,7 @@ def indicateurs(request):
     # Parse user agent
     browser = httpagentparser.detect(request.META['HTTP_USER_AGENT'])['browser']
     if "internet explorer" in browser['name'].lower() and int(browser['version'].split('.')[0]) < 9:
-        return render_to_response("common/browser_not_supported.html", locals(), context_instance = RequestContext(request))
+        return redirect("browser_out_of_date")
 
     kpi_redmine = KpiRedmine.objects.all().order_by("date")
     today = KpiRedmine.objects.all().order_by("-date")[0].date + timedelta(days=1)
