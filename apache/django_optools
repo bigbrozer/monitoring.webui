@@ -1,2 +1,3 @@
+RedirectMatch ^[/]$ /optools/
 RedirectMatch ^/optools$ /optools/
 WSGIScriptAlias /optools /home/django/optools/optools/wsgi.py
