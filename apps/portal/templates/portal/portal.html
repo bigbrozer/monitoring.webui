@@ -6,43 +6,106 @@
 </div>
 
 <div class="row">
-    <div class="span5">
+    <div class="span4">
         <p>This is the home of Monitoring for Datacenters. Select the web application depending on what you want to do.</p>
-        <p>If you are not sure, select the <strong>Dashboard</strong>.</p>
+        <p>If you are not sure, select the <strong>Dashboard</strong> or look at the intended audience with colored <span class="badge badge-inverse">badges</span>.</p>
         <div class="alert alert-info">
             <strong>Heads up!</strong> If you are not already logged in, please
             do it now using the Login button in the top right corner.
             This will ask you also to edit your profile if not already done.
         </div>
+        {% if old_browser %}
+        <div class="alert alert-warning">
+            <h4 class="alert-heading">Unsupported browser detected!</h4>
+            It seems you are running an unsupported browser, please check why on our <a href="{% url browser_out_of_date %}">browser support</a> page.
+        </div>
+        {% endif %}
     </div>
-    <div class="span7">
+    <div class="span8">
         <ul class="thumbnails">
-            <li class="span3">
-                <div class="thumbnail">
-                    <a href="/thruk"><img src="http://placehold.it/260x180" alt=""></a>
-                    <div class="caption">
-                        <h3>Dashboard</h3>
-                        <p>This is the Nagios Dashboard, your central access point for monitored equipments and indicators.</p>
-                    </div>
+            <li class="span4">
+            <div class="thumbnail">
+                <a href="/thruk"><img src="http://placehold.it/360x180" alt=""></a>
+                <div class="caption">
+                    <h3>Dashboard <span class="pull-right badge badge-inverse">Technical Desk</span></h3>
+                    <p>This is the Nagios Dashboard, your central access point for monitored equipments and indicators.</p>
                 </div>
+            </div>
+            </li>
+            <li class="span4">
+            <div class="thumbnail">
+                <a href="#"><img src="http://placehold.it/360x180" alt=""></a>
+                <div class="caption">
+                    <h3>Hypervisor <span class="pull-right badge badge-info">Helpdesk</span></h3>
+                    <p>The Hypervisor (Omnibus) centralizes all alerts coming from Monitoring tools.</p>
+                </div>
+            </div>
+            </li>
+            <li class="span4">
+            <div class="thumbnail">
+                <a href="http://orion.app.de.corp/"><img src="http://placehold.it/360x180" alt=""></a>
+                <div class="caption">
+                    <h3>WAN Monitoring <span class="pull-right badge badge-inverse">Technical Desk</span></h3>
+                    <p>Orion focus on Monitoring the WAN network.</p>
+                </div>
+            </div>
+            </li>
+            <li class="span4">
+            <div class="thumbnail">
+                <a href="#"><img src="http://placehold.it/360x180/000000/ffffff/&text=Coming+soon!" alt=""></a>
+                <div class="caption">
+                    <h3>IT Alerts <span class="pull-right badge badge-inverse">Technical Desk</span><span class="pull-right badge badge-info">Helpdesk</span></h3>
+                    <p>IT Alerts system that keeps user informed about planned stop and outage on applications.</p>
+                </div>
+            </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<div class="page-header">
+    <h2>Surrounding applications <small>that are helpful</small></h2>
+</div>
+
+<div class="row">
+    <div class="span8 offset2">
+        <ul class="thumbnails">
+            <li class="span2">
+            <div class="thumbnail">
+                <a href="/tracking"><img src="http://placehold.it/160x130" alt=""></a>
+                <div class="caption">
+                    <h4>Request Tracker</h4>
+                    <p>Track or create requests for Monitoring in Datacenters.</p>
+                </div>
+            </div>
             </li>
             <li class="span2">
-                <div class="thumbnail">
-                    <a href="/tracking"><img src="http://placehold.it/260x180" alt=""></a>
-                    <div class="caption">
-                        <h4>Request Tracker</h4>
-                        <p>Track or create request about Monitoring within Datacenter.</p>
-                    </div>
+            <div class="thumbnail">
+                <a href="/doc"><img src="http://placehold.it/160x130" alt=""></a>
+                <div class="caption">
+                    <h4>Documentation</h4>
+                    <p>Find out how to setup requirements to monitor a server, how to manage alerts, etc...</p>
                 </div>
+            </div>
             </li>
             <li class="span2">
-                <div class="thumbnail">
-                    <a href="/git"><img src="http://placehold.it/260x180" alt=""></a>
-                    <div class="caption">
-                        <h4>Development</h4>
-                        <p>Contribute or check out source code of some applications (plugins, etc...).</p>
-                    </div>
+            <div class="thumbnail">
+                <a href="/kb"><img src="http://placehold.it/160x130" alt=""></a>
+                <div class="caption">
+                    <h4>Knowledge Base</h4>
+                    <p>Store procedure (KB) attached to alerts here.</p>
                 </div>
+            </div>
+            </li>
+            <li class="span2">
+            <div class="thumbnail">
+                <a href="/git"><img src="http://placehold.it/160x130" alt=""></a>
+                <div class="caption">
+                    <h4>Development</h4>
+                    <p>Contribute or check out source code of some applications (plugins, etc...).</p>
+                </div>
+            </div>
             </li>
         </ul>
     </div>
