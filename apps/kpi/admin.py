@@ -5,8 +5,6 @@ settings from the admin site
 from django.contrib import admin
 from apps.kpi.models import KpiNagios, KpiRedmine
 from apps.kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts, OldestAlerts
-from jobs.insert import insert_redmine, insert_nagios_notifications
-from jobs.insert import get_notifications
 from django.utils import timezone
 import pytz
 
@@ -50,6 +48,8 @@ class KpiRedmineAdmin(admin.ModelAdmin):
         """
         update database from selected date
         """
+        from jobs.insert import insert_redmine
+
         tzname = timezone.get_current_timezone_name()
         tzinfo = pytz.timezone(tzname)
         for query in queryset:
@@ -81,6 +81,8 @@ class NagiosAdmin(admin.ModelAdmin):
         """
         update database from last date
         """
+        from jobs.insert import insert_nagios_notifications, get_notifications
+
         tzname = timezone.get_current_timezone_name()
         tzinfo = pytz.timezone(tzname)
         date = NagiosNotifications.objects.order_by('-date')[0].date
