@@ -16,12 +16,15 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
     # Portal
-    (r'^$', TemplateView.as_view(template_name="portal/portal.html")),
+    url(r'^$', 'apps.portal.views.portal_home', name='portal_home'),
 
     # Login / Logout
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
     url(r'^accounts/profile/$', UserEdit.as_view(), name='user_profile'),
+
+    # Misc
+    url(r'^support/browser/$', 'apps.common.views.browser_out_of_date', name='browser_out_of_date'),
 
     # Applications
     # ============
