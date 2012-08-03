@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Central Operations Tools - {{ title }}</title>
+        <title>Central Operations Tools {% if title %}- {{ title }}{% endif %}</title>
 
         <meta name="author" content="Vincent Besançon" />
         <meta name="copyright" content="(c) 2011-2012 Vincent BESANCON"/>
@@ -33,7 +33,11 @@
                             <a href="mailto:DL-ITOP-MONITORING@faurecia.com?cc=9OPMonitoring@faurecia.com&subject=Monitoring%20Keys%20Indicators%20:%20">GIS / Monitoring &amp; Reporting</a>, 2006-{{ current_year|default:"Present" }}
                             </p>
                         </div>
-                        <div class="span4">{% block extra_footer %}&nbsp;{% endblock %}</div>
+                        <div class="span4">
+                            <p>Propulsed by <a href="https://www.djangoproject.com/" rel="tooltip" title="Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design." target="_blank">Django</a> & <a href="http://www.python.org/" rel="tooltip" title="Python is a programming language that lets you work more quickly and integrate your systems more effectively." target="_blank">Python</a>.</p>
+                            <p>Presented with <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> HTML5/CSS3 framework.</p>
+                            {% block extra_footer %}{% endblock %}
+                        </div>
                         <div class="span4">
                             <p>
                             <a class="pull-right logo-faurecia" href="http://intranet.faurecia/" target="_blank"></a>
