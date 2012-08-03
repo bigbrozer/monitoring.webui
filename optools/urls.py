@@ -12,12 +12,12 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the next line to enable the admin:
-    (r'^admin/', include(admin.site.urls)),
-    
     # Portal
     url(r'^$', 'apps.portal.views.portal_home', name='portal_home'),
 
+    # Uncomment the next line to enable the admin:
+    (r'^admin/', include(admin.site.urls)),
+    
     # Login / Logout
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
@@ -34,6 +34,6 @@ urlpatterns = patterns('',
     (r'^nagios/satellites/export/(?P<format>\w+)$', 'apps.nagios.views.get_satellite_list'),
 
     # Reporting
-    url(r'^reporting/', 'apps.kpi.indicateurs.indicateurs'),
+    url(r'^reporting/$', 'apps.kpi.indicateurs.indicateurs'),
 )
 
