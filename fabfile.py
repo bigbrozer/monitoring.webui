@@ -19,7 +19,7 @@
 #===============================================================================
 
 """
-Fabric tasks available for project IT Operations Tools.
+Fabric tasks available for project Central Operations Tools.
 """
 
 from fabric.api import *
@@ -27,8 +27,6 @@ from fabric.colors import *
 from contextlib import nested
 from monitoring.fabric import servers
 
-@task
-@hosts('monitoring-dc.app.corp')
 def static():
     """Run collectstatic for the project."""
     env.user = 'django'
@@ -39,14 +37,24 @@ def static():
 @task
 @hosts('monitoring-dc.app.corp')
 def update():
-    """Update project source."""
+    """Apply latest updates on project in production."""
     env.user = 'django'
+
+    puts(green('Updating project\'s branch master.', bold=True))
+    
+    puts(cyan('- Pushing branch master and tags to remote central...'))
+    local('git push central master && git push central --tags')
+    
+    puts(cyan('- Applying update...'))
     run('cd optools && git pull')
+    
+    # Collect static files
+    static()
 
 @task
 @hosts('monitoring-dc.app.corp')
-def setup():
-    """Setup the project in production."""
+def install():
+    """Install the project in production."""
     env.user = 'django'
 
     # Clone / update the repository
@@ -64,12 +72,12 @@ def setup():
     run('mkvirtualenv optools')
 
     with cd('optools'):
-        puts(green('Installing project dependencies...'))
+        puts(green('Installing / updating project dependencies...'))
         run('~/Envs/optools/bin/pip install -r requirements.txt')
 
     # Setup Apache config
     with nested(cd('~django/optools'), settings(user='root')):
-        puts(green('Set the Apache configuration...'))
+        puts(green('Install Apache\'s configuration...'))
         run('ln -sf ~django/optools/apache/django_optools /etc/apache2/conf.d/django_optools')
         run('service apache2 force-reload')
 
