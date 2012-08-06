@@ -6,6 +6,7 @@
 </div>
 
 <div class="row">
+    <!-- Description -->
     <div class="span4">
         <p>This is the home of Monitoring for Datacenters. Select the web application depending on what you want to do.</p>
         <p>If you are not sure, select the <strong>Dashboard</strong> or look at the intended audience with colored <span class="badge badge-inverse">badges</span>.</p>
@@ -21,6 +22,8 @@
         </div>
         {% endif %}
     </div>
+    <!-- /Description -->
+
     <div class="span8">
         <ul class="thumbnails">
             <li class="span4">
@@ -65,15 +68,18 @@
 </div>
 
 <div class="page-header">
-    <h2>Surrounding applications <small>help tracking request, provide documentation and give detail about development.</small></h2>
+    <h2>Surrounding applications <small>help tracking request, provide documentation and give detail about development</small></h2>
 </div>
 
 <div class="row">
+    <!-- Description -->
     <div class="span4">
         <p>These applications are connected to each monitoring tools (see above).</p>
         <p>They help to keep track of requests, provide documentation and procedure.
         There is also a section that list the internal development done on plugins, scripts, etc...</p>
     </div>
+    <!-- /Description -->
+
     <div class="span8">
         <ul class="thumbnails">
             <li class="span2">
@@ -109,6 +115,32 @@
                 <div class="caption">
                     <h4>Development</h4>
                     <p>Contribute or check out source code of some applications (plugins, etc...).</p>
+                </div>
+            </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="page-header">
+    <h1>Reporting <small>updates for the last key indicators</small></h2>
+</div>
+
+<div class="row">
+    <!-- Description -->
+    <div class="span4">
+        <p>This section shows some web reporting applications about Key Performance Indicators.</p>
+    </div>
+    <!-- /Description -->
+
+    <div class="span8">
+        <ul class="thumbnails">
+            <li class="span4">
+            <div class="thumbnail">
+                <a href="{% url reporting_home %}"><img src="{{ STATIC_URL }}portal/img/reporting_thumb.png" alt=""></a>
+                <div class="caption">
+                    <h4>Monitoring KPI <span class="pull-right badge badge-important">Management</span></h4>
+                    <p>Show KPIs about Monitoring & Reporting.</p>
                 </div>
             </div>
             </li>
