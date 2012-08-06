@@ -58,12 +58,8 @@
         <!-- Twitter Bootstrap -->
         <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
 
-        <!-- Enable tooltip -->
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("[rel=tooltip]").tooltip();
-            });
-        </script>
+        <!-- Optools main -->
+        <script src="{{ STATIC_URL }}js/optools.js"></script>
 
         {% block extra_scripts %}{% endblock %}
     </body>
