@@ -114,9 +114,11 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-PASSWORD_HASHERS = (
-    'django.contrib.auth.hashers.CryptPasswordHasher',
-)
+# PASSWORD HASHERS
+#
+#PASSWORD_HASHERS = (
+#    'django.contrib.auth.hashers.CryptPasswordHasher',
+#)
 
 ROOT_URLCONF = 'optools.urls'
 
