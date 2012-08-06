@@ -8,6 +8,16 @@ import httpagentparser
 
 from apps.common.forms import UserEditForm
 
+def login(request):
+    """
+    Called to log in a user and check if they filled their profile.
+    """
+    user = User.objects.get(username=request.META['REMOTE_USER'])
+    if user.first_name and user.last_name and user.email:
+        return redirect('portal_home')
+    else:
+        return redirect('user_profile')
+
 class UserEdit(UpdateView):
     """
     Class based view to show the User profile editing form.

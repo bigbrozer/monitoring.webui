@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
     # Login / Logout
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^accounts/login/$', 'apps.common.views.login', name='login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^accounts/profile/$', UserEdit.as_view(), name='user_profile'),
 
