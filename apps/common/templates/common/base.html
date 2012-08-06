@@ -21,19 +21,29 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="{% url user_profile %}">Profile</a></li>
+                    <li class="divider-horizontal"></li>
+                    <li><a href="{% url logout %}">Logout</a></li>
                 </ul>
             </div>
             {% else %}
-            <p class="navbar-text pull-right"><a class="btn" href="{% url user_profile %}"><i class="icon-user"></i> Login</a></p>
+            <p class="navbar-text pull-right"><a class="btn" href="#modal-prelogin-message" data-toggle="modal"><i class="icon-user"></i> Login</a></p>
             {% endif %}
         </div>
     </div>
 </div>
+<!-- /Top menu -->
 
+<!-- Page content -->
 <div id="wrap">
     <div id="main" class="container">
         {% block content %}{% endblock %}
         <div class="push"></div>
     </div> <!-- /container -->
 </div>
+<!-- /Page content -->
+
+<!-- Modals -->
+{% include "auth/modal-prelogin-global_catalog.html" %}
+<!-- /Modals -->
+
 {% endblock %}
