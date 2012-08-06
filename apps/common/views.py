@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response, redirect
+from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.views.generic import UpdateView
@@ -19,7 +20,7 @@ class UserEdit(UpdateView):
         return obj
 
     def get_success_url(self):
-        return "/optools/accounts/profile/"
+        return reverse("portal_home")
 
 def browser_out_of_date(request):
     """
