@@ -34,6 +34,6 @@ urlpatterns = patterns('',
     (r'^nagios/satellites/export/(?P<format>\w+)$', 'apps.nagios.views.get_satellite_list'),
 
     # Reporting
-    url(r'^reporting/$', 'apps.kpi.indicateurs.indicateurs'),
+    url(r'^reporting/$', 'apps.kpi.indicateurs.indicateurs', name='reporting_home'),
 )
 
