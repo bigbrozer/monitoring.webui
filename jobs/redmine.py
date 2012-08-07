@@ -13,7 +13,7 @@ def request():
     return the key indicators from redmine database
     """
 
-    db_file = "/tmp/redmine_default" if settings.DEBUG else "/var/lib/dbconfig-common/sqlite3/redmine/instances/default/redmine_default"
+    db_file = "/tmp/redmine_default" if settings.DEVEL else "/var/lib/dbconfig-common/sqlite3/redmine/instances/default/redmine_default"
     conn = sqlite3.connect(
         db_file, detect_types = sqlite3.PARSE_DECLTYPES)
     cur = conn.cursor()

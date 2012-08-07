@@ -25,7 +25,7 @@ def http_login(request):
         redirection = request.GET['next']
 
     # Find user
-    if settings.DEBUG:
+    if settings.DEVEL:
         user = User.objects.get(username='test')
         userauth = authenticate(username=user.username, password='test')
         login(request, userauth)

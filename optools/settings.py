@@ -6,17 +6,17 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 # Turn off debugging by default
 DEBUG = False
-DEVMODE = False
+DEVEL = False
 TEMPLATE_DEBUG = DEBUG
 
 # Contacts
 ADMINS = (
-    ('Vincent BESANCON', 'vincent.besancon@faurecia.com'),
+    ('Vincent BESANCON',    'vincent.besancon@faurecia.com'),
+    ('Mohamed CHERROUD',    'mohamed.cherroud-ext@faurecia.com'),
+    ('Patrick BAILAT',      'patrick.bailat-ext@faurecia.com'),
 )
 
-MANAGERS = (
-    ('Mohamed CHERROUD', 'mohamed.cherroud-ext@faurecia.com'),
-)
+MANAGERS = ADMINS
 
 # Default database connection if not provided by local settings
 DATABASES = {
@@ -75,19 +75,11 @@ STATIC_ROOT = '/var/www/static/optools/'
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/optools/'
 
-# Additional locations of static files
-STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
-
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # LOGIN / LOGOUT
@@ -95,14 +87,13 @@ LOGIN_URL = '/optools/accounts/login/'
 LOGOUT_URL = '/optools/accounts/logout/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-# Make this unique, and don't share it with anybody.
+# Make this unique
 SECRET_KEY = 'k6k^1fvqhj(-rod&amp;xcray3wr=)p!de_x(u(*d@f_da7036749@'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,42 +109,27 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.RemoteUserBackend',
 )
 
-# PASSWORD HASHERS
-#
-#PASSWORD_HASHERS = (
-#    'django.contrib.auth.hashers.CryptPasswordHasher',
-#)
-
 ROOT_URLCONF = 'optools.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'optools.wsgi.application'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Portal
-    'apps.portal',
     # Common
     'apps.common',
+    # Portal
+    'apps.portal',
     # Nagios
     'apps.nagios',
     # Reporting
     'apps.kpi',
     # Admin interface
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging

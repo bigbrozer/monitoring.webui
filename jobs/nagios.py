@@ -79,7 +79,7 @@ def request():
     """
     get the kpi from redmine
     """
-    kbpath = "/tmp/pages" if settings.DEBUG else "/var/www/kb/data/pages"
+    kbpath = "/tmp/pages" if settings.DEVEL else "/var/www/kb/data/pages"
 
     if not SATELLITES:
         return False
@@ -164,7 +164,7 @@ Columns: host_name description notes_url_expanded contact_groups
     total_written = 0
     total_missing = 0
 
-    csv_report_dir = "/tmp" if settings.DEBUG else settings.STATIC_ROOT
+    csv_report_dir = "/tmp" if settings.DEVEL else settings.STATIC_ROOT
 
     myreport = open(path.join(csv_report_dir, "detailled_report.csv"), "w")
     my_simple_report = open(path.join(csv_report_dir, "simple_report.csv"), "w")
