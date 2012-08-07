@@ -90,6 +90,10 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+# LOGIN / LOGOUT
+LOGIN_URL = '/optools/accounts/login/'
+LOGOUT_URL = '/optools/accounts/logout/'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'k6k^1fvqhj(-rod&amp;xcray3wr=)p!de_x(u(*d@f_da7036749@'
 
