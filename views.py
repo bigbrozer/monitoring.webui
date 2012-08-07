@@ -14,10 +14,11 @@ from apps.common.forms import UserEditForm
 def http_login(request):
     """
     Called after successfull basic HTTP authentication and check if user filled
-    his profile.
+    his profile. Also create a cookie to say we are logged in.
     """
     redirection = ""
     user = None
+    response = None
 
     # Should we redirect after login ?
     if request.GET.has_key('next'):
@@ -34,14 +35,18 @@ def http_login(request):
     # Test if user filled his profile
     if user.first_name and user.last_name and user.email:
         if redirection:
-            return redirect(redirection)
+            response = redirect(redirection)
         else:
-            return redirect('portal_home')
+            response = redirect('portal_home')
     else:
         if redirection:
-            return redirect('%s?redirect=%s' % (reverse('user_profile'), redirection))
+            response = redirect('%s?redirect=%s' % (reverse('user_profile'), redirection))
         else:
-            return redirect('user_profile')
+            response = redirect('user_profile')
+
+    # Login is successfull, redirect and set the cookie
+    response.set_cookie('optools_logged_in', 'true')
+    return response
 
 class UserEdit(UpdateView):
     """
