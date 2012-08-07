@@ -21,7 +21,6 @@ def login(request):
     else:
         return redirect('user_profile')
 
-@login_required
 class UserEdit(UpdateView):
     """
     Class based view to show the User profile editing form.
