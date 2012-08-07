@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
 
 from apps.common.views import UserEdit
 
@@ -21,7 +22,7 @@ urlpatterns = patterns('',
     # Login / Logout
     url(r'^accounts/login/$', 'apps.common.views.login', name='login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', name='logout'),
-    url(r'^accounts/profile/$', UserEdit.as_view(), name='user_profile'),
+    url(r'^accounts/profile/$', login_required(UserEdit.as_view()), name='user_profile'),
 
     # Misc
     url(r'^support/browser/$', 'apps.common.views.browser_out_of_date', name='browser_out_of_date'),
