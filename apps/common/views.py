@@ -5,30 +5,43 @@ from django.contrib.auth.models import User
 from django.views.generic import UpdateView
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.contrib.auth import authenticate, login
 
 import httpagentparser
 
 from apps.common.forms import UserEditForm
 
-def login(request):
+def http_login(request):
     """
     Called after successfull basic HTTP authentication and check if user filled
     his profile.
     """
+    redirection = ""
+    user = None
+
+    # Should we redirect after login ?
+    if request.GET.has_key('next'):
+        redirection = request.GET['next']
+
     # Find user
     if settings.DEBUG:
-        user = User.objects.get(username='besancon@corp')
+        user = User.objects.get(username='test')
+        userauth = authenticate(username=user.username, password='test')
+        login(request, userauth)
     else:
         user = User.objects.get(username=request.META['REMOTE_USER'])
 
     # Test if user filled his profile
     if user.first_name and user.last_name and user.email:
-        if request.GET.has_key('next'):
-            return redirect(request.GET['next'])
+        if redirection:
+            return redirect(redirection)
         else:
             return redirect('portal_home')
     else:
-        return redirect('user_profile')
+        if redirection:
+            return redirect('%s?redirect=%s' % (reverse('user_profile'), redirection))
+        else:
+            return redirect('user_profile')
 
 class UserEdit(UpdateView):
     """
@@ -42,7 +55,10 @@ class UserEdit(UpdateView):
         return obj
 
     def get_success_url(self):
-        return reverse("portal_home")
+        try:
+            return self.request.GET['redirect']
+        except KeyError:
+            return reverse("portal_home")
 
 def browser_out_of_date(request):
     """
