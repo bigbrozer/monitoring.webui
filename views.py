@@ -3,14 +3,17 @@ from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.views.generic import UpdateView
+from django.contrib.auth.decorators import login_required
 
 import httpagentparser
 
 from apps.common.forms import UserEditForm
 
+@login_required
 def login(request):
     """
-    Called to log in a user and check if they filled their profile.
+    Called after successfull basic HTTP authentication and check if user filled
+    his profile.
     """
     user = User.objects.get(username=request.META['REMOTE_USER'])
     if user.first_name and user.last_name and user.email:
@@ -18,6 +21,7 @@ def login(request):
     else:
         return redirect('user_profile')
 
+@login_required
 class UserEdit(UpdateView):
     """
     Class based view to show the User profile editing form.
