@@ -1,0 +1,10 @@
+{% extends "common/base.html" %}
+
+{% block content %}
+<div class="hero-unit">
+    <h1>Noooooo...</h1>
+    <p>Looks like something went horribly wrong somewhere. As a result, the page you've requested isn't available. Or maybe it doesn't exist. Maybe it never existed. Maybe this page is a figment of your imagination. Maybe you're a figment of your own imagination.<p>
+    <p><a href="{% url portal_home %}" class="btn btn-primary btn-large">Return to home</a></p>
+</div>
+<div class="alert alert-info"><i class="icon-info-sign"></i> A mail has already be sent to us about this error.</div>
+{% endblock %}
