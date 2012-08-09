@@ -84,3 +84,10 @@ def install():
     # Collect static files
     static()
 
+@task
+@hosts('monitoring-dc.app.corp')
+def update_kpi():
+    """Launch the script that update the KPI."""
+    env.user = "django"
+    run('/home/django/optools/cron/update.sh')
+
