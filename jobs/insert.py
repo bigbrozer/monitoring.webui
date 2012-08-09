@@ -14,6 +14,7 @@ import redmine
 from apps.kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts, OldestAlerts
 from apps.kpi.models import KpiRedmine, KpiNagios
 from django.utils.timezone import utc, UTC
+from django.core.cache import cache
 
 
 def insert():
@@ -85,6 +86,9 @@ def insert():
     if last_date != today:
         RecurrentAlerts.objects.all().delete()
         number += insert_recurrent_alerts()
+
+    # Clean the Django cache
+    cache.clear()
 
     return "\n %s lignes ajoutees" % number
 
