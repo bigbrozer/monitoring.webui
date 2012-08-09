@@ -91,3 +91,9 @@ def update_kpi():
     env.user = "django"
     run('/home/django/optools/cron/update.sh')
 
+@task
+@hosts('monitoring-dc.app.corp')
+def clean_cache():
+    """Clean the Django cache."""
+    sudo('rm -rf /var/tmp/django_cache/optools')
+
