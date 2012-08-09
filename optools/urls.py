@@ -25,6 +25,7 @@ urlpatterns = patterns('',
 
     # Misc
     url(r'^support/browser/$', 'apps.common.views.browser_out_of_date', name='browser_out_of_date'),
+    (r'^maintenance/$', TemplateView.as_view(template_name='maintenance.html')),
     (r'^error/404/$', TemplateView.as_view(template_name='404.html')),
     (r'^error/500/$', TemplateView.as_view(template_name='500.html')),
 
