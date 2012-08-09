@@ -3,6 +3,7 @@ from apps.kpi.models import  CountNotifications, RecurrentAlerts, OldestAlerts
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.shortcuts import redirect
+from django.views.decorators.cache import cache_page
 import httpagentparser
 import sys
 import os
@@ -12,6 +13,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
 
 
+# Cache the page during 8 hours
+@cache_page((60*60)*8)
 def indicateurs(request):
     """
     View showing the charts for the differents kpi requested
