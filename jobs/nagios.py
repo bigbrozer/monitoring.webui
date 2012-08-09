@@ -164,7 +164,7 @@ Columns: host_name description notes_url_expanded contact_groups
     total_written = 0
     total_missing = 0
 
-    csv_report_dir = "/tmp" if settings.DEVEL else settings.STATIC_ROOT
+    csv_report_dir = "/tmp" if settings.DEVEL else "/home/django/public_html/reporting"
 
     myreport = open(path.join(csv_report_dir, "detailled_report.csv"), "w")
     my_simple_report = open(path.join(csv_report_dir, "simple_report.csv"), "w")

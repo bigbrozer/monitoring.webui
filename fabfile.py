@@ -64,6 +64,7 @@ def install():
                 puts(green('Clone git repository...'))
                 run('git clone /git/repositories/admin/optools.git')
                 run('mkdir -p /var/www/static/optools')
+                run('mkdir -p ~/public_html/reporting')
         else:
             update()
     
