@@ -1,7 +1,6 @@
 {% extends "common/base.html" %}
 {% load cache %}
 
-{% cache 86400 reporting_page %}
 {% block extra_css %}
     <link rel="stylesheet" href="{{ STATIC_URL }}kpi/js/style.css"/>
     <link rel="stylesheet" href="{{ STATIC_URL }}kpi/css/docs.css"/>
@@ -11,6 +10,7 @@
 {% endblock %}
 
 {% block extra_scripts %}
+{% cache 86400 reporting json %}
 <script src="{{ STATIC_URL }}kpi/js/amstock.js"></script>
 <script src="{{ STATIC_URL }}kpi/js/createGraphs.js"></script>
 <script language="JavaScript">
@@ -54,9 +54,11 @@
         }
     });
 </script>
+{% endcache %}
 {% endblock %}
 
 {% block content %}
+{% cache 86400 reporting graphs %}
 <header class="jumbotron subhead hideprint" id="overview">
 <div class="subnav">
     <ul class="nav nav-pills">
@@ -170,9 +172,9 @@
     <div id="graphOldestsAlerts" style="width: 100%; height: 500px; margin-bottom: 10px;"></div>
 </div>
 </section>
+{% endcache %}
 {% endblock %}
 
 {% block extra_footer %}
 <p>Graphs generated using <a href="http://www.amcharts.com/" target="_blank">Amcharts</a> Javascript library.</p>
 {% endblock %}
-{% endcache %}
