@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block extra_scripts %}
-{% cache 86400 reporting json %}
+{% cache 86400 reporting_json %}
 <script src="{{ STATIC_URL }}kpi/js/amstock.js"></script>
 <script src="{{ STATIC_URL }}kpi/js/createGraphs.js"></script>
 <script language="JavaScript">
@@ -58,7 +58,7 @@
 {% endblock %}
 
 {% block content %}
-{% cache 86400 reporting graphs %}
+{% cache 86400 reporting_graphs %}
 <header class="jumbotron subhead hideprint" id="overview">
 <div class="subnav">
     <ul class="nav nav-pills">
