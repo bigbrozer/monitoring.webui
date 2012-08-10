@@ -1,5 +1,7 @@
 {% extends "common/base.html" %}
+{% load cache %}
 
+{% cache 86400 reporting_page %}
 {% block extra_css %}
     <link rel="stylesheet" href="{{ STATIC_URL }}kpi/js/style.css"/>
     <link rel="stylesheet" href="{{ STATIC_URL }}kpi/css/docs.css"/>
@@ -173,3 +175,4 @@
 {% block extra_footer %}
 <p>Graphs generated using <a href="http://www.amcharts.com/" target="_blank">Amcharts</a> Javascript library.</p>
 {% endblock %}
+{% endcache %}

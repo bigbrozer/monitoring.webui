@@ -87,9 +87,6 @@ def insert():
         RecurrentAlerts.objects.all().delete()
         number += insert_recurrent_alerts()
 
-    # Clean the Django cache
-    cache.clear()
-
     return "\n %s lignes ajoutees" % number
 
 def get_result_nagios():
