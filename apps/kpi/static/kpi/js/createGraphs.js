@@ -1003,12 +1003,12 @@ function createAlerts() {
         period: "MM",
         count: 3,
         label: "3 Month",
-        selected: false
+        selected: true
     }, {
         period: "MM",
         count: 6,
         label: "6 Months",
-        selected: true
+        selected: false
     }, {
         period: "YYYY",
         count: 1,
