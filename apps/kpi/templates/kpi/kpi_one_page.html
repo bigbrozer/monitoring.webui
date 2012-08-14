@@ -10,7 +10,6 @@
 {% endblock %}
 
 {% block extra_scripts %}
-{% comment %}{% cache 14400 reporting_json %}{% endcomment %}
 <script src="{{ STATIC_URL }}kpi/js/amstock.js"></script>
 <script src="{{ STATIC_URL }}kpi/js/createGraphs.js"></script>
 <script language="JavaScript">
@@ -54,11 +53,9 @@
         }
     });
 </script>
-{% comment %}{% endcache %}{% endcomment %}
 {% endblock %}
 
 {% block content %}
-{% comment %}{% cache 14400 reporting_graphs %{% endcomment %}}
 <header class="jumbotron subhead hideprint" id="overview">
 <div class="subnav">
     <ul class="nav nav-pills">
@@ -172,7 +169,6 @@
     <div class="graph" id="graphOldestsAlerts"></div>
 </div>
 </section>
-{% comment %}{% endcache %{% endcomment %}}
 {% endblock %}
 
 {% block extra_footer %}
