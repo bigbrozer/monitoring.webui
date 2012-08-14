@@ -1,0 +1,23 @@
+{% extends "common/base.html" %}
+
+{% block content %}
+<div class="hero-unit">
+    <h1>{{ announce.hero_unit_title }}</h1>
+    <p>{{ announce.hero_unit_desc }}</p>
+</div>
+
+<div class="page-header">
+    <h1>{{ announce.title }}</h1>
+</div>
+
+<div class="row">
+    <div class="span8 offset2">
+        {{ announce.content }}
+        <div class="row">
+            <div class="span8">
+                <a href="{{ url_redirect }}" class="btn btn-primary btn-large pull-right">Got it !</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

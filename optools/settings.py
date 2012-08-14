@@ -128,6 +128,8 @@ INSTALLED_APPS = (
     'apps.nagios',
     # Reporting
     'apps.kpi',
+    # Announce
+    'apps.announce',
     # Admin interface
     'django.contrib.admin',
 )
