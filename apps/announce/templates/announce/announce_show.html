@@ -1,10 +1,14 @@
 {% extends "common/base.html" %}
 
+{% load markup %}
+
 {% block content %}
+{% if announce.show_hero_unit %}
 <div class="hero-unit">
     <h1>{{ announce.hero_unit_title }}</h1>
-    <p>{{ announce.hero_unit_desc }}</p>
+    <p>{{ announce.hero_unit_desc|markdown }}</p>
 </div>
+{% endif %}
 
 <div class="page-header">
     <h1>{{ announce.title }}</h1>
@@ -12,10 +16,10 @@
 
 <div class="row">
     <div class="span8 offset2">
-        {{ announce.content }}
+        {{ announce.content|markdown }}
         <div class="row">
             <div class="span8">
-                <a href="{{ url_redirect }}" class="btn btn-primary btn-large pull-right">Got it !</a>
+                <a href="{{ redirect_url }}" class="btn btn-primary btn-large pull-right">Got it !</a>
             </div>
         </div>
     </div>

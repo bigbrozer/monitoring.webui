@@ -1,42 +1,30 @@
 from django.conf.urls.defaults import *
-from django.conf import settings
-from django.views.generic import TemplateView
-from django.contrib.auth.decorators import login_required
-
-from apps.common.views import UserEdit
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Admin
+    (r'^admin/', include(admin.site.urls)),
+    
+    # Applications
+    # ============
+    #
+    # Common
+    (r'', include('apps.common.urls')),
+
+    # Reporting
+    (r'', include('apps.kpi.urls')),
 
     # Portal
     url(r'^$', 'apps.portal.views.portal_home', name='portal_home'),
 
-    # Uncomment the next line to enable the admin:
-    (r'^admin/', include(admin.site.urls)),
-    
-    # Login / Logout
-    url(r'^accounts/login/$', 'apps.common.views.http_login', name='login'),
-    url(r'^accounts/profile/$', login_required(UserEdit.as_view()), name='user_profile'),
+    # Announce
+    (r'^announce/', include('apps.announce.urls')),
 
-    # Misc
-    url(r'^support/browser/$', 'apps.common.views.browser_out_of_date', name='browser_out_of_date'),
-    (r'^maintenance/$', TemplateView.as_view(template_name='maintenance.html')),
-    (r'^error/404/$', TemplateView.as_view(template_name='404.html')),
-    (r'^error/500/$', TemplateView.as_view(template_name='500.html')),
-
-    # Applications
-    # ============
-    #
     # Nagios
     (r'^nagios/satellites/export/$', 'apps.nagios.views.get_satellite_list'),
     (r'^nagios/satellites/export/(?P<format>\w+)$', 'apps.nagios.views.get_satellite_list'),
-
-    # Reporting
-    url(r'^reporting/$', 'apps.kpi.indicateurs.indicateurs', name='reporting_home'),
 )
 

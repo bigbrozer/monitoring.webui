@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login
 import httpagentparser
 
 from apps.common.forms import UserEditForm
+from apps.announce.models import Announcement
 
 def http_login(request):
     """
@@ -44,8 +45,16 @@ def http_login(request):
         else:
             response = redirect('user_profile')
 
-    # Login is successfull, redirect and set the cookie
+    # Login is successfull, setting cookie
     response.set_cookie('optools_logged_in', 'true')
+
+    # Check if we must show an announcement
+    if Announcement.objects.get(is_enabled=True):
+        if redirection:
+            return redirect('%s?redirect=%s' % (reverse('announce'), redirection))
+        else:
+            return redirect('announce')
+
     return response
 
 class UserEdit(UpdateView):

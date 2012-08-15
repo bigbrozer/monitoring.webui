@@ -13,7 +13,8 @@ class Announcement(models.Model):
         max_length=128
     )
     hero_unit_desc = models.TextField(
-        help_text="Enter the description used in Hero Unit block.",
+        help_text="Enter the description used in Hero Unit block. " \
+                  "Use <a href=\"http://daringfireball.net/projects/markdown/syntax\">Markdown</a> syntax.",
         max_length=255
     )
     show_hero_unit = models.BooleanField(

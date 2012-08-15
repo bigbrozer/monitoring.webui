@@ -1,5 +1,4 @@
-from apps.kpi.models import KpiNagios, KpiRedmine
-from apps.kpi.models import  CountNotifications, RecurrentAlerts, OldestAlerts
+from models import KpiNagios, KpiRedmine, CountNotifications, RecurrentAlerts, OldestAlerts
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.shortcuts import redirect
