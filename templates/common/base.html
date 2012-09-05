@@ -2,7 +2,7 @@
 
 {% block page %}
 <!-- Top menu -->
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
             <a class="brand" href="{% url portal_home %}">Central Operations</a>
@@ -24,7 +24,7 @@
                 </ul>
             </div>
             {% else %}
-            <p class="navbar-text pull-right"><a class="btn" href="#modal-prelogin-message" data-toggle="modal"><i class="icon-user"></i> Login</a></p>
+            <div class="pull-right"><a class="btn" href="#modal-prelogin-message" data-toggle="modal"><i class="icon-user"></i> Login</a></div>
             {% endif %}
         </div>
     </div>
