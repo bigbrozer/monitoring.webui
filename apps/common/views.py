@@ -35,10 +35,18 @@ def http_login(request):
 
     # Test if user filled his profile
     if user.first_name and user.last_name and user.email:
-        if redirection:
-            response = redirect(redirection)
-        else:
-            response = redirect('portal_home')
+        # Check if we must show an announcement
+        try:
+            if Announcement.objects.get(is_enabled=True):
+                if redirection:
+                    response = redirect('%s?redirect=%s' % (reverse('announce'), redirection))
+                else:
+                    response = redirect('announce')
+        except Announcement.DoesNotExist:
+            if redirection:
+                response = redirect(redirection)
+            else:
+                response = redirect('portal_home')
     else:
         if redirection:
             response = redirect('%s?redirect=%s' % (reverse('user_profile'), redirection))
@@ -47,13 +55,6 @@ def http_login(request):
 
     # Login is successfull, setting cookie
     response.set_cookie('optools_logged_in', 'true')
-
-    # Check if we must show an announcement
-    if Announcement.objects.get(is_enabled=True):
-        if redirection:
-            return redirect('%s?redirect=%s' % (reverse('announce'), redirection))
-        else:
-            return redirect('announce')
 
     return response
 
