@@ -15,13 +15,9 @@
 </div>
 
 <div class="row">
-    <div class="span8 offset2">
+    <div class="span12">
         {{ announce.content|markdown }}
-        <div class="row">
-            <div class="span8">
-                <a href="{{ redirect_url }}" class="btn btn-primary btn-large pull-right">Got it !</a>
-            </div>
-        </div>
+        <a href="{{ redirect_url }}" class="btn btn-primary btn-large pull-right">Got it !</a>
     </div>
 </div>
 {% endblock %}
