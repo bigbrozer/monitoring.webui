@@ -2,13 +2,10 @@
 
 html, body {
     height: 100%;
+    padding-top: 40px;
 }
 
 /* Wrapper */
-#wrap > .container {
-    padding-top: 70px;
-}
-
 #wrap {
     min-height: 100%;
 }
@@ -23,7 +20,7 @@ footer {
     position: relative;
     height: 100px;
     clear:both;
-    margin-top: -100px; /* negative value of footer height */
+    margin-top: -90px; /* negative value of footer height */
     background-color: #333;
     color: #999;
 }
