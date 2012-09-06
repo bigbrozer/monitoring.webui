@@ -27,12 +27,14 @@ from fabric.colors import *
 from contextlib import nested
 from monitoring.fabric import servers
 
+
 def static():
     """Run collectstatic for the project."""
     env.user = 'django'
     with nested(prefix('workon optools'), cd('optools')):
         puts(green('Updating static files...'))
         run('python ./manage.py collectstatic --noinput -c')
+
 
 @task
 @hosts('monitoring-dc.app.corp')
@@ -41,15 +43,16 @@ def update():
     env.user = 'django'
 
     puts(green('Updating project\'s branch master.', bold=True))
-    
+
     puts(cyan('- Pushing branch master and tags to remote central...'))
     local('git push central master && git push central --tags')
-    
+
     puts(cyan('- Applying update...'))
     run('cd optools && git pull')
-    
+
     # Collect static files
     static()
+
 
 @task
 @hosts('monitoring-dc.app.corp')
@@ -67,7 +70,7 @@ def install():
                 run('mkdir -p ~/public_html/reporting')
         else:
             update()
-    
+
     # Create the virtualenv for the project
     puts(green('Creating Python virtual environment...'))
     run('mkvirtualenv optools')
@@ -85,6 +88,7 @@ def install():
     # Collect static files
     static()
 
+
 @task
 @hosts('monitoring-dc.app.corp')
 def update_kpi():
@@ -92,9 +96,9 @@ def update_kpi():
     env.user = "django"
     run('/home/django/optools/cron/update.sh')
 
+
 @task
 @hosts('monitoring-dc.app.corp')
 def clean_cache():
     """Clean the Django cache."""
     sudo('rm -rf /var/tmp/django_cache/optools')
-
