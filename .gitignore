@@ -6,3 +6,5 @@ settings_local.py
 *.db-journal
 .ropeproject/
 *.sublime-*
+.tags
+.tags_sorted_by_file
