@@ -24,7 +24,6 @@ urlpatterns = patterns('',
     (r'^announce/', include('apps.announce.urls')),
 
     # Nagios
-    (r'^nagios/satellites/export/$', 'apps.nagios.views.get_satellite_list'),
-    (r'^nagios/satellites/export/(?P<format>\w+)$', 'apps.nagios.views.get_satellite_list'),
+    (r'^nagios/', include('apps.nagios.urls')),
 )
 
