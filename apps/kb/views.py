@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
+# Local app imports
+import wiki
 
 def show_kb(request, kb_url):
     """
@@ -25,4 +27,13 @@ def show_kb(request, kb_url):
     Template:
         nagios/procedure.html
     """
-    return HttpResponse(kb_url)
+    kb_file = None
+    kb_page = None
+
+    # Try to find the procedure
+    try:
+        kb_file, kb_page = wiki.find_procedure(kb_url, directory='/tmp/pages')
+    except TypeError:
+        pass
+
+    return HttpResponse(kb_page)
