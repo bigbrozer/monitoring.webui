@@ -1,5 +1,5 @@
 """
-:mod:`nagios.kb` to handle Alert procedures (KB)
+:mod:`kb.wiki` to handle Alert procedures (KB)
 """
 
 # TODO: validate the wiki url against a Regexp.
