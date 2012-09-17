@@ -39,9 +39,9 @@ def http_login(request):
         try:
             if Announcement.objects.get(is_enabled=True):
                 if redirection:
-                    response = redirect('%s?redirect=%s' % (reverse('announce'), redirection))
+                    response = redirect('%s?redirect=%s' % (reverse('announce_show'), redirection))
                 else:
-                    response = redirect('announce')
+                    response = redirect('announce_show')
         except Announcement.DoesNotExist:
             if redirection:
                 response = redirect(redirection)
