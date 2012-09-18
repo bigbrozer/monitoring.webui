@@ -6,6 +6,7 @@ from django.views.generic import UpdateView
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 
 import httpagentparser
 
@@ -27,11 +28,15 @@ def http_login(request):
 
     # Find user
     if settings.DEVEL:
-        user = User.objects.get(username='test')
+        user = User.objects.get(username='test@corp')
         userauth = authenticate(username=user.username, password='test')
         login(request, userauth)
     else:
         user = User.objects.get(username=request.META['REMOTE_USER'])
+
+    # Validation
+    if not user.is_active or user.username.startswith('0') or not user.username.endswith('@corp'):
+        return HttpResponse('Invalid account. Please use your <strong>normal</strong> user account and append <em>@corp</em>.')
 
     # Test if user filled his profile
     if user.first_name and user.last_name and user.email:
