@@ -38,6 +38,7 @@ def http_login(request):
     if not user.is_active or user.username.startswith('0') or not user.username.endswith('@corp'):
         # Be sure that the login will not be used anymore
         user.is_active = False
+        user.save()
         return HttpResponse('Invalid account. Please use your <strong>normal</strong> user account and append <em>@corp</em>.')
 
     # Test if user filled his profile
