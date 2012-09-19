@@ -6,6 +6,7 @@ from django.views.generic import UpdateView
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 
 import httpagentparser
 
@@ -27,11 +28,18 @@ def http_login(request):
 
     # Find user
     if settings.DEVEL:
-        user = User.objects.get(username='test')
+        user = User.objects.get(username='test@corp')
         userauth = authenticate(username=user.username, password='test')
         login(request, userauth)
     else:
         user = User.objects.get(username=request.META['REMOTE_USER'])
+
+    # Validation
+    if not user.is_active or user.username.startswith('0') or not user.username.endswith('@corp'):
+        # Be sure that the login will not be used anymore
+        user.is_active = False
+        user.save()
+        return HttpResponse('Invalid account. Please use your <strong>normal</strong> user account and append <em>@corp</em>.')
 
     # Test if user filled his profile
     if user.first_name and user.last_name and user.email:
@@ -39,9 +47,9 @@ def http_login(request):
         try:
             if Announcement.objects.get(is_enabled=True):
                 if redirection:
-                    response = redirect('%s?redirect=%s' % (reverse('announce'), redirection))
+                    response = redirect('%s?redirect=%s' % (reverse('announce_show'), redirection))
                 else:
-                    response = redirect('announce')
+                    response = redirect('announce_show')
         except Announcement.DoesNotExist:
             if redirection:
                 response = redirect(redirection)
