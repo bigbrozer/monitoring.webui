@@ -172,7 +172,7 @@ Columns: host_name description notes_url_expanded contact_groups
     my_simple_report.write("written;procedure;\n")
     procedures = {}
     for services in services_all:
-        procedure_path = services[2].split('/')[-1].replace(':', '/').lower()
+        procedure_path = services[2].split('/')[-1].strip(':').replace(':', '/').lower()
         empty = 1
         for serv in services[3]:
             if empty == 1:
