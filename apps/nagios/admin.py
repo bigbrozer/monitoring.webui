@@ -4,19 +4,20 @@ from django.contrib import admin
 from apps.nagios.models import Satellite
 
 class SatelliteAdmin(admin.ModelAdmin):
-	list_display = ('name', 'alias', 'fqdn', 'live_port', 'nagios_url')
-	fieldsets = (
-		(None, {
-			'fields': ('name',)
-		}),
-		('Network settings', {
-			'fields': ('ip_address', 'alias', 'fqdn')
-		}),
-		('Livestatus settings', {
-			'classes': ('collapse',),
-			'fields': ('live_port', 'nagios_url')
-		}),
-	)
+    list_display = ('name', 'alias', 'fqdn', 'ip_address')
+    fieldsets = (
+        (None, {
+            'fields': ('name',)
+        }),
+        ('Network settings', {
+            'fields': ('ip_address', 'alias', 'fqdn')
+        }),
+        ('Livestatus settings', {
+            'classes': ('collapse',),
+            'fields': ('live_port', 'nagios_url')
+        }),
+    )
+    ordering = ['name']
 
 admin.site.register(Satellite, SatelliteAdmin)
 
