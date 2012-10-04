@@ -49,7 +49,7 @@
 	<p>Use the following Export URLs to have the list of satellites as JSON or CSV:</p>
 
 	<ul>
-		<li><strong>JSON</strong>: <code>http://monitoring-dc.app.corp/optools{% url satellites_export format='json' %}</code></li>
-		<li><strong>CSV</strong>: <code>http://monitoring-dc.app.corp/optools{% url satellites_export format='csv' %}</code></li>
+		<li><strong>JSON</strong>: <code>http://monitoring-dc.app.corp{% url satellites_export format='json' %}</code></li>
+		<li><strong>CSV</strong>: <code>http://monitoring-dc.app.corp{% url satellites_export format='csv' %}</code></li>
 	</ul>
 {% endblock %}
