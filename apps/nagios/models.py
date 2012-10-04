@@ -33,6 +33,9 @@ class Satellite(models.Model):
         help_text='Use at your own risk ! Let it be default if you don\'t know what you are doing'
     )
 
+    class Meta:
+        ordering = ['name']
+
     def __unicode__(self):
         return u'{0} ({1})'.format(self.name, self.alias)
 

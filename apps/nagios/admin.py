@@ -17,7 +17,6 @@ class SatelliteAdmin(admin.ModelAdmin):
             'fields': ('live_port', 'nagios_url')
         }),
     )
-    ordering = ['name']
 
 admin.site.register(Satellite, SatelliteAdmin)
 
