@@ -1,0 +1,54 @@
+{% extends "common/base.html" %}
+
+{% block content %}
+	<div class="page-header">
+	    <h1>Nagios Satellites <small>enabled in production</small></h1>
+	</div>
+
+	<table class="table table-hover">
+	    <thead>
+	        <tr>
+	            <th>Datacenter</th>
+	            <th>Alias</th>
+	            <th>Hostname</th>
+	            <th>IP Address</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        {% for sat in satellite_list %}
+	        <tr class="success">
+	            <td>{{ sat.name }}</td>
+	            <td>{{ sat.alias }}</td>
+	            <td>{{ sat.fqdn }}</td>
+	            <td>{{ sat.ip_address }}</td>
+	        </tr>
+	        {% endfor %}
+	    </tbody>
+	</table>
+
+	<div class="page-header">
+		<h2>Network ports <small>allow access from satellites to monitored equipments in DMZ</small></h2>
+	</div>
+
+	<p>You should pay attention to open the following ports on firewall in order to authorize satellites to query
+	monitored equipments.</p>
+
+	<ul>
+		<li>SNMP (<em>UDP: 161</em>)</li>
+		<li>SSH (<em>TCP: 22</em>)</li>
+		<li>WMI (<em>TCP: 135, TCP High ports: 1024-65535</em>)</li>
+	</ul>
+
+	<p>Extra ports could be required for database connections, etc... this is on demand.</p>
+
+	<div class="page-header">
+		<h2>Satellites API <small>use this in scripts</small></h2>
+	</div>
+
+	<p>Use the following Export URLs to have the list of satellites as JSON or CSV:</p>
+
+	<ul>
+		<li><strong>JSON</strong>: <code>http://monitoring-dc.app.corp/optools{% url satellites_export format='json' %}</code></li>
+		<li><strong>CSV</strong>: <code>http://monitoring-dc.app.corp/optools{% url satellites_export format='csv' %}</code></li>
+	</ul>
+{% endblock %}
