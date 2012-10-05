@@ -6,7 +6,7 @@ from django.core import serializers
 from django.views.generic import ListView
 
 # Models imports
-from apps.nagios.models import Satellite
+from apps.nagios.models import Satellite, SecurityPort
 
 # View definitions
 # ================
@@ -24,12 +24,16 @@ def get_satellite_list(request, format='json'):
 
 # Show the list of satellites
 class SatelliteListView(ListView):
-    context_object_name = "satellite_list"
+    context_object_name = "systems_list"
     model = Satellite
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(SatelliteListView, self).get_context_data(**kwargs)
-        context['section'] = {'satellites': 'active'}
+
+        # Adding extra context data to the view
+        context['section'] = {'systems': 'active'}
         context['base_url'] = self.request.build_absolute_uri('/').strip('/')
+        context['ports'] = SecurityPort.objects.all()
+
         return context

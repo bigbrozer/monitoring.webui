@@ -5,7 +5,7 @@ from apps.nagios.views import SatelliteListView
 urlpatterns = patterns('apps.nagios.views',
     url(r'^satellites/$',
         SatelliteListView.as_view(),
-        name='satellites_list'),
+        name='systems_list'),
     url(r'^satellites/export/$',
         view='get_satellite_list'),
     url(r'^satellites/export/(?P<format>\w+)$',
