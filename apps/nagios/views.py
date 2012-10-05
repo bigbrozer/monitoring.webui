@@ -31,4 +31,5 @@ class SatelliteListView(ListView):
         # Call the base implementation first to get a context
         context = super(SatelliteListView, self).get_context_data(**kwargs)
         context['section'] = {'satellites': 'active'}
+        context['base_url'] = self.request.build_absolute_uri('/').strip('/')
         return context
