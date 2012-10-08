@@ -2,50 +2,98 @@
 :mod:`kb.wiki` to handle Alert procedures (KB)
 """
 
-# TODO: validate the wiki url against a Regexp.
-
 # Std lib imports
 import os
+import re
+
+# Django imports
+os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
+from django.conf import settings
 
 
-def find_procedure(kb, directory='/var/www/kb/data/pages'):
+# Import *
+__all__ = ['KbError', 'KbUrlMalformed', 'get_procedure_details']
+
+# Dokuwiki config
+DOKUWIKI_BASE_URL = '/kb' if not settings.DEBUG else 'http://monitoring-dc.app.corp/kb'
+DOKUWIKI_DIR = '/var/www/kb/data/pages' if not settings.DEBUG else '/tmp/pages'
+
+
+# Exceptions
+class KbError(Exception):
     """
-    Return the first procedure page based on a Wiki link or None. Check refs #1493.
-
-    :param kb: the full dokuwiki URL of the form ``xxx:xxx:xxx``...
-    :returns: a tuple (kb_file, kb_url).
+    Base class for all exceptions related to KB.
     """
 
-    # Init logging for debugging
-    import logging
-    logger = logging.getLogger('nagios.kb.find_procedure')
+    def __init__(self, message, *args, **kwargs):
+        self.message = message
+        super(KbError, self).__init__(self.message)
 
-    # Clean wiki url and transform to a path
-    kb_root = directory
-    kb_path = kb.strip(':').replace(':', '/')
-    kb_file = os.path.join(kb_root, "{0}.txt".format(kb_path))
+    def __str__(self):
+        return self.message
 
-    logger.debug("Root: %s, KB Path: %s, File: %s", kb_root, kb_path, kb_file)
 
-    # Try to find the procedure until a file ending with *.txt is found inside the procedure root directory.
-    while not os.path.isfile(kb_file):
-        kb_path = os.path.dirname(kb_path)
-        if not kb_path:
-            # Go away, procedure is not written
-            return None
+class KbUrlMalformed(KbError):
+    """
+    Raised when given procedure URL does not validate.
+    """
+    def __init__(self, kb, regexp):
+        self.message = 'KB URL \"%s\" is malformed. Must be \"%s\" !' % (kb, regexp)
+        super(KbUrlMalformed, self).__init__(self.message)
 
-        kb_file = os.path.join(kb_root, "{0}.txt".format(kb_path))
-        logger.debug("No procedure. Go one level below: %s. KB: %s", kb_file, kb_path)
 
-    return kb_file, kb_path.replace('/', ':')
+# Procedures
+def get_procedure_details(namespace):
+    """
+    Return details about all KB of the specified ``namespace``. Check request #1493.
 
+    It returns a list of dict containing all info about a namespace, use the following keys:
+
+    * **created**: is the procedure is written ?
+    * **edit_url**: link to edit procedure in dokuwiki
+    * **file**: local file storing the procedure content
+    * **namespace**: dokuwiki URL for the procedure (xxx:xxx:xxx...)
+    * **page**: name of the procedure page
+
+    :param namespace: the dokuwiki's namespace of the form ``xxx:xxx:xxx[...]``.
+    :rtype: list
+    """
+
+    # Test KB URL before proceeding
+    kb_url_regexp = r'^([a-zA-Z0-9]+:*)+$'
+    if not re.match(kb_url_regexp, namespace):
+        raise KbUrlMalformed(namespace, kb_url_regexp)
+
+    kb_namespaces = namespace.strip(':').split(':')
+    kb_details = []
+
+    # Browse all namespaces levels and get info on each namespaces
+    for pos, nsp in enumerate(kb_namespaces):
+        pos += 1
+        kb_info = {}
+
+        kb_info['page'] = nsp
+        kb_info['namespace'] = ':'.join(kb_namespaces[:pos])
+        kb_info['file'] = os.path.join(DOKUWIKI_DIR, "{0}.txt".format('/'.join(kb_namespaces[:pos])))
+        kb_info['edit_url'] = '{0}/{1}?do=edit'.format(DOKUWIKI_BASE_URL, kb_info['namespace'])
+
+        if os.path.isfile(kb_info['file']):
+            kb_info['created'] = True
+        else:
+            kb_info['created'] = False
+
+        kb_details.append(kb_info)
+
+    return kb_details
 
 # Module testing
 if __name__ == '__main__':
     import logging
-    logging.basicConfig(level=logging.DEBUG, format="[%(levelname)s] %(asctime)s | %(module)s <%(funcName)s>: %" \
-                                                    "(message)s")
-    logger = logging.getLogger('nagios.kb')
+    from pprint import pprint
 
-    procedure = find_procedure('app:metis:prod:oss:tata:', directory='/tmp/pages')
-    logger.debug("Procedure: %s", procedure)
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s (<%(funcName)s>)")
+    logger = logging.getLogger('kb.wiki')
+
+    page = 'app:metis:prod:oss:tata'
+
+    pprint(get_procedure_details(page))
