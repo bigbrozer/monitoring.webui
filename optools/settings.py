@@ -131,6 +131,8 @@ INSTALLED_APPS = (
     'apps.kpi',
     # Announce
     'apps.announce',
+    # KB
+    'apps.kb',
     # Admin interface
     'django.contrib.admin',
 )
