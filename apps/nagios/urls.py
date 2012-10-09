@@ -12,4 +12,3 @@ urlpatterns = patterns('apps.nagios.views',
         view='get_satellite_list',
         name='satellites_export'),
 )
-

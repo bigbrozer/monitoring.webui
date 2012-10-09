@@ -25,5 +25,8 @@ urlpatterns = patterns('',
 
     # Nagios
     (r'^nagios/', include('apps.nagios.urls')),
+
+    # KB
+    (r'^kb/', include('apps.kb.urls')),
 )
 

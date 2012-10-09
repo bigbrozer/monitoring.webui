@@ -1,9 +1,14 @@
+"""
+Django views for application announce.
+"""
+
+# Django imports
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.shortcuts import redirect
-from django.http import HttpResponse
 
+# Models imports
 from models import Announcement
+
 
 def show(request):
     """

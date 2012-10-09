@@ -1,0 +1,43 @@
+{% extends "common/base.html" %}
+
+{% block extra_css %}
+	<link href="{{ STATIC_URL }}kb/css/kb.css" rel="stylesheet">
+{%  endblock %}
+
+{% block content %}
+	<div class="page-header">
+		<h1>Procedure management <small>for <strong>{{ kb_requested.namespace }}</strong></small></h1>
+	</div>
+
+	<div class="row">
+		<div class="span12">
+			{% if not kb_found %}
+				<h4 class="alert alert-danger">The requested <a href="javascript:void(0);" rel="tooltip" title="Procedure">KB</a>
+					does not contains any valid procedure within all namespaces !</h4>
+			{% else %}
+				<h4 class="alert alert-warning">The requested <a href="javascript:void(0);" rel="tooltip" title="Procedure">KB</a>
+					does not exist but there are some at others levels !</h4>
+			{% endif %}
+
+			{% if user_is_kb_manager %}
+				<p>It appears that you are responsible to create procedures for alerts. You are invited to create the
+					procedure now, please select the namespace where you want to edit the procedure.</p>
+
+				<p>More you go to the right, more precise will be your procedure. More you go to the left, more general will be your procedure.</p>
+
+				<div class="kb-namespace-select">
+					{% for kb in kb_details %}{% if forloop.first %}{{ kb.page }}{% else %}<a class='{% if not kb.created %}kb-link-missing{% endif %}' href="{{ kb.edit_url }}">{{ kb.page }}</a>{% endif %}{% if not forloop.last %}:{% endif %}{% endfor %}
+				</div>
+				<h4>Legend</h4>
+				<ul>
+					<li><strong>namespace</strong> - Cannot be created, used as a folder.</li>
+					<li><strong class="kb-link-missing">namespace</strong> - Missing, should be created.</li>
+					<li><strong><a>namespace</a></strong> - Link to procedure exist.</li>
+				</ul>
+			{% else %}
+				<p>Please get in contact with the application or system responsibles in order to make them create the
+					procedure to handle this alert.</p>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
