@@ -79,10 +79,6 @@ class UserEdit(UpdateView):
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super(UserEdit, self).get_context_data(**kwargs)
-
-        # Adding extra context data to the view
-        context['request'] = self.request
-
         return context
 
     def get_object(self, queryset=None):
