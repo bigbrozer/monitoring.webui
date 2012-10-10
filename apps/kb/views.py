@@ -31,7 +31,7 @@ def show_kb(request, kb_namespace):
 
     # Who is
     user = request.user
-    user_is_kb_manager = user.groups.filter(name='kb_manager')
+    user_is_helpdesk = user.groups.filter(name='helpdesk')
 
     kb_found = None
 
@@ -47,10 +47,10 @@ def show_kb(request, kb_namespace):
     # Redirect to the procedure if the requested is created
     if kb_requested['created']:
         return redirect("{}/{}".format(wiki.DOKUWIKI_BASE_URL, kb_requested['namespace']))
-    # Redirect to the procedure one has been found and user is not a KB Manager
-    if not user_is_kb_manager and kb_found:
+    # Redirect to the first procedure found if user is not helpdesk
+    if user_is_helpdesk and kb_found:
         return redirect("{}/{}".format(wiki.DOKUWIKI_BASE_URL, kb_found['namespace']))
-    # User is a KB Manager or no procedure exist
+    # No procedure exist or user is not helpdesk
     else:
         return render_to_response(
             "kb/manage_procedure.html",
