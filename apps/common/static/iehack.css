@@ -1,0 +1,7 @@
+/* Fucking IE Hacks */
+
+/* Gravatar in user menu */
+body div.navbar img.gravatar {
+    width: 14px;
+    height: 14px;
+}
