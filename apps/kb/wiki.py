@@ -75,7 +75,8 @@ def get_procedure_details(namespace):
         kb_info['page'] = nsp
         kb_info['namespace'] = ':'.join(kb_namespaces[:pos])
         kb_info['file'] = os.path.join(DOKUWIKI_DIR, "{0}.txt".format('/'.join(kb_namespaces[:pos])))
-        kb_info['edit_url'] = '{0}/{1}?do=edit'.format(DOKUWIKI_BASE_URL, kb_info['namespace'])
+        kb_info['read_url'] = '{0}/{1}'.format(DOKUWIKI_BASE_URL, kb_info['namespace'])
+        kb_info['edit_url'] = '{0}?do=edit'.format(kb_info['read_url'])
 
         if os.path.isfile(kb_info['file']):
             kb_info['created'] = True

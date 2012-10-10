@@ -37,9 +37,10 @@
 
 				<p>More you go to the right, more precise will be your procedure. More you go to the left, more general will be your procedure.</p>
 
-				<div class="kb-namespace-select">
-					{% for kb in kb_details %}{% if forloop.first %}{{ kb.page }}{% else %}<a class='{% if not kb.created %}kb-link-missing{% endif %}' href="{{ kb.edit_url }}">{{ kb.page }}</a>{% endif %}{% if not forloop.last %}:{% endif %}{% endfor %}
-				</div>
+				<ul class="kb-namespace-select">
+					{% for kb in kb_details %}{% if forloop.first %}{{ kb.page }}{% else %}<span class="dropdown"><a class='{% if not kb.created %}kb-link-missing {% endif %}dropdown-toggle' data-toggle="dropdown" href="#">{{ kb.page }}</a><ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"><li><a href="{{ kb.edit_url }}">Edit</a></li>{% if kb.created %}<li><a href="{{ kb.read_url }}">Read</a></li>{% endif %}</ul></span>{% endif %}{% if not forloop.last %}:{% endif %}{% endfor %}
+				</ul>
+
 				<h4>Legend</h4>
 				<ul>
 					<li><strong>namespace</strong> - Cannot be created, used as a folder.</li>
