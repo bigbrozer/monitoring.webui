@@ -15,3 +15,5 @@ urlpatterns = patterns('apps.common.views',
     (r'^error/404/$', TemplateView.as_view(template_name='404.html')),
     (r'^error/500/$', TemplateView.as_view(template_name='500.html')),
 )
+
+handler500 = TemplateView.as_view(template_name='500.html')
