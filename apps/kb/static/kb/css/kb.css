@@ -18,6 +18,7 @@
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     background-color: #ededed;
+    overflow-x: auto;
 }
 
 .kb-namespace-select:after {
