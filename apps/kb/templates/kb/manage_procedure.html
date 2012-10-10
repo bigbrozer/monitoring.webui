@@ -5,6 +5,18 @@
 {%  endblock %}
 
 {% block content %}
+	{% if user.is_authenticated and not user_is_helpdesk %}
+	<div class="hero-unit">
+		<h2>Discover the new KB Management system</h2>
+		<p>This new system handles the procedure creation and organization.
+			It was done to introduce a way to create more general procedure,
+			with the possibility to create specific ones like before.</p>
+		<p>
+			<a href="http://monitoring-dc.app.corp/doc/kb/index.html" class="btn btn-primary btn-large" target="_blank"><i class="icon-question-sign icon-white"></i> Learn how to use it</a>
+		</p>
+	</div>
+	{% endif %}
+
 	<div class="page-header">
 		<h1>Procedure management <small>for <strong>{{ kb_requested.namespace }}</strong></small></h1>
 	</div>
