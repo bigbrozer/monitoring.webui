@@ -104,3 +104,10 @@ def browser_out_of_date(request):
     else:
         return redirect('portal_home')
 
+
+def server_error(request):
+    """
+    Handle 500 error codes.
+    """
+    title = "Severe error !"
+    return render_to_response("500.html", locals(), context_instance = RequestContext(request))
