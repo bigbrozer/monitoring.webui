@@ -64,7 +64,7 @@ def get_procedure_details(namespace):
     if not re.match(kb_url_regexp, namespace):
         raise KbUrlMalformed(namespace, kb_url_regexp)
 
-    kb_namespaces = namespace.strip(':').split(':')
+    kb_namespaces = namespace.lower().strip(':').split(':')
     kb_details = []
 
     # Browse all namespaces levels and get info on each namespaces
