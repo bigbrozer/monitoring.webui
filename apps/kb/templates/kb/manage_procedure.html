@@ -19,7 +19,7 @@
 					does not exist but there are some at others levels !</h4>
 			{% endif %}
 
-			{% if not user_is_helpdesk %}
+			{% if user.is_authenticated and not user_is_helpdesk %}
 				<p>It appears that you are responsible to create procedures for alerts. You are invited to create the
 					procedure now, please select the namespace where you want to edit the procedure.</p>
 
