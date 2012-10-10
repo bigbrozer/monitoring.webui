@@ -60,7 +60,7 @@ def get_procedure_details(namespace):
     """
 
     # Test KB URL before proceeding
-    kb_url_regexp = r'^([a-zA-Z0-9]+:*)+$'
+    kb_url_regexp = r'^([a-zA-Z0-9_-]+:*)+$'
     if not re.match(kb_url_regexp, namespace):
         raise KbUrlMalformed(namespace, kb_url_regexp)
 
