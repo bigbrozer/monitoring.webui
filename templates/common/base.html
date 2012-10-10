@@ -1,5 +1,7 @@
 {% extends "common/html_headers.html" %}
 
+{% load gravatar %}
+
 {% block page %}
 <!-- Top menu -->
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -19,7 +21,7 @@
             {% if user.is_authenticated %}
             <div class="btn-group pull-right">
                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="icon-user"></i> {% if user.first_name and user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else %}Edit your profile !{% endif %} <span class="caret"></span>
+                    {% if user.email %}{% gravatar_img_for_email user.email 14 %}{% else %}<i class="icon-user"></i>{% endif %} {% if user.first_name and user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else %}Edit your profile !{% endif %} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="{% url user_profile %}">Profile</a></li>
