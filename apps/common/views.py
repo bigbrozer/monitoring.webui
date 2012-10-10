@@ -1,9 +1,10 @@
+import hashlib
+
 from django.shortcuts import render_to_response, redirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.views.generic import UpdateView
-from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
@@ -12,6 +13,7 @@ import httpagentparser
 
 from apps.common.forms import UserEditForm
 from apps.announce.models import Announcement
+
 
 def http_login(request):
     """
@@ -66,12 +68,22 @@ def http_login(request):
 
     return response
 
+
 class UserEdit(UpdateView):
     """
     Class based view to show the User profile editing form.
     """
     form_class = UserEditForm
     model = User
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(UserEdit, self).get_context_data(**kwargs)
+
+        # Adding extra context data to the view
+        context['request'] = self.request
+
+        return context
 
     def get_object(self, queryset=None):
         obj = User.objects.get(username=self.request.user)
@@ -82,6 +94,7 @@ class UserEdit(UpdateView):
             return self.request.GET['redirect']
         except KeyError:
             return reverse("portal_home")
+
 
 def browser_out_of_date(request):
     """
