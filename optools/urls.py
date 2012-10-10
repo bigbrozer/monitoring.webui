@@ -4,6 +4,8 @@ from django.conf.urls import *
 from django.contrib import admin
 admin.autodiscover()
 
+handler500 = 'apps.common.views.server_error'
+
 urlpatterns = patterns('',
     # Admin
     (r'^admin/', include(admin.site.urls)),
