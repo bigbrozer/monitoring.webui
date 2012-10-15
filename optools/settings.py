@@ -2,7 +2,7 @@
 
 import os
 
-PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+PROJECT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 # Turn off debugging by default
 DEBUG = False

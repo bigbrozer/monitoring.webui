@@ -16,7 +16,7 @@ __all__ = ['KbError', 'KbUrlMalformed', 'get_procedure_details']
 
 # Dokuwiki config
 DOKUWIKI_BASE_URL = '/kb' if not settings.DEBUG else 'http://monitoring-dc.app.corp/kb'
-DOKUWIKI_DIR = '/var/www/kb/data/pages' if not settings.DEBUG else '/tmp/pages'
+DOKUWIKI_DIR = '/var/www/kb/data/pages' if not settings.DEBUG else os.path.join(settings.PROJECT_PATH, 'var/pages')
 
 
 # Exceptions
