@@ -1,0 +1,42 @@
+{% extends "common/base.html" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Procedure rating
+            <small>rate quality of a procedure</small>
+        </h1>
+    </div>
+
+    <p>You are about to grade procedures that are written. You are the
+        judge.</p>
+    <p>Select one or more procedures then choose the grade. You can enter a
+        comment too.</p>
+
+    <div class="row">
+        <div class="span12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Namespace</th>
+                    <th>Grade</th>
+                    <th>Comment</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for page in all_kb_namespaces %}
+                    <tr>
+                        <td><a href="{{ DOKUWIKI_BASE_URL }}/{{ page }}" target="_blank">{{ page }}</a></td>
+                        <td><span class="label label-inverse">Bad</span> <span class="label label-warning">Average</span> <span class="label label-success">Good</span></td>
+                        <td><input type="text"></td>
+                    </tr>{% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="span4">
+            <ul class="nav nav-list">
+                <li></li>
+                <li>Comment</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
