@@ -12,7 +12,7 @@ from django.conf import settings
 
 
 # Import *
-__all__ = ['KbError', 'KbUrlMalformed', 'get_procedure_details']
+__all__ = ['KbError', 'KbUrlMalformed', 'get_procedure_details', 'iterpages']
 
 # Dokuwiki config
 DOKUWIKI_BASE_URL = '/kb' if not settings.DEBUG else 'http://monitoring-dc.app.corp/kb'
@@ -87,14 +87,41 @@ def get_procedure_details(namespace):
 
     return kb_details
 
+def iterpages():
+    """
+    Method generator that walktrough dokuwiki pages directory and returns page full namespace.
+
+    :return: namespace (eg. ``app:metis:prod:eal``).
+    :rtype: str, unicode
+    """
+    import logging
+    logger = logging.getLogger('kb.wiki.iterpages')
+
+    logger.debug('Pages directory is \"%s\".' % DOKUWIKI_DIR)
+    for root, lsdirs, lsfiles in os.walk(DOKUWIKI_DIR):
+        lsfiles.sort()
+        lsdirs.sort()
+        for page in lsfiles:
+            if re.search('.*\.txt$', page):
+                name = os.path.splitext(page)[0]
+                path = os.path.join(root, name)
+                page = os.path.relpath(path, DOKUWIKI_DIR).replace('/', ':')
+                yield page
+
 # Module testing
 if __name__ == '__main__':
     import logging
-    from pprint import pprint
+    from pprint import pformat
 
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s (<%(funcName)s>)")
+    logging.basicConfig(level=logging.DEBUG, format="%(asctime)s [%(levelname)s] %(message)s (<%(funcName)s>)")
     logger = logging.getLogger('kb.wiki')
 
+    # Test procedure details
+    logger.info('Testing function: get_procedure_details()')
     page = 'app:metis:prod:oss:tata'
+    logger.debug(pformat(get_procedure_details(page)))
 
-    pprint(get_procedure_details(page))
+    # Test generator
+    logger.info('Testing generator: iterpages()')
+    for page in iterpages():
+        logger.debug(page)
