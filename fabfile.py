@@ -73,11 +73,8 @@ def install():
 
     # Create the virtualenv for the project
     puts(green('Creating Python virtual environment...'))
-    run('mkvirtualenv optools')
-
     with cd('optools'):
-        puts(green('Installing / updating project dependencies...'))
-        run('~/Envs/optools/bin/pip install -r requirements.txt')
+        run('mkvirtualenv optools -r requirements.txt')
 
     # Setup Apache config
     with nested(cd('~django/optools'), settings(user='root')):
