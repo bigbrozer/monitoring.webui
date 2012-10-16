@@ -3,6 +3,7 @@ Django views for application kb.
 """
 
 # Django imports
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 
@@ -27,7 +28,11 @@ def show_kb(request, kb_namespace):
 
     Template:
         kb/manage_procedure.html
+
+    Context:
+        locals
     """
+    section = {'kb': 'active'}
 
     # Who is
     user = request.user
@@ -57,3 +62,27 @@ def show_kb(request, kb_namespace):
             locals(),
             context_instance=RequestContext(request)
         )
+
+@permission_required('kb.rate_procedure')
+def rate_kb(request):
+    """
+    Show page to rate quality of procedures in dokuwiki.
+
+    Permissions required:
+        kb.rate_procedure
+
+    Template:
+        kb/rate_procedure.html
+
+    Context:
+        locals
+    """
+    section = {'kb': 'active'}
+    DOKUWIKI_BASE_URL = wiki.DOKUWIKI_BASE_URL
+    all_kb_namespaces = wiki.iterpages()
+
+    return render_to_response(
+        "kb/rate_procedure.html",
+        locals(),
+        context_instance=RequestContext(request)
+    )
