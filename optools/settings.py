@@ -114,6 +114,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.RemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'apps.common.middlewares.compat.XUACompatibleMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
