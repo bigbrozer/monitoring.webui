@@ -11,4 +11,5 @@ urlpatterns = patterns('apps.nagios.views',
     url(r'^satellites/export/(?P<format>\w+)$',
         view='get_satellite_list',
         name='satellites_export'),
+    (r'^passive/$', 'send_passive'),
 )

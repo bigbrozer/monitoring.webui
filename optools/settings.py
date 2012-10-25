@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'apps.kb',
     # Admin interface
     'django.contrib.admin',
+    'django.contrib.admindocs',
 )
 
 # Caching on filesystem by default
