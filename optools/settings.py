@@ -197,15 +197,10 @@ LOGGING = {
         }
     },
     'loggers': {
-        'optools.console': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
         'optools.trap': {
             'handlers': ['http_trap_handler'],
             'level': 'DEBUG',
-            'propagate': True,
+            'propagate': False,
         },
         'django.request': {
             'handlers': ['mail_admins'],
