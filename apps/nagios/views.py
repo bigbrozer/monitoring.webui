@@ -46,6 +46,8 @@ def send_passive(request):
     - status
     - message
 
+    The view log any received HTTP TRAP to file ``~django/optools/log/http_trap.log`` on Central server. File is rotated.
+
     How to use with **cURL**
     ------------------------
 
