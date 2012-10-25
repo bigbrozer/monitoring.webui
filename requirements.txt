@@ -1,6 +1,7 @@
 # Requirements to deploy this code.
 
 pip-tools==0.2
+ipython==0.13.1
 Django==1.4.1
 pytz==2012f
 MySQL-python==1.2.3
