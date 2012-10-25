@@ -191,7 +191,7 @@ LOGGING = {
             'level':'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
             'formatter': 'simple',
-            'filename': 'log/http_trap.log',
+            'filename': os.path.join(PROJECT_PATH, 'log/http_trap.log'),
             'maxBytes': 10485760,
             'backupCount': 7
         }

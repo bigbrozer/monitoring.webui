@@ -64,8 +64,8 @@ def send_passive(request):
     logger.info('-------------------------------')
     logger.info('-- Receiving a new HTTP TRAP --')
     logger.info('-------------------------------')
-    logger.info('From: %s %s', request.META['REMOTE_HOST'], request.META['REMOTE_ADDR'])
-    logger.info('User-Agent: %s', request.META['HTTP_USER_AGENT'])
+    logger.info('From IP: %s', request.META.get('REMOTE_ADDR'))
+    logger.info('User-Agent: %s', request.META.get('HTTP_USER_AGENT'))
     logger.debug('Request body: %s', request.body)
 
     # Livestatus queries
