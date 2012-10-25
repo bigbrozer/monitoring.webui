@@ -166,6 +166,11 @@ CACHES = {
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(asctime)s %(name)s [%(levelname)s] %(message)s'
+        }
+    },
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
@@ -176,9 +181,32 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'http_trap_handler':{
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'formatter': 'simple',
+            'filename': 'log/http_trap.log',
+            'maxBytes': 10485760,
+            'backupCount': 7
         }
     },
     'loggers': {
+        'optools.console': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'optools.trap': {
+            'handlers': ['http_trap_handler'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
