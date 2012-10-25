@@ -3,6 +3,7 @@ Django views for application nagios.
 """
 
 # Std imports
+import logging
 import time
 
 # Django imports
@@ -50,8 +51,23 @@ def send_passive(request):
 
     This example send a WARNING alert to the service CPU of host NAGIOS_DC_SATELLITE_EDC1::
 
-     curl -d host=NAGIOS_DC_SATELLITE_EDC1 -d service=CPU -d status=1 -d message="Test TRAP HTTP" http://monitoring-dc.app.corp/optools/nagios/passive/
+     curl -f \
+     -d host=NAGIOS_DC_SATELLITE_EDC1 \
+     -d service=CPU \
+     -d status=1 \
+     -d message="Test TRAP HTTP" \
+     http://monitoring-dc.app.corp/optools/nagios/passive/
     """
+    # Get the logger for this view
+    logger = logging.getLogger('optools.trap')
+
+    logger.info('-------------------------------')
+    logger.info('-- Receiving a new HTTP TRAP --')
+    logger.info('-------------------------------')
+    logger.info('From: %s %s', request.META['REMOTE_HOST'], request.META['REMOTE_ADDR'])
+    logger.info('User-Agent: %s', request.META['HTTP_USER_AGENT'])
+    logger.debug('Request body: %s', request.body)
+
     # Livestatus queries
     command_line = 'COMMAND [{timestamp}] PROCESS_SERVICE_CHECK_RESULT;{host};{service};{status};{message}\n'
     query_find_host = 'GET hosts\nColumns: name services\nFilter: name = {host}\n'
@@ -66,9 +82,12 @@ def send_passive(request):
             'message': request.POST['message'],
             'timestamp': int(time.time()),
         }
+        logger.debug('Cleaned data: %s', params)
     except KeyError:
+        logger.exception('Incomplete POST data !')
         return HttpResponse('Incomplete POST data ! Missing key.\n', status=400)
     except ValueError:
+        logger.exception('Incorrect value type for data !')
         return HttpResponse('The key \"status\" should be an integer within 0 (OK), 1 (WARNING), 2 (CRITICAL) and 3 (UNKNOWN).\n', status=400)
 
     # Prepare data to be sent to Nagios
@@ -76,6 +95,7 @@ def send_passive(request):
         satellites = Satellite.live_connect()
         satellites.set_prepend_site(True)
     except Satellite.SatelliteConnectError as e:
+        logger.exception('Error connecting on satellites !')
         return HttpResponse('Unable to connect to Nagios.\nError: {}\n'.format(e), status=400)
 
     # Check if host and service exist in Nagios
@@ -85,15 +105,25 @@ def send_passive(request):
         service_dest = satellites.query(query_find_service.format(**params))
         if service_dest:
             sat = service_dest.pop()[0]
+
+            logger.info('Preparing command for Nagios.')
+            logger.debug('Command: %s', command_line.format(**params))
+            logger.debug('Satellite: %s', sat)
+
             satellites.command(command_line.format(**params), sitename=sat)
         else:
             # Service not found
-            return HttpResponse('Service \"{service}\" does not exist on host \"{host}\".\n'.format(**params), status=400)
+            message = 'Service \"{service}\" does not exist on host \"{host}\".\n'.format(**params)
+            logger.error(message)
+            return HttpResponse(message, status=400)
     else:
         # Host not found
-        return HttpResponse('The host \"{host}\" does not exist in Nagios.\n'.format(**params), status=400)
+        message = 'The host \"{host}\" does not exist in Nagios.\n'.format(**params)
+        logger.error(message)
+        return HttpResponse(message, status=400)
 
     # Everything is OK
+    logger.info('HTTP TRAP processed successfully.')
     return HttpResponse()
 
 
