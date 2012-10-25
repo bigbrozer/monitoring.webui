@@ -1,5 +1,6 @@
 .idea/
 var/
+log/
 *.pyc
 *~
 .*.swp
