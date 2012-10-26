@@ -174,6 +174,9 @@ LOGGING = {
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
+        },
+        'require_debug_true': {
+            '()': 'apps.common.log.filters.RequireDebugTrue'
         }
     },
     'handlers': {
@@ -184,6 +187,7 @@ LOGGING = {
         },
         'console':{
             'level':'DEBUG',
+            'filters': ['require_debug_true'],
             'class':'logging.StreamHandler',
             'formatter': 'simple'
         },
@@ -197,6 +201,11 @@ LOGGING = {
         }
     },
     'loggers': {
+        'optools.debug': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
         'optools.trap': {
             'handlers': ['http_trap_handler'],
             'level': 'DEBUG',
