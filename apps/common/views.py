@@ -1,5 +1,9 @@
-import hashlib
+# Views for apps common
 
+# Std imports
+import logging
+
+# Django imports
 from django.shortcuts import render_to_response, redirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -9,8 +13,10 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 
+# 3rd party imports
 import httpagentparser
 
+# Project imports
 from apps.common.forms import UserEditForm
 from apps.announce.models import Announcement
 
@@ -20,13 +26,19 @@ def http_login(request):
     Called after successfull basic HTTP authentication and check if user filled
     his profile. Also create a cookie to say we are logged in.
     """
+    logger = logging.getLogger('optools.debug.login')
+    logger.debug('Request full path: %s', request.get_full_path())
     redirection = ""
     user = None
     response = None
 
     # Should we redirect after login ?
     if request.GET.has_key('next'):
-        redirection = request.GET['next']
+        qr = request.GET.copy()
+        next = qr.pop('next')[0]
+        remains = qr.urlencode()
+        redirection = '{0}{1}'.format(next, remains)
+        logger.debug('Should redirect to: %s', redirection)
 
     # Find user
     if settings.DEVEL:
@@ -49,19 +61,21 @@ def http_login(request):
         try:
             if Announcement.objects.get(is_enabled=True):
                 if redirection:
-                    response = redirect('%s?redirect=%s' % (reverse('announce_show'), redirection))
+                    response = redirect('%s?redirect=%s' % (reverse('announce_show'), redirection), permanent=True)
                 else:
-                    response = redirect('announce_show')
+                    response = redirect('announce_show', permanent=True)
         except Announcement.DoesNotExist:
+            # No announcement, continue
             if redirection:
-                response = redirect(redirection)
+                response = redirect(redirection, permanent=True)
             else:
-                response = redirect('portal_home')
+                response = redirect('portal_home', permanent=True)
     else:
+        # Profile is not completed
         if redirection:
-            response = redirect('%s?redirect=%s' % (reverse('user_profile'), redirection))
+            response = redirect('%s?redirect=%s' % (reverse('user_profile'), redirection), permanent=True)
         else:
-            response = redirect('user_profile')
+            response = redirect('user_profile', permanent=True)
 
     # Login is successfull, setting cookie
     response.set_cookie('optools_logged_in', 'true')
