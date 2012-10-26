@@ -37,7 +37,7 @@ def http_login(request):
         qr = request.GET.copy()
         next = qr.pop('next')[0]
         remains = qr.urlencode()
-        redirection = '{0}{1}'.format(next, remains)
+        redirection = '{0}?{1}'.format(next, remains)
         logger.debug('Should redirect to: %s', redirection)
 
     # Find user
