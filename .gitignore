@@ -1,6 +1,6 @@
 .idea/
 var/
-log/
+./log/
 .directory
 *.pyc
 *~
