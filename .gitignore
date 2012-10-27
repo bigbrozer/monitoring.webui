@@ -1,5 +1,7 @@
 .idea/
 var/
+/log/
+.directory
 *.pyc
 *~
 .*.swp

@@ -1,7 +1,11 @@
 # Nagios app models
 
+# Django imports
 from django.db import models
 from django.core.exceptions import ValidationError
+
+# Apps imports
+import apps.nagios.livestatus as live
 
 
 # Validators
@@ -41,17 +45,60 @@ class Satellite(models.Model):
     class Meta:
         ordering = ['name']
 
+    #noinspection PyMissingConstructor
+    class SatelliteConnectError(Exception):
+        """
+        Exception raised when a satellite is dead.
+        """
+        def __init__(self, *args, **kwargs):
+            super(Satellite.SatelliteConnectError, self).__init__(*args, **kwargs)
+            self.dead_satellites = args[0]
+
+        def __str__(self):
+            message = "Unable to connect to satellites: "
+            for index, dead in enumerate(self.dead_satellites.keys()):
+                if index == len(self.dead_satellites.keys())-1:
+                    message += "{}."
+                else:
+                    message += "{}, "
+                message = message.format(dead)
+
+            return message
+
+
     def __unicode__(self):
         return u'{0} ({1})'.format(self.name, self.alias)
 
     def as_live_dict(self, timeout=5):
-        """Return a dict as expected for :meth:`livestatus.MultiSiteConnection` method."""
+        """
+        Return a dict as expected for :meth:`livestatus.MultiSiteConnection` method.
+        """
         return {self.name: {
             'alias': self.alias,
             'socket': 'tcp:{0}:{1}'.format(self.ip_address, self.live_port),
             'nagios_url': self.nagios_url,
             'timeout': timeout,
-        }}
+            }}
+
+    @staticmethod
+    def live_connect(*args, **kwargs):
+        """
+        Establish a connection to all satellites using livestatus.
+        Returns the livestatus connection MultiSiteConnection object.
+
+        :param timeout: the number of secs before connection is timed out. Default to 5 secs.
+        """
+        satellites = Satellite.objects.all()
+        connection_settings = {}
+
+        for sat in satellites:
+            connection_settings.update(sat.as_live_dict(*args, **kwargs))
+
+        connection = live.MultiSiteConnection(connection_settings)
+        if connection.dead_sites():
+            raise Satellite.SatelliteConnectError(connection.dead_sites())
+
+        return connection
 
 
 class SecurityPort(models.Model):

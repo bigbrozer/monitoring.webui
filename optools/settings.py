@@ -114,6 +114,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.RemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'apps.common.middlewares.compat.XUACompatibleMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -146,6 +147,7 @@ INSTALLED_APPS = (
     'apps.kb',
     # Admin interface
     'django.contrib.admin',
+    'django.contrib.admindocs',
 )
 
 # Caching on filesystem by default
@@ -164,9 +166,17 @@ CACHES = {
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(asctime)s %(name)s [%(levelname)s] %(message)s'
+        }
+    },
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
+        },
+        'require_debug_true': {
+            '()': 'apps.common.log.filters.RequireDebugTrue'
         }
     },
     'handlers': {
@@ -174,9 +184,33 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console':{
+            'level':'DEBUG',
+            'filters': ['require_debug_true'],
+            'class':'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'http_trap_handler':{
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'formatter': 'simple',
+            'filename': os.path.join(PROJECT_PATH, 'log/http_trap.log'),
+            'maxBytes': 10485760,
+            'backupCount': 7
         }
     },
     'loggers': {
+        'optools.debug': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'optools.trap': {
+            'handlers': ['http_trap_handler'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',

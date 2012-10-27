@@ -1,68 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Central Operations {% if title %}- {{ title }}{% endif %}</title>
+<head>
+	<title>Central Operations {% if title %}- {{ title }}{% endif %}</title>
 
-        <meta name="author" content="Vincent Besançon" />
-        <meta name="copyright" content="(c) 2011-2012 Vincent BESANCON"/>
-        <meta name="keywords" content="monitoring,nagios,operations,livestatus"/>
-        <meta name="description" content="IT Operations Tools provided by Monitoring & Reporting"/>
-        {% block extra_meta %}{% endblock %}
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Vincent Besançon"/>
+	<meta name="copyright" content="(c) 2011-2012 Vincent Besançon"/>
+	<meta name="keywords" content="monitoring,nagios,operations,livestatus"/>
+	<meta name="description" content="Central Operations Tools provided by Monitoring & Reporting"/>
+	{% block extra_meta %}{% endblock %}
 
-        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-        <!--[if lt IE 9]>
-          <script src="http://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv.js"></script>
-          <link href="{{ STATIC_URL }}iehack.css" rel="stylesheet">
-        <![endif]-->
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+	<script src="http://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv.js"></script>
+	<link href="{{ STATIC_URL }}iehack.css" rel="stylesheet">
+	<![endif]-->
 
-        <link href="{{ STATIC_URL }}common.css" rel="stylesheet">
-        <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        {% block extra_css %}{% endblock %}
+	<link href="{{ STATIC_URL }}common.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	{% block extra_css %}{% endblock %}
+</head>
+<body>
+{% block page %}{% endblock %}
 
-        
-    </head>
-    <body>
-        {% block page %}{% endblock %}
+{% block footer %}
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="span4">
+					<p>
+						<a href="mailto:DL-ITOP-MONITORING@faurecia.com?cc=9OPMonitoring@faurecia.com&subject=Monitoring%20Keys%20Indicators%20:%20">GIS
+							/ Monitoring &amp; Reporting</a>, 2006-{{ current_year|default:"Present" }}
+					</p>
+				</div>
+				<div class="span5">
+					<p>Propulsed by <a href="https://www.djangoproject.com/" rel="tooltip"
+					                   title="Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design."
+					                   target="_blank">Django</a> & <a href="http://www.python.org/" rel="tooltip"
+					                                                   title="Python is a programming language that lets you work more quickly and integrate your systems more effectively."
+					                                                   target="_blank">Python</a>.</p>
 
-        {% block footer %}
-            <!-- Footer -->
-            <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="span4">
-                            <p>
-                            <a href="mailto:DL-ITOP-MONITORING@faurecia.com?cc=9OPMonitoring@faurecia.com&subject=Monitoring%20Keys%20Indicators%20:%20">GIS / Monitoring &amp; Reporting</a>, 2006-{{ current_year|default:"Present" }}
-                            </p>
-                        </div>
-                        <div class="span5">
-                            <p>Propulsed by <a href="https://www.djangoproject.com/" rel="tooltip" title="Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design." target="_blank">Django</a> & <a href="http://www.python.org/" rel="tooltip" title="Python is a programming language that lets you work more quickly and integrate your systems more effectively." target="_blank">Python</a>.</p>
-                            <p>Presented with <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a> HTML5/CSS3 framework.</p>
-                            {% block extra_footer %}{% endblock %}
-                        </div>
-                        <div class="span3">
-                            <p>
-                            <a class="pull-right logo-faurecia" href="http://intranet.faurecia/" target="_blank"></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        {% endblock %}
+					<p>Presented with <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter
+						Bootstrap</a> HTML5/CSS3 framework.</p>
+					{% block extra_footer %}{% endblock %}
+				</div>
+				<div class="span3">
+					<p>
+						<a class="pull-right logo-faurecia" href="http://intranet.faurecia/" target="_blank"></a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+{% endblock %}
 
-        <!-- ###################################### -->
-        <!-- Scripts (at then end to load faster)   -->
-        <!-- ###################################### -->
+<!-- ###################################### -->
+<!-- Scripts (at then end to load faster)   -->
+<!-- ###################################### -->
 
-        <!-- Jquery -->
-        <script src="{{ STATIC_URL }}js/jquery.js"></script>
+<!-- Jquery -->
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
 
-        <!-- Twitter Bootstrap -->
-        <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+<!-- Twitter Bootstrap -->
+<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
 
-        <!-- Optools main -->
-        <script src="{{ STATIC_URL }}js/optools.js"></script>
+<!-- Optools main -->
+<script src="{{ STATIC_URL }}js/optools.js"></script>
 
-        {% block extra_scripts %}{% endblock %}
-    </body>
+{% block extra_scripts %}{% endblock %}
+</body>
 </html>
 

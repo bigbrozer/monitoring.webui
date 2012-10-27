@@ -8,6 +8,7 @@ handler500 = 'apps.common.views.server_error'
 
 urlpatterns = patterns('',
     # Admin
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
     
     # Applications
