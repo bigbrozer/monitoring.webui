@@ -33,22 +33,26 @@
 			</table>
 		</div>
 
+	    <!-- Rating box / Select buttons -->
 		<div class="span4">
-			<p>
-				<button id="kb-btn-select-all" class="btn btn-mini" type="button">Select All</button>
-				<button id="kb-btn-unselect-all" class="btn btn-mini" type="button">Unselect All</button>
-			</p>
-			<div class="kb-rating-box well" data-spy="affix" data-offset-bottom="100">
-				<h5>Rate</h5>
-				<p>
-					<span data-rating="bad" class="label label-important">Bad</span>
-					<span data-rating="average" class="label label-warning">Average</span>
-					<span data-rating="good" class="label label-success">Good</span>
-					<span data-rating="excellent" class="label label-excellent">Excellent</span>
-				</p>
-				<h5>Comment <small>(optional)</small></h5>
-				<!--suppress HtmlFormInputWithoutLabel -->
-				<input class="input-xlarge" type="text" id="comment" placeholder="Comment your choice (optional)">
+			<div data-spy="affix" data-offset-bottom="100">
+                <p>
+                    <button id="kb-btn-select-all" class="btn btn-mini" type="button">Select All</button>
+                    <button id="kb-btn-unselect-all" class="btn btn-mini" type="button">Unselect All</button>
+                    <small class="pull-right" id="num_row_selected"></small>
+                </p>
+                <div class="kb-rating-box well">
+                    <h5>Rate</h5>
+                    <p>
+                        <span data-rating="bad" class="label label-important">Bad</span>
+                        <span data-rating="average" class="label label-warning">Average</span>
+                        <span data-rating="good" class="label label-success">Good</span>
+                        <span data-rating="excellent" class="label label-excellent">Excellent</span>
+                    </p>
+                    <h5>Comment <small>(optional)</small></h5>
+                    <!--suppress HtmlFormInputWithoutLabel -->
+                    <input class="input-xlarge" type="text" id="comment" placeholder="Comment your choice (optional)">
+                </div>
 			</div>
 		</div>
     </div>
