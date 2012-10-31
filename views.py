@@ -13,10 +13,8 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 
-# 3rd party imports
-import httpagentparser
-
 # Project imports
+from apps.common.utilities import check_browser_support
 from apps.common.forms import UserEditForm
 from apps.announce.models import Announcement
 
@@ -80,6 +78,14 @@ def http_login(request):
     # Login is successfull, setting cookie
     response.set_cookie('optools_logged_in', 'true')
 
+    # Check browser support and warn if unsupported (only if not already logged in)
+    if not request.COOKIES.has_key('optools_logged_in'):
+        not_supported_browser = check_browser_support(request)
+        if not_supported_browser:
+            # Set the login cookie
+            not_supported_browser.set_cookie('optools_logged_in', 'true')
+            return not_supported_browser
+
     return response
 
 
@@ -111,13 +117,7 @@ def browser_out_of_date(request):
     Warn user that the browser is not well supported.
     """
     title = "Browser out of date"
-
-    browser = httpagentparser.detect(request.META['HTTP_USER_AGENT'])['browser']
-    if "internet explorer" in browser['name'].lower() and int(browser['version'].split('.')[0]) < 9:
-        return render_to_response("common/browser_not_supported.html", locals(), context_instance = RequestContext(request))
-    else:
-        return redirect('portal_home')
-
+    return render_to_response("common/browser_not_supported.html", locals(), context_instance = RequestContext(request))
 
 def server_error(request):
     """
