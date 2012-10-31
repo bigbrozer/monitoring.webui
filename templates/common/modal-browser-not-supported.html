@@ -1,0 +1,16 @@
+{% block modal-prelogin %}
+<div class="modal fade hide" id="modal-browser-not-supported">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Your browser is not supported !</h3>
+    </div>
+    <div class="modal-body">
+	    <p><strong>{{ browser.name }} {{ browser.version }}</strong> does not support <a href="http://www.w3.org/TR/html5/" target="_blank">HTML5 Web Standards</a>.</p>
+		<p>You will encounter some problems visiting this website and some pages are not available for your browser.
+		   Please either use <strong>Internet Explorer >=9</strong> or download <strong>Mozilla Firefox</strong> from the link below.</p>
+	    <p>
+		    <a class="btn btn-success btn-large" href="http://www.mozilla.org/en-US/firefox/new/" target="_blank"><i class="icon-download-alt icon-white"></i> Download Mozilla Firefox</a>
+	    </p>
+    </div>
+</div>
+{% endblock %}

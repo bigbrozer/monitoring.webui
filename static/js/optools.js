@@ -15,5 +15,8 @@ $(document).ready(function() {
     $("button[type=submit], .btn-loading").click(function() {
         $(this).button('loading');
     });
+
+    // Show browser not supported modal if defined in template
+    $('#modal-browser-not-supported').modal();
 });
 
