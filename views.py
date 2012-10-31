@@ -61,21 +61,21 @@ def http_login(request):
         try:
             if Announcement.objects.get(is_enabled=True):
                 if redirection:
-                    response = redirect('%s?redirect=%s' % (reverse('announce_show'), redirection), permanent=True)
+                    response = redirect('%s?redirect=%s' % (reverse('announce_show'), redirection))
                 else:
-                    response = redirect('announce_show', permanent=True)
+                    response = redirect('announce_show')
         except Announcement.DoesNotExist:
             # No announcement, continue
             if redirection:
-                response = redirect(redirection, permanent=True)
+                response = redirect(redirection)
             else:
-                response = redirect('portal_home', permanent=True)
+                response = redirect('portal_home')
     else:
         # Profile is not completed
         if redirection:
-            response = redirect('%s?redirect=%s' % (reverse('user_profile'), redirection), permanent=True)
+            response = redirect('%s?redirect=%s' % (reverse('user_profile'), redirection))
         else:
-            response = redirect('user_profile', permanent=True)
+            response = redirect('user_profile')
 
     # Login is successfull, setting cookie
     response.set_cookie('optools_logged_in', 'true')
