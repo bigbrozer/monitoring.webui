@@ -1,12 +1,11 @@
 from models import KpiNagios, KpiRedmine, CountNotifications, RecurrentAlerts, OldestAlerts
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.shortcuts import redirect
-from django.views.decorators.cache import cache_page
-import httpagentparser
 import sys
 import os
 from datetime import timedelta
+
+from apps.common.utilities import check_browser_support
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
@@ -21,10 +20,10 @@ def indicateurs(request):
     section = dict({'kpi': "active"})
     title = "Reporting"
 
-    # Parse user agent
-    browser = httpagentparser.detect(request.META['HTTP_USER_AGENT'])['browser']
-    if "internet explorer" in browser['name'].lower() and int(browser['version'].split('.')[0]) < 9:
-        return redirect("browser_out_of_date")
+    # Check browser support
+    not_supported_browser = check_browser_support(request)
+    if not_supported_browser:
+        return not_supported_browser
 
     kpi_redmine = KpiRedmine.objects.all().order_by("date")
     today = KpiRedmine.objects.all().order_by("-date")[0].date + timedelta(days=1)
