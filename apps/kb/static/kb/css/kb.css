@@ -41,3 +41,28 @@
     -moz-border-radius: 4px 0 4px 0;
     border-radius: 4px 0 4px 0;
 }
+
+/* KB select rows */
+.kb-row-over {
+    background-color: #add8e6;
+}
+
+.kb-row-selected {
+    background-color: #d3d3d3;
+}
+
+/* Rating box */
+.kb-rating-box {
+    display: none;
+}
+
+/* Custom labels */
+.label,
+.badge {
+    cursor: pointer;
+}
+
+.label-excellent,
+.badge-excellent {
+    background-color: #79c77a;
+}
