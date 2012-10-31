@@ -15,7 +15,7 @@
             do it now using the Login button in the top right corner.
             This will ask you also to edit your profile if not already done.
         </div>
-        {% if old_browser %}
+        {% if browser.outdated %}
         <div class="alert alert-warning">
             <h4 class="alert-heading">Unsupported browser detected!</h4>
             It seems you are running an unsupported browser, please check why on our <a href="{% url browser_out_of_date %}">browser support</a> page.
