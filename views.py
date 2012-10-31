@@ -78,10 +78,11 @@ def http_login(request):
     # Login is successfull, setting cookie
     response.set_cookie('optools_logged_in', 'true')
 
-    # Check browser support and warn if unsupported
-    not_supported_browser = check_browser_support(request)
-    if not_supported_browser:
-        return not_supported_browser
+    # Check browser support and warn if unsupported (only if not already logged in)
+    if not request.COOKIES.get('optools_logged_in'):
+        not_supported_browser = check_browser_support(request)
+        if not_supported_browser:
+            return not_supported_browser
 
     return response
 
