@@ -79,7 +79,7 @@ def http_login(request):
     response.set_cookie('optools_logged_in', 'true')
 
     # Check browser support and warn if unsupported (only if not already logged in)
-    if not request.COOKIES.get('optools_logged_in'):
+    if not request.COOKIES.has_key('optools_logged_in'):
         not_supported_browser = check_browser_support(request)
         if not_supported_browser:
             return not_supported_browser
