@@ -14,14 +14,14 @@ urlpatterns = patterns('',
     # Applications
     # ============
     #
+    # Portal
+    url(r'^$', 'apps.portal.views.portal_home', name='portal_home'),
+
     # Common
     (r'', include('apps.common.urls')),
 
     # Reporting
     (r'', include('apps.kpi.urls')),
-
-    # Portal
-    url(r'^$', 'apps.portal.views.portal_home', name='portal_home'),
 
     # Announce
     (r'^announce/', include('apps.announce.urls')),
