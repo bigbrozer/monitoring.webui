@@ -28,6 +28,7 @@
 					<li class="{{ section.systems }}"><a href="{% url systems_list %}"><i
 							class="icon-th-list icon-white"></i> Systems</a></li>
 
+				    <!-- Administration -->
 					{% if user.is_authenticated and user.is_staff %}
 						<li class="divider-vertical"></li>
 						<li><a href="{% url admin:index %}"><i class="icon-fire icon-white"></i> Administration</a></li>
