@@ -30,4 +30,4 @@ class Procedure(models.Model):
 
     namespace = models.CharField(max_length=255, help_text='Namespace for this procedure.')
     rating = models.IntegerField(choices=RATING_CHOICES)
-    comment = models.TextField(help_text='Comment on the grade you given.')
+    comment = models.TextField(help_text='Comment on the grade you given.', blank=True, null=True)

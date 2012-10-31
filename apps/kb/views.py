@@ -2,10 +2,17 @@
 Django views for application kb.
 """
 
+# Std imports
+import logging
+
 # Django imports
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
+from django.http import HttpResponse
+
+# Models imports
+from apps.kb.models import Procedure
 
 # Local app imports
 import wiki
@@ -77,12 +84,34 @@ def rate_kb(request):
     Context:
         locals
     """
-    section = {'kb': 'active'}
-    DOKUWIKI_BASE_URL = wiki.DOKUWIKI_BASE_URL
-    all_kb_namespaces = wiki.iterpages()
+    logger = logging.getLogger('optools.debug.kb.rating')
 
-    return render_to_response(
-        "kb/rate_procedure.html",
-        locals(),
-        context_instance=RequestContext(request)
-    )
+    if not request.is_ajax():
+        DOKUWIKI_BASE_URL = wiki.DOKUWIKI_BASE_URL
+
+        section = {'kb': 'active'}
+        procedures = Procedure.objects.all()
+
+        return render_to_response(
+            "kb/rate_procedure.html",
+            locals(),
+            context_instance=RequestContext(request)
+        )
+    elif request.is_ajax():
+        kb_list = request.GET.getlist('kb[]')
+
+        # Update status
+        for kb in kb_list:
+            procedure, created = Procedure.objects.get_or_create(namespace=kb, defaults={'rating': -1})
+
+            if request.GET.has_key('rating'):
+                rating = request.GET['rating']
+                procedure.rating = int(rating)
+
+            if request.GET.has_key('comment'):
+                comment = request.GET['comment']
+                procedure.comment = comment
+
+            procedure.save()
+
+        return HttpResponse()
