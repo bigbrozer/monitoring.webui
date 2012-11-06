@@ -21,6 +21,9 @@ $(document).ready(function() {
     var num_row_selected = $("#num_row_selected");
     var selected_rows = [];
 
+    // Init DataTable
+    $("#kb_table").dataTable();
+
     // Button selection events
     $("#kb-btn-select-all").click(function() {
         show_rating_box();

@@ -2,9 +2,12 @@
 
 {%  block extra_css %}
     <link rel="stylesheet" href="{{ STATIC_URL }}kb/css/kb.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}dt-twb/css/dt_bootstrap.css">
 {% endblock %}
 
 {%  block extra_scripts %}
+	<script src="{{ STATIC_URL }}dt-twb/js/jquery.dataTables.min.js"></script>
+	<script src="{{ STATIC_URL }}dt-twb/js/dt_bootstrap.js"></script>
 	<script src="{{ STATIC_URL }}kb/js/kb_rating.js"></script>
 {% endblock %}
 
@@ -22,9 +25,9 @@
 			<p>Select one or more procedures then choose the rating. You can enter a
 				comment too.</p>
 
-			<table class="table">
+			<table id="kb_table" cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
 			    <thead>
-			        <th><h4>KB Namespaces</h4></th>
+			        <th><h5>KB Namespaces</h5></th>
 			        <th>Comment</th>
 			        <th>Rating</th>
 			    </thead>
