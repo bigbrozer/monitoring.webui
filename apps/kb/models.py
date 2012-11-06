@@ -2,8 +2,12 @@
 :mod:`kb.models` -- Models for app kb.
 """
 
+# Std imports
+from datetime import datetime
+
 # Django imports
 from django.db import models
+from django.utils.timezone import utc
 
 
 class Procedure(models.Model):
@@ -29,5 +33,10 @@ class Procedure(models.Model):
     )
 
     namespace = models.CharField(max_length=255, help_text='Namespace for this procedure.')
-    rating = models.IntegerField(choices=RATING_CHOICES)
-    comment = models.TextField(help_text='Comment on the grade you given.', blank=True, null=True)
+    rating = models.IntegerField(choices=RATING_CHOICES, default=-3)
+    comment = models.TextField(help_text='Comment on the grade you given.', default="No comment")
+    validated = models.BooleanField(help_text='Is the procedure is validated ?', default=False)
+    last_modified = models.DateTimeField(default=datetime.now(tz=utc))
+
+    def __unicode__(self):
+        return self.namespace
