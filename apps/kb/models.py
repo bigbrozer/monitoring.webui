@@ -32,7 +32,7 @@ class Procedure(models.Model):
         ( 1, 'Excellent'),
     )
 
-    namespace = models.CharField(max_length=255, help_text='Namespace for this procedure.')
+    namespace = models.CharField(max_length=255, unique=True, help_text='Namespace for this procedure.')
     rating = models.IntegerField(choices=RATING_CHOICES, default=-3)
     comment = models.TextField(help_text='Comment on the grade you given.', default="No comment")
     validated = models.BooleanField(help_text='Is the procedure is validated ?', default=False)
