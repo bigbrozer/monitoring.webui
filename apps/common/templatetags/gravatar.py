@@ -23,9 +23,9 @@ def _imgclass_attr():
     return ''
 
 
-def _wrap_img_tag(url, info, size):
-    return '<img src="%s"%s alt="Avatar for %s" height="%s" width="%s"/>' % \
-            (escape(url), _imgclass_attr(), info, size, size)
+def _wrap_img_tag(url, info):
+    return '<img src="%s"%s alt="Avatar for %s">' % \
+            (escape(url), _imgclass_attr(), info)
 
 
 def _get_user(user):
@@ -66,7 +66,7 @@ def gravatar_for_email(email, size=None, rating=None):
     if parameters:
         gravatar_url += '?' + urllib.urlencode(parameters, doseq=True)
 
-    return escape(gravatar_url)
+    return gravatar_url
 
 
 @register.simple_tag
@@ -101,7 +101,7 @@ def gravatar_img_for_email(email, size=None, rating=None):
         {% gravatar_img_for_email someone@example.com 48 pg %}
     """
     gravatar_url = gravatar_for_email(email, size, rating)
-    return _wrap_img_tag(gravatar_url, email, size)
+    return _wrap_img_tag(gravatar_url, email)
 
 
 @register.simple_tag
@@ -119,7 +119,7 @@ def gravatar_img_for_user(user, size=None, rating=None):
         {% gravatar_img_for_user 'jtauber' 48 pg %}
     """
     gravatar_url = gravatar_for_user(user, size, rating)
-    return _wrap_img_tag(gravatar_url, user.username, size)
+    return _wrap_img_tag(gravatar_url, user.username)
 
 
 @register.simple_tag
