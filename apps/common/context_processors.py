@@ -43,6 +43,9 @@ def browser(request):
             pass
 
         # Mark outdated browsers
-        if "internet explorer" in br['name'].lower() and br['major_version'] < 9: br['outdated'] = True
+        if "internet explorer" in br['name'].lower() \
+        and br['major_version'] \
+        and br['major_version'] < 9:
+            br['outdated'] = True
 
         return {'browser': br}
