@@ -80,7 +80,7 @@
 <small>Last update: {{ today }}</small>
 </p>
 
-<section style="padding-top: 20px;">
+<section style="padding-top: 50px;">
 <div class="hero-unit">
     <h1>Monitoring Key Indicators</h1>
     <p>This web application provides some statistics about what we do within GIS / Monitoring &amp; Reporting.
@@ -94,8 +94,8 @@
 </section>
 <section id="Redmine">
 <div class="page-header">
+	{% if perms.kpi.change_kpiredmine %}<a target="_blank" href="{% url admin:kpi_kpiredmine_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
     <h1>Requests <small>additions &amp; changes</small></h1>
-    {% if perms.kpi.change_kpiredmine %}<a target="_blank" href="{% url admin:kpi_kpiredmine_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
 </div>
 <div class="graph" id="graphRequest" style="width: 100%; height: 800px; margin-bottom: 20px;"></div>
 <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
@@ -109,8 +109,8 @@
 
 <section id="Hosts">
 <div class="page-header">
+	{% if perms.kpi.change_kpinagios %}<a target="_blank" href="{% url admin:kpi_kpinagios_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
     <h1>Hosts & Services <small>monitored in Nagios</small></h1>
-    {% if perms.kpi.change_kpinagios %}<a target="_blank" href="{% url admin:kpi_kpinagios_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
 </div>
 <div class="graph" id="graphHosts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
 <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
@@ -122,8 +122,8 @@
 
 <section id="Procedures">
 <div class="page-header">
+	{% if perms.kpi.change_kpinagios %}<a target="_blank" href="{% url admin:kpi_kpinagios_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
     <h1>Procedures <small>assigned to Nagios alerts</small></h1>
-    {% if perms.kpi.change_kpinagios %}<a target="_blank" href="{% url admin:kpi_kpinagios_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
 </div>
 <div class="graph" id="graphWritten" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
 <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
@@ -136,8 +136,8 @@
 
 <section id="Repartition">
 <div class="page-header">
+	{% if perms.kpi.change_kpinagios %}<a target="_blank" href="{% url admin:kpi_kpinagios_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
     <h1>Operating System Repartition <small>as seen in Nagios</small></h1>
-    {% if perms.kpi.change_kpinagios %}<a target="_blank" href="{% url admin:kpi_kpinagios_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
 </div>
 <div class="graph" id="graphEquipement" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
 <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
@@ -150,8 +150,8 @@
 
 <section id="Alerts">
 <div class="page-header">
+	{% if perms.kpi.change_countnotifications %}<a target="_blank" href="{% url admin:kpi_countnotifications_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
     <h1>Alerts <small>triggered in Nagios</small></h1>
-    {% if perms.kpi.change_countnotifications %}<a target="_blank" href="{% url admin:kpi_countnotifications_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
 </div>
 <div class="graph" id="graphAlerts" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
 <div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
@@ -163,16 +163,16 @@
 
 <section id="RecurrentsAlerts">
 <div class="page-header">
+	{% if perms.kpi.change_recurrentalerts %}<a target="_blank" href="{% url admin:kpi_recurrentalerts_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
     <h1>Recurrents Alerts <small>on the last 31 days</small></h1>
-    {% if perms.kpi.change_recurrentalerts %}<a target="_blank" href="{% url admin:kpi_recurrentalerts_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
 </div>
 <div class="graph" id="graphRecurrentsAlerts"></div>
 </section>
 
 <section id="OldestsAlerts">
 <div class="page-header">
+	{% if perms.kpi.change_oldestalerts %}<a target="_blank" href="{% url admin:kpi_oldestalerts_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
     <h1>Oldests Alerts <small>active in Nagios</small></h1>
-    {% if perms.kpi.change_oldestalerts %}<a target="_blank" href="{% url admin:kpi_oldestalerts_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
 </div>
 <div class="graph" id="graphOldestsAlerts"></div>
 </section>
