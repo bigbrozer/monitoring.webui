@@ -74,6 +74,7 @@ def show_kb(request, kb_namespace):
 def rate_kb(request):
     """
     Show page to rate quality of procedures in dokuwiki.
+    If an Ajax request is send to this page, it will update Procedure model if user is authorized to do so.
 
     Permissions required:
         kb.rate_procedure
@@ -102,7 +103,7 @@ def rate_kb(request):
 
         # Update status
         for kb in kb_list:
-            procedure, created = Procedure.objects.get_or_create(namespace=kb, defaults={'rating': -1})
+            procedure, created = Procedure.objects.get_or_create(namespace=kb, defaults={'rating': -1, 'comment': None})
 
             if request.GET.has_key('rating'):
                 rating = request.GET['rating']

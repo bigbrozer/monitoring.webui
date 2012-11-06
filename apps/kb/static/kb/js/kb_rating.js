@@ -22,7 +22,18 @@ $(document).ready(function() {
     var selected_rows = [];
 
     // Init DataTable
-    $("#kb_table").dataTable();
+    $("#kb_table").dataTable({
+        "iDisplayLength": 25,
+        "bStateSave": true,
+        "oSearch": {
+            "sSearch": "",
+            "bRegex": true
+        },
+        "aoColumnDefs": [
+            { "bSearchable": true, "aTargets": [ 0 ] },
+            { "bSearchable": false, "aTargets": [ "_all" ] }
+        ]
+    });
 
     // Button selection events
     $("#kb-btn-select-all").click(function() {

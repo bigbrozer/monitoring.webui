@@ -35,7 +35,7 @@
 				{% for kb in procedures %}
 					<tr class="kb-row" data-row-id="{{ kb.namespace }}">
 						<td><a class="kb-link" href="{% url show_kb kb.namespace %}" target="_blank">{{ kb.namespace }}</a></td>
-						<td><small>{{ kb.comment|default_if_none:"No comment" }}</small></td>
+						<td><small>{{ kb.comment|default:"No comment" }}</small></td>
 					    <td>{{ kb.get_rating_display }}</td>
 					</tr>{% endfor %}
 				</tbody>
