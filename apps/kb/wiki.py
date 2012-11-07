@@ -116,17 +116,20 @@ class Kb(object):
     def __str__(self):
         return self.namespace
 
+    def __unicode__(self):
+        return unicode(self.namespace)
+
     def __repr__(self):
         return "{} <{}>".format(self.__class__.__name__, self)
 
     def __cmp__(self, other):
-        if isinstance(other, str):
+        if isinstance(other, (str, unicode)):
             if other == self.namespace: return 0
             else: return -1
         elif isinstance(other, Kb):
             if self.namespace == other.namespace: return 0
         else:
-            raise NotImplementedError("Comparing %s with is not implemented !" % type(other))
+            raise NotImplementedError("Comparing with %s is not implemented !" % type(other))
 
     def __hash__(self):
         return hash(self.namespace)
@@ -149,7 +152,7 @@ class Wiki(object):
 
         # Log
         self.logger.debug('%s attributes:\n%s', repr(self), pformat(self.__dict__))
-        self.logger.info('Indexed %d procedures.', len(self._index))
+        self.logger.info('Indexed %d procedures.', len(self))
 
     def _build_index(self):
         """Build the index of all KB in dokuwiki (txt files in data/pages folder)."""
@@ -162,7 +165,7 @@ class Wiki(object):
             lsdirs.sort()
 
             root_namespace = os.path.relpath(root, DOKUWIKI_PAGES_DIR).replace('/', ':')
-            if root_namespace != ".":
+            if root_namespace != "." and not root_namespace in self._index:
                 self._index.append(Kb(root_namespace))
 
             for page in lsfiles:
@@ -189,3 +192,9 @@ class Wiki(object):
     def __getitem__(self, key):
         if key in self._index:
             return self._index[self._index.index(key)]
+
+    def __iter__(self):
+        return self._index.__iter__()
+
+    def __len__(self):
+        return self._index.__len__()
