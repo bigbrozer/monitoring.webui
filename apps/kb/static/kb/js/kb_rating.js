@@ -24,7 +24,6 @@ $(document).ready(function() {
     // Init DataTable
     $("#kb_table").dataTable({
         "iDisplayLength": 25,
-        "bStateSave": true,
         "oSearch": {
             "sSearch": "",
             "bRegex": true
