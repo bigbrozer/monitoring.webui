@@ -19,9 +19,6 @@ DOKUWIKI_BASE_URL = '/kb' if not settings.DEBUG else 'http://monitoring-dc.app.c
 DOKUWIKI_PAGES_DIR = '/var/www/kb/data/pages' if not settings.DEBUG else os.path.join(settings.PROJECT_PATH, 'var/pages')
 DOKUWIKI_META_DIR = '/var/www/kb/data/meta' if not settings.DEBUG else os.path.join(settings.PROJECT_PATH, 'var/meta')
 
-logger = logging.getLogger('optools.debug')
-logger.setLevel(logging.INFO)
-
 
 #===============================================================================
 #  _____                    _   _
