@@ -21,12 +21,12 @@ MANAGERS = ADMINS
 # Default database connection if not provided by local settings
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'testing.db',                   # Or path to database file if using sqlite3.
-        'USER': '',                             # Not used with sqlite3.
-        'PASSWORD': '',                         # Not used with sqlite3.
-        'HOST': '',                             # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                             # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',             # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': os.path.join(PROJECT_PATH, 'testing.db'),   # Or path to database file if using sqlite3.
+        'USER': '',                                         # Not used with sqlite3.
+        'PASSWORD': '',                                     # Not used with sqlite3.
+        'HOST': '',                                         # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                                         # Set to empty string for default. Not used with sqlite3.
     },
 }
 
@@ -169,7 +169,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'simple': {
-            'format': '%(asctime)s %(name)s [%(levelname)s] %(message)s'
+            'format': '%(asctime)s [%(levelname)s] |%(name)s| %(message)s'
         }
     },
     'filters': {
@@ -186,7 +186,7 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         },
-        'console':{
+        'debug':{
             'level':'DEBUG',
             'filters': ['require_debug_true'],
             'class':'logging.StreamHandler',
@@ -199,13 +199,34 @@ LOGGING = {
             'filename': os.path.join(PROJECT_PATH, 'log/http_trap.log'),
             'maxBytes': 10485760,
             'backupCount': 7
+        },
+        'optools_handler':{
+            'level':'INFO',
+            'class':'logging.handlers.RotatingFileHandler',
+            'formatter': 'simple',
+            'filename': os.path.join(PROJECT_PATH, 'log/optools.log'),
+            'maxBytes': 10485760,
+            'backupCount': 7
+        },
+        'optools_jobs_handler':{
+            'level':'INFO',
+            'class':'logging.handlers.RotatingFileHandler',
+            'formatter': 'simple',
+            'filename': os.path.join(PROJECT_PATH, 'log/jobs.log'),
+            'maxBytes': 10485760,
+            'backupCount': 7
         }
     },
     'loggers': {
-        'optools.debug': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+        'optools': {
+            'handlers': ['debug'],
+            'level': 'INFO',
             'propagate': False,
+        },
+        'optools.jobs': {
+            'handlers': ['optools_jobs_handler'],
+            'level': 'INFO',
+            'propagate': True,
         },
         'optools.trap': {
             'handlers': ['http_trap_handler'],
@@ -215,7 +236,7 @@ LOGGING = {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
-            'propagate': True,
+            'propagate': False,
         },
     }
 }
