@@ -27,17 +27,18 @@
 
 			<table id="kb_table" cellpadding="0" cellspacing="0" border="0" class="table table-bordered">
 			    <thead>
-			        <th><h5>KB Namespaces</h5></th>
+			        <th>KB Namespaces</th>
 			        <th>Comment</th>
 			        <th>Rating</th>
+			        <th>Validated</th>
 			    </thead>
-				<tbody>
-				{% for kb in procedures %}
+				<tbody>{% for kb in procedures %}{% if kb.is_written %}
 					<tr class="kb-row" data-row-id="{{ kb.namespace }}">
 						<td><a class="kb-link" href="{% url show_kb kb.namespace %}" target="_blank">{{ kb.namespace }}</a></td>
 						<td><small>{{ kb.comment|default:"No comment" }}</small></td>
 					    <td>{{ kb.get_rating_display }}</td>
-					</tr>{% endfor %}
+						<td>{{ kb.validated }}</td>
+					</tr>{% endif %}{% endfor %}
 				</tbody>
 			</table>
 		</div>
