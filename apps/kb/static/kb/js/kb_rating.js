@@ -25,12 +25,14 @@ $(document).ready(function() {
     $("#kb_table").dataTable({
         "iDisplayLength": 25,
         "bAutoWidth": false,
+        "aaSorting": [[4, "desc"]],
         "oSearch": {
             "sSearch": "",
             "bRegex": true
         },
         "aoColumnDefs": [
             { "bSearchable": true, "aTargets": [ 0 ] },
+            { "sType": "date", "aTargets": [ 4 ] },
             { "bSearchable": false, "aTargets": [ "_all" ] }
         ]
     });
