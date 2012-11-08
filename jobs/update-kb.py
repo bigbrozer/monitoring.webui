@@ -60,12 +60,9 @@ def update_fields(kb, model):
     # Direct to a db field
     for field in kb.db_fields:
         setattr(model, field, getattr(kb, field))
-        # Get META informations and insert in db field
+    # Get META informations and insert in db field
     for meta in kb.db_meta_fields:
         setattr(model, meta, getattr(kb, 'META').get(meta))
-
-    # Save model in database
-    model.save()
 
 def update():
     """Update or create KB in the database, keep in sync with dokuwiki."""
@@ -77,11 +74,23 @@ def update():
         logger.info("Entering create mode.")
 
     with transaction.commit_on_success():
+        logger.info("Populating database...")
         for kb in dokuwiki:
             model, created = Procedure.objects.get_or_create(namespace=kb.namespace)
             if created:
                 logger.debug('Kb \"%s\" is new in database.', kb)
+            # Update fields
             update_fields(kb, model)
+
+            # Process all parents
+            for parent in kb.parents:
+                parent_model, created = Procedure.objects.get_or_create(namespace=parent.namespace)
+                if created:
+                    logger.debug('Parent \"%s\" for kb \"\" is new in database.', parent, kb)
+                model.parents.add(parent_model)
+
+            # Save KB in database
+            model.save()
 
     logger.info('Done. Database now have %d procedures.', Procedure.objects.count())
 
@@ -96,7 +105,7 @@ def delete_removed():
         logger.debug('Kb \"%s\" has been removed from wiki. Deletes database entry.', procedure.namespace)
         procedure.delete()
 
-    logger.info("Done. Deleted %s procedures.", len(deleted_kb))
+    logger.info("Done. Deleted %s procedures from database.", len(deleted_kb))
 
 #===============================================================================
 #  __  __       _
