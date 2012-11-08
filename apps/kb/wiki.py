@@ -31,6 +31,7 @@ DOKUWIKI_META_DIR = '/var/www/kb/data/meta' if not settings.DEBUG else os.path.j
 # |_____/_/\_\___\___| .__/ \__|_|\___/|_| |_|___/
 #                    |_|
 #===============================================================================
+
 class KbError(Exception):
     """
     Base class for all exceptions related to KB.
@@ -54,20 +55,38 @@ class KbUrlMalformed(KbError):
 
 
 #===============================================================================
+#  _   _ _   _ _
+# | | | | |_(_) |___
+# | | | | __| | / __|
+# | |_| | |_| | \__ \
+#  \___/ \__|_|_|___/
+#
+#===============================================================================
+
+def strip_namespace(namespace):
+    namespace_valid_regexp = r'^([a-zA-Z0-9_-]+:*)+$'
+
+    if not re.match(namespace_valid_regexp, namespace):
+        raise KbUrlMalformed(namespace, namespace_valid_regexp)
+
+    return namespace.lower().strip(':')
+
+
+#===============================================================================
 #   ____ _
 #  / ___| | __ _ ___ ___  ___  ___
 # | |   | |/ _` / __/ __|/ _ \/ __|
 # | |___| | (_| \__ \__ \  __/\__ \
 #  \____|_|\__,_|___/___/\___||___/
-
+#
 #===============================================================================
+
 class Kb(object):
     """
     This class init a Kb and store information such as: name, namespace, last modified timestamp, parents kb, etc...
     """
     logger = logging.getLogger('optools.apps.kb.wiki.Kb')
 
-    namespace_valid_regexp = r'^([a-zA-Z0-9_-]+:*)+$'
     db_fields = (
         'namespace',
         'is_written',
@@ -78,12 +97,8 @@ class Kb(object):
     )
 
     def __init__(self, namespace):
-        # Validate namespace before proceeding
-        if not re.match(Kb.namespace_valid_regexp, namespace):
-            raise KbUrlMalformed(namespace, Kb.namespace_valid_regexp)
-
         # Attributes
-        self.namespace = namespace.lower().strip(':')
+        self.namespace = strip_namespace(namespace)
         self.name = self.namespace.split(':')[-1]
         self.filename = os.path.join(DOKUWIKI_PAGES_DIR, "{}.txt".format(self.namespace.replace(':', '/')))
         self.changes_filename = os.path.join(DOKUWIKI_META_DIR, "{}.changes".format(self.namespace.replace(':', '/')))
