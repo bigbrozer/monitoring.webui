@@ -14,6 +14,9 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
 from django.conf import settings
 from django.utils.timezone import utc
 
+# Models imports
+from apps.kb.models import Procedure
+
 # Dokuwiki config
 DOKUWIKI_BASE_URL = '/kb' if not settings.DEBUG else 'http://monitoring-dc.app.corp/kb'
 DOKUWIKI_PAGES_DIR = '/var/www/kb/data/pages' if not settings.DEBUG else os.path.join(settings.PROJECT_PATH, 'var/pages')
@@ -62,9 +65,17 @@ class Kb(object):
     """
     This class init a Kb and store information such as: name, namespace, last modified timestamp, parents kb, etc...
     """
-    logger = logging.getLogger('optools.debug.kb.wiki.Kb')
+    logger = logging.getLogger('optools.apps.kb.wiki.Kb')
 
     namespace_valid_regexp = r'^([a-zA-Z0-9_-]+:*)+$'
+    db_fields = (
+        'namespace',
+        'is_written',
+    )
+    db_meta_fields = (
+        'last_modified',
+        'author',
+    )
 
     def __init__(self, namespace):
         # Validate namespace before proceeding
@@ -122,12 +133,12 @@ class Kb(object):
     def __repr__(self):
         return "{} <{}>".format(self.__class__.__name__, self)
 
-    def __cmp__(self, other):
+    # Comparaison operators
+    def __eq__(self, other):
         if isinstance(other, (str, unicode)):
-            if other == self.namespace: return 0
-            else: return -1
-        elif isinstance(other, Kb):
-            if self.namespace == other.namespace: return 0
+            return other == self.namespace
+        elif isinstance(other, (Kb, Procedure)):
+            return self.namespace == other.namespace
         else:
             raise NotImplementedError("Comparing with %s is not implemented !" % type(other))
 
@@ -140,9 +151,10 @@ class Wiki(object):
     Class that provides access to the content stored in Dokuwiki.
     It is aware of all KB in it, you are able to search a KB, have details on it, etc...
     """
-    logger = logging.getLogger('optools.debug.kb.wiki.Wiki')
+    logger = logging.getLogger('optools.apps.kb.wiki.Wiki')
 
     def __init__(self):
+        self.logger.info("Initializing Wiki.")
         # Atrributes
         self._index = []
 
@@ -152,11 +164,11 @@ class Wiki(object):
 
         # Log
         self.logger.debug('%s attributes:\n%s', repr(self), pformat(self.__dict__))
-        self.logger.info('Indexed %d procedures.', len(self))
+        self.logger.info('Wiki initialized. Indexed %d procedures.', len(self))
 
     def _build_index(self):
         """Build the index of all KB in dokuwiki (txt files in data/pages folder)."""
-        self.logger.info('Building full index for the wiki.')
+        self.logger.info('Building index.')
         self.logger.debug('Pages directory is \"%s\".' % DOKUWIKI_PAGES_DIR)
 
         # Check all procedure files that exist in Dokuwiki, create Kb objects
@@ -176,7 +188,7 @@ class Wiki(object):
 
     def _build_parent_relations(self):
         """Build the parents relation-ships for all Kb."""
-        self.logger.info('--- Building parents relation-ships for all Kb.')
+        self.logger.info('Doing parents relation-ships.')
         for kb in self._index:
             self.logger.debug('Building parents for \"%s\".', kb)
             for pi, parent in enumerate(kb.parents):
