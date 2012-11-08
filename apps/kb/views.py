@@ -15,7 +15,7 @@ from django.http import HttpResponse
 from apps.kb.models import Procedure
 
 # Local app imports
-import wiki
+from apps.kb import wiki
 
 
 def show_kb(request, kb_namespace):
@@ -39,29 +39,27 @@ def show_kb(request, kb_namespace):
     Context:
         locals
     """
+    # Internals
+    _dokuwiki = wiki.Wiki()
+    _kb_found = None
+
+    # Context
+    user_is_helpdesk = request.user.groups.filter(name='helpdesk')
+    kb_requested = _dokuwiki[kb_namespace]
+    title = "Showing KB %s" % kb_requested.namespace
     section = {'kb': 'active'}
 
-    # Who is
-    user = request.user
-    user_is_helpdesk = user.groups.filter(name='helpdesk')
-
-    kb_found = None
-
-    # Info
-    kb_details = wiki.get_procedure_details(kb_namespace)
-    kb_requested = kb_details[-1]
-
-    # Checking if a procedure is found in the namespaces, get the last one
-    for kb in kb_details:
-        if kb['created']:
-            kb_found = kb
+    # Checking for first written procedure in the parents
+    for parent in kb_requested.parents:
+        if parent.is_written:
+            _kb_found = parent
 
     # Redirect to the procedure if the requested is created
-    if kb_requested['created']:
-        return redirect("{}/{}".format(wiki.DOKUWIKI_BASE_URL, kb_requested['namespace']))
+    if kb_requested.is_written:
+        return redirect(kb_requested.META['read_url'])
     # Redirect to the first procedure found if user is not helpdesk
-    if user_is_helpdesk and kb_found:
-        return redirect("{}/{}".format(wiki.DOKUWIKI_BASE_URL, kb_found['namespace']))
+    if user_is_helpdesk and _kb_found:
+        return redirect(_kb_found.META['read_url'])
     # No procedure exist or user is not helpdesk
     else:
         return render_to_response(
@@ -88,8 +86,7 @@ def rate_kb(request):
     logger = logging.getLogger('optools.debug.kb.rating')
 
     if not request.is_ajax():
-        DOKUWIKI_BASE_URL = wiki.DOKUWIKI_BASE_URL
-
+        title = 'KB'
         section = {'kb': 'active'}
         procedures = Procedure.objects.all()
 
@@ -113,6 +110,7 @@ def rate_kb(request):
                 comment = request.GET['comment']
                 procedure.comment = comment
 
+            procedure.validated = True
             procedure.save()
 
         return HttpResponse()
