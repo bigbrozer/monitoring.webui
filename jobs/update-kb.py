@@ -19,6 +19,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
+__all__ = ['update', 'delete_removed']
+
 # Std imports
 import logging
 import sys
@@ -36,30 +38,79 @@ from apps.kb.models import Procedure
 from django.db import transaction
 
 # Logging
-logger = logging.getLogger('optools.debug.jobs.update_kb')
+logger = logging.getLogger('optools.jobs.update_kb')
 logger.info('Starting job: %s.', os.path.basename(__file__))
 
 # Wiki instance
 dokuwiki = Wiki()
 
-# Run on first import (database is empty)
-def bulk_import():
-    logger.info('Start Bulk import.')
-    logger.info('Importing %d entries in the database.', len(dokuwiki))
+#===============================================================================
+#  _____                 _   _
+# |  ___|   _ _ __   ___| |_(_) ___  _ __  ___
+# | |_ | | | | '_ \ / __| __| |/ _ \| '_ \/ __|
+# |  _|| |_| | | | | (__| |_| | (_) | | | \__ \
+# |_|   \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
+#
+#===============================================================================
+
+def update_fields(kb, model):
+    """Update fields in the database. Associate attributes to DB fields."""
+    logger.debug('Updating fields of KB \"%s\" in database.', kb)
+
+    # Direct to a db field
+    for field in kb.db_fields:
+        setattr(model, field, getattr(kb, field))
+        # Get META informations and insert in db field
+    for meta in kb.db_meta_fields:
+        setattr(model, meta, getattr(kb, 'META').get(meta))
+
+    # Save model in database
+    model.save()
+
+def update():
+    """Update or create KB in the database, keep in sync with dokuwiki."""
+    have_kb_in_db = Procedure.objects.count()
+
+    if have_kb_in_db:
+        logger.info("Entering update mode.")
+    else:
+        logger.info("Entering create mode.")
 
     with transaction.commit_on_success():
         for kb in dokuwiki:
-            logger.debug("Inserting kb \"%s\"...", kb)
-            new_kb = Procedure(namespace=kb.namespace)
-            new_kb.is_written = kb.is_written
-            new_kb.last_modified = kb.META.get('last_modified')
-            new_kb.author = kb.META.get('author')
-            new_kb.save()
+            model, created = Procedure.objects.get_or_create(namespace=kb.namespace)
+            if created:
+                logger.debug('Kb \"%s\" is new in database.', kb)
+            update_fields(kb, model)
 
-    logger.info('Bulk import is done.')
+    logger.info('Done. Database now have %d procedures.', Procedure.objects.count())
 
-if not Procedure.objects.all():
-    # First import, table is empty
-    bulk_import()
-else:
-    pass
+def delete_removed():
+    """Find all KB that no longer exist in dokuwiki and delete them from the database."""
+    logger.info("Checking to replicate deletions of KB from wiki to database.")
+    kb_in_dokuwiki = set(dokuwiki)
+    kb_in_db = set(Procedure.objects.all())
+    deleted_kb = kb_in_db - kb_in_dokuwiki
+
+    for procedure in deleted_kb:
+        logger.debug('Kb \"%s\" has been removed from wiki. Deletes database entry.', procedure.namespace)
+        procedure.delete()
+
+    logger.info("Done. Deleted %s procedures.", len(deleted_kb))
+
+#===============================================================================
+#  __  __       _
+# |  \/  | __ _(_)_ __
+# | |\/| |/ _` | | '_ \
+# | |  | | (_| | | | | |
+# |_|  |_|\__,_|_|_| |_|
+#
+#===============================================================================
+
+def main():
+    """Main job procedure."""
+    update()
+    delete_removed()
+
+if __name__ == '__main__':
+    main()
