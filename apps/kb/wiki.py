@@ -103,11 +103,13 @@ class Kb(object):
         self.filename = os.path.join(DOKUWIKI_PAGES_DIR, "{}.txt".format(self.namespace.replace(':', '/')))
         self.changes_filename = os.path.join(DOKUWIKI_META_DIR, "{}.changes".format(self.namespace.replace(':', '/')))
         self.is_written = False
+        self.parents = []
+
+        # META informations
         self.META = {
             'read_url': '{}/{}'.format(DOKUWIKI_BASE_URL, self.namespace),
             'edit_url': '{}/{}?do=edit'.format(DOKUWIKI_BASE_URL, self.namespace),
         }
-        self.parents = []
 
         if os.path.isfile(self.filename):
             self.is_written = True
