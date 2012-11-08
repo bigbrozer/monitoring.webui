@@ -31,6 +31,7 @@
 			        <th>Comment</th>
 			        <th>Rating</th>
 			        <th>Validated</th>
+			        <th>Last Modified</th>
 			    </thead>
 				<tbody>{% for kb in procedures %}{% if kb.is_written %}
 					<tr class="kb-row" data-row-id="{{ kb.namespace }}">
@@ -38,6 +39,7 @@
 						<td><small>{{ kb.comment|default:"No comment" }}</small></td>
 					    <td>{{ kb.get_rating_display }}</td>
 						<td>{{ kb.validated }}</td>
+						<td>{{ kb.last_modified|date }}</td>
 					</tr>{% endif %}{% endfor %}
 				</tbody>
 			</table>
