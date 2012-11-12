@@ -4,6 +4,7 @@ get the results from nagios
 
 from django.conf import settings
 import jobs.livestatus as live
+import os
 from os import path
 
 
