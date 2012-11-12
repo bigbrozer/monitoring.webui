@@ -10,9 +10,15 @@ section {
     padding-top: 20px;
 }
 
-div#graphRecurrentsAlerts, div#graphOldestsAlerts {
+div#graphRecurrentsAlerts {
     height: 500px;
     margin-bottom: 10px;
     width: 100%;
+}
+
+div#graphOldestsAlerts {
+    height: 500px;
+    width: 100%;
+    padding-top: 0px;
 }
 
