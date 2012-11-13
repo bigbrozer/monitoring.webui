@@ -18,7 +18,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-# Default database connection if not provided by local settings
+# Default database connection if not provided by local settings. This is a testing database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',             # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -159,6 +159,11 @@ CACHES = {
     }
 }
 
+# Dokuwiki config
+DOKUWIKI_BASE_URL = '/kb'
+DOKUWIKI_PAGES_DIR = '/var/www/kb/data/pages'
+DOKUWIKI_META_DIR = '/var/www/kb/data/meta'
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
@@ -186,7 +191,7 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         },
-        'debug':{
+        'console':{
             'level':'DEBUG',
             'filters': ['require_debug_true'],
             'class':'logging.StreamHandler',
@@ -218,10 +223,19 @@ LOGGING = {
         }
     },
     'loggers': {
-        'optools': {
-            'handlers': ['debug'],
-            'level': 'INFO',
+        'debug': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
             'propagate': False,
+        },
+        'optools': {
+            'handlers': ['console', 'mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'optools.apps': {
+            'level': 'INFO',
+            'propagate': True,
         },
         'optools.jobs': {
             'handlers': ['optools_jobs_handler'],
@@ -231,7 +245,7 @@ LOGGING = {
         'optools.trap': {
             'handlers': ['http_trap_handler'],
             'level': 'DEBUG',
-            'propagate': False,
+            'propagate': True,
         },
         'django.request': {
             'handlers': ['mail_admins'],
