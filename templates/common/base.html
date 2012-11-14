@@ -31,7 +31,13 @@
 				    <!-- Administration -->
 					{% if user.is_authenticated and user.is_staff %}
 						<li class="divider-vertical"></li>
-						<li><a href="{% url admin:index %}"><i class="icon-fire icon-white"></i> Administration</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" id="drop_admin" role="button" data-toggle="dropdown" href="#"><i class="icon-fire icon-white"></i> Administration <b class="caret"></b></a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="drop_admin">
+								<li><a href="{% url admin:index %}">Optools</a></li>
+								<li><a href="/phpmyadmin/">PhpMyAdmin</a></li>
+							</ul>
+						</li>
 					{% endif %}
 				</ul>
 				<ul class="nav pull-right">
@@ -44,7 +50,7 @@
 									{{ user.last_name }}{% else %}Edit your profile !{% endif %} <b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="drop_profile">
-								<li><a tabindex="-1" href="{% url user_profile %}">Profile</a></li>
+								<li><a href="{% url user_profile %}">Profile</a></li>
 							</ul>
 						</li>
 					{% else %}
