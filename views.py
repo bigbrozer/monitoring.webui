@@ -23,8 +23,8 @@ def http_login(request):
     Called after successfull basic HTTP authentication and check if user filled
     his profile. Also create a cookie to say we are logged in.
     """
-    logger = logging.getLogger('optools.debug.login')
-    logger.debug('Request full path: %s', request.get_full_path())
+    console = logging.getLogger('debug.views.common.http_login')
+    console.debug('Request full path: %s', request.get_full_path())
     redirection = ""
     user = None
     response = None
@@ -35,7 +35,7 @@ def http_login(request):
         next = qr.pop('next')[0]
         remains = qr.urlencode()
         redirection = '{0}?{1}'.format(next, remains)
-        logger.debug('Should redirect to: %s', redirection)
+        console.debug('Should redirect to: %s', redirection)
 
     # Find user
     if settings.DEVEL:
