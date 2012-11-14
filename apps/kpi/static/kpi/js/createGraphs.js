@@ -87,9 +87,13 @@ function createRequests() {
         fromField: "comment_lifetime",
         toField: "comment_lifetime"
     }, {
+        fromField: "lifetime_aim",
+        toField: "lifetime_aim"
+    }, {
         fromField: "requests_waiting",
         toField: "requests_waiting"
     }];
+
     dataset.dataProvider = chartDataRequest;
     dataset.categoryField = "date";
 
@@ -190,6 +194,7 @@ function createRequests() {
     graphClosed.periodValue = "Sum";
     stockPanelOpened.addStockGraph(graphClosed);
 
+
 //  2.1) graph Lifetime Global
     period_value = "Average";
 
@@ -201,24 +206,33 @@ function createRequests() {
     graphLifetimeGlobal.balloonText += "\n[[description]]";
     graphLifetimeGlobal.hideBulletsCount = 35;
     graphLifetimeGlobal.bullet = "bubble";
-//    graphLifetimeGlobal.balloonText += " days";
-//    graphLifetimeGlobal.legendValueText += " days";
     graphLifetimeGlobal.lineThickness = 2;
     graphLifetimeGlobal.hidden = false;
-    graphLifetimeGlobal.lineColor = "#000000";
+    graphLifetimeGlobal.lineColor = "#84815B";
     graphLifetimeGlobal.useDataSetColors = false;
     graphLifetimeGlobal.fillAlphas = 0.1;
     graphLifetimeGlobal.periodValue = period_value;
+
+// graph Lifetime Aim
+    var graphLifetimeAim = new AmCharts.StockGraph();
+    graphLifetimeAim.valueField = "lifetime_aim";
+    graphLifetimeAim.type = "line";
+    graphLifetimeAim.title = "Aim";
+    graphLifetimeAim.lineThickness = 2;
+    graphLifetimeAim.lineColor = "#00FF00";
+    graphLifetimeAim.useDataSetColors = false;
+    //graphLifetimeAim.visibleInLegend = false;
+    graphLifetimeAim.periodValue = period_value;
 
 //  2.1) stockPanel Lifetime (all)
     stockPanelLifetime = new AmCharts.StockPanel();
     stockPanelLifetime.title = "Lifetime";
     stockPanelLifetime.percentHeight = 50;
+    stockPanelLifetime.addStockGraph(graphLifetimeAim);
     stockPanelLifetime.addStockGraph(graphLifetimeGlobal);
 
 //  2.1) stockLegend Lifetime (all)
     stockLegendLifetime = new AmCharts.StockLegend();
-//    stockLegendLifetime.valueTextRegular += " days";
     stockPanelLifetime.stockLegend = stockLegendLifetime;
 
 //  2.2) graph Lifetime Normal
@@ -264,7 +278,6 @@ function createRequests() {
     graphLifetimeUrgent.title = "Urgent";
     graphLifetimeUrgent.hideBulletsCount = 35;
     graphLifetimeUrgent.bullet = "bubble";
-//    graphLifetimeUrgent.balloonText += " days";
     graphLifetimeUrgent.hidden = true;
     graphLifetimeUrgent.lineThickness = 2;
     graphLifetimeUrgent.lineColor = "#FF0000";
@@ -1067,24 +1080,33 @@ function createOldestsAlerts() {
     var chart;
 
 // CHART ///////////////////////////////////
-    chart = new AmCharts.AmPieChart();
+    chart = new AmCharts.AmSerialChart();
     chart.dataProvider = chartDataOldestsAlerts;
-    chart.titleField = "name";
-    chart.valueField = "days";
-    chart.urlField = "url";
-    chart.urlTarget = "_blank";
-    chart.descriptionField = "date_error";
-    chart.balloonText = "[[title]]: [[value]] days ([[description]])";
-    chart.labelText = "[[title]]: [[value]] days";
-    chart.pullOutRadius = "0%";
-    chart.radius = "30%";
-    chart.outlineThickness = 1.2;
-    chart.outlineAlpha = 1;
-    chart.outlineColor = "#FFFFFF";
-    chart.depth3D = 15;
+    chart.categoryField = "name";
+    chart.rotate = true;
+    chart.depth3D = 20;
     chart.angle = 30;
-    chart.startDuration = 0;
 
+    // AXES
+    // category
+    var categoryAxis = chart.categoryAxis;
+    categoryAxis.gridAlpha = 0;
+    
+
+    // GRAPH            
+    var graph = new AmCharts.AmGraph();
+    graph.valueField = "days";
+    graph.colorField = "color_graph";
+    graph.type = "column";
+    graph.descriptionField = "date_error";
+    graph.balloonText = "[[category]]: [[value]] days ([[description]])";
+    graph.lineAlpha = 0;
+    graph.fillAlphas = 1;
+    graph.urlField = "url";
+    graph.urlTarget = "_blank";
+    chart.addGraph(graph);
+
+    // WRITE
     chart.write('graphOldestsAlerts');
     deleteAmChart();
 }

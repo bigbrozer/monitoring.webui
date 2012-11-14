@@ -43,6 +43,7 @@ class KpiRedmine(models.Model):
     requests_lifetime_urgent = models.PositiveIntegerField()
     comment_lifetime = models.TextField(blank=True, default="")
     requests_waiting = models.PositiveIntegerField('waiting', null=True)
+    aim_lifetime = models.PositiveIntegerField(help_text='Aim from the boss', default=10*24*60*60)
 
     def lifetime(self):
         """
@@ -68,6 +69,13 @@ class KpiRedmine(models.Model):
         """
         return "%s" % timedelta(seconds = self.requests_lifetime_urgent)
 
+    def lifetime_aim(self):
+        """
+        return the lifetime aim
+        """
+        return "%s" % timedelta(seconds = self.aim_lifetime)
+
+
     lifetime.admin_order_field = 'requests_lifetime'
     lifetime.short_description = 'lifetime (global)'
 
@@ -79,6 +87,9 @@ class KpiRedmine(models.Model):
 
     lifetime_urgent.admin_order_field = 'requests_lifetime_urgent'
     lifetime_urgent.short_description = 'lifetime (urgent)'
+
+    lifetime_aim.admin_order_field = 'aim_lifetime'
+    lifetime_aim.short_description = 'Aim lifetime'
 
     def __unicode__(self):
         return str(self.date)

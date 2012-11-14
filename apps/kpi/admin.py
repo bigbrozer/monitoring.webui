@@ -34,14 +34,14 @@ class KpiRedmineAdmin(admin.ModelAdmin):
     """
     list_display = ('date', 'requests_opened', 'requests_closed',
         'requests_remained', 'requests_waiting', 'lifetime', 'lifetime_normal', 'lifetime_high',
-        'lifetime_urgent', 'comment_lifetime')
+        'lifetime_urgent', 'comment_lifetime', 'lifetime_aim')
     date_hierarchy = 'date'
     ordering = ['-date']
     actions = ['update']
     fieldsets = [
         ('Date information',{'fields': ['date'], 'classes': ['collapse']}),
         ('Requests', {'fields': ['requests_opened', 'requests_closed', 'requests_remained', 'requests_waiting']}),
-        ('Lifetime', {'fields': ['requests_lifetime', 'comment_lifetime', 'requests_lifetime_normal', 'requests_lifetime_high', 'requests_lifetime_urgent']}),
+        ('Lifetime', {'fields': ['requests_lifetime', 'comment_lifetime', 'requests_lifetime_normal', 'requests_lifetime_high', 'requests_lifetime_urgent', 'aim_lifetime']}),
     ]
 
     def update(self, request, queryset):

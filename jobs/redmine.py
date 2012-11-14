@@ -7,6 +7,7 @@ import sqlite3
 from apps.kpi.models import KpiRedmine
 from datetime import datetime, timedelta
 from django.utils.timezone import utc
+import os
 
 def request():
     """
