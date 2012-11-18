@@ -94,33 +94,4 @@ def rate_kb(request):
         locals
     """
     console = logging.getLogger('debug.views.kb.rate_kb')
-
-    if not request.is_ajax():
-        title = 'KB'
-        section = {'kb': 'active'}
-        procedures = Procedure.objects.all()
-
-        return render_to_response(
-            "kb/rate_procedure.html",
-            locals(),
-            context_instance=RequestContext(request)
-        )
-    elif request.is_ajax():
-        kb_list = request.GET.getlist('kb[]')
-
-        # Update status
-        for kb in kb_list:
-            procedure = Procedure.objects.get(namespace=kb)
-
-            if request.GET.has_key('rating'):
-                rating = request.GET['rating']
-                procedure.rating = int(rating)
-
-            if request.GET.has_key('comment'):
-                comment = request.GET['comment']
-                procedure.comment = comment
-
-            procedure.validated = True
-            procedure.save()
-
-        return HttpResponse()
+    pass
