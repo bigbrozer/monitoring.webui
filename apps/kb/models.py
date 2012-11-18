@@ -60,7 +60,7 @@ class Procedure(models.Model):
     author = models.CharField(max_length=128, help_text='Last modification author.', blank=True, null=True, editable=False)
     parents = models.ManyToManyField('Procedure', help_text='These are the parent procedures.', null=True, editable=False)
     rating = models.IntegerField(choices=RATING_CHOICES, help_text='Rating for this procedure.', default=-1)
-    comment = models.TextField(help_text='Comment on the grade you given.', blank=True, null=True)
+    comment = models.CharField(max_length=255, help_text='Comment on the grade you given.', blank=True, null=True)
     last_modified = models.DateTimeField(help_text='Time of the last modification.', blank=True, null=True, editable=False)
 
     # KB constructor: register a new KB in the database
@@ -174,8 +174,8 @@ class Procedure(models.Model):
             return other == self.namespace
         elif isinstance(other, Procedure):
             return self.namespace == other.namespace
-        else:
-            raise NotImplementedError("Comparing with %s is not implemented !" % type(other))
+
+        super(Procedure, self).__eq__(other)
 
     # Misc
     def __str__(self):
