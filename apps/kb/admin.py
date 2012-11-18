@@ -13,7 +13,7 @@ class ProcedureAdmin(admin.ModelAdmin):
     list_display = ('namespace', 'rating', 'comment', 'validated', 'is_written', 'author', 'last_modified')
     list_filter = ('rating', 'validated', 'is_written')
     radio_fields = {"rating": admin.VERTICAL}
-    search_fields = ['namespace']
+    search_fields = ['^namespace']
     list_per_page = 20
     ordering = ['-last_modified', 'is_written']
 
