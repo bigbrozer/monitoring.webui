@@ -38,7 +38,7 @@
 				<p>More you go to the right, more precise will be your procedure. More you go to the left, more general will be your procedure.</p>
 
 				<ul class="kb-namespace-select">
-					{% for kb in kb_details %}{% if forloop.first %}{{ kb.page }}{% else %}<span class="dropdown"><a class='{% if not kb.created %}kb-link-missing {% endif %}dropdown-toggle' id="drop_{{ kb.page }}" role="button" data-toggle="dropdown" href="#">{{ kb.page }}</a><ul class="dropdown-menu" role="menu" aria-labelledby="drop_{{ kb.page }}"><li><a tabindex="-1" href="{{ kb.edit_url }}">Edit</a></li>{% if kb.created %}<li><a tabindex="-1" href="{{ kb.read_url }}">Read</a></li>{% endif %}</ul></span>{% endif %}{% if not forloop.last %}:{% endif %}{% endfor %}
+					{% for kb in procedure_pages %}{% if forloop.first %}{{ kb.get_name }}{% else %}<span class="dropdown"><a class='{% if not kb.is_written %}kb-link-missing {% endif %}dropdown-toggle' id="drop_{{ kb.namespace }}" role="button" data-toggle="dropdown" href="#">{{ kb.get_name }}</a><ul class="dropdown-menu" role="menu" aria-labelledby="drop_{{ kb.namespace }}"><li><a tabindex="-1" href="{{ kb.get_edit_url }}">Edit</a></li>{% if kb.is_written %}<li><a tabindex="-1" href="{{ kb.get_read_url }}">Read</a></li>{% endif %}</ul></span>{% endif %}{% if not forloop.last %}:{% endif %}{% endfor %}
 				</ul>
 
 				<h4>Legend</h4>

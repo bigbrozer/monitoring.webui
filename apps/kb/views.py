@@ -14,9 +14,6 @@ from django.http import HttpResponse
 # Models imports
 from apps.kb.models import Procedure
 
-# Local app imports
-from apps.kb import wiki
-
 
 def show_kb(request, kb_namespace):
     """
@@ -39,27 +36,40 @@ def show_kb(request, kb_namespace):
     Context:
         locals
     """
-    # Internals
-    _dokuwiki = wiki.Wiki()
-    _kb_found = None
-
-    # Context
-    user_is_helpdesk = request.user.groups.filter(name='helpdesk')
-    kb_requested = _dokuwiki[kb_namespace]
-    title = "Showing KB %s" % kb_requested.namespace
     section = {'kb': 'active'}
+    user_is_helpdesk = request.user.groups.filter(name='helpdesk')
+    procedure_pages = []
+    kb_found = None
 
-    # Checking for first written procedure in the parents
-    for parent in kb_requested.parents:
-        if parent.is_written:
-            _kb_found = parent
+    # Init the KB object...
+    try:
+        kb_requested = Procedure.objects.get(namespace=kb_namespace)
+    except Procedure.DoesNotExist:
+        kb_requested = Procedure.register(namespace=kb_namespace)
+
+    # .. and its parents
+    for parent in kb_requested.get_parents():
+        try:
+            parent_model = Procedure.objects.get(namespace=parent)
+        except Procedure.DoesNotExist:
+            parent_model = Procedure.register(namespace=parent)
+
+        procedure_pages.append(parent_model)
+    procedure_pages.append(kb_requested)
+
+    title = "Showing KB %s" % kb_requested.namespace
+
+    # Try to find if there is any procedure existing in the namespace
+    for page in procedure_pages:
+        if page.is_written:
+            kb_found = page
 
     # Redirect to the procedure if the requested is created
-    if kb_requested.is_written:
-        return redirect(kb_requested.META['read_url'])
+    if kb_requested and kb_requested.is_written:
+        return redirect(kb_requested.get_read_url())
     # Redirect to the first procedure found if user is not helpdesk
-    if user_is_helpdesk and _kb_found:
-        return redirect(_kb_found.META['read_url'])
+    if user_is_helpdesk and kb_found:
+        return redirect(kb_found.get_read_url())
     # No procedure exist or user is not helpdesk
     else:
         return render_to_response(
@@ -83,7 +93,7 @@ def rate_kb(request):
     Context:
         locals
     """
-    logger = logging.getLogger('optools.debug.kb.rating')
+    console = logging.getLogger('debug.views.kb.rate_kb')
 
     if not request.is_ajax():
         title = 'KB'
@@ -100,7 +110,7 @@ def rate_kb(request):
 
         # Update status
         for kb in kb_list:
-            procedure, created = Procedure.objects.get_or_create(namespace=kb, defaults={'rating': -1, 'comment': None})
+            procedure = Procedure.objects.get(namespace=kb)
 
             if request.GET.has_key('rating'):
                 rating = request.GET['rating']

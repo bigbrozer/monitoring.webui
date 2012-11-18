@@ -19,8 +19,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
-__all__ = ['update', 'delete_removed']
-
 # Std imports
 import logging
 import sys
@@ -31,18 +29,16 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'optools.settings'
 
 # Apps imports
-from apps.kb.wiki import Wiki
 from apps.kb.models import Procedure
 
 # Django imports
 from django.db import transaction
+from django.conf import settings
 
 # Logging
 logger = logging.getLogger('optools.jobs.update_kb')
-logger.info('Starting job: %s.', os.path.basename(__file__))
+console = logging.getLogger('debug.jobs.update_kb')
 
-# Wiki instance
-dokuwiki = Wiki()
 
 #===============================================================================
 #  _____                 _   _
@@ -52,57 +48,61 @@ dokuwiki = Wiki()
 # |_|   \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
 #
 #===============================================================================
+def init_wiki():
+    """Build the index of all KB in dokuwiki (txt files in data/pages folder)."""
+    logger.info('Building Procedure index.')
+    console.debug('Pages directory is \"%s\".' % settings.DOKUWIKI_PAGES_DIR)
 
-def update_fields(kb, model):
-    """Update fields in the database. Associate attributes to DB fields."""
-    logger.debug('Updating fields of KB \"%s\" in database.', kb)
+    index = []
 
-    # Direct to a db field
-    for field in kb.db_fields:
-        setattr(model, field, getattr(kb, field))
-    # Get META informations and insert in db field
-    for meta in kb.db_meta_fields:
-        setattr(model, meta, getattr(kb, 'META').get(meta))
+    # Check all procedure files that exist in Dokuwiki
+    for root, lsdirs, lsfiles in os.walk(settings.DOKUWIKI_PAGES_DIR):
+        lsfiles.sort()
+        lsdirs.sort()
 
-def update():
-    """Update or create KB in the database, keep in sync with dokuwiki."""
-    have_kb_in_db = Procedure.objects.count()
+        root_namespace = os.path.relpath(root, settings.DOKUWIKI_PAGES_DIR).replace('/', ':')
+        if root_namespace != "." and not root_namespace in index:
+            index.append(root_namespace)
 
-    if have_kb_in_db:
-        logger.info("Entering update mode.")
-    else:
-        logger.info("Entering create mode.")
+        for page in lsfiles:
+            name = os.path.splitext(page)[0]
+            path = os.path.join(root, name)
+            namespace = os.path.relpath(path, settings.DOKUWIKI_PAGES_DIR).replace('/', ':')
+            if not namespace in index:
+                index.append(namespace)
 
+    return index
+
+def push_to_db(index):
+    """Push KB to the database, keep in sync with dokuwiki."""
+    logger.info("Populating database...")
     with transaction.commit_on_success():
-        logger.info("Populating database...")
-        for kb in dokuwiki:
-            model, created = Procedure.objects.get_or_create(namespace=kb.namespace)
-            if created:
-                logger.debug('Kb \"%s\" is new in database.', kb)
-            # Update fields
-            update_fields(kb, model)
-
-            # Process all parents
-            for parent in kb.parents:
-                parent_model, created = Procedure.objects.get_or_create(namespace=parent.namespace)
-                if created:
-                    logger.debug('Parent \"%s\" for kb \"\" is new in database.', parent, kb)
-                model.parents.add(parent_model)
-
-            # Save KB in database
-            model.save()
+        for kb_name in index:
+            procedure, created = Procedure.objects.get_or_create(namespace=kb_name)
+            procedure.save()
 
     logger.info('Done. Database now have %d procedures.', Procedure.objects.count())
 
-def delete_removed():
+def linkify_parents():
+    """Make parents relations."""
+    logger.info("Linkify parents...")
+    with transaction.commit_on_success():
+        for procedure in Procedure.objects.all():
+            procedure.parents.clear()
+            for parent_name in procedure.get_parents():
+                parent_model = Procedure.objects.get(namespace=parent_name)
+                procedure.parents.add(parent_model)
+    logger.info("Done. Parent relations are created.")
+
+def delete_removed(index):
     """Find all KB that no longer exist in dokuwiki and delete them from the database."""
     logger.info("Checking to replicate deletions of KB from wiki to database.")
-    kb_in_dokuwiki = set(dokuwiki)
+    kb_in_dokuwiki = set(index)
     kb_in_db = set(Procedure.objects.all())
     deleted_kb = kb_in_db - kb_in_dokuwiki
 
     for procedure in deleted_kb:
-        logger.debug('Kb \"%s\" has been removed from wiki. Deletes database entry.', procedure.namespace)
+        console.debug('Kb \"%s\" has been removed from wiki. Deletes database entry.', procedure.namespace)
         procedure.delete()
 
     logger.info("Done. Deleted %s procedures from database.", len(deleted_kb))
@@ -117,9 +117,17 @@ def delete_removed():
 #===============================================================================
 
 def main():
-    """Main job procedure."""
-    update()
-    delete_removed()
+    """
+    Main job procedure.
+    """
+    logger.info('Starting job: %s.', os.path.basename(__file__))
+
+    kb_index = init_wiki()
+    push_to_db(kb_index)
+    linkify_parents()
+    delete_removed(kb_index)
+
+    logger.info('Ending job: %s.', os.path.basename(__file__))
 
 if __name__ == '__main__':
     main()
