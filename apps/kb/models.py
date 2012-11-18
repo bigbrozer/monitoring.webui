@@ -63,40 +63,49 @@ class Procedure(models.Model):
     comment = models.TextField(help_text='Comment on the grade you given.', blank=True, null=True)
     last_modified = models.DateTimeField(help_text='Time of the last modification.', blank=True, null=True, editable=False)
 
-    # KB constructor: register a new KB in the database
+    # KB constructor: register a new KB in the database with all details (without performing DB stuff)
     @classmethod
     def register(cls, namespace):
         procedure = cls(namespace=namespace)
 
-        # Clean namespace
         procedure._strip_namespace()
-
-        # Check if file exist for the procedure
-        if os.path.isfile(procedure.get_filename()):
-            procedure.is_written = True
-        else:
-            procedure.is_written = False
-
-        # Populate META informations
-        procedure._populate_meta()
+        procedure.update_meta()
 
         return procedure
 
-#    # Saving
-#    def save(self, *args, **kwargs):
-#        """Customize saving model method."""
-#        try:
-#            # Call validation manually
-#            self.full_clean()
-#        except ValidationError as e:
-#            self.logger.critical('Errors found about Procedure model validation ! Please fix them.')
-#            for error in e.message_dict['__all__']:
-#                self.logger.critical('%s', error)
-#            raise # Forward exception
-#
-#        super(Procedure, self).save(*args, **kwargs)
+    # Saving
+    def save(self, *args, **kwargs):
+        """Customize saving model method."""
+        try:
+            # Call validation manually
+            self.full_clean()
+        except ValidationError as e:
+            self.logger.critical('Errors found about Procedure model validation ! Please fix them.')
+            for error in e.message_dict['__all__']:
+                self.logger.critical('%s', error)
+            raise # Forward exception
+
+        self.update_meta()
+
+        # Un-validate the procedure if it has been modified
+        if self.last_modified != Procedure.objects.get(pk=self.id).last_modified:
+            self.console.debug('Kb \"%s\" has changed. Un-validate.', self)
+            self.validated = False
+
+        super(Procedure, self).save(*args, **kwargs)
 
     # Special KB methods
+    def update_meta(self):
+        """Update META information about the procedure."""
+        # Check if file exist for the procedure
+        if os.path.isfile(self.get_filename()):
+            self.is_written = True
+        else:
+            self.is_written = False
+
+        # Update META informations
+        self._populate_meta()
+
     def get_name(self):
         """Get the name for this procedure."""
         return self.namespace.split(':')[-1]
