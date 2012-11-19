@@ -19,7 +19,7 @@
 					<li class="{{ section.kb }} dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-book icon-white"></i> KB <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="/kb/?do=index">Index</a></li>
+							<li><a href="/kb/?do=index" target="_blank">Index</a></li>
 							{% if perms.kb.change_procedure %}
 							<li><a href="{% url admin:kb_procedure_changelist %}">Rate</a></li>
 							{% endif %}
@@ -38,7 +38,7 @@
 							<a class="dropdown-toggle" id="drop_admin" role="button" data-toggle="dropdown" href="#"><i class="icon-fire icon-white"></i> Administration <b class="caret"></b></a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="drop_admin">
 								<li><a href="{% url admin:index %}">Optools</a></li>
-								<li><a href="/phpmyadmin/">PhpMyAdmin</a></li>
+								<li><a href="/phpmyadmin/" target="_blank">PhpMyAdmin</a></li>
 							</ul>
 						</li>
 					{% endif %}
