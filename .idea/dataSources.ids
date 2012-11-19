@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Django default" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="2cf21fd2-f455-4568-9da3-dd8a3410acc6">
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:/media/DEVKEY/git/admin/optools/testing.db</jdbc-url>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/xerial-sqlite-license.txt</url>
+      </library>
+      <library>
+        <url>jar://$USER_HOME$/.PyCharm20/config/jdbc-drivers/sqlite-jdbc-3.7.2.jar!/</url>
+      </library>
+    </libraries>
+    <table name="announce_announcement" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="created_on" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="hero_unit_title" sqlType="VARCHAR(128)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="hero_unit_desc" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="show_hero_unit" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="title" sqlType="VARCHAR(128)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="content" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="is_enabled" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+    <table name="auth_group" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR(80)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <index name="sqlite_autoindex_auth_group_1" unique="true" columns="name" />
+    </table>
+    <table name="auth_group_permissions" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="group_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="permission_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="id" />
+      <foreign-key columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="" ref-columns="id" />
+      <index name="auth_group_permissions_1e014c8f" unique="false" columns="permission_id" />
+      <index name="auth_group_permissions_bda51c3c" unique="false" columns="group_id" />
+      <index name="sqlite_autoindex_auth_group_permissions_1" unique="true" columns="group_id,permission_id" />
+    </table>
+    <table name="auth_permission" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR(50)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="content_type_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="codename" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <index name="auth_permission_e4470c6e" unique="false" columns="content_type_id" />
+      <index name="sqlite_autoindex_auth_permission_1" unique="true" columns="content_type_id,codename" />
+    </table>
+    <table name="auth_user" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="username" sqlType="VARCHAR(30)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="first_name" sqlType="VARCHAR(30)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="last_name" sqlType="VARCHAR(30)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="email" sqlType="VARCHAR(75)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="password" sqlType="VARCHAR(128)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="is_staff" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="is_active" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="is_superuser" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="last_login" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="date_joined" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <index name="sqlite_autoindex_auth_user_1" unique="true" columns="username" />
+    </table>
+    <table name="auth_user_groups" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="group_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="id" />
+      <foreign-key columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="" ref-columns="id" />
+      <index name="auth_user_groups_bda51c3c" unique="false" columns="group_id" />
+      <index name="auth_user_groups_fbfc09f1" unique="false" columns="user_id" />
+      <index name="sqlite_autoindex_auth_user_groups_1" unique="true" columns="user_id,group_id" />
+    </table>
+    <table name="auth_user_user_permissions" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="permission_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="id" />
+      <foreign-key columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="" ref-columns="id" />
+      <index name="auth_user_user_permissions_1e014c8f" unique="false" columns="permission_id" />
+      <index name="auth_user_user_permissions_fbfc09f1" unique="false" columns="user_id" />
+      <index name="sqlite_autoindex_auth_user_user_permissions_1" unique="true" columns="user_id,permission_id" />
+    </table>
+    <table name="django_admin_log" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="action_time" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="user_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="content_type_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="object_id" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="object_repr" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="action_flag" sqlType="SMALLINT UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="change_message" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <foreign-key columns="content_type_id,user_id" ref-table="django_content_type" ref-schema="" ref-catalog="" ref-columns="id,id" />
+      <index name="django_admin_log_e4470c6e" unique="false" columns="content_type_id" />
+      <index name="django_admin_log_fbfc09f1" unique="false" columns="user_id" />
+    </table>
+    <table name="django_content_type" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="app_label" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="model" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <index name="sqlite_autoindex_django_content_type_1" unique="true" columns="app_label,model" />
+    </table>
+    <table name="django_flatpage" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="url" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="title" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="content" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="enable_comments" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="template_name" sqlType="VARCHAR(70)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="registration_required" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+      <index name="django_flatpage_a4b49ab" unique="false" columns="url" />
+    </table>
+    <table name="django_flatpage_sites" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="flatpage_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="site_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="id" />
+      <foreign-key columns="site_id" ref-table="django_site" ref-schema="" ref-catalog="" ref-columns="id" />
+      <index name="django_flatpage_sites_6223029" unique="false" columns="site_id" />
+      <index name="django_flatpage_sites_dedefef8" unique="false" columns="flatpage_id" />
+      <index name="sqlite_autoindex_django_flatpage_sites_1" unique="true" columns="flatpage_id,site_id" />
+    </table>
+    <table name="django_session" schema="" catalog="" type="TABLE">
+      <column name="session_key" sqlType="VARCHAR(40)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="session_data" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="expire_date" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="session_key" />
+      <index name="django_session_c25c2c28" unique="false" columns="expire_date" />
+      <index name="sqlite_autoindex_django_session_1" unique="true" columns="session_key" />
+    </table>
+    <table name="django_site" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="domain" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="name" sqlType="VARCHAR(50)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+    <table name="kpi_countnotifications" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="date" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="warning" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="warning_acknowledged" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="critical" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="critical_acknowledged" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="comment_notification_warning" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="comment_notification_warning_ack" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="comment_notification_critical" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="comment_notification_critical_ack" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+    <table name="kpi_kpinagios" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="date" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="total_host" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="total_services" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="written_procedures" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="missing_procedures" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="linux" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="windows" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="aix" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="comment_host" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="comment_procedure" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="total_written" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="total_missing" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="comment_service" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+    <table name="kpi_kpiredmine" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="date" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="requests_opened" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="requests_closed" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="requests_remained" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="requests_lifetime" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="requests_lifetime_normal" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="requests_lifetime_high" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="requests_lifetime_urgent" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="comment_lifetime" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="requests_waiting" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+    <table name="kpi_nagiosnotifications" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="host" sqlType="VARCHAR(64)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="service" sqlType="VARCHAR(128)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="date" sqlType="DATETIME" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="state" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="acknowledged" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+    <table name="kpi_oldestalerts" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="date" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="host" sqlType="VARCHAR(64)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="service" sqlType="VARCHAR(128)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="date_error" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+    <table name="kpi_recurrentalerts" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="date" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="host" sqlType="VARCHAR(64)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="service" sqlType="VARCHAR(128)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="frequency" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+    <table name="nagios_satellite" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR(4)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="alias" sqlType="VARCHAR(25)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="fqdn" sqlType="VARCHAR(30)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="ip_address" sqlType="CHAR(15)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="live_port" sqlType="INTEGER UNSIGNED" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="nagios_url" sqlType="VARCHAR(10)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+  </data-source>
+</component>
