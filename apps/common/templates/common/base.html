@@ -20,7 +20,7 @@
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-book icon-white"></i> KB <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="/kb/?do=index">Index</a></li>
-							{% if perms.procedure.can_rate %}
+							{% if perms.kb.change_procedure %}
 							<li><a href="{% url admin:kb_procedure_changelist %}">Rate</a></li>
 							{% endif %}
 						</ul>
