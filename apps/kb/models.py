@@ -40,11 +40,6 @@ class Procedure(models.Model):
         """Raised if error is encountered during meta file parsing."""
         pass
 
-    class Meta:
-        permissions = (
-            ("rate_procedure", "Can rate a procedure"),
-        )
-
     # Possible rating choices
     RATING_CHOICES = (
         (-2, 'Bad'),
@@ -88,9 +83,12 @@ class Procedure(models.Model):
         self.update_meta()
 
         # Un-validate the procedure if it has been modified
-        if self.last_modified != Procedure.objects.get(pk=self.id).last_modified:
-            self.console.debug('Kb \"%s\" has changed. Un-validate.', self)
-            self.validated = False
+        try:
+            if self.last_modified != Procedure.objects.get(pk=self.id).last_modified:
+                self.console.debug('Kb \"%s\" has changed. Un-validate.', self)
+                self.validated = False
+        except Procedure.DoesNotExist:
+            pass
 
         super(Procedure, self).save(*args, **kwargs)
 
