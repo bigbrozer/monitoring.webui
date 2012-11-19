@@ -47,6 +47,8 @@ class Procedure(models.Model):
 
     # Possible rating choices
     RATING_CHOICES = (
+        ('', 'Please select rating'),
+        ('', '--------------------'),
         (-2, 'Bad'),
         (-1, 'Average'),
         ( 0, 'Good'),
