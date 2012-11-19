@@ -5,8 +5,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.contrib import admin
-from django import forms
-from django.db import models
 
 # Models imports
 from apps.kb.models import Procedure
@@ -22,7 +20,7 @@ class ProcedureAdmin(admin.ModelAdmin):
     list_per_page = 15
     ordering = ['-last_modified', 'is_written']
 
-    actions = ['rate_and_comment', 'rate_and_comment_ext']
+    actions = ['rate_and_comment', 'unvalidate']
 
     # Disable delete_selected action
     def get_actions(self, request):
@@ -74,6 +72,18 @@ class ProcedureAdmin(admin.ModelAdmin):
             context_instance=RequestContext(request)
         )
     rate_and_comment.short_description = 'Rate selected procedures'
+
+    def unvalidate(self, request, queryset):
+        """Admin action to unvalidate selected procedures."""
+        num = queryset.count()
+        queryset.update(validated=False)
+
+        if num == 1:
+            message_bit = "1 procedure was"
+        else:
+            message_bit = "%s procedures were" % num
+        self.message_user(request, '%s unvalidated successfully.' % message_bit)
+    unvalidate.short_description = 'Unvalidate selected procedures'
 
 # Register in admin site
 admin.site.register(Procedure, ProcedureAdmin)
