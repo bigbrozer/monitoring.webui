@@ -1,8 +1,9 @@
 # Adding models to Admin site for kb app
 
 # Django imports
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render_to_response
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import admin
 
@@ -12,15 +13,21 @@ from apps.kb.models import Procedure
 # Forms imports
 from apps.kb.forms import ProcedureCommentForm
 
+
 class ProcedureAdmin(admin.ModelAdmin):
-    list_display = ('namespace', 'rating', 'comment', 'validated', 'is_written', 'author', 'last_modified')
+    list_display = ('namespace', 'wiki', 'rating', 'comment', 'validated', 'is_written', 'author', 'last_modified')
     list_filter = ('rating', 'validated', 'is_written')
-    list_editable = ('rating',)
     search_fields = ['^namespace']
     list_per_page = 15
     ordering = ['-last_modified', 'is_written']
 
     actions = ['rate_and_comment', 'unvalidate']
+
+    # Extra fields
+    def wiki(self, instance):
+        """Show a link to read the procedure online."""
+        return '<a href=\"javascript:window.open(\'{}\',\'name\', \'width=980,height=700\');\">Read</a>'.format(instance.get_read_url())
+    wiki.allow_tags = True
 
     # Disable delete_selected action
     def get_actions(self, request):
@@ -42,7 +49,9 @@ class ProcedureAdmin(admin.ModelAdmin):
                 rating = comment_form.cleaned_data['rating']
                 rating_key = dict(comment_form.fields['rating'].choices)[int(rating)]
 
-                queryset.update(comment=comment, rating=rating)
+                queryset.update(comment=comment, rating=rating, validated=True)
+                for obj in queryset:
+                    self.log_change(request, obj, "Changed rating to \"%s\"." % obj.get_rating_display())
 
                 if num == 1:
                     message_bit = "1 procedure was"
@@ -87,4 +96,3 @@ class ProcedureAdmin(admin.ModelAdmin):
 
 # Register in admin site
 admin.site.register(Procedure, ProcedureAdmin)
-
