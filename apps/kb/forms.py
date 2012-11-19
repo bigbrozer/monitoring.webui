@@ -1,13 +1,13 @@
 """Forms for the app kb."""
 
 # Django imports
-from django.forms import ModelForm
+from django import forms
 
 # Models imports
 from apps.kb.models import Procedure
 
 
-# Create the form class fro Procedure model
-class ProcedureForm(ModelForm):
-    class Meta:
-        model = Procedure
+# Comment form
+class ProcedureCommentForm(forms.Form):
+    rating = forms.ChoiceField(choices=Procedure.RATING_CHOICES, label='Select rating to apply')
+    comment = forms.CharField(widget=forms.Textarea(), label='Enter a comment about your choice')

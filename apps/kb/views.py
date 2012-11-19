@@ -2,18 +2,15 @@
 Django views for application kb.
 """
 
-# Std imports
-import logging
-
 # Django imports
-from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
-from django.http import HttpResponse
 
 # Models imports
 from apps.kb.models import Procedure
 
+# Forms imports
+from apps.kb.forms import ProcedureCommentForm
 
 def show_kb(request, kb_namespace):
     """
@@ -77,21 +74,3 @@ def show_kb(request, kb_namespace):
             locals(),
             context_instance=RequestContext(request)
         )
-
-@permission_required('kb.rate_procedure')
-def rate_kb(request):
-    """
-    Show page to rate quality of procedures in dokuwiki.
-    If an Ajax request is send to this page, it will update Procedure model if user is authorized to do so.
-
-    Permissions required:
-        kb.rate_procedure
-
-    Template:
-        kb/rate_procedure.html
-
-    Context:
-        locals
-    """
-    console = logging.getLogger('debug.views.kb.rate_kb')
-    pass

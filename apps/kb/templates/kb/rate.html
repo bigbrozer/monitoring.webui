@@ -1,0 +1,39 @@
+{% extends "common/base.html" %}
+
+{% block content %}
+    <div class="page-header">
+    <h1>Rate selected procedures</h1>
+    </div>
+
+    <p>You are about to rate the following procedures:</p>
+
+    <div class="row">
+        <div class="span6">
+            <ul>{{ procedures|unordered_list }}</ul>
+        </div>
+
+        <div class="span6">
+            {% if comment_form.errors %}
+                <div class="alert alert-error">
+                    <p>Please correct the following errors.</p>
+                    {{ comment_form.errors }}
+                </div>
+            {% endif %}
+
+            <form action="" method="post">{% csrf_token %}
+                {{ comment_form.rating.label_tag }}
+                {{ comment_form.rating }}
+
+                {{ comment_form.comment.label_tag }}
+                <textarea id="id_comment" name="comment" class="input-xxlarge" placeholder="Enter your comment here..." rows="5"></textarea>
+
+                {% for id in ids %}
+                <input type="hidden" name="_selected_action" value="{{ id }}">
+                {% endfor %}
+                <input type="hidden" name="action" value="rate_and_comment" />
+                <input type="hidden" name="posted" value="yes" />
+                <p><button type="submit" class="btn btn-primary">Apply</button></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

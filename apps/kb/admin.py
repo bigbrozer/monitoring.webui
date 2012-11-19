@@ -1,33 +1,28 @@
 # Adding models to Admin site for kb app
 
 # Django imports
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render_to_response
+from django.template import RequestContext
 from django.contrib import admin
-from django.forms import Textarea
+from django import forms
 from django.db import models
 
 # Models imports
 from apps.kb.models import Procedure
 
+# Forms imports
+from apps.kb.forms import ProcedureCommentForm
 
 class ProcedureAdmin(admin.ModelAdmin):
     list_display = ('namespace', 'rating', 'comment', 'validated', 'is_written', 'author', 'last_modified')
     list_filter = ('rating', 'validated', 'is_written')
-    radio_fields = {"rating": admin.VERTICAL}
+    list_editable = ('rating',)
     search_fields = ['^namespace']
-    list_per_page = 20
+    list_per_page = 15
     ordering = ['-last_modified', 'is_written']
 
-    actions = [
-        'rate_bad',
-        'rate_average',
-        'rate_good',
-        'rate_excellent'
-    ]
-
-    # Overrides fields
-    formfield_overrides = {
-        models.TextField: {'widget': Textarea(attrs={'rows':2, 'cols':20})},
-    }
+    actions = ['rate_and_comment', 'rate_and_comment_ext']
 
     # Disable delete_selected action
     def get_actions(self, request):
@@ -37,35 +32,48 @@ class ProcedureAdmin(admin.ModelAdmin):
         return actions
 
     # Rating Actions
-    def rate_as(self, request, queryset, rating, mark):
-        """Base for Admin action to rate selected procedures."""
-        rows_updated = queryset.update(rating=rating, validated=True)
-        if rows_updated == 1:
-            message_bit = "1 procedure was"
-        else:
-            message_bit = "%s procedures were" % rows_updated
-        self.message_user(request, "%s successfully rated as %s." % (message_bit, mark))
+    def rate_and_comment(self, request, queryset):
+        comment_form = None
+        ids = []
 
-    def rate_bad(self, request, queryset):
-        """Admin action to rate selected procedures as bad."""
-        self.rate_as(request, queryset, -2, 'bad')
-    rate_bad.short_description = 'Rate as Bad'
+        if 'comment' in request.POST:
+            comment_form = ProcedureCommentForm(request.POST)
+            if comment_form.is_valid():
+                num = queryset.count()
+                comment = comment_form.cleaned_data['comment']
+                rating = comment_form.cleaned_data['rating']
+                rating_key = dict(comment_form.fields['rating'].choices)[int(rating)]
 
-    def rate_average(self, request, queryset):
-        """Admin action to rate selected procedures as average."""
-        self.rate_as(request, queryset, -1, 'average')
-    rate_average.short_description = 'Rate as Average'
+                queryset.update(comment=comment, rating=rating)
 
-    def rate_good(self, request, queryset):
-        """Admin action to rate selected procedures as good."""
-        self.rate_as(request, queryset, 0, 'good')
-    rate_good.short_description = 'Rate as Good'
+                if num == 1:
+                    message_bit = "1 procedure was"
+                else:
+                    message_bit = "%s procedures were" % num
+                self.message_user(request, '%s rated as %s.' % (message_bit, rating_key))
 
-    def rate_excellent(self, request, queryset):
-        """Admin action to rate selected procedures as excellent."""
-        self.rate_as(request, queryset, 1, 'excellent')
-    rate_excellent.short_description = 'Rate as Excellent'
+                return HttpResponseRedirect(request.get_full_path())
 
+        if '_selected_action' in request.POST:
+            ids = request.POST.getlist('_selected_action')
+
+        if not comment_form:
+            comment_form = ProcedureCommentForm()
+
+        context = {
+            'title': 'Rate selected procedures',
+            'section': {'kb': 'active'},
+            'procedures': queryset,
+            'comment_form': comment_form,
+            'ids': ids,
+        }
+
+        return render_to_response(
+            "kb/rate.html",
+            context,
+            context_instance=RequestContext(request)
+        )
+    rate_and_comment.short_description = 'Rate selected procedures'
 
 # Register in admin site
 admin.site.register(Procedure, ProcedureAdmin)
