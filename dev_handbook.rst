@@ -20,3 +20,9 @@ field.
 - Start your database’s interactive shell (e.g., psql or mysql, or you can
 use ``manage.py dbshell``). Execute an ``ALTER TABLE`` statement that adds your new
 column.
+
+Cron jobs
+=========
+
+Look at the django's user crontab for the list of croned jobs.
+
