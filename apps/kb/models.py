@@ -82,14 +82,23 @@ class Procedure(models.Model):
 
         self.update_meta()
 
-        # Un-validate the procedure if it has been modified
+        # Check validation of the procedure
         try:
-            if self.last_modified != Procedure.objects.get(pk=self.id).last_modified:
-                self.console.debug('Kb \"%s\" has changed. Un-validate.', self)
+            before = Procedure.objects.get(pk=self.id)
+
+            # Rating has changed...
+            if self.rating != before.rating:
+                self.console.debug('Kb \"%s\" rating has changed. Validate.', self)
+                self.validated = True
+
+            # Last modified has changed...
+            if self.last_modified != before.last_modified:
+                self.console.debug('Kb \"%s\" has been modified. Un-validate.', self)
                 self.validated = False
         except Procedure.DoesNotExist:
             pass
 
+        # Save in DB
         super(Procedure, self).save(*args, **kwargs)
 
     # Special KB methods
