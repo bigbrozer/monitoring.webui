@@ -26,7 +26,8 @@ class ProcedureAdmin(admin.ModelAdmin):
     # Extra fields
     def wiki(self, instance):
         """Show a link to read the procedure online."""
-        return '<a href=\"javascript:window.open(\'{}\',\'name\', \'width=980,height=700\');\">Read</a>'.format(instance.get_read_url())
+        return '<a href=\"\" ' \
+               'onclick=\"window.open(\'{}\',\'{}\', \'width=980,height=700\');\">Read</a>'.format(instance.get_read_url(), instance)
     wiki.allow_tags = True
 
     # Disable delete_selected action
