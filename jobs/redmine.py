@@ -85,7 +85,7 @@ def request():
         cur.execute("SELECT count(id) FROM ISSUES "
                                     "WHERE created_on < ? "
                                     "AND (due_date > ? "
-                                    "OR (status_id != 5 AND status_id != 6 AND status_id != 10)) "
+                                    "OR (status_id != 5 AND status_id != 6)) "
                                     "AND project_id != 12", tu2)
         requests_remained[str(day_midnight)] = cur.fetchone()[0]
 
@@ -134,7 +134,7 @@ def request():
 #        else:
 #            requests_lifetime_urgent[str(day_midnight)] = 0
         for request in cur.execute("SELECT created_on, due_date, priority_id FROM issues "
-                                   "WHERE (status_id = 5 OR status_id = 6 OR status_id = 10)"
+                                   "WHERE status_id = 5"
                                    "AND due_date > ?"
                                    "AND due_date < ?"
                                    "AND project_id != 12", (day_midnight-avg, day_midnight)):
@@ -158,27 +158,25 @@ def request():
                 lifetime_urgent += request[1] - created_on
                 n_urgent += 1
         if n_low > 0:
-            requests_lifetime_low[str(day_midnight)] =\
-            (lifetime_low.total_seconds()/n_low)
+            requests_lifetime_low[str(day_midnight)] = (lifetime_low.total_seconds()/n_low)
         else:
             requests_lifetime_low[str(day_midnight)] = 0
         if n_normal > 0:
-            requests_lifetime_normal[str(day_midnight)] =\
-            (lifetime_normal.total_seconds()/n_normal)
+            requests_lifetime_normal[str(day_midnight)] = (lifetime_normal.total_seconds()/n_normal)
         else:
             requests_lifetime_normal[str(day_midnight)] = 0
         if n_high > 0:
-            requests_lifetime_high[str(day_midnight)] =\
-            (lifetime_high.total_seconds()/n_high)
+            requests_lifetime_high[str(day_midnight)] = (lifetime_high.total_seconds()/n_high)
         else:
             requests_lifetime_high[str(day_midnight)] = 0
         if n_urgent > 0:
-            requests_lifetime_urgent[str(day_midnight)] =\
-            (lifetime_urgent.total_seconds()/n_urgent)
+            requests_lifetime_urgent[str(day_midnight)] = (lifetime_urgent.total_seconds()/n_urgent)
         else:
             requests_lifetime_urgent[str(day_midnight)] = 0
         if n_normal + n_high + n_urgent != 0:
-            requests_lifetime_low[str(day_midnight)] = (lifetime_normal.total_seconds() + lifetime_high.total_seconds() + lifetime_urgent.total_seconds()) / (n_normal + n_high + n_urgent)
+            requests_lifetime_low[str(day_midnight)] = (lifetime_normal.total_seconds() \
+                                                        + lifetime_high.total_seconds() \
+                                                        + lifetime_urgent.total_seconds()) / (n_normal + n_high + n_urgent)
         else:
             requests_lifetime_normal[str(day_midnight)] = 0
 
