@@ -35,6 +35,7 @@ class KpiRedmineAdmin(admin.ModelAdmin):
     list_display = ('date', 'requests_opened', 'requests_closed',
         'requests_remained', 'requests_waiting', 'lifetime', 'lifetime_normal', 'lifetime_high',
         'lifetime_urgent', 'comment_lifetime', 'lifetime_aim')
+    list_editable = ['requests_waiting']
     date_hierarchy = 'date'
     ordering = ['-date']
     actions = ['update']
