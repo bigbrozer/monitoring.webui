@@ -85,7 +85,7 @@ def request():
         cur.execute("SELECT count(id) FROM ISSUES "
                                     "WHERE created_on < ? "
                                     "AND (due_date > ? "
-                                    "OR (status_id != 5 AND status_id != 6)) "
+                                    "OR (status_id != 5 AND status_id != 6 AND status_id != 10)) "
                                     "AND project_id != 12", tu2)
         requests_remained[str(day_midnight)] = cur.fetchone()[0]
 
