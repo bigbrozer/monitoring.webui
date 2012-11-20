@@ -134,7 +134,7 @@ def request():
 #        else:
 #            requests_lifetime_urgent[str(day_midnight)] = 0
         for request in cur.execute("SELECT created_on, due_date, priority_id FROM issues "
-                                   "WHERE status_id = 5 "
+                                   "WHERE (status_id = 5 OR status_id = 6 OR status_id = 10)"
                                    "AND due_date > ?"
                                    "AND due_date < ?"
                                    "AND project_id != 12", (day_midnight-avg, day_midnight)):
