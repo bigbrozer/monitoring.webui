@@ -29,6 +29,7 @@ html, body {
 /* Footer block */
 footer {
     height: 100px;
+    padding-top: 5px;
     background-color: #333;
     color: #999;
 }
