@@ -17,9 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
-import httpagentparser
-
-
 def browser(request):
     """
     Adds browser-related context variables to the context.
@@ -31,6 +28,8 @@ def browser(request):
     - outdated: specify if browser is outdated so unsupported.
     - major_version: the browser major version (None if not available).
     """
+    import httpagentparser
+
     if request.META.get('HTTP_USER_AGENT'):
         br =  httpagentparser.detect(request.META['HTTP_USER_AGENT'])['browser']
         br['major_version'] = None
@@ -49,3 +48,27 @@ def browser(request):
             br['outdated'] = True
 
         return {'browser': br}
+
+def optools(request):
+    """
+    Add optools related context variables to the context.
+
+    Context
+        OPTOOLS_VERSION: the version of optools (last git tag). Show NA if not available.
+        OPTOOLS_DEBUG_MODE: are we in DEBUG mode ?
+        OPTOOLS_DB_HOST: the host running the database.
+    """
+    from django.conf import settings
+    import subprocess
+
+    try:
+        version = subprocess.check_output(['git', '--git-dir={}/.git'.format(settings.PROJECT_PATH),
+                               'describe','--tags'])
+    except:
+        version = 'NA'
+
+    return {
+        'OPTOOLS_VERSION': version.strip('\n'),
+        'OPTOOLS_DEBUG_MODE': settings.DEBUG,
+        'OPTOOLS_DB_HOST': settings.DATABASES['default']['HOST'],
+    }
