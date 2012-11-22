@@ -9,8 +9,6 @@ from django.template import RequestContext
 # Models imports
 from apps.kb.models import Procedure
 
-# Forms imports
-from apps.kb.forms import ProcedureCommentForm
 
 def show_kb(request, kb_namespace):
     """

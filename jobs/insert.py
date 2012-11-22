@@ -13,8 +13,7 @@ import nagios_notifications
 import redmine
 from apps.kpi.models import NagiosNotifications, CountNotifications, RecurrentAlerts, OldestAlerts
 from apps.kpi.models import KpiRedmine, KpiNagios
-from django.utils.timezone import utc, UTC
-from django.core.cache import cache
+from django.utils.timezone import utc
 
 
 def insert():
