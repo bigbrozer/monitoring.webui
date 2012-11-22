@@ -45,7 +45,8 @@ class Satellite(models.Model):
     class Meta:
         ordering = ['name']
 
-    #noinspection PyMissingConstructor
+
+    # Internal classes for Livestatus connectivity
     class SatelliteConnectError(Exception):
         """
         Exception raised when a satellite is dead.
@@ -55,23 +56,19 @@ class Satellite(models.Model):
             self.dead_satellites = args[0]
 
         def __str__(self):
-            message = "Unable to connect to satellites: "
-            for index, dead in enumerate(self.dead_satellites.keys()):
-                if index == len(self.dead_satellites.keys())-1:
-                    message += "{}."
-                else:
-                    message += "{}, "
-                message = message.format(dead)
+            message = "Unable to connect / query satellites: "
+            sat_errors = []
+            for sat, value in self.dead_satellites.iteritems():
+                sat_errors.append('{} ({})'.format(sat, value['exception']))
+            message += ', '.join(sat_errors)
 
             return message
 
 
-    def __unicode__(self):
-        return u'{0} ({1})'.format(self.name, self.alias)
-
+    # Livestatus related methods
     def as_live_dict(self, timeout=5):
         """
-        Return a dict as expected for :meth:`livestatus.MultiSiteConnection` method.
+        Return a dict as expected for :meth:`live.MultiSiteConnection` method.
         """
         return {self.name: {
             'alias': self.alias,
@@ -81,24 +78,34 @@ class Satellite(models.Model):
             }}
 
     @staticmethod
-    def live_connect(*args, **kwargs):
+    def live_connect(retries=3, *args, **kwargs):
         """
         Establish a connection to all satellites using livestatus.
         Returns the livestatus connection MultiSiteConnection object.
 
         :param timeout: the number of secs before connection is timed out. Default to 5 secs.
+        :param retries: the number of retries if a satellite has failed.
         """
         satellites = Satellite.objects.all()
+        connection = None
         connection_settings = {}
 
         for sat in satellites:
             connection_settings.update(sat.as_live_dict(*args, **kwargs))
 
-        connection = live.MultiSiteConnection(connection_settings)
+        for retry in xrange(0, retries):
+            connection = live.MultiSiteConnection(connection_settings)
+            if not connection.dead_sites():
+                break
+
         if connection.dead_sites():
             raise Satellite.SatelliteConnectError(connection.dead_sites())
 
         return connection
+
+    # String representation
+    def __unicode__(self):
+        return u'{0} ({1})'.format(self.name, self.alias)
 
 
 class SecurityPort(models.Model):

@@ -3,78 +3,12 @@ get the results from nagios
 """
 
 from django.conf import settings
-import jobs.livestatus as live
+from apps.nagios.models import Satellite
 import os
 from os import path
 
 
-def get_satellites():
-    """
-    return the key indicators from the last timestamp to now
-    """
-
-    connections = {
-        'EDC1': {
-            'alias': 'nagios.edc.eu.corp',
-            'socket': 'tcp:10.20.104.113:6557',
-            'nagios_url': '/nagios',
-            'timeout': 5,
-        },
-        'EDC2': {
-            'alias': 'nagios-2.edc.eu.corp',
-            'socket': 'tcp:10.20.104.114:6557',
-            'nagios_url': '/nagios',
-            'timeout': 5,
-        },
-        'ADC': {
-            'alias': 'nagios.cn.corp',
-            'socket': 'tcp:10.167.0.245:6557',
-            'nagios_url': '/nagios',
-            'timeout': 5,
-        },
-        'MOP': {
-            'alias': 'nagios.mop.fr.corp',
-            'socket': 'tcp:10.51.194.220:6557',
-            'nagios_url': '/nagios',
-            'timeout': 5,
-        },
-        'IDC': {
-            'alias': 'nagios.idc.us.corp',
-            'socket': 'tcp:10.135.0.7:6557',
-            'nagios_url': '/nagios',
-            'timeout': 5,
-        },
-        'HGB2': {
-            'alias': 'nagios-2.eas.ww.corp',
-            'socket': 'tcp:10.20.178.8:6557',
-            'nagios_url': '/nagios',
-            'timeout': 5,
-        },
-        'HGB': {
-            'alias': 'nagios.eas.ww.corp',
-            'socket': 'tcp:10.20.178.7:6557',
-            'nagios_url': '/nagios',
-            'timeout': 5,
-        },
-        'EDC3': {
-            'alias': 'nagios-3.edc.eu.corp',
-            'socket': 'tcp:10.20.104.208:6557',
-            'nagios_url': '/nagios',
-            'timeout': 5,
-        },
-
-    }
-
-    print "connection in progress"
-    for i in range(0, 2):
-        satellites = live.MultiSiteConnection(connections)
-        if not satellites.dead_sites():
-            print "connection initialized"
-            return satellites
-
-    return False
-
-SATELLITES = get_satellites()
+SATELLITES = Satellite.live_connect()
 
 def request():
     """
