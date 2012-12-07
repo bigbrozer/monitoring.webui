@@ -1,0 +1,65 @@
+{% load gravatar %}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" href="{% url portal_home %}">Central Operations</a>
+            <ul class="nav">
+                <!-- Home -->
+                <li class="{{ section.home }}"><a href="{% url portal_home %}"><i class="icon-home icon-white"></i>
+                    Home</a></li>
+                <!-- Reporting -->
+                <li class="{{ section.kpi }}"><a href="{% url apps.kpi.indicateurs.indicateurs %}"><i
+                        class="icon-picture icon-white"></i> Reporting</a></li>
+                <!-- KB -->
+                <li class="{{ section.kb }} dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-book icon-white"></i> KB <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/kb/?do=index" target="_blank">Index</a></li>
+                        {% if perms.kb.change_procedure %}
+                            <li><a href="{% url admin:kb_procedure_changelist %}">Rate</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                <!-- Web APIs -->
+                <li><a href="/doc/api/" target="_blank"><i class="icon-wrench icon-white"></i> APIs</a></li>
+                <!-- Systems -->
+                <li class="{{ section.systems }}"><a href="{% url systems_list %}"><i
+                        class="icon-th-list icon-white"></i> Systems</a></li>
+
+                <!-- Administration -->
+                {% if user.is_authenticated and user.is_staff %}
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" id="drop_admin" role="button" data-toggle="dropdown" href="#"><i class="icon-fire icon-white"></i> Administration <b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop_admin">
+                            <li><a href="{% url admin:index %}">Optools</a></li>
+                            <li><a href="/phpmyadmin/" target="_blank">PhpMyAdmin</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+            </ul>
+            <ul class="nav pull-right">
+                {% if user.is_authenticated %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" id="drop_profile" role="button" data-toggle="dropdown" href="#">
+                            {% if user.email %}{% gravatar_img_for_email user.email 14 %}{% else %}
+                                <i class="icon-user"></i>{% endif %}
+                            {% if user.first_name and user.last_name %}{{ user.first_name }}
+                                {{ user.last_name }}{% else %}Edit your profile !{% endif %} <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop_profile">
+                            <li><a href="{% url user_profile %}">Profile</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="#modal-prelogin-message" data-toggle="modal"><i class="icon-user icon-white"></i>
+                        Login</a></li>
+                {% endif %}
+                {% if OPTOOLS_DEBUG_MODE %}
+                    <li><a rel="tooltip" title="You are in DEBUG mode !" data-placement="bottom">Database: <strong>{% if OPTOOLS_DB_HOST %}!! PROD !!{% else %}TEST{% endif %}</strong></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
