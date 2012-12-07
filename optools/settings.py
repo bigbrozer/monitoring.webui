@@ -87,9 +87,6 @@ LOGIN_URL = '/optools/accounts/login/'
 LOGOUT_URL = '/optools/accounts/logout/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-# Make this unique
-SECRET_KEY = 'k6k^1fvqhj(-rod&amp;xcray3wr=)p!de_x(u(*d@f_da7036749@'
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
