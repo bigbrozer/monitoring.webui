@@ -19,13 +19,13 @@ register = template.Library()
 
 def _imgclass_attr():
     if GRAVATAR_IMG_CLASS:
-        return ' class="%s"' % (GRAVATAR_IMG_CLASS,)
+        return '%s' % (GRAVATAR_IMG_CLASS,)
     return ''
 
 
-def _wrap_img_tag(url, info):
-    return '<img src="%s"%s alt="Avatar for %s">' % \
-            (escape(url), _imgclass_attr(), info)
+def _wrap_img_tag(url, info, extra_style):
+    return '<img src="%s" class="%s %s" alt="Avatar for %s">' % \
+            (escape(url), _imgclass_attr(), extra_style, info)
 
 
 def _get_user(user):
@@ -88,20 +88,20 @@ def gravatar_for_user(user, size=None, rating=None):
 
 
 @register.simple_tag
-def gravatar_img_for_email(email, size=None, rating=None):
+def gravatar_img_for_email(email, size=None, rating=None, extra_style=""):
     """
     Generates a Gravatar img for the given email address.
 
     Syntax::
 
-        {% gravatar_img_for_email <email> [size] [rating] %}
+        {% gravatar_img_for_email <email> [size] [rating] [extra_style] %}
 
     Example::
 
         {% gravatar_img_for_email someone@example.com 48 pg %}
     """
     gravatar_url = gravatar_for_email(email, size, rating)
-    return _wrap_img_tag(gravatar_url, email)
+    return _wrap_img_tag(gravatar_url, email, extra_style)
 
 
 @register.simple_tag
