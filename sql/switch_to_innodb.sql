@@ -1,0 +1,23 @@
+USE optools;
+
+ALTER TABLE announce_announcement ENGINE=INNODB;
+ALTER TABLE auth_group ENGINE=INNODB;
+ALTER TABLE auth_group_permissions ENGINE=INNODB;
+ALTER TABLE auth_message ENGINE=INNODB;
+ALTER TABLE auth_permission ENGINE=INNODB;
+ALTER TABLE auth_user ENGINE=INNODB;
+ALTER TABLE auth_user_groups ENGINE=INNODB;
+ALTER TABLE auth_user_user_permissions ENGINE=INNODB;
+ALTER TABLE django_admin_log ENGINE=INNODB;
+ALTER TABLE django_content_type ENGINE=INNODB;
+ALTER TABLE django_session ENGINE=INNODB;
+ALTER TABLE kb_procedure ENGINE=INNODB;
+ALTER TABLE kb_procedure_parents ENGINE=INNODB;
+ALTER TABLE kpi_countnotifications ENGINE=INNODB;
+ALTER TABLE kpi_kpinagios ENGINE=INNODB;
+ALTER TABLE kpi_kpiredmine ENGINE=INNODB;
+ALTER TABLE kpi_nagiosnotifications ENGINE=INNODB;
+ALTER TABLE kpi_oldestalerts ENGINE=INNODB;
+ALTER TABLE kpi_recurrentalerts ENGINE=INNODB;
+ALTER TABLE nagios_satellite ENGINE=INNODB;
+ALTER TABLE nagios_securityport ENGINE=INNODB;
