@@ -1,3 +1,15 @@
+.amChartsDataSetSelector
+{
+    font-size:12px;
+    font-family:verdana,helvetica,arial,sans-serif;
+}
+
+.amChartsPeriodSelector
+{
+    font-size:12px;
+    font-family:verdana,helvetica,arial,sans-serif;
+}
+
 .amChartsButtonSelected
 {
    background-color:#CC0000;
@@ -27,4 +39,10 @@
    border-style:solid;
    border-color:#CCCCCC;
    border-width:1px;
+}
+
+
+.amChartsInputField
+{
+
 }
