@@ -4,6 +4,7 @@ pip-tools==0.2.1
 ipython==0.13.1
 docutils==0.9.1
 Django==1.4.2
+django-debug-toolbar==0.9.4
 pytz==2012h
 MySQL-python==1.2.3
 httpagentparser==1.1.3
