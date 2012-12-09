@@ -5,6 +5,48 @@ Developper documentation
 This is the developper documentation (handbook) for this project. This is things
 to know.
 
+Get started
+===========
+
+First we need to configure your environment.
+
+Setup local settings
+--------------------
+
+Create file ``settings_local.py`` in ``optools`` folder relative to the project
+root.
+
+Add the following content in it::
+
+ import os
+ from optools.settings import LOGGING
+ from django.conf import settings
+
+ DEBUG = True
+ DEVEL = DEBUG
+ TEMPLATE_DEBUG = DEBUG
+
+ INTERNAL_IPS = ('127.0.0.1',)
+ 
+ LOGIN_URL = '/accounts/login/'
+ LOGOUT_URL = '/accounts/logout/'
+ AUTHENTICATION_BACKENDS = (
+     'django.contrib.auth.backends.ModelBackend',
+ )
+ 
+ CACHES = {
+     'default': {
+         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+     }
+ }
+ 
+ DOKUWIKI_BASE_URL = 'http://monitoring-dc.app.corp/kb'
+ DOKUWIKI_PAGES_DIR = os.path.join(settings.PROJECT_PATH, 'var/pages')
+ DOKUWIKI_META_DIR = os.path.join(settings.PROJECT_PATH, 'var/meta')
+ 
+ SECRET_KEY = 'k6k^1fvqhj(-rod&amp;xcray3wr=)p!de_x(u(*d@f_da7036749@'
+ LOGGING['loggers']['debug']['level'] = 'INFO'
+
 PyCharm
 =======
 
