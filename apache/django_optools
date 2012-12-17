@@ -1,3 +1,9 @@
-RedirectMatch ^[/]$ /optools/
-RedirectMatch ^/optools$ /optools/
-WSGIScriptAlias /optools /home/django/optools/optools/wsgi.py
+# Redirect defaults
+RedirectMatch           ^[/]$       http://monitoring-dc.app.corp/optools/
+RedirectMatch           ^/optools$  http://monitoring-dc.app.corp/optools/
+
+# WSGI app configuration
+WSGIScriptAlias         /optools    /home/django/optools/optools/wsgi.py
+WSGIDaemonProcess       optools     user=django group=django python-path=/home/django/Envs/optools/lib/python2.7/site-packages:/home/django/optools processes=2 threads=5
+WSGIProcessGroup        optools
+WSGIApplicationGroup    %{GLOBAL}

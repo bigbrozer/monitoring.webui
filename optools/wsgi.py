@@ -14,21 +14,8 @@ framework.
 
 """
 import os
-import sys
-import site
-
-# Get the project root directory
-project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-
-# Add virtualenv's site-packages to Python Path
-site.addsitedir('/home/django/Envs/optools/lib/python2.7/site-packages')
-project_env_lib = sys.path.pop()
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "optools.settings")
-
-# Add project directory to Python Path
-sys.path.insert(0, project_env_lib)
-sys.path.insert(0, project_dir)
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
