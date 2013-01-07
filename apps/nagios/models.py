@@ -1,5 +1,8 @@
 # Nagios app models
 
+# Std imports
+import logging
+
 # Django imports
 from django.db import models
 from django.core.exceptions import ValidationError
@@ -7,6 +10,9 @@ from django.core.exceptions import ValidationError
 # Apps imports
 import apps.nagios.livestatus as live
 
+
+# Logger for this app
+logger = logging.getLogger('optools.apps')
 
 # Validators
 def validate_network_high_port(value):
@@ -16,6 +22,22 @@ def validate_network_high_port(value):
 def validate_network_port(value):
     if not 0 < value < 65536:
         raise ValidationError(u'Port number should be between 1 - 65535')
+
+
+# Customize livestatus connection class
+class SatelliteConnection(live.MultiSiteConnection):
+    """
+    Query / Connect to Livestatus peers.
+    """
+    def query(self, query, retries=3, add_headers=""):
+        q = live.MultiSiteConnection.query(self, query, add_headers)
+        if self.dead_sites():
+            exc = Satellite.SatelliteConnectError(self.dead_sites())
+            logger.exception(exc)
+            logger.info("Executed query:\n%s", query)
+            raise exc
+
+        return q
 
 
 # Models
@@ -46,7 +68,7 @@ class Satellite(models.Model):
         ordering = ['name']
 
 
-    # Internal classes for Livestatus connectivity
+    # Exceptions classes for Livestatus connectivity
     class SatelliteConnectError(Exception):
         """
         Exception raised when a satellite is dead.
@@ -94,12 +116,14 @@ class Satellite(models.Model):
             connection_settings.update(sat.as_live_dict(*args, **kwargs))
 
         for retry in xrange(0, retries):
-            connection = live.MultiSiteConnection(connection_settings)
+            connection = SatelliteConnection(connection_settings)
             if not connection.dead_sites():
                 break
 
         if connection.dead_sites():
-            raise Satellite.SatelliteConnectError(connection.dead_sites())
+            exc = Satellite.SatelliteConnectError(connection.dead_sites())
+            logger.exception(exc)
+            raise exc
 
         return connection
 
