@@ -229,7 +229,7 @@ LOGGING = {
             'propagate': False,
         },
         'optools': {
-            'handlers': ['console', 'mail_admins'],
+            'handlers': ['console', 'optools_handler', 'mail_admins'],
             'level': 'ERROR',
             'propagate': False,
         },
