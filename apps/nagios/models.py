@@ -88,7 +88,7 @@ class Satellite(models.Model):
 
 
     # Livestatus related methods
-    def as_live_dict(self, timeout=5):
+    def as_live_dict(self, timeout=30):
         """
         Return a dict as expected for :meth:`live.MultiSiteConnection` method.
         """
