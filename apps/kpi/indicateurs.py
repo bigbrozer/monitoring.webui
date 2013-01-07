@@ -92,7 +92,6 @@ def indicateurs(request):
     chart_data_request += "\n]"
 
     chart_data_nagios = "[\n"
-    chart_data_procedures = "[\n"
     kpi_nagios = KpiNagios.objects.all().order_by("date")
     alerts = []
 
@@ -110,22 +109,10 @@ def indicateurs(request):
             kpi.comment_host.replace("\r\n", "\\n"),
             kpi.comment_service.replace("\r\n", "\\n"))
 
-        if kpi.written_procedures:
-            chart_data_procedures += '{date: new Date("%s"), written_procedures: %d, '\
-            'total_written: %d, missing_procedures: %d, total_missing: %d, comment_procedure: "%s"}' % (
-                kpi.date.isoformat(),
-                kpi.written_procedures,
-                kpi.total_written,
-                kpi.missing_procedures,
-                kpi.total_missing,
-                kpi.comment_procedure.replace("\r\n", "\\n"))
-            chart_data_procedures += ",\n"
-
         if index != len(kpi_nagios)-1:
             chart_data_nagios += ",\n"
 
     chart_data_nagios += "\n]"
-    chart_data_procedures += "\n]"
 
     result = CountNotifications.objects.all().order_by("date")
 

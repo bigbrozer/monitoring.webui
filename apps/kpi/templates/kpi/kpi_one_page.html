@@ -36,12 +36,10 @@
     chartDataNagios = {{ chart_data_nagios|safe }},
     other = {{ number_others|safe }},
     chartDataOldestsAlerts = {{ chart_data_oldests_alerts|safe }};
-    chartDataProcedures = {{ chart_data_procedures|safe }};
 
     AmCharts.ready(function () {
         createRequests();
         createHosts();
-        createWritten();
         createEquipements();
         createAlerts();
         createRecurrentsAlerts();
@@ -61,7 +59,6 @@
     <ul class="nav nav-pills">
         <li><a href="#Redmine">Requests</a></li>
         <li><a href="#Hosts">Hosts & Services</a></li>
-        <li><a href="#Procedures">Procedures</a></li>
         <li><a href="#Repartition">Operating System Repartition</a></li>
         <li><a href="#Alerts">Alerts</a></li>
         <li><a href="#RecurrentsAlerts">Recurrents Alerts</a></li>
@@ -117,20 +114,6 @@
     <h3 style="margin-bottom: 20px;">Quick links</h3>
     <a class="btn btn-primary" href="/thruk/cgi-bin/status.cgi?hostgroup=all&style=hostdetail" target="_blank">List all Hosts</a>
     <a class="btn btn-primary" href="/thruk/cgi-bin/status.cgi?style=detail" target="_blank">List all Services</a>
-</div>
-</section>
-
-<section id="Procedures">
-<div class="page-header">
-	{% if perms.kpi.change_kpinagios %}<a target="_blank" href="{% url admin:kpi_kpinagios_changelist %}" class="pull-right"><i class="icon-pencil"></i> Edit</a>{% endif %}
-    <h1>Procedures <small>assigned to Nagios alerts</small></h1>
-</div>
-<div class="graph" id="graphWritten" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
-<div style="text-align: center; width: 100%; margin-bottom: 50px;" class="hideprint">
-    <h3 style="margin-bottom: 20px;">Quick links</h3>
-    <a class="btn btn-success" href="/~django/reporting/simple_report.csv"><i class="icon-download-alt icon-white"></i> Download csv - Procedures</a>
-    <a class="btn btn-success" href="/~django/reporting/detailled_report.csv"><i class="icon-download-alt icon-white"></i> Download csv - Services and Procedures</a>
-    <a class="btn btn-primary" href="/kb/start?do=index" target="_blank">List all Procedures</a>
 </div>
 </section>
 

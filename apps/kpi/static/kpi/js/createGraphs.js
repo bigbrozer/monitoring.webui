@@ -899,52 +899,6 @@ function createAlerts() {
 
 // PANELS ///////////////////////////////////
 
-//  1.1) graph Warning
-
-    graphWarning = new AmCharts.StockGraph();
-    graphWarning.valueField = "warning";
-    graphWarning.descriptionField = "comment_notifications_warning";
-    graphWarning.balloonText += "\n[[description]]";
-    graphWarning.type = "line";
-    graphWarning.title = "Warning alerts";
-    graphWarning.lineColor = "#FF9900";
-    graphWarning.lineThickness = 2;
-    graphWarning.fillColor = "#FF9900";
-    graphWarning.useDataSetColors = false;
-    graphWarning.periodValue = "Sum";
-    graphWarning.fillAlphas = 0.7;
-    graphWarning.hideBulletsCount = 35;
-    graphWarning.bullet = "bubble";
-
-//  1.1) stockPanel Warning
-    stockPanelWarning = new AmCharts.StockPanel();
-    stockPanelWarning.title = "Warning alerts";
-    stockPanelWarning.percentHeight = 50;
-    stockPanelWarning.showCategoryAxis = false;
-
-//  1.1) stockLegend Warning
-    stockLegendWarning = new AmCharts.StockLegend();
-    stockPanelWarning.stockLegend = stockLegendWarning;
-
-//  1.2) graph WarningAck
-
-    graphWarningAck = new AmCharts.StockGraph();
-    graphWarningAck.valueField = "warning_acknowledged";
-    graphWarningAck.descriptionField = "comment_notifications_warning_ack";
-    graphWarningAck.type = "line";
-    graphWarningAck.title = "Warning alerts acknowledged";
-    graphWarningAck.lineColor = "#00CC00";
-    graphWarningAck.lineThickness = 2;
-    graphWarningAck.fillColor = "#00CC00";
-    graphWarningAck.useDataSetColors = false;
-    graphWarningAck.periodValue = "Sum";
-    graphWarningAck.fillAlphas = 0.7;
-    graphWarningAck.hideBulletsCount = 35;
-    graphWarningAck.bullet = "bubble";
-
-    stockPanelWarning.addStockGraph(graphWarning);
-    stockPanelWarning.addStockGraph(graphWarningAck);
-
 //  2.1) graph Critical
 
     graphCritical = new AmCharts.StockGraph();
@@ -989,7 +943,7 @@ function createAlerts() {
     stockPanelCritical.addStockGraph(graphCritical);
     stockPanelCritical.addStockGraph(graphCriticalAck);
 
-    chart.panels = [stockPanelWarning, stockPanelCritical];
+    chart.panels = [stockPanelCritical];
 
 // OTHER SETTINGS (scrollBar & cursor)
     scrollbarSettings = new AmCharts.ChartScrollbarSettings();
