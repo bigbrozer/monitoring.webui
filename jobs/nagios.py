@@ -179,17 +179,6 @@ Or: 4
 
     return notifications_satellites
 
-def get_hosts():
-    """
-    get the hosts from nagios
-    """
-    print "\nFetching informations for the hosts"
-    hosts = SATELLITES.query("""\
-GET hosts
-Column: name
-""")
-    return hosts
-
 def request_oldest_alerts_hosts():
     """
     return a dictionnary containing the oldest active alerts

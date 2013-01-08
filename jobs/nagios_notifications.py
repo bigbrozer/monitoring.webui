@@ -5,9 +5,8 @@ get the notifications from nagios results
 import calendar
 from datetime import datetime, timedelta
 from django.utils.timezone import utc
-from apps.kpi.models import NagiosNotifications, RecurrentAlerts
-from pprint import pprint
-from jobs.nagios import get_hosts
+from apps.kpi.models import NagiosNotifications
+
 
 def get_last_time():
     """
@@ -57,7 +56,6 @@ def request_recurrent_alerts():
     """
     return a dictionnary containing the number of each alerts the last 31 days
     """
-    hosts = get_hosts()
     today = datetime.now(tz=utc)\
         .replace(hour = 0, minute = 0, second = 0, microsecond = 0)
     period = timedelta(days = 31)
@@ -71,7 +69,6 @@ def request_recurrent_alerts():
 #        if not alert['host'] in hosts:
 #            del alerts_list[index]
     count = {}
-    name = ""
     for alert in alerts_list:
         name = "%s;%s" % (alert["host"], alert["service"])
         if count.has_key(str(name)):
