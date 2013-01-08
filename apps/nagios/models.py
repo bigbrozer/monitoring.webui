@@ -29,7 +29,7 @@ class SatelliteConnection(live.MultiSiteConnection):
     """
     Query / Connect to Livestatus peers.
     """
-    def query(self, query, retries=3, add_headers=""):
+    def query(self, query, add_headers=""):
         q = live.MultiSiteConnection.query(self, query, add_headers)
         if self.dead_sites():
             exc = Satellite.SatelliteConnectError(self.dead_sites())
