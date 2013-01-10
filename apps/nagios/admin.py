@@ -4,10 +4,11 @@ from django.contrib import admin
 from apps.nagios.models import Satellite, SecurityPort
 
 class SatelliteAdmin(admin.ModelAdmin):
-    list_display = ('name', 'alias', 'fqdn', 'ip_address')
+    list_display = ('name', 'active', 'alias', 'fqdn', 'ip_address')
+    list_filter = ('active',)
     fieldsets = (
         (None, {
-            'fields': ('name',)
+            'fields': ('name', 'active')
         }),
         ('Network settings', {
             'fields': ('ip_address', 'alias', 'fqdn')

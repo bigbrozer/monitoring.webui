@@ -24,30 +24,15 @@ def validate_network_port(value):
         raise ValidationError(u'Port number should be between 1 - 65535')
 
 
-# Customize livestatus connection class
-class SatelliteConnection(live.MultiSiteConnection):
-    """
-    Query / Connect to Livestatus peers.
-    """
-    def query(self, query, add_headers=""):
-        q = live.MultiSiteConnection.query(self, query, add_headers)
-        if self.dead_sites():
-            exc = Satellite.SatelliteConnectError(self.dead_sites())
-            logger.exception(exc)
-            logger.info("Executed query:\n%s", query)
-            raise exc
-
-        return q
-
-
 # Models
 class Satellite(models.Model):
     """Model representing list of active Nagios satellites"""
     name = models.CharField(max_length=4, verbose_name='DC Code', help_text='Example for Hagenbach: HGB')
+    active = models.BooleanField(default=False, help_text='Is this satellite active for production ?')
 
     # Network settings
-    alias = models.CharField(max_length=25, help_text='Please use following format: nagios.sss.cc.corp')
-    fqdn = models.CharField(max_length=30, verbose_name='DNS', help_text='Fully qualified domain name for the satellite')
+    alias = models.CharField(max_length=25, verbose_name='Satellite alias', help_text='Please use following format: nagios.sss.cc.corp')
+    fqdn = models.CharField(max_length=30, verbose_name='Satellite long name', help_text='Fully qualified domain name for the satellite')
 
     # Livestatus
     ip_address = models.IPAddressField()
@@ -87,6 +72,22 @@ class Satellite(models.Model):
             return message
 
 
+    # Customize livestatus connection class
+    class SatelliteConnection(live.MultiSiteConnection):
+        """
+        Query / Connect to Livestatus peers.
+        """
+        def query(self, query, add_headers=""):
+            q = live.MultiSiteConnection.query(self, query, add_headers)
+            if self.dead_sites():
+                exc = Satellite.SatelliteConnectError(self.dead_sites())
+                logger.exception(exc)
+                logger.info("Executed query:\n%s", query)
+                raise exc
+
+            return q
+
+
     # Livestatus related methods
     def as_live_dict(self, timeout=30):
         """
@@ -108,7 +109,7 @@ class Satellite(models.Model):
         :param timeout: the number of secs before connection is timed out. Default to 5 secs.
         :param retries: the number of retries if a satellite has failed.
         """
-        satellites = Satellite.objects.all()
+        satellites = Satellite.objects.filter(active=True)
         connection = None
         connection_settings = {}
 
@@ -116,7 +117,7 @@ class Satellite(models.Model):
             connection_settings.update(sat.as_live_dict(*args, **kwargs))
 
         for retry in xrange(0, retries):
-            connection = SatelliteConnection(connection_settings)
+            connection = Satellite.SatelliteConnection(connection_settings)
             if not connection.dead_sites():
                 break
 
