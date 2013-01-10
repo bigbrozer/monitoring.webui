@@ -1,5 +1,9 @@
 # Requirements to deploy this code.
 
+# monitoring.fabric
+git+http://monitoring-dc.app.corp/git/lib/monitoring.fabric.git@1.3.4#egg=monitoring.fabric
+
+fabric==1.4.4
 pip-tools==0.2.1
 ipython==0.13.1
 docutils==0.9.1
