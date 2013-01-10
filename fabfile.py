@@ -24,14 +24,13 @@ Fabric tasks available for project Central Operations Tools.
 
 from fabric.api import *
 from fabric.colors import *
-from contextlib import nested
 from monitoring.fabric import servers
 
 
 def static():
     """Run collectstatic for the project."""
     env.user = 'django'
-    with nested(prefix('workon optools'), cd('optools')):
+    with prefix('workon optools'), cd('optools'):
         puts(green('Updating static files...'))
         run('python ./manage.py collectstatic --noinput -c')
 
@@ -77,7 +76,7 @@ def install():
         run('mkvirtualenv optools -r requirements.txt')
 
     # Setup Apache config
-    with nested(cd('~django/optools'), settings(user='root')):
+    with cd('~django/optools'), settings(user='root'):
         puts(green('Install Apache\'s configuration...'))
         run('ln -sf ~django/optools/apache/django_optools /etc/apache2/conf.d/django_optools')
         run('service apache2 force-reload')
@@ -99,3 +98,14 @@ def update_kpi():
 def clean_cache():
     """Clean the Django cache."""
     sudo('rm -rf /var/tmp/django_cache/optools')
+
+
+@task
+@hosts('monitoring-dc.app.corp')
+def show_log():
+    """Show the optools log."""
+    import tempfile
+
+    env.tmpdir = tempfile.mkdtemp(prefix="optools-")
+    get("/home/django/optools/log/optools.log", "%(tmpdir)s" % env)
+    local("gvim -f %(tmpdir)s/optools.log && rm -rf %(tmpdir)s" % env)
