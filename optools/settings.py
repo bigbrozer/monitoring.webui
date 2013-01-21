@@ -14,6 +14,8 @@ ADMINS = (
     ('Vincent BESANCON',    'vincent.besancon@faurecia.com'),
     ('Mohamed CHERROUD',    'mohamed.cherroud-ext@faurecia.com'),
     ('Patrick BAILAT',      'patrick.bailat-ext@faurecia.com'),
+    ('Yves ANDOLFATTO',     'yves.andolfatto@faurecia.com'),
+    ('Adrien CREMET',       'adrien.cremet@faurecia.com'),
 )
 
 MANAGERS = ADMINS
