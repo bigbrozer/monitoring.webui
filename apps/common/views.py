@@ -21,7 +21,7 @@ from apps.announce.models import Announcement
 def http_login(request):
     """
     Called after successfull basic HTTP authentication and check if user filled
-    his profile. Also create a cookie to say we are logged in.
+    his profile.
     """
     console = logging.getLogger('debug.views.common.http_login')
     console.debug('Request full path: %s', request.get_full_path())
@@ -73,9 +73,6 @@ def http_login(request):
             response = redirect('%s?redirect=%s' % (reverse('user_profile'), redirection))
         else:
             response = redirect('user_profile')
-
-    # Login is successfull, setting cookie
-    response.set_cookie('optools_logged_in', 'true')
 
     return response
 
