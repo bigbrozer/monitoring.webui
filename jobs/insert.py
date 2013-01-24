@@ -120,6 +120,11 @@ def insert_redmine():
     # iteraton on the keys to get the differents names in the table
         entree = KpiRedmine()
         entree.date = date
+        try:
+            last_redmine_kpi = KpiRedmine.objects.latest('date')
+            entree.aim_lifetime = last_redmine_kpi.aim_lifetime
+        except KpiRedmine.DoesNotExist:
+            pass
         entree.requests_opened = result_redmine['requests_opened'][date]
         entree.requests_closed = result_redmine['requests_closed'][date]
         entree.requests_remained = result_redmine['requests_remained'][date]
