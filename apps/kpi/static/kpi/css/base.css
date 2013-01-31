@@ -1,5 +1,9 @@
 /* CSS for reporting web app */
 
+body {
+    background: white;
+}
+
 /* Base */
 section {
     padding-top: 100px;
