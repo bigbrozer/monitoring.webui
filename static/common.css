@@ -4,12 +4,24 @@ html, body {
     height: 100%;
 }
 
+body {
+    background: url("img/background.png") repeat 0 0;
+}
+
 /* Pushers */
 .push-50 {
     height: 50px;
 }
 .push-100 {
     height: 100px;
+}
+
+.page-header {
+    border-bottom: 1px solid rgb(219, 223, 230);
+}
+
+.thumbnail {
+    background-color: white;
 }
 
 /*
@@ -40,7 +52,8 @@ html, body {
 footer {
     height: 100px;
     padding-top: 5px;
-    background-color: #333;
+    /*background-color: #333;*/
+    background: url("img/background_footer.png") repeat 0 0;
     color: #999;
 }
 
