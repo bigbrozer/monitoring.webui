@@ -5,10 +5,10 @@ html, body {
 }
 
 body {
-    /*background: url("img/background.png") repeat 0 0;*/
-    background: url(
-    data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAOklEQVQYV2NkIAIwEqGGAa7o69ev9dzc3I0wTch8FEUgBSCFIAUwNojGMAlmAk6TiLKOoCJ8viQqCACWiiwKxbTRYQAAAABJRU5ErkJggg==)
-    repeat;
+    background: url("img/background.png") repeat 0 0;
+    /*background: url(*/
+    /*data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAOklEQVQYV2NkIAIwEqGGAa7o69ev9dzc3I0wTch8FEUgBSCFIAUwNojGMAlmAk6TiLKOoCJ8viQqCACWiiwKxbTRYQAAAABJRU5ErkJggg==)*/
+    /*repeat;*/
 }
 
 /* Pushers */
