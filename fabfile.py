@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 #===============================================================================
-# Filename      : fabfile
 # Author        : Vincent BESANCON <besancon.vincent@gmail.com>
 # Description   : Fabric tasks for the project.
 #-------------------------------------------------------------------------------
