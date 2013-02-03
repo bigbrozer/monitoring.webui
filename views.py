@@ -4,9 +4,8 @@
 import logging
 
 # Django imports
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
-from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.views.generic import UpdateView
 from django.conf import settings
@@ -17,14 +16,18 @@ from django.http import HttpResponse
 from apps.common.forms import UserEditForm
 from apps.announce.models import Announcement
 
+# 3rd party
+import httpagentparser
+
+
+logger = logging.getLogger(__name__)
 
 def http_login(request):
     """
     Called after successfull basic HTTP authentication and check if user filled
     his profile.
     """
-    console = logging.getLogger('debug.views.common.http_login')
-    console.debug('Request full path: %s', request.get_full_path())
+    logger.debug('Request full path: %s', request.get_full_path())
     redirection = ""
     response = None
 
@@ -34,7 +37,7 @@ def http_login(request):
         next = qr.pop('next')[0]
         remains = qr.urlencode()
         redirection = '{0}?{1}'.format(next, remains)
-        console.debug('Should redirect to: %s', redirection)
+        logger.debug('Should redirect to: %s', redirection)
 
     # Find user
     if settings.DEVEL:
@@ -44,11 +47,15 @@ def http_login(request):
     else:
         user = User.objects.get(username=request.META['REMOTE_USER'])
 
+    operating_system, browser = httpagentparser.simple_detect(request.META.get('HTTP_USER_AGENT'))
+    logger.info('%s logged in using browser %s on %s.', user.username, browser, operating_system)
+
     # Validation
     if not user.is_active or user.username.startswith('0') or not user.username.endswith('@corp'):
         # Be sure that the login will not be used anymore
         user.is_active = False
         user.save()
+        logger.info('User name %s is mal-formed !', user.username)
         return HttpResponse('Invalid account. Please use your <strong>normal</strong> user account and append <em>@corp</em>.')
 
     # Test if user filled his profile
@@ -103,10 +110,10 @@ def browser_out_of_date(request):
     """
     Warn user that the browser is not well supported.
     """
-    return render_to_response("common/browser_not_supported.html", {'title': "Browser out of date"}, context_instance = RequestContext(request))
+    return render(request, "common/browser_not_supported.html", {'title': "Browser out of date"})
 
 def server_error(request):
     """
     Handle 500 error codes.
     """
-    return render_to_response("500.html", {'title': "Severe error !"}, context_instance = RequestContext(request))
+    return render(request, "500.html", {'title': "Severe error !"})
