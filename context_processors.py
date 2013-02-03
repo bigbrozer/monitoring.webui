@@ -17,6 +17,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
+import logging
+
+
+logger = logging.getLogger(__name__)
+
 def browser(request):
     """
     Adds browser-related context variables to the context.
@@ -32,22 +37,26 @@ def browser(request):
 
     if request.META.get('HTTP_USER_AGENT'):
         br =  httpagentparser.detect(request.META['HTTP_USER_AGENT'])['browser']
-        br['major_version'] = None
-        br['outdated'] = False
-        try:
-            # Try to get the major version (does not work all the time ;-) )
-            br['major_version'] = int(br['version'].split('.')[0])
-        except:
-            # Forget the major browser version
-            pass
 
-        # Mark outdated browsers
-        if "internet explorer" in br['name'].lower() \
-        and br['major_version'] \
-        and br['major_version'] < 9:
-            br['outdated'] = True
+        if isinstance(br, dict):
+            br['major_version'] = None
+            br['outdated'] = False
+            try:
+                # Try to get the major version (does not work all the time ;-) )
+                br['major_version'] = int(br['version'].split('.')[0])
+            except:
+                # Forget the major browser version
+                pass
 
-        return {'browser': br}
+            # Mark outdated browsers
+            if "internet explorer" in br['name'].lower() \
+            and br['major_version'] \
+            and br['major_version'] < 9:
+                br['outdated'] = True
+
+            return {'browser': br}
+        else:
+            return {'browser': None}
 
 def project(request):
     """
