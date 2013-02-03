@@ -71,8 +71,8 @@
                     <li><a href="#modal-prelogin-message" data-toggle="modal"><i class="icon-user icon-white"></i>
                         Login</a></li>
                 {% endif %}
-                {% if OPTOOLS_DEBUG_MODE %}
-                    <li><a rel="tooltip" title="You are in DEBUG mode !" data-placement="bottom">Database: <strong>{% if OPTOOLS_DB_HOST %}!! PROD !!{% else %}TEST{% endif %}</strong></a></li>
+                {% if PROJECT_DEBUG_MODE %}
+                    <li><a rel="tooltip" title="You are in DEBUG mode !" data-placement="bottom">Database: <strong>{% if PROJECT_DB_HOST %}!! PROD !!{% else %}TEST{% endif %}</strong></a></li>
                 {% endif %}
             </ul>
         </div>

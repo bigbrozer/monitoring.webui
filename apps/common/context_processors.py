@@ -49,14 +49,14 @@ def browser(request):
 
         return {'browser': br}
 
-def optools(request):
+def project(request):
     """
-    Add optools related context variables to the context.
+    Add project related context variables to the context.
 
     Context
-        OPTOOLS_VERSION: the version of optools (last git tag). Show NA if not available.
-        OPTOOLS_DEBUG_MODE: are we in DEBUG mode ?
-        OPTOOLS_DB_HOST: the host running the database.
+        PROJECT_VERSION: the version of optools (last git tag). Show NA if not available.
+        PROJECT_DEBUG_MODE: are we in DEBUG mode ?
+        PROJECT_DB_HOST: the host running the database.
     """
     from django.conf import settings
     import subprocess
@@ -68,7 +68,7 @@ def optools(request):
         version = 'NA'
 
     return {
-        'OPTOOLS_VERSION': version.strip('\n'),
-        'OPTOOLS_DEBUG_MODE': settings.DEBUG,
-        'OPTOOLS_DB_HOST': settings.DATABASES['default']['HOST'],
+        'PROJECT_VERSION': version.strip('\n'),
+        'PROJECT_DEBUG_MODE': settings.DEBUG,
+        'PROJECT_DB_HOST': settings.DATABASES['default']['HOST'],
     }
