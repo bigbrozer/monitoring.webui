@@ -1,5 +1,4 @@
-# Std imports
-import logging
+# Views for app portal
 
 # Django imports
 from django.shortcuts import render_to_response
@@ -10,14 +9,14 @@ def portal_home(request):
     """
     The home of the portal.
     """
-    logger = logging.getLogger('optools.debug.portal_home')
-
-    title = "Home"
-    section = dict({'home': 'active'})
+    context = {
+        'title': "Home",
+        'section': {'home': 'active'},
+    }
 
     return render_to_response(
         'portal/portal.html',
-        locals(),
+        context,
         context_instance = RequestContext(request)
     )
 

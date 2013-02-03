@@ -26,7 +26,6 @@ def http_login(request):
     console = logging.getLogger('debug.views.common.http_login')
     console.debug('Request full path: %s', request.get_full_path())
     redirection = ""
-    user = None
     response = None
 
     # Should we redirect after login ?
@@ -104,12 +103,10 @@ def browser_out_of_date(request):
     """
     Warn user that the browser is not well supported.
     """
-    title = "Browser out of date"
-    return render_to_response("common/browser_not_supported.html", locals(), context_instance = RequestContext(request))
+    return render_to_response("common/browser_not_supported.html", {'title': "Browser out of date"}, context_instance = RequestContext(request))
 
 def server_error(request):
     """
     Handle 500 error codes.
     """
-    title = "Severe error !"
-    return render_to_response("500.html", locals(), context_instance = RequestContext(request))
+    return render_to_response("500.html", {'title': "Severe error !"}, context_instance = RequestContext(request))
