@@ -8,5 +8,5 @@ Django==1.4.3
 django-debug-toolbar==0.9.4
 pytz==2012h
 MySQL-python==1.2.3
-httpagentparser==1.1.3
+httpagentparser==1.2.1
 Markdown==2.2.1
