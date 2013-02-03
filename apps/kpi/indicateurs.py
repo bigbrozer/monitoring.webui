@@ -200,5 +200,6 @@ def indicateurs(request):
     else:
         tpl = 'kpi/kpi_one_page.html'
 
+    # TODO: do not use locals() but a real context
     return render(request, tpl, locals())
 
