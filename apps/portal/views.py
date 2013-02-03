@@ -1,22 +1,16 @@
 # Views for app portal
 
-# Django imports
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+import logging
 
+# Django imports
+from django.shortcuts import render
+
+
+logger = logging.getLogger(__name__)
 
 def portal_home(request):
     """
     The home of the portal.
     """
-    context = {
-        'title': "Home",
-        'section': {'home': 'active'},
-    }
-
-    return render_to_response(
-        'portal/portal.html',
-        context,
-        context_instance = RequestContext(request)
-    )
+    return render(request, 'portal/portal.html', {'title': "Home", 'section': {'home': 'active'}})
 

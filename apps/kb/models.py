@@ -17,6 +17,8 @@ from django.utils.timezone import utc
 from django.conf import settings
 
 
+logger = logging.getLogger(__name__)
+
 #===============================================================================
 #   ____ _
 #  / ___| | __ _ ___ ___  ___  ___
@@ -31,9 +33,6 @@ class Procedure(models.Model):
     Procedure Model.
     Store informations about KB from Dokuwiki to a database.
     """
-    logger = logging.getLogger('optools.apps.kb.models.Procedure')
-    console = logging.getLogger('debug.kb.models.Procedure')
-
     namespace_regexp = r'^([a-zA-Z0-9_-]+:*)+$'
 
     class MetaError(Exception):
@@ -75,9 +74,9 @@ class Procedure(models.Model):
             # Call validation manually
             self.full_clean()
         except ValidationError as e:
-            self.logger.critical('Errors found about Procedure model validation ! Please fix them.')
+            logger.critical('Errors found about Procedure model validation ! Please fix them.')
             for error in e.message_dict['__all__']:
-                self.logger.critical('%s', error)
+                logger.critical('%s', error)
             raise # Forward exception
 
         self.update_meta()
@@ -88,12 +87,12 @@ class Procedure(models.Model):
 
             # Rating has changed...
             if self.rating != before.rating:
-                self.console.debug('Kb \"%s\" rating has changed. Validate.', self)
+                logger.debug('Kb \"%s\" rating has changed. Validate.', self)
                 self.validated = True
 
             # Last modified has changed...
             if self.last_modified != before.last_modified:
-                self.console.debug('Kb \"%s\" has been modified. Un-validate.', self)
+                logger.debug('Kb \"%s\" has been modified. Un-validate.', self)
                 self.validated = False
         except Procedure.DoesNotExist:
             pass
@@ -138,12 +137,12 @@ class Procedure(models.Model):
         try:
             with open(self.get_changes_filename(), 'r') as meta_file:
                 last_change = meta_file.readlines()[-1].split('\t')
-                self.console.debug("Parsing line:\n%s", pformat(last_change))
+                logger.debug("Parsing line:\n%s", pformat(last_change))
                 self.last_modified = datetime.fromtimestamp(long(last_change[0]), tz=utc)
                 self.author = last_change[4]
         except IOError:
             # Do nothing. No meta information available, procedure may not exist
-            self.console.debug('No META information for \"%s\".', self)
+            logger.debug('No META information for \"%s\".', self)
             pass
         except ValueError:
             # Can occur if timestamp cannot be converted to datetime or if it is not found

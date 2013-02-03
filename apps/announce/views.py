@@ -3,8 +3,7 @@ Django views for application announce.
 """
 
 # Django imports
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 
 # Models imports
 from models import Announcement
@@ -23,19 +22,15 @@ def show(request, announce_id=None):
     Context:
         announce (Announcement model)
     """
-    try:
-        redirect_url = request.GET['redirect']
-    except KeyError:
-        redirect_url = "/"
+    context = {}
+
+    # Should we redirect user after pressing Continue ?
+    context['redirect_url'] = request.GET.get('redirect', '/')
 
     if announce_id:
-        announce = Announcement.objects.get(pk=announce_id)
+        context['announce'] = Announcement.objects.get(pk=announce_id)
     else:
-        announce = Announcement.objects.get(is_enabled=True)
+        context['announce'] = Announcement.objects.get(is_enabled=True)
 
-    return render_to_response(
-        "announce/announce_show.html",
-        locals(),
-        context_instance=RequestContext(request)
-    )
+    return render(request, "announce/announce_show.html", context)
 

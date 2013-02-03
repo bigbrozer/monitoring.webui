@@ -4,7 +4,7 @@ import os
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
-# Turn off debugging by default
+# Debugging
 DEBUG = False
 DEVEL = False
 TEMPLATE_DEBUG = DEBUG
@@ -166,17 +166,24 @@ DOKUWIKI_BASE_URL = '/kb'
 DOKUWIKI_PAGES_DIR = '/var/www/kb/data/pages'
 DOKUWIKI_META_DIR = '/var/www/kb/data/meta'
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
+# Local settings (used for overriding values defined in this module, not part of git repo)
+try:
+    from optools.settings_local import *
+except ImportError:
+    pass
+
+# Logging configuration
+LOG_LEVEL = 'DEBUG' if DEBUG else 'ERROR'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
         'simple': {
-            'format': '%(asctime)s [%(levelname)s] |%(name)s| %(message)s'
+            'format': '[%(levelname)s] %(message)s'
+        },
+        'verbose': {
+            'format': '[%(levelname)s] %(asctime)s %(name)s %(message)s'
         }
     },
     'filters': {
@@ -199,67 +206,38 @@ LOGGING = {
             'class':'logging.StreamHandler',
             'formatter': 'simple'
         },
-        'http_trap_handler':{
-            'level':'DEBUG',
+        'main_log_file':{
+            'level':'INFO',
             'class':'logging.handlers.RotatingFileHandler',
-            'formatter': 'simple',
-            'filename': os.path.join(PROJECT_PATH, 'log/http_trap.log'),
+            'formatter': 'verbose',
+            'filename': os.path.join(PROJECT_PATH, 'log/main.log'),
             'maxBytes': 10485760,
             'backupCount': 7
         },
-        'optools_handler':{
+        'jobs_log_file':{
             'level':'INFO',
             'class':'logging.handlers.RotatingFileHandler',
-            'formatter': 'simple',
-            'filename': os.path.join(PROJECT_PATH, 'log/optools.log'),
-            'maxBytes': 10485760,
-            'backupCount': 7
-        },
-        'optools_jobs_handler':{
-            'level':'INFO',
-            'class':'logging.handlers.RotatingFileHandler',
-            'formatter': 'simple',
+            'formatter': 'verbose',
             'filename': os.path.join(PROJECT_PATH, 'log/jobs.log'),
             'maxBytes': 10485760,
             'backupCount': 7
         }
     },
     'loggers': {
-        'debug': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-        'optools': {
-            'handlers': ['console', 'optools_handler', 'mail_admins'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-        'optools.apps': {
-            'level': 'INFO',
+        'apps': {
+            'handlers': ['console', 'main_log_file', 'mail_admins'],
+            'level': LOG_LEVEL,
             'propagate': True,
         },
-        'optools.jobs': {
-            'handlers': ['optools_jobs_handler'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'optools.trap': {
-            'handlers': ['http_trap_handler'],
-            'level': 'DEBUG',
+        'jobs': {
+            'handlers': ['console', 'jobs_log_file', 'main_log_file', 'mail_admins'],
+            'level': LOG_LEVEL,
             'propagate': True,
         },
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
-            'propagate': False,
+            'propagate': True,
         },
     }
 }
-
-# Local settings (used for overriding values defined in this module, not part of git repo)
-try:
-    from optools.settings_local import *
-except ImportError:
-    pass
-

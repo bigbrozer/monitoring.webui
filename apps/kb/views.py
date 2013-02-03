@@ -3,8 +3,7 @@ Django views for application kb.
 """
 
 # Django imports
-from django.shortcuts import render_to_response, redirect
-from django.template import RequestContext
+from django.shortcuts import render, redirect
 
 # Models imports
 from apps.kb.models import Procedure
@@ -67,8 +66,4 @@ def show_kb(request, kb_namespace):
         return redirect(kb_found.get_read_url())
     # No procedure exist or user is not helpdesk
     else:
-        return render_to_response(
-            "kb/manage_procedure.html",
-            locals(),
-            context_instance=RequestContext(request)
-        )
+        return render(request, "kb/manage_procedure.html", locals())

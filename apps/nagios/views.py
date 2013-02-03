@@ -16,6 +16,8 @@ from django.core import serializers
 from apps.nagios.models import Satellite, SecurityPort
 
 
+logger = logging.getLogger(__name__)
+
 # View definitions
 # ================
 #
@@ -62,8 +64,6 @@ def send_passive(request):
      http://monitoring-dc.app.corp/optools/nagios/passive/
     """
     # Get the logger for this view
-    logger = logging.getLogger('optools.trap')
-
     logger.info('-------------------------------')
     logger.info('-- Receiving a new HTTP TRAP --')
     logger.info('-------------------------------')

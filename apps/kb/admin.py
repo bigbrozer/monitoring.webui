@@ -1,10 +1,8 @@
 # Adding models to Admin site for kb app
 
 # Django imports
-from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from django.contrib import admin
 
 # Models imports
@@ -76,11 +74,7 @@ class ProcedureAdmin(admin.ModelAdmin):
             'ids': ids,
         }
 
-        return render_to_response(
-            "kb/rate.html",
-            context,
-            context_instance=RequestContext(request)
-        )
+        return render(request, "kb/rate.html", context)
     rate_and_comment.short_description = 'Rate selected procedures'
 
     def unvalidate(self, request, queryset):

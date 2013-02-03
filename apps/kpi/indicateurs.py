@@ -1,6 +1,5 @@
 from models import KpiNagios, KpiRedmine, CountNotifications, RecurrentAlerts, OldestAlerts
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 import sys
 import os
 from datetime import timedelta
@@ -201,6 +200,5 @@ def indicateurs(request):
     else:
         tpl = 'kpi/kpi_one_page.html'
 
-    return render_to_response(
-        tpl, locals(), context_instance = RequestContext(request))
+    return render(request, tpl, locals())
 

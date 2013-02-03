@@ -12,7 +12,7 @@ import apps.nagios.livestatus as live
 
 
 # Logger for this app
-logger = logging.getLogger('optools.apps')
+logger = logging.getLogger(__name__)
 
 # Validators
 def validate_network_high_port(value):

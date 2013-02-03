@@ -35,10 +35,9 @@ from apps.kb.models import Procedure
 from django.db import transaction
 from django.conf import settings
 
-# Logging
-logger = logging.getLogger('optools.jobs.update_kb')
-console = logging.getLogger('debug.jobs.update_kb')
 
+# Logging
+logger = logging.getLogger('jobs.update-kb')
 
 #===============================================================================
 #  _____                 _   _
@@ -51,7 +50,7 @@ console = logging.getLogger('debug.jobs.update_kb')
 def init_wiki():
     """Build the index of all KB in dokuwiki (txt files in data/pages folder)."""
     logger.info('Building Procedure index.')
-    console.debug('Pages directory is \"%s\".' % settings.DOKUWIKI_PAGES_DIR)
+    logger.debug('Pages directory is \"%s\".' % settings.DOKUWIKI_PAGES_DIR)
 
     index = []
 
@@ -102,7 +101,7 @@ def delete_removed(index):
     deleted_kb = kb_in_db - kb_in_dokuwiki
 
     for procedure in deleted_kb:
-        console.debug('Kb \"%s\" has been removed from wiki. Deletes database entry.', procedure.namespace)
+        logger.debug('Kb \"%s\" has been removed from wiki. Deletes database entry.', procedure.namespace)
         procedure.delete()
 
     logger.info("Done. Deleted %s procedures from database.", len(deleted_kb))
