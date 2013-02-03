@@ -12,6 +12,7 @@
 
             <a class="brand" href="{% url portal_home %}">Central Operations</a>
 
+            {% if show_main_menu == False %}
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <!-- Home -->
@@ -56,6 +57,7 @@
                     {% endif %}
                 </ul>
             </div>
+            {% endif %}
 
             <ul class="nav pull-right">
                 {% if user.is_authenticated %}

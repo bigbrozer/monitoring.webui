@@ -30,7 +30,6 @@ def show_kb(request, kb_namespace):
     Context:
         locals
     """
-    section = {'kb': 'active'}
     user_is_helpdesk = request.user.groups.filter(name='helpdesk')
     procedure_pages = []
     kb_found = None
@@ -51,12 +50,20 @@ def show_kb(request, kb_namespace):
         procedure_pages.append(parent_model)
     procedure_pages.append(kb_requested)
 
-    title = "Showing KB %s" % kb_requested.namespace
-
     # Try to find if there is any procedure existing in the namespace
     for page in procedure_pages:
         if page.is_written:
             kb_found = page
+
+    # Populate the context
+    context = {
+        'title': "Showing KB %s" % kb_requested.namespace,
+        'show_main_menu': False,
+        'kb_found': kb_found,
+        'kb_requested': kb_requested,
+        'user_is_helpdesk': user_is_helpdesk,
+        'procedure_pages': procedure_pages,
+    }
 
     # Redirect to the procedure if the requested is created
     if kb_requested and kb_requested.is_written:
@@ -66,4 +73,4 @@ def show_kb(request, kb_namespace):
         return redirect(kb_found.get_read_url())
     # No procedure exist or user is not helpdesk
     else:
-        return render(request, "kb/manage_procedure.html", locals())
+        return render(request, "kb/manage_procedure.html", context)

@@ -22,7 +22,9 @@ def show(request, announce_id=None):
     Context:
         announce (Announcement model)
     """
-    context = {}
+    context = {
+        'show_main_menu': False,
+    }
 
     # Should we redirect user after pressing Continue ?
     context['redirect_url'] = request.GET.get('redirect', '/')
