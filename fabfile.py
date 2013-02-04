@@ -40,10 +40,10 @@ def update():
     """Apply latest updates on project in production."""
     env.user = 'django'
 
-    puts(green('Updating project\'s branch master.', bold=True))
+    puts(green('Updating project\'s...', bold=True))
 
-    puts(cyan('- Pushing branch master and tags to remote central...'))
-    local('git push central master && git push central --tags')
+    puts(cyan('- Pushing commits and tags to remote repository...'))
+    local('git push && git push --tags')
 
     puts(cyan('- Applying update...'))
     run('cd optools && git pull')
