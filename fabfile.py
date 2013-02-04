@@ -43,7 +43,7 @@ def update():
     puts(green('Updating project\'s...', bold=True))
 
     puts(cyan('- Pushing commits and tags to remote repository...'))
-    local('git push && git push --tags')
+    local('git push origin master --tags')
 
     puts(cyan('- Applying update...'))
     run('cd optools && git pull')
