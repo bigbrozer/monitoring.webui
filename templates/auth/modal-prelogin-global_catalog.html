@@ -2,26 +2,16 @@
 <div class="modal fade hide" id="modal-prelogin-message">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>New authentication method</h3>
+        <h3>Authentication</h3>
     </div>
     <div class="modal-body">
-        <p>Please note that we now use <strong>AD Global Catalog</strong> in
-        order to log into Monitoring tools using now your normal user
-        account. This is valable for all our tools!</p>
-
-        <h4>What does it mean ?</h4>
-        <p>Previously, we used the administrative account (the ones starting
-        with <em>0...</em>), this is not more the case. You must now use your
-        normal user account to login.</p>
-
-        <h4>So, how do I login now ?</h4>
-        <p>Log in using your normal user account, but account are of the form <em>login@corp</em> in AD. Please use the same form.</p>
+        <p>Log in using your normal user account, login are of the form <em>login@corp</em>.</p>
         <div class="alert alert-info"><strong>Note:</strong> The domain should always be <em>corp</em> for normal user accounts.</div>
         <h5>Example</h5>
         <p>My user account is <em>besancon</em> so I will log using <em>besancon@corp</em>. This is not related to the CORP administrative account !</p>
     </div>
     <div class="modal-footer">
-        <a href="{% url login %}" class="btn btn-primary">Got it! Proceed to login</a>
+        <a href="{% url login %}" class="btn btn-primary">Proceed to login</a>
     </div>
 </div>
 {% endblock %}
