@@ -1,0 +1,47 @@
+{% extends "common/base.html" %}
+
+{% load markup %}
+
+{% block extra_scripts %}
+<script src="{{ STATIC_URL }}js/scrollto/jquery.scrollTo-min.js"></script>
+<script src="{{ STATIC_URL }}announce/js/announce.js"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link href="{{ STATIC_URL }}announce/css/announce.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Announcement <small>please take some time to read it.</small></h1>
+</div>
+
+{% if announce.show_hero_unit %}
+<div class="hero-unit">
+    <h1>{{ announce.hero_unit_title }}</h1>
+    <p>{{ announce.hero_unit_desc|markdown }}</p>
+    <p>
+        <a href="{{ redirect_url }}" class="btn btn-primary btn-large btn-loading pull-right"><i class="icon-forward icon-white"></i> Continue</a>
+        <a href="javascript:void(0);" class="btn btn-info btn-large show-details"><i class="icon-info-sign icon-white"></i> Show details</a>
+        {% if perms.announce.change_announcement %}
+        <a class="btn btn-inverse btn-large"
+           href="{% url admin:webui_announcement_change announce.pk %}"
+           target="_blank" ><i class="icon-edit icon-white"></i> Edit this announcement</a>
+        {% endif %}
+    </p>
+</div>
+{% endif %}
+
+<div class="announcement-details">
+    <div class="page-header">
+        <h2>Details</h2>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            {{ announce.content|markdown }}
+        </div>
+    </div>
+</div>
+{% endblock %}

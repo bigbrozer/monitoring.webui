@@ -21,7 +21,7 @@
 from django.shortcuts import redirect
 
 # Apps imports
-from apps.common.context_processors import browser
+from monitoring.webui.context_processors import browser
 
 
 def check_browser_support(request):
