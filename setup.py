@@ -37,4 +37,5 @@ setup(name = 'monitoring.webui',
     namespace_packages = ['monitoring'],
     packages = find_packages(),
     install_requires = dependencies,
+    include_package_data=True,
 )

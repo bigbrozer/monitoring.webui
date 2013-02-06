@@ -1,0 +1,3 @@
+recursive-include monitoring/webui/fixtures *
+recursive-include monitoring/webui/static *
+recursive-include monitoring/webui/templates * 
