@@ -1,29 +1,31 @@
 {% extends "common/base.html" %}
 
 {% block content %}
-<div class="hero-unit">
-    <h1>Lost a page I have...</h1>
-    <p>404 error</p>
-</div>
-
-<div class="row">
-    <div class="span4 offset1">
-        <img src="{{ STATIC_URL }}img/master_yoda.png">
+<div class="container">
+    <div class="hero-unit">
+        <h1>Lost a page I have...</h1>
+        <p>404 error</p>
     </div>
-    <div class="span6">
-        <div class="well">
-            <p><h4><em>The dark side I sense in you. Due to a disturbance in
-                    the force I couldn't find the page you were looking for.</em></h4></p>
-            <p>Trust in the Force, clear your mind, unlearn what you have learned,
-            and find your missing page you will.</p>
+
+    <div class="row">
+        <div class="span4 offset1">
+            <img src="{{ STATIC_URL }}img/master_yoda.png">
         </div>
-        <hr>
-        <p><b>Possible choices:</b></p>
-        <ul>
-            <li>On <a href="{% url index %}">Tatooine</a>, you go.</li>
-            <li><a href="mailto:dl-itop-monitoring@faurecia.com">Help</a>, you ask.</li>
-        </ul>
-        <div class="alert alert-info"><i class="icon-info-sign"></i> A mail has already be sent to us about this error.</div>
+        <div class="span6">
+            <div class="well">
+                <p><h4><em>The dark side I sense in you. Due to a disturbance in
+                        the force I couldn't find the page you were looking for.</em></h4></p>
+                <p>Trust in the Force, clear your mind, unlearn what you have learned,
+                and find your missing page you will.</p>
+            </div>
+            <hr>
+            <p><b>Possible choices:</b></p>
+            <ul>
+                <li>On <a href="{% url index %}">Tatooine</a>, you go.</li>
+                <li><a href="mailto:dl-itop-monitoring@faurecia.com">Help</a>, you ask.</li>
+            </ul>
+            <div class="alert alert-info"><i class="icon-info-sign"></i> A mail has already be sent to us about this error.</div>
+        </div>
     </div>
 </div>
 {% endblock %}

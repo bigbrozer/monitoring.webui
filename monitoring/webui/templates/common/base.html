@@ -6,12 +6,8 @@
 
 	<!-- Page content -->
     <div id="wrap">
-        <div class="push-50"></div>
-        <div class="container{% block bootstrap-layout %}{% endblock %}">
-            {% block content %}{% endblock %}
-            <div class="push-100"></div>
-        </div>
-        <!-- /container -->
+        {% block content %}{% endblock %}
+        <div class="push-100"></div>
     </div>
 	<!-- /Page content -->
 

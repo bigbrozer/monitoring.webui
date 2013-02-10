@@ -7,14 +7,15 @@
 {% block extra_modals %}{% endblock %}
 
 {% block content %}
-<div class="hero-unit">
-    <h1>Browser not supported !</h1>
-    <p><strong>{{ browser.name }} {{ browser.version }}</strong> does not support <a href="http://www.w3.org/TR/html5/" target="_blank">HTML5 Web Standards</a>.</p>
-	<p>You will encounter some problems visiting this website and some pages are not available for your browser.
-		Please either use <strong>Internet Explorer >=9</strong> or <strong>Mozilla Firefox</strong>.</p>
-</div>
+<div class="container">
+    <div class="hero-unit">
+        <h1>Browser not supported !</h1>
+        <p><strong>{{ browser.name }} {{ browser.version }}</strong> does not support <a href="http://www.w3.org/TR/html5/" target="_blank">HTML5 Web Standards</a>.</p>
+        <p>You will encounter some problems visiting this website and some pages are not available for your browser.
+        Please either use <strong>Internet Explorer >=9</strong> or <strong>Mozilla Firefox</strong>.</p>
+    </div>
 
-<section id="">
+    <section id="">
     <div class="page-header">
         <h1>More information <small>about supported browsers</small></h1>
     </div>
@@ -29,5 +30,6 @@
             <p>You <strong>must</strong> upgrade it at least to version 9.0.</p>
         </div>
     </div>
-</section>
+    </section>
+</div>
 {% endblock %}

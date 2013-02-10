@@ -3,15 +3,16 @@
 {% load gravatar %}
 
 {% block content %}
+<div class="container">
     <div class="page-header">
         <h1>Edit your user profile</h1>
     </div>
 
     {% if form.errors %}
-        <div class="alert alert-error">
-            <p>Please correct the following errors.</p>
-            {{ form.errors }}
-        </div>
+    <div class="alert alert-error">
+        <p>Please correct the following errors.</p>
+        {{ form.errors }}
+    </div>
     {% endif %}
 
     <div class="row">
@@ -23,9 +24,9 @@
         <div class="span6">
             <form class="well" action="" method="post">{% csrf_token %}
                 {% for field in form %}
-                    {{ field.label_tag }}
-                    {{ field }}
-                    <span class="help-block">{{ field.help_text }}</span>
+                {{ field.label_tag }}
+                {{ field }}
+                <span class="help-block">{{ field.help_text }}</span>
                 {% endfor %}
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary" data-loading-text="Please wait...">Save changes</button>
@@ -39,4 +40,5 @@
         </div>
         {% endif %}
     </div>
+</div>
 {% endblock %}
