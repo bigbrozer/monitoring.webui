@@ -77,7 +77,7 @@ def http_login(request):
             if redirection:
                 response = redirect(redirection)
             else:
-                response = redirect('portal_home')
+                response = redirect('index')
     else:
         # Profile is not completed
         logger.info('User %s has not filled his profile.', user.username)
@@ -109,7 +109,7 @@ class UserEdit(UpdateView):
         try:
             return self.request.GET['redirect']
         except KeyError:
-            return reverse("portal_home")
+            return reverse("index")
 
 
 def browser_out_of_date(request):
