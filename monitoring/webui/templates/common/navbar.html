@@ -50,8 +50,8 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" id="drop_admin" role="button" data-toggle="dropdown" href="#"><i class="icon-fire icon-white"></i> Administration <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="drop_admin">
-                                <li><a href="{% url admin:index %}">Optools</a></li>
-                                <li><a href="/phpmyadmin/" target="_blank">PhpMyAdmin</a></li>
+                                <li><a target="_blank" href="{% url admin:index %}">Optools</a></li>
+                                <li><a target="_blank" href="/phpmyadmin/">PhpMyAdmin</a></li>
                             </ul>
                         </li>
                     {% endif %}
