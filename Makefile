@@ -1,3 +1,5 @@
+distclean: clean
+
 clean: py-bytecode backup-files
 
 py-bytecode:
