@@ -23,7 +23,7 @@ class AnnouncementAdmin(admin.ModelAdmin):
 
 
 # Customize the User model admin
-UserAdmin.list_display = ('username', 'first_name', 'last_name', 'email', 'is_active', 'is_staff', 'date_joined')
+UserAdmin.list_display = ('username', 'first_name', 'last_name', 'email', 'is_active', 'is_staff', 'last_login', 'date_joined')
 UserAdmin.list_editable = ('is_active', 'is_staff')
 UserAdmin.ordering = ['-date_joined']
 
