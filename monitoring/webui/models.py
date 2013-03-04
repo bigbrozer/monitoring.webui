@@ -36,9 +36,10 @@ class Announcement(models.Model):
         help_text="Enable this announcement.<br><strong>Note:</strong> it will replace the currently enabled one !"
     )
 
+    @models.permalink
     def get_absolute_url(self):
         """Return the full URL to show this announcement"""
-        return "/announce/%i" % self.id
+        return ('announce_show_id', [str(self.id)])
 
     def __unicode__(self):
         return self.title
