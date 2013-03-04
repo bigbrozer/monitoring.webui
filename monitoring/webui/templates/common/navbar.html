@@ -50,8 +50,16 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" id="drop_admin" role="button" data-toggle="dropdown" href="#"><i class="icon-fire icon-white"></i> Administration <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="drop_admin">
-                                <li><a target="_blank" href="{% url admin:index %}">Optools</a></li>
-                                <li><a target="_blank" href="/phpmyadmin/">PhpMyAdmin</a></li>
+                                <li class="nav-header">Announcement</li>
+                                <li><a target="_blank" href="{% url admin:webui_announcement_add %}"><i class="icon-plus"></i> New announcement</a></li>
+                                <li><a target="_blank" href="{% url admin:webui_announcement_changelist %}"><i class="icon-list"></i> List all announcements</a></li>
+
+                                <li class="nav-header">Auth</li>
+                                <li><a target="_blank" href="{% url admin:auth_user_changelist %}"><i class="icon-user"></i> Users</a></li>
+                                <li><a target="_blank" href="{% url admin:auth_group_changelist %}"><i class="icon-list-alt"></i> Groups</a></li>
+
+                                <li class="nav-header">Database</li>
+                                <li><a target="_blank" href="/phpmyadmin/"><i class="icon-wrench"></i> PhpMyAdmin</a></li>
                             </ul>
                         </li>
                     {% endif %}
