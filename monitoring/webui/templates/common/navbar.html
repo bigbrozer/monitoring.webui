@@ -3,15 +3,37 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
-            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <!-- Profile -->
+            <ul class="nav pull-right">
+                {% if user.is_authenticated %}
+                <li class="dropdown">
+                <a class="dropdown-toggle" id="drop_profile" role="button" data-toggle="dropdown" href="#">{% if user.email %}{% gravatar_img_for_email user.email 14 %}{% else %}<i class="icon-user icon-white"></i>{% endif %} Welcome, {{ user.first_name|default:"NoName" }} <b class="caret"></b></a>
+                <ul id="dropdown_profile" class="dropdown-menu" role="menu" aria-labelledby="drop_profile">
+                    <li><div>{% gravatar_img_for_email user.email 64 %} <strong>{% if user.first_name and user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else %}Edit your profile !{% endif %}</strong></div></li>
+                    <li class="divider"></li>
+                    <li><a href="{% url user_profile %}"><i class="icon-wrench"></i> Edit profile</a></li>
+                </ul>
+                </li>
+                {% else %}
+                <li><a href="#modal-prelogin-message" data-toggle="modal"><i class="icon-user icon-white"></i>
+                    Login</a></li>
+                {% endif %}
+                {% if PROJECT_DEBUG_MODE %}
+                <li><a rel="tooltip" title="You are in DEBUG mode !" data-placement="bottom">Database: <strong>{% if PROJECT_DB_HOST %}!! PROD !!{% else %}TEST{% endif %}</strong></a></li>
+                {% endif %}
+            </ul>
+
+            <!-- Toggle menu for low width -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
 
+            <!-- Brand name -->
             <a class="brand" href="{% url index %}">Central Systems</a>
 
+            <!-- Main menu -->
             {% if show_main_menu == False %}
             <div class="nav-collapse collapse">
                 <ul class="nav">
@@ -66,25 +88,6 @@
                 </ul>
             </div>
             {% endif %}
-
-            <ul class="nav pull-right">
-                {% if user.is_authenticated %}
-                    <li class="dropdown">
-                    <a class="dropdown-toggle" id="drop_profile" role="button" data-toggle="dropdown" href="#">{% if user.email %}{% gravatar_img_for_email user.email 14 %}{% else %}<i class="icon-user icon-white"></i>{% endif %} Welcome, {{ user.first_name|default:"NoName" }} <b class="caret"></b></a>
-                        <ul id="dropdown_profile" class="dropdown-menu" role="menu" aria-labelledby="drop_profile">
-                            <li><div>{% gravatar_img_for_email user.email 64 %} <strong>{% if user.first_name and user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else %}Edit your profile !{% endif %}</strong></div></li>
-                            <li class="divider"></li>
-                            <li><a href="{% url user_profile %}"><i class="icon-wrench"></i> Edit profile</a></li>
-                        </ul>
-                    </li>
-                {% else %}
-                    <li><a href="#modal-prelogin-message" data-toggle="modal"><i class="icon-user icon-white"></i>
-                        Login</a></li>
-                {% endif %}
-                {% if PROJECT_DEBUG_MODE %}
-                    <li><a rel="tooltip" title="You are in DEBUG mode !" data-placement="bottom">Database: <strong>{% if PROJECT_DB_HOST %}!! PROD !!{% else %}TEST{% endif %}</strong></a></li>
-                {% endif %}
-            </ul>
         </div>
     </div>
 </div>
