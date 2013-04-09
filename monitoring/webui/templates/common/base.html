@@ -13,10 +13,5 @@
 
 	<!-- Modals -->
 	{% include "auth/modal-prelogin-global_catalog.html" %}
-	{% block extra_modals %}
-		{% if browser.outdated %}
-			{% include "common/modal-browser-not-supported.html" %}
-		{% endif %}
-	{% endblock %}
 	<!-- /Modals -->
 {% endblock %}
