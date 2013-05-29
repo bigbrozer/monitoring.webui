@@ -40,7 +40,7 @@ def http_login(request):
         logger.debug('Should redirect to: %s', redirection)
 
     # Find user
-    if settings.DEVEL:
+    if settings.DEBUG:
         user = User.objects.get(username='test@corp')
         userauth = authenticate(username=user.username, password='test')
         login(request, userauth)
@@ -57,13 +57,13 @@ def http_login(request):
         user.save()
         logger.info('User name %s is mal-formed !', user.username)
         return HttpResponse('Invalid account. Please use your <strong>normal</strong> user account and append <em>@corp</em>.')
-    
+
     # Auto fill profile (if possible)
     user.first_name = request.META.get('AUTHENTICATE_GIVENNAME', '')
     user.last_name = request.META.get('AUTHENTICATE_SN', '')
     user.email = request.META.get('AUTHENTICATE_MAIL', '')
     user.save()
-    
+
     if user.first_name and user.last_name and user.email:
         # Check if we must show an announcement
         try:
