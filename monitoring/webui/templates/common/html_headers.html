@@ -57,6 +57,14 @@
 	</footer>
 {% endblock %}
 
+<!-- Modals -->
+{% block modals %}
+    {% include "auth/modal-prelogin-global_catalog.html" %}
+    {% block extra_modals %}{% endblock %}
+{% endblock %}
+<!-- /Modals -->
+
+{%  block scripts %}
 <!-- ###################################### -->
 <!-- Scripts (at then end to load faster)   -->
 <!-- ###################################### -->
@@ -71,6 +79,7 @@
 <script src="{{ STATIC_URL }}js/optools.js"></script>
 
 {% block extra_scripts %}{% endblock %}
+{%  endblock %}
 </body>
 </html>
 
