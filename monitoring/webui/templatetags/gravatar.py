@@ -1,3 +1,24 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) Faurecia <http://www.faurecia.com/>
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+# OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 import urllib
 import hashlib
 
@@ -7,9 +28,11 @@ from django.contrib.auth.models import User
 from django.utils.html import escape
 from django.utils import simplejson
 
-GRAVATAR_URL_PREFIX = getattr(settings, "GRAVATAR_URL_PREFIX",
-                                      "http://www.gravatar.com/")
-GRAVATAR_DEFAULT_IMAGE = getattr(settings, "GRAVATAR_DEFAULT_IMAGE", "identicon")
+GRAVATAR_URL_PREFIX = getattr(settings,
+                              "GRAVATAR_URL_PREFIX",
+                              "http://www.gravatar.com/")
+GRAVATAR_DEFAULT_IMAGE = getattr(settings, "GRAVATAR_DEFAULT_IMAGE",
+                                 "identicon")
 GRAVATAR_DEFAULT_RATING = getattr(settings, "GRAVATAR_DEFAULT_RATING", "g")
 GRAVATAR_DEFAULT_SIZE = getattr(settings, "GRAVATAR_DEFAULT_SIZE", 80)
 GRAVATAR_IMG_CLASS = getattr(settings, "GRAVATAR_IMG_CLASS", "gravatar")
@@ -24,8 +47,8 @@ def _imgclass_attr():
 
 
 def _wrap_img_tag(url, info, extra_style):
-    return '<img src="%s" class="%s %s" alt="Avatar for %s">' % \
-            (escape(url), _imgclass_attr(), extra_style, info)
+    return '<img src="%s" class="%s %s" alt="Avatar for %s">' % (
+        escape(url), _imgclass_attr(), extra_style, info)
 
 
 def _get_user(user):
@@ -55,7 +78,7 @@ def gravatar_for_email(email, size=None, rating=None):
         {% gravatar_for_email someone@example.com 48 pg %}
     """
     gravatar_url = "%savatar/%s" % (GRAVATAR_URL_PREFIX,
-            _get_gravatar_id(email))
+                                    _get_gravatar_id(email))
 
     parameters = [p for p in (
         ('d', GRAVATAR_DEFAULT_IMAGE),
