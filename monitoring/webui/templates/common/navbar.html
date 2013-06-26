@@ -11,7 +11,7 @@
                 <ul id="dropdown_profile" class="dropdown-menu" role="menu" aria-labelledby="drop_profile">
                     <li><div>{% gravatar_img_for_email user.email 64 %} <strong>{% if user.first_name and user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else %}Edit your profile !{% endif %}</strong></div></li>
                     <li class="divider"></li>
-                    <li><a href="{% url user_profile %}"><i class="icon-wrench"></i> Edit profile</a></li>
+                    <li><a href="{% url "user_profile" %}"><i class="icon-wrench"></i> Edit profile</a></li>
                 </ul>
                 </li>
                 {% else %}
@@ -31,16 +31,16 @@
             </a>
 
             <!-- Brand name -->
-            <a class="brand" href="{% url index %}">Central Systems</a>
+            <a class="brand" href="{% url "index" %}">Central Systems</a>
 
             <!-- Main menu -->
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <!-- Home -->
-                    <li class="{{ section.home }}"><a href="{% url index %}"><i class="icon-home icon-white"></i> Home</a></li>
+                    <li class="{{ section.home }}"><a href="{% url "index" %}"><i class="icon-home icon-white"></i> Home</a></li>
 
                     <!-- Reporting -->
-                    <li class="{{ section.kpi }}"><a href="{% url apps.kpi.indicateurs.indicateurs %}"><i class="icon-picture icon-white"></i> Reporting</a></li>
+                    <li class="{{ section.kpi }}"><a href="{% url "apps.kpi.indicateurs.indicateurs" %}"><i class="icon-picture icon-white"></i> Reporting</a></li>
 
                     <!-- KB -->
                     <li class="{{ section.kb }} dropdown">
@@ -48,7 +48,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="/kb/?do=index" target="_blank">Index</a></li>
                             {% if perms.kb.change_procedure %}
-                                <li><a href="{% url admin:kb_procedure_changelist %}">Rate</a></li>
+                                <li><a href="{% url "admin:kb_procedure_changelist" %}">Rate</a></li>
                             {% endif %}
                         </ul>
                     </li>
@@ -60,7 +60,7 @@
                     <li class="{{ section.systems }} dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-th-list icon-white"></i> Systems <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{% url systems_list %}">Nagios Satellites</a></li>
+                            <li><a href="{% url "systems_list" %}">Nagios Satellites</a></li>
                             <li><a href="http://monitoring-dc.app.corp/puppet/">Puppet Dashboard</a></li>
                         </ul>
                     </li>
@@ -72,12 +72,12 @@
                             <a class="dropdown-toggle" id="drop_admin" role="button" data-toggle="dropdown" href="#"><i class="icon-fire icon-white"></i> Administration <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="drop_admin">
                                 <li class="nav-header">Announcement</li>
-                                <li><a target="_blank" href="{% url admin:webui_announcement_add %}"><i class="icon-plus"></i> New announcement</a></li>
-                                <li><a target="_blank" href="{% url admin:webui_announcement_changelist %}"><i class="icon-list"></i> List all announcements</a></li>
+                                <li><a target="_blank" href="{% url "admin:webui_announcement_add" %}"><i class="icon-plus"></i> New announcement</a></li>
+                                <li><a target="_blank" href="{% url "admin:webui_announcement_changelist" %}"><i class="icon-list"></i> List all announcements</a></li>
 
                                 <li class="nav-header">Auth</li>
-                                <li><a target="_blank" href="{% url admin:auth_user_changelist %}"><i class="icon-user"></i> Users</a></li>
-                                <li><a target="_blank" href="{% url admin:auth_group_changelist %}"><i class="icon-list-alt"></i> Groups</a></li>
+                                <li><a target="_blank" href="{% url "admin:auth_user_changelist" %}"><i class="icon-user"></i> Users</a></li>
+                                <li><a target="_blank" href="{% url "admin:auth_group_changelist" %}"><i class="icon-list-alt"></i> Groups</a></li>
                             </ul>
                         </li>
                     {% endif %}

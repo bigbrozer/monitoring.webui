@@ -10,7 +10,7 @@
     <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
 
-    <form class="well" method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+    <form class="well" method="post" action="{% url "django.contrib.auth.views.login" %}">{% csrf_token %}
         {% for field in form %}
         {{ field.label_tag }}
         {{ field }}
