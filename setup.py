@@ -24,7 +24,7 @@ import monitoring.webui
 
 # Package dependencies
 dependencies = [
-    'django==1.4.4',
+    'django==1.5.1',
     'httpagentparser==1.2.2',
     'pytz==2013b',
 ]
