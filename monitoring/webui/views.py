@@ -137,10 +137,6 @@ def show_announcement(request, announce_id=None):
     Context:
         announce (Announcement model)
     """
-    context = {
-        'show_main_menu': False,
-        }
-
     # Should we redirect user after pressing Continue ?
     context['redirect_url'] = request.GET.get('redirect', '/')
 
@@ -149,4 +145,4 @@ def show_announcement(request, announce_id=None):
     else:
         context['announce'] = Announcement.objects.get(is_enabled=True)
 
-    return render(request, "announce/announce_show.html", context)
+    return render(request, "announce/announce_show.html")
