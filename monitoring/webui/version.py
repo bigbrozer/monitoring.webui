@@ -1,4 +1,3 @@
-#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 # Copyright (C) Faurecia <http://www.faurecia.com/>
 #
@@ -20,28 +19,4 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 # OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from setuptools import setup, find_packages
-
-# Way to obtain the project version if project is already installed somewhere
-# in the Python path.
-project_namespace = {}
-with open("monitoring/webui/version.py") as version_file:
-    exec(version_file.read(), project_namespace)
-
-# Package dependencies
-dependencies = [
-    'django==1.5.1',
-    'httpagentparser==1.2.2',
-    'pytz==2013b',
-]
-
-setup(name='monitoring.webui',
-      version=project_namespace["__version__"],
-      description='Monitoring WebUI for Django',
-      author='Vincent BESANCON',
-      author_email='besancon.vincent@gmail.com',
-      license='GPL',
-      namespace_packages=['monitoring'],
-      packages=find_packages(),
-      install_requires=dependencies,
-      include_package_data=True)
+__version__ = '1.1.3'
