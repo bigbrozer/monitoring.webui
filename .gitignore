@@ -1,3 +1,7 @@
+.idea/
+.ropeproject/
+*.pyc
 build/
 dist/
 *.egg-info/
+/.project
